@@ -191,6 +191,7 @@ public class ConceptWorker extends AbstractWorker {
         // if not cancelled finish the operation
         if (!isCancelled()) {
             state.concepts = conceptLattice;
+//            System.out.println(conceptLattice.toString());
             if (lattice) {
                 state.startCalculation(StatusMessage.CALCULATINGLATTICE);
                 setProgress(99);
