@@ -45,7 +45,6 @@ public class Main {
 
     public Main() {
         System.setProperty("user.language", LocaleHandler.readLocale());
-
         WebLookAndFeel.install();
 
         // Disable border around focused cells as it does not fit into the
