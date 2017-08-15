@@ -320,6 +320,7 @@ public class AssociationWorker extends AbstractAssociationWorker {
         if (!isCancelled()) {
             state.associations = rules;
             view.writeAssociations(0);
+            System.out.println(rules.toString());
         }
         super.done();
     };
