@@ -13,20 +13,21 @@ import fcatools.conexpng.Conf;
 import fcatools.conexpng.model.FormalContext;
 
 public class CSVReader {
+	public static final String SEP = ",";
 
-    public CSVReader(Conf state, String path) throws IllegalObjectException, IOException {
+	public CSVReader(Conf state, String path) throws IllegalObjectException, IOException {
         FileInputStream fis = new FileInputStream(path);
         BufferedReader br = new BufferedReader(new InputStreamReader(fis));
         String line;
         FormalContext context = new FormalContext();
 
         line = br.readLine();
-        String[] attr = line.split(";");
+        String[] attr = line.split(SEP);
         for (int i = 1; i < attr.length; i++) {
             context.addAttribute(attr[i]);
         }
         while ((line = br.readLine()) != null) {
-            String[] obj = line.split(";");
+            String[] obj = line.split(SEP);
             Set<String> attrForObj = new TreeSet<>();
             for (int i = 1; i < obj.length; i++) {
                 if (obj[i].equals("1"))
