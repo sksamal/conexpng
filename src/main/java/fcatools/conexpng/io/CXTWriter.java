@@ -21,6 +21,7 @@ public class CXTWriter {
         bw.append("no name" + EOL); // the name of the context
         bw.append(state.context.getObjectCount() + EOL);
         bw.append(state.context.getAttributeCount() + EOL);
+        bw.append(EOL);    // Suraj added
         for (FullObject<String, String> obj : state.context.getObjects()) {
             bw.append(obj.getIdentifier() + EOL);
         }

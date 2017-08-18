@@ -90,7 +90,9 @@ public class ImplicationWorker extends AbstractWorker {
         if (!isCancelled()) {
             state.implications = result;
             view.writeImplications(0);
-            System.out.println(result.toString());
+            System.out.println("Implications: (supp,conf)=(" + state.guiConf.support +","+ state.guiConf.confidence + ")" );
+            for(FCAImplication<String> imp : result)
+            System.out.println(imp.toString());
         }
         super.done();
     }

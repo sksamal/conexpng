@@ -16,7 +16,7 @@ import fcatools.conexpng.io.locale.LocaleHandler;
 public class FileFilters {
 
     public static enum SupportedFileFormat {
-        cex, csv, cxt, jpg, jpeg, oal, pdf, png, svg
+        cex, csv, cxt, jpg, jpeg, oal, pdf, png, svg, fcsv
     };
 
     public static AbstractFileFilter cexFilter = new AbstractFileFilter() {
@@ -57,6 +57,26 @@ public class FileFilters {
         }
     };
 
+    public static AbstractFileFilter fcsvFilter = new AbstractFileFilter() {
+
+        @Override
+        public boolean accept(File pathname) {
+            return !pathname.isHidden() && !pathname.isDirectory() && pathname.getName().endsWith(".fcsv");
+        }
+
+        @Override
+        public String getDescription() {
+            return LocaleHandler.getString("FileFilters.fcsvFilter.getDescription");
+        }
+
+        @Override
+        public ImageIcon getIcon() {
+            // TODO Auto-generated method stub
+            return null;
+        }
+    };
+
+    
     public static AbstractFileFilter cxtFilter = new AbstractFileFilter() {
 
         @Override

@@ -320,7 +320,9 @@ public class AssociationWorker extends AbstractAssociationWorker {
         if (!isCancelled()) {
             state.associations = rules;
             view.writeAssociations(0);
-            System.out.println(rules.toString());
+            System.out.println("Associations: (supp,conf)=(" + state.guiConf.support + "," + state.guiConf.confidence + ")" );
+            for(AssociationRule r : rules)
+            	System.out.println(r.toString());
         }
         super.done();
     };
