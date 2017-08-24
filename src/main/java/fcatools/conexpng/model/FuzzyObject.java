@@ -20,4 +20,8 @@ public class FuzzyObject<T1, T2> {
 	public void setValue(T2 value) {
 		this.value = value;
 	}
+	
+	public boolean contains(T1 name) {
+		return (this.name==name);
+	}
 }

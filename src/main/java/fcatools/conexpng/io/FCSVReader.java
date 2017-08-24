@@ -11,6 +11,8 @@ import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
 import de.tudresden.inf.tcs.fcalib.FullObject;
 import fcatools.conexpng.Conf;
 import fcatools.conexpng.model.FormalContext;
+import fcatools.conexpng.model.FuzzyFormalContext;
+import fcatools.conexpng.model.FuzzyObject;
 
 public class FCSVReader {
 	public static final String SEP = ",";
@@ -20,7 +22,7 @@ public class FCSVReader {
         FileInputStream fis = new FileInputStream(path);
         BufferedReader br = new BufferedReader(new InputStreamReader(fis));
         String line;
-        FormalContext context = new FormalContext();
+        FuzzyFormalContext context = new FuzzyFormalContext();
 
         line = br.readLine();
         String[] attr = line.split(SEP);
@@ -29,18 +31,18 @@ public class FCSVReader {
         }
         while ((line = br.readLine()) != null) {
             String[] obj = line.split(SEP);
-            Set<String> attrForObj = new TreeSet<>();
+            Set<FuzzyObject<String,Double>> attrForObj = new TreeSet<>();
             for (int i = 1; i < obj.length; i++) {
 //                if (obj[i].equals("1"))
               try{
                 if(Double.parseDouble(obj[i]) > TRESH)
-                    attrForObj.add(context.getAttributeAtIndex(i - 1));
+                    attrForObj.add(new FuzzyObject<String,Double>(context.getAttributeAtIndex(i - 1),Double.parseDouble(obj[i])));
               }
               catch(NumberFormatException e) {
             	  
               }
             }
-            context.addObject(new FullObject<String, String>(obj[0], attrForObj));
+            context.addObject(new FullObject<String, FuzzyObject<String,Double>>(obj[0], attrForObj));
         }
         br.close();
 

@@ -29,6 +29,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
     protected HashMap<String, SortedSet<FuzzyObject<String,Double>>> objectsOfAttribute = new HashMap<>();
     private ArrayList<String> dontConsideredAttr = new ArrayList<>();
     private ArrayList<FullObject<String, FuzzyObject<String,Double>>> dontConsideredObj = new ArrayList<>();
+    private double threshold = 0.5;
 
     @Override
     public boolean addAttribute(String attribute) throws IllegalAttributeException {
@@ -90,13 +91,23 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
     }
 
     public FuzzyFormalContext() {
-        super();
-        objectsOfAttribute = new HashMap<>();
-    }
+        this(0.5);
+      }
 
+    public FuzzyFormalContext(double threshold) {
+        super();
+        objectsOfAttribute = new HashMap<>(); 
+        this.threshold = threshold;
+    }
+    
     public FuzzyFormalContext(int objectsCount, int attributesCount) {
+      this(objectsCount,attributesCount,0.5);
+    	
+    }
+    public FuzzyFormalContext(int objectsCount, int attributesCount, double threshold) {
         super();
         objectsOfAttribute = new HashMap<>();
+        this.threshold = threshold;
         for (int i = 0; i < attributesCount; i++) {
             addAttribute("attr" + i);
         }
@@ -122,7 +133,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
          */
         for (String s : this.getAttributes()) {
             TreeSet<FuzzyObject<String,Double>> set = new TreeSet<FuzzyObject<String,Double>>();
-            for (FullObject<String, FuzzyObject<String,Double>> f : this.getObjects()) {
+            for (FullObject<String, FuzzyObject<String,Double>> f : this.getValidObjects()) {
                 if (f.getDescription().getAttributes().contains(s)) {
                     set.add(f.getIdentifier());
                 }
@@ -173,7 +184,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         }
         if (!notcontained) {
             TreeSet<FuzzyObject<String,Double>> set = new TreeSet<FuzzyObject<String,Double>>();
-            for (FullObject<String, FuzzyObject<String,Double>> f : this.getObjects()) {
+            for (FullObject<String, FuzzyObject<String,Double>> f : this.getValidObjects()) {
                 set.add(f.getIdentifier());
             }
             if (!extentPerAttr.values().contains(set))
@@ -197,7 +208,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
             if (e.isEmpty()) {
                 intents.addAll(getAttributes());
             } else
-                for (FullObject<String, FuzzyObject<String,Double>> i : this.getObjects()) {
+                for (FullObject<String, FuzzyObject<String,Double>> i : this.getValidObjects()) {
                     if (e.contains(i.getIdentifier().toString())) {
                         TreeSet<String> prev = sort(i.getDescription().getAttributes());
                         if (count > 0) {
@@ -230,7 +241,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         for (String s : this.getAttributes()) {
             if (!dontConsideredAttr.contains(s)) {
                 TreeSet<FuzzyObject<String,Double>> set = new TreeSet<FuzzyObject<String,Double>>();
-                for (FullObject<String, FuzzyObject<String,Double>> f : this.getObjects()) {
+                for (FullObject<String, FuzzyObject<String,Double>> f : this.getValidObjects()) {
                     if (f.getDescription().getAttributes().contains(s) && (!dontConsideredObj.contains(f))) {
                         set.add(f.getIdentifier());
                     }
@@ -282,7 +293,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         }
         if (!notcontained) {
             TreeSet<FuzzyObject<String,Double>> set = new TreeSet<FuzzyObject<String,Double>>();
-            for (FullObject<String, FuzzyObject<String,Double>> f : this.getObjects()) {
+            for (FullObject<String, FuzzyObject<String,Double>> f : this.getValidObjects()) {
                 set.add(f.getIdentifier());
             }
             if (!extentPerAttr.values().contains(set))
@@ -307,7 +318,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
             if (e.isEmpty()) {
                 intents.addAll(getAttributes());
             } else
-                for (FullObject<String, FuzzyObject<String,Double>> i : this.getObjects()) {
+                for (FullObject<String, FuzzyObject<String,Double>> i : this.getValidObjects()) {
                     if (!dontConsideredObj.contains(i)) {
                         if (e.contains(i.getIdentifier().toString())) {
                             TreeSet<String> prev = sort(i.getDescription().getAttributes());
@@ -405,6 +416,15 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
     public IndexedSet<FullObject<String, FuzzyObject<String,Double>>> getObjects() {
         return objects;
     }
+    
+    /* Return valid objects */
+    public IndexedSet<FullObject<String, FuzzyObject<String,Double>>> getValidObjects() {
+    	IndexedSet<FullObject<String, FuzzyObject<String,Double>>> validObjects = new ListSet<FullObject<String, FuzzyObject<String,Double>>>();
+    	for (FullObject<String, FuzzyObject<String,Double>> object : objects)
+    		if(object.getIdentifier().getValue() > threshold)
+    			validObjects.add(object);
+        return validObjects;
+    }
 
     /**
      * Removes given object only without removing attributes.
@@ -412,7 +432,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
      * @param o
      *            object to remove
      */
-    public void removeObjectOnly(FullObject<String, String> o) {
+    public void removeObjectOnly(FullObject<String, FuzzyObject<String,Double>> o) {
         objects.remove(o);
     }
 
@@ -420,15 +440,18 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         IndexedSet<FullObject<String, FuzzyObject<String,Double>>> newObjects = new ListSet<>();
         IndexedSet<String> newAttributes = new ListSet<>();
         for (String attribute : getAttributes()) {
-            IndexedSet<FuzzyObject<String,Double>> allObjectsForAttribute = new ListSet<>();
+            IndexedSet<String> allObjectsForAttribute = new ListSet<>();
+            IndexedSet<FuzzyObject<String,Double>> fuzzyObjects = new ListSet<>();
             for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
                 if (objectHasAttribute(object, attribute)) {
-                	FuzzyObject<String,Double> fuzzyObj = new FuzzyObject<String,Double>(attribute,object.getIdentifier().getValue());
-                    allObjectsForAttribute.add(fuzzyObj);
+                    allObjectsForAttribute.add(object.getName());
+                	FuzzyObject<String,Double> newFuzzyObj = new FuzzyObject<String,Double>(attribute,object.getIdentifier().getValue());                	
+                   	fuzzyObjects.add(newFuzzyObj);
                 }
             }
-        	FullObject<String, FuzzyObject<String,Double>> newObject = new FullObject<>(attribute,allObjectsForAttribute);
-            newObjects.add(newObject);
+              for(FuzzyObject<String,Double> fuzzyObj: fuzzyObjects) {
+            	  newObjects.add(new FullObject<>(fuzzyObj,allObjectsForAttribute));
+              }
         }
         for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
             newAttributes.add(object.getIdentifier().getName());
@@ -553,23 +576,45 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         }
     }
 
-    public void renameObject(String oldName, String newName) {
+    public void renameObject(FuzzyObject<String,Double> oldObject, FuzzyObject<String,Double> newObject) {
         IndexedSet<FullObject<String, FuzzyObject<String,Double>>> newObjects = new ListSet<>();
         // IndexedSet<String> filteredAttributes = new ListSet<>();
         for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
-            if (object.getIdentifier().equals(oldName)) {
-            	
-                newObjects.add(new FullObject<String, FuzzyObject<String,Double>>(newName, getAttributesForObject(oldName)));
+            if (object.getIdentifier().equals(oldObject)) {
+                newObjects.add(new FullObject<String, FuzzyObject<String,Double>>(newObject, getAttributesForObject(oldObject)));
             } else {
                 newObjects.add(object);
             }
         }
         objects = newObjects;
-        for (SortedSet<String> objects : objectsOfAttribute.values()) {
-            if (objects.contains(oldName)) {
-                objects.remove(oldName);
-                objects.add(newName);
+        for (SortedSet<FuzzyObject<String,Double>> objects : objectsOfAttribute.values()) {
+            if (objects.contains(oldObject)) {
+                objects.remove(oldObject);
+                objects.add(newObject);
             }
+        }
+    }
+    
+    public void renameObject(String oldName, String newName) {
+        IndexedSet<FullObject<String, FuzzyObject<String,Double>>> newObjects = new ListSet<>();
+        // IndexedSet<String> filteredAttributes = new ListSet<>();
+        for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
+            if (object.getIdentifier().getName().equals(oldName)) {
+            	FuzzyObject<String,Double> newObject = new FuzzyObject<String,Double>(newName,object.getIdentifier().getValue());
+            	newObjects.add(new FullObject<String, FuzzyObject<String,Double>>(newObject, getAttributesForObject(object.getIdentifier())));
+            } else {
+                newObjects.add(object);
+            }
+        }
+        objects = newObjects;
+        for (SortedSet<FuzzyObject<String,Double>> objects : objectsOfAttribute.values()) {
+        	for(FuzzyObject<String,Double> object : objects) {
+        		if (object.contains(oldName)) {
+            	FuzzyObject<String,Double> newObject = new FuzzyObject<String,Double>(newName,object.getValue());
+            	objects.remove(object);
+                objects.add(newObject);
+            }
+        }
         }
     }
 
@@ -582,7 +627,15 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
     }
 
     public boolean existsObjectAlready(String name) {
-        for (FullObject<String, String> object : objects) {
+        for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
+            if (object.getIdentifier().getName().equals(name))
+                return true;
+        }
+        return false;
+    }
+
+    public boolean existsObjectAlready(FuzzyObject<String,Double> name) {
+        for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
             if (object.getIdentifier().equals(name))
                 return true;
         }
@@ -637,9 +690,9 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
             getAttributes().add(attr);
         }
     }
-
-    public void addObjectAt(FullObject<String, String> object, int i) {
-        IndexedSet<FullObject<String, String>> newObjects = new ListSet<>();
+    
+    public void addObjectAt(FullObject<String, FuzzyObject<String,Double>> object, int i) {
+        IndexedSet<FullObject<String, FuzzyObject<String,Double>>> newObjects = new ListSet<>();
         for (int j = 0; j < getObjectCount(); j++) {
             if (j == i)
                 newObjects.add(object);
@@ -663,7 +716,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         for (String attr : newAttributes) {
             getAttributes().add(attr);
         }
-        objectsOfAttribute.put(attribute, new TreeSet<String>());
+        objectsOfAttribute.put(attribute, new TreeSet<FuzzyObject<String,Double>>());
     }
 
     public TreeSet<FuzzyObject<String,Double>> intersection(Set<FuzzyObject<String,Double>> firstSet, Set<FuzzyObject<String,Double>> secondSet) {
@@ -721,7 +774,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
      * 
      * @param obj
      */
-    public void dontConsiderObject(FullObject<String, String> obj) {
+    public void dontConsiderObject(FullObject<String, FuzzyObject<String,Double>> obj) {
         this.dontConsideredObj.add(obj);
     }
 
@@ -730,7 +783,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
      * 
      * @param obj
      */
-    public void considerObject(FullObject<String, String> obj) {
+    public void considerObject(FullObject<String, FuzzyObject<String,Double>> obj) {
         this.dontConsideredObj.remove(obj);
     }
 
@@ -743,7 +796,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         return dontConsideredAttr;
     }
 
-    public ArrayList<FullObject<String, String>> getDontConsideredObj() {
+    public ArrayList<FullObject<String, FuzzyObject<String,Double>>> getDontConsideredObj() {
         return dontConsideredObj;
     }
 
