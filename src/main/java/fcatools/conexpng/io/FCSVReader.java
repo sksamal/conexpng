@@ -9,16 +9,15 @@ import java.util.TreeSet;
 
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
 import de.tudresden.inf.tcs.fcalib.FullObject;
-import fcatools.conexpng.Conf;
-import fcatools.conexpng.model.FormalContext;
+import fcatools.conexpng.FuzzyConf;
 import fcatools.conexpng.model.FuzzyFormalContext;
 import fcatools.conexpng.model.FuzzyObject;
 
 public class FCSVReader {
 	public static final String SEP = ",";
-	public static double TRESH = 0.8;
+//	public static double TRESH = 0.8;
 
-	public FCSVReader(Conf state, String path) throws IllegalObjectException, IOException {
+	public FCSVReader(FuzzyConf state, String path) throws IllegalObjectException, IOException {
         FileInputStream fis = new FileInputStream(path);
         BufferedReader br = new BufferedReader(new InputStreamReader(fis));
         String line;
@@ -31,18 +30,19 @@ public class FCSVReader {
         }
         while ((line = br.readLine()) != null) {
             String[] obj = line.split(SEP);
-            Set<FuzzyObject<String,Double>> attrForObj = new TreeSet<>();
+            Set<String> attrForObj = new TreeSet<>();
             for (int i = 1; i < obj.length; i++) {
 //                if (obj[i].equals("1"))
               try{
-                if(Double.parseDouble(obj[i]) > TRESH)
-                    attrForObj.add(new FuzzyObject<String,Double>(context.getAttributeAtIndex(i - 1),Double.parseDouble(obj[i])));
+ //               if(Double.parseDouble(obj[i]) > TRESH)
+            	  	FuzzyObject<String,Double> fObj = new FuzzyObject<String,Double>(obj[0],Double.parseDouble(obj[i]));
+                    attrForObj.add(context.getAttributeAtIndex(i - 1));
+                    context.addObject(new FullObject<>(fObj, attrForObj));
               }
               catch(NumberFormatException e) {
             	  
               }
             }
-            context.addObject(new FullObject<String, FuzzyObject<String,Double>>(obj[0], attrForObj));
         }
         br.close();
 

@@ -209,7 +209,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
                 intents.addAll(getAttributes());
             } else
                 for (FullObject<String, FuzzyObject<String,Double>> i : this.getValidObjects()) {
-                    if (e.contains(i.getIdentifier().toString())) {
+                    if (e.contains(i.getIdentifier())) {
                         TreeSet<String> prev = sort(i.getDescription().getAttributes());
                         if (count > 0) {
                             intents = intersectionAttr(prev, intents);
@@ -320,7 +320,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
             } else
                 for (FullObject<String, FuzzyObject<String,Double>> i : this.getValidObjects()) {
                     if (!dontConsideredObj.contains(i)) {
-                        if (e.contains(i.getIdentifier().toString())) {
+                        if (e.contains(i.getIdentifier())) {
                             TreeSet<String> prev = sort(i.getDescription().getAttributes());
                             if (count > 0) {
                                 intents = intersectionAttr(prev, intents);
@@ -342,7 +342,13 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         return conceptLattice;
     }
 
-    public int supportCount(Set<String> attributes) {
+    @Override
+	public String toString() {
+		return "FuzzyFormalContext("+threshold+"):" + objectsOfAttribute.keySet().toString() + "\n"+
+				this.objects.toString();
+	}
+
+	public int supportCount(Set<String> attributes) {
         if (attributes.isEmpty())
             return objects.size();
         int mincount = Integer.MAX_VALUE;
