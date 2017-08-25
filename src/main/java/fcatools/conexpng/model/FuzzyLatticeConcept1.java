@@ -11,12 +11,12 @@ import fcatools.conexpng.io.locale.LocaleHandler;
  * This class implemented the Concept interface of the fcalib.
  * 
  */
-public class FuzzyLatticeConcept implements Concept<String, FullObject<String, FuzzyObject<String,Double>>> {
+public class FuzzyLatticeConcept1 implements Concept<String, FullObject<String, FuzzyObject<String,Double>>> {
 
     private ListSet<FullObject<String, FuzzyObject<String,Double>>> extent;
     private ListSet<String> intent;
 
-    public FuzzyLatticeConcept() {
+    public FuzzyLatticeConcept1() {
         extent = new ListSet<FullObject<String, FuzzyObject<String,Double>>>();
         intent = new ListSet<>();
     }

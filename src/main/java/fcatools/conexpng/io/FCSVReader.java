@@ -10,7 +10,7 @@ import java.util.TreeSet;
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
 import de.tudresden.inf.tcs.fcalib.FullObject;
 import fcatools.conexpng.FuzzyConf;
-import fcatools.conexpng.model.FuzzyFormalContext;
+import fcatools.conexpng.model.FuzzyFormalContext1;
 import fcatools.conexpng.model.FuzzyObject;
 
 public class FCSVReader {
@@ -21,7 +21,7 @@ public class FCSVReader {
         FileInputStream fis = new FileInputStream(path);
         BufferedReader br = new BufferedReader(new InputStreamReader(fis));
         String line;
-        FuzzyFormalContext context = new FuzzyFormalContext();
+        FuzzyFormalContext1 context = new FuzzyFormalContext1();
 
         line = br.readLine();
         String[] attr = line.split(SEP);

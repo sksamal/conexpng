@@ -24,67 +24,80 @@ import de.tudresden.inf.tcs.fcalib.utils.ListSet;
  * Due to the API of FormalContext<String,String> the here implemented methods
  * are extremely inefficient.
  */
-public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContext<String, FuzzyObject<String,Double>> {
+public class FuzzyFormalContext extends FormalContext {
 
-    protected HashMap<String, SortedSet<FuzzyObject<String,Double>>> objectsOfAttribute = new HashMap<>();
-    private ArrayList<String> dontConsideredAttr = new ArrayList<>();
-    private ArrayList<FullObject<String, FuzzyObject<String,Double>>> dontConsideredObj = new ArrayList<>();
+	// Extra wrapper sets and maps to hold objects and allobjectsofAttribute
+    protected HashMap<String, SortedSet<String>> allObjectsOfAttribute = new HashMap<>();
+    protected HashMap<OAPair<String,String>,Double> composition = new HashMap<>();
     private double threshold = 0.5;
 
-    @Override
-    public boolean addAttribute(String attribute) throws IllegalAttributeException {
-        if (super.addAttribute(attribute)) {
-            objectsOfAttribute.put(attribute, new TreeSet<FuzzyObject<String,Double>>());
-            return true;
-        } else
-            return false;
-    }
-
-    @Override
-    public boolean addAttributeToObject(String attribute, FuzzyObject<String,Double> id) throws IllegalAttributeException,
+ 
+    public boolean addAttributeToObject(String attribute, String id, double value) throws IllegalAttributeException,
             IllegalObjectException {
-        if (super.addAttributeToObject(attribute,id)) {
-            SortedSet<FuzzyObject<String,Double>> objects = objectsOfAttribute.get(attribute);
-            if (objects != null)
-                objects.add(id);
-            return true;
-        }
-        return false;
+    	allObjectsOfAttribute.put(attribute, new TreeSet<String>());
+    	if(value>=threshold) {
+    		if (!super.addAttributeToObject(attribute,id)) return false;
+        	composition.put(new OAPair<String,String>(attribute,id), value);
+    	}
+    	return true;
     }
+    
+    public boolean addAttributeToObject(String attribute, String id) throws IllegalAttributeException,
+    IllegalObjectException {
+    	return addAttributeToObject(attribute,id,threshold);
+}
 
-    @Override
-    public boolean addObject(FullObject<String, FuzzyObject<String,Double>> arg0) throws IllegalObjectException {
-        if (super.addObject(arg0)) {
-            for (String attribute : arg0.getDescription().getAttributes()) {
-                objectsOfAttribute.get(attribute).add(arg0.getIdentifier());
+
+    public boolean addObject(FullObject<String, String> o, double value) throws IllegalObjectException {
+    	if(value>=threshold) super.addObject(o);
+    	
+        if (super.super.addObject(o)) {
+            for (String attribute : o.getDescription().getAttributes()) {
+            	allObjectsOfAttribute.get(attribute).add(o.getIdentifier());
+                if(value>=threshold) objectsOfAttribute.get(attribute).add(o.getIdentifier());
+                composition.put(new OAPair<String,String>(attribute,o.getIdentifier()), value);
             }
             return true;
         }
         return false;
     }
 
-    @Override
-    public boolean removeAttributeFromObject(String attribute, FuzzyObject<String,Double> id) throws IllegalAttributeException,
+    public boolean addObject(FullObject<String, String> arg0) throws IllegalObjectException {
+    	return addObject(arg0,threshold);
+    }
+    
+    public boolean removeAttributeFromObject(String attribute, String id) throws IllegalAttributeException,
             IllegalObjectException {
-        if (super.removeAttributeFromObject(attribute, id)) {
-            SortedSet<FuzzyObject<String,Double>> objects = objectsOfAttribute.get(attribute);
-            if (objects != null)
-                objects.remove(id);
-            return true;
+    	super.removeAttributeFromObject(attribute, id);
+        SortedSet<String> objects = allObjectsOfAttribute.get(attribute);
+        if (objects != null) {
+            objects.remove(id);
+            composition.remove(new OAPair<String,String>(attribute,id));
+        	return true;
         }
         return false;
     }
 
     @Override
-    public boolean removeObject(FuzzyObject<String,Double> id) throws IllegalObjectException {
+    public boolean removeObject(String id) throws IllegalObjectException {
         return removeObject(getObject(id));
     }
 
     @Override
-    public boolean removeObject(FullObject<String, FuzzyObject<String,Double>> object) throws IllegalObjectException {
+    public boolean removeObject(FullObject<String, String> object) throws IllegalObjectException {
+    	
+    	// remove from all objects
+    	boolean removed = getAllObjects().remove(object);
+		if (!removed) {
+			throw new IllegalObjectException("Object" + object.getIdentifier() + "not successfully removed");
+		}
+		
         if (super.removeObject(object)) {
             for (String attribute : object.getDescription().getAttributes()) {
-                objectsOfAttribute.get(attribute).remove(object.getIdentifier());
+                allObjectsOfAttribute.get(attribute).remove(object.getIdentifier());
+                if(objectsOfAttribute.get(attribute).contains(object.getIdentifier()))
+                	super.removeObject(object);
+                composition.remove(new OAPair<String,String>(attribute,object.getIdentifier()));
             }
         }
         return false;
@@ -96,7 +109,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
 
     public FuzzyFormalContext(double threshold) {
         super();
-        objectsOfAttribute = new HashMap<>(); 
+        allObjectsOfAttribute = new HashMap<>(); 
         this.threshold = threshold;
     }
     
@@ -105,241 +118,14 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
     	
     }
     public FuzzyFormalContext(int objectsCount, int attributesCount, double threshold) {
-        super();
-        objectsOfAttribute = new HashMap<>();
+        super(objectsCount, attributesCount);
+        allObjectsOfAttribute = new HashMap<>(); 
         this.threshold = threshold;
         for (int i = 0; i < attributesCount; i++) {
-            addAttribute("attr" + i);
+            for (int j = 0; j < objectsCount; j++) {
+            	composition.put(new OAPair<String,String>("attr" + i, "obj" + j), 0.0);
         }
-        for (int i = 0; i < objectsCount; i++) {
-            try {
-            	FuzzyObject<String,Double> fattr = new FuzzyObject<String,Double>("obj" + i,0.0);
-                addObject(new FullObject<String, FuzzyObject<String,Double>>(fattr));
-            } catch (IllegalObjectException e) {
-                e.printStackTrace();
-            }
         }
-    }
-
-    @Override
-    public Set<Concept<String, FullObject<String, FuzzyObject<String,Double>>>> getConcepts() {
-        ListSet<Concept<String, FullObject<String, FuzzyObject<String,Double>>>> conceptLattice = new ListSet<Concept<String, FullObject<String, FuzzyObject<String,Double>>>>();
-
-        HashMap<String, Set<FuzzyObject<String,Double>>> extentPerAttr = new HashMap<String, Set<FuzzyObject<String,Double>>>();
-        /*
-         * Step 1: Initialize a list of concept extents. To begin with, write
-         * for each attribute m # M the attribute extent {m}$ to this list (if
-         * not already present).
-         */
-        for (String s : this.getAttributes()) {
-            TreeSet<FuzzyObject<String,Double>> set = new TreeSet<FuzzyObject<String,Double>>();
-            for (FullObject<String, FuzzyObject<String,Double>> f : this.getValidObjects()) {
-                if (f.getDescription().getAttributes().contains(s)) {
-                    set.add(f.getIdentifier());
-                }
-            }
-            extentPerAttr.put(s, set);
-        }
-
-        /*
-         * Step 2: For any two sets in this list, compute their intersection. If
-         * the result is a set that is not yet in the list, then extend the list
-         * by this set. With the extended list, continue to build all pairwise
-         * intersections.
-         */
-        HashMap<String, Set<FuzzyObject<String,Double>>> temp = new HashMap<String, Set<FuzzyObject<String,Double>>>();
-        for (String s : extentPerAttr.keySet()) {
-            for (String t : extentPerAttr.keySet()) {
-                if (!s.equals(t)) {
-                    Set<FuzzyObject<String,Double>> result = this.intersection(extentPerAttr.get(s), extentPerAttr.get(t));
-                    if (!extentPerAttr.values().contains(result)) {
-                        if (!temp.containsValue(result)) {
-                            temp.put(s + ", " + t, result);
-                        }
-                    }
-                }
-            }
-        }
-        extentPerAttr.putAll(temp);
-
-        /*
-         * Step 3: If for any two sets of the list their intersection is also in
-         * the list, then extend the list by the set G (provided it is not yet
-         * contained in the list). The list then contains all concept extents
-         * (and nothing else).
-         */
-        boolean notcontained = false;
-        for (String s : extentPerAttr.keySet()) {
-            if (notcontained)
-                break;
-            for (String t : extentPerAttr.keySet()) {
-                if (!s.equals(t)) {
-                    Set<FuzzyObject<String,Double>> result = this.intersection(extentPerAttr.get(s), extentPerAttr.get(t));
-                    if (!extentPerAttr.values().contains(result)) {
-                        notcontained = true;
-                        break;
-                    }
-                }
-            }
-        }
-        if (!notcontained) {
-            TreeSet<FuzzyObject<String,Double>> set = new TreeSet<FuzzyObject<String,Double>>();
-            for (FullObject<String, FuzzyObject<String,Double>> f : this.getValidObjects()) {
-                set.add(f.getIdentifier());
-            }
-            if (!extentPerAttr.values().contains(set))
-                extentPerAttr.put("", set);
-        }
-
-        /*
-         * Step 4: For every concept extent A in the list compute the
-         * corresponding intent A' to obtain a list of all formal concepts
-         * (A,A') of (G,M, I).
-         */
-        HashSet<Set<FuzzyObject<String,Double>>> extents = new HashSet<Set<FuzzyObject<String,Double>>>();
-        for (Set<FuzzyObject<String,Double>> e : extentPerAttr.values()) {
-            if (!extents.contains(e))
-                extents.add(e);
-        }
-        for (Set<FuzzyObject<String,Double>> e : extents) {
-            TreeSet<String> intents = new TreeSet<String>();
-            int count = 0;
-            Concept<String, FullObject<String, FuzzyObject<String,Double>>> c = new FuzzyLatticeConcept();
-            if (e.isEmpty()) {
-                intents.addAll(getAttributes());
-            } else
-                for (FullObject<String, FuzzyObject<String,Double>> i : this.getValidObjects()) {
-                    if (e.contains(i.getIdentifier())) {
-                        TreeSet<String> prev = sort(i.getDescription().getAttributes());
-                        if (count > 0) {
-                            intents = intersectionAttr(prev, intents);
-                        } else {
-                            intents = prev;
-                        }
-                        count++;
-                        c.getExtent().add(i);
-                    }
-                }
-            // concepts.put(e, intents);
-            for (String s : intents) {
-                c.getIntent().add(s);
-            }
-            conceptLattice.add(c);
-        }
-        return conceptLattice;
-    }
-
-    public Set<Concept<String, FullObject<String, FuzzyObject<String,Double>>>> getConceptsWithoutConsideredElements() {
-        ListSet<Concept<String, FullObject<String, FuzzyObject<String,Double>>>> conceptLattice = new ListSet<Concept<String, FullObject<String, FuzzyObject<String,Double>>>>();
-
-        HashMap<String, Set<FuzzyObject<String,Double>>> extentPerAttr = new HashMap<String, Set<FuzzyObject<String,Double>>>();
-        /*
-         * Step 1: Initialize a list of concept extents. To begin with, write
-         * for each attribute m # M the attribute extent {m}$ to this list (if
-         * not already present).
-         */
-        for (String s : this.getAttributes()) {
-            if (!dontConsideredAttr.contains(s)) {
-                TreeSet<FuzzyObject<String,Double>> set = new TreeSet<FuzzyObject<String,Double>>();
-                for (FullObject<String, FuzzyObject<String,Double>> f : this.getValidObjects()) {
-                    if (f.getDescription().getAttributes().contains(s) && (!dontConsideredObj.contains(f))) {
-                        set.add(f.getIdentifier());
-                    }
-                }
-                extentPerAttr.put(s, set);
-            }
-        }
-
-        /*
-         * Step 2: For any two sets in this list, compute their intersection. If
-         * the result is a set that is not yet in the list, then extend the list
-         * by this set. With the extended list, continue to build all pairwise
-         * intersections.
-         */
-        HashMap<String, Set<FuzzyObject<String,Double>>> temp = new HashMap<String, Set<FuzzyObject<String,Double>>>();
-        for (String s : extentPerAttr.keySet()) {
-            for (String t : extentPerAttr.keySet()) {
-                if (!s.equals(t)) {
-                    Set<FuzzyObject<String,Double>> result = this.intersection(extentPerAttr.get(s), extentPerAttr.get(t));
-                    if (!extentPerAttr.values().contains(result)) {
-                        if (!temp.containsValue(result)) {
-                            temp.put(s + ", " + t, result);
-                        }
-                    }
-                }
-            }
-        }
-        extentPerAttr.putAll(temp);
-
-        /*
-         * Step 3: If for any two sets of the list their intersection is also in
-         * the list, then extend the list by the set G (provided it is not yet
-         * contained in the list). The list then contains all concept extents
-         * (and nothing else).
-         */
-        boolean notcontained = false;
-        for (String s : extentPerAttr.keySet()) {
-            if (notcontained)
-                break;
-            for (String t : extentPerAttr.keySet()) {
-                if (!s.equals(t)) {
-                    Set<FuzzyObject<String,Double>> result = this.intersection(extentPerAttr.get(s), extentPerAttr.get(t));
-                    if (!extentPerAttr.values().contains(result)) {
-                        notcontained = true;
-                        break;
-                    }
-                }
-            }
-        }
-        if (!notcontained) {
-            TreeSet<FuzzyObject<String,Double>> set = new TreeSet<FuzzyObject<String,Double>>();
-            for (FullObject<String, FuzzyObject<String,Double>> f : this.getValidObjects()) {
-                set.add(f.getIdentifier());
-            }
-            if (!extentPerAttr.values().contains(set))
-                extentPerAttr.put("", set);
-        }
-
-        /*
-         * Step 4: For every concept extent A in the list compute the
-         * corresponding intent A' to obtain a list of all formal concepts
-         * (A,A') of (G,M, I).
-         */
-
-        HashSet<Set<FuzzyObject<String,Double>>> extents = new HashSet<Set<FuzzyObject<String,Double>>>();
-        for (Set<FuzzyObject<String,Double>> e : extentPerAttr.values()) {
-            if (!extents.contains(e))
-                extents.add(e);
-        }
-        for (Set<FuzzyObject<String,Double>> e : extents) {
-            TreeSet<String> intents = new TreeSet<String>();
-            int count = 0;
-            Concept<String, FullObject<String, FuzzyObject<String,Double>>> c = new FuzzyLatticeConcept();
-            if (e.isEmpty()) {
-                intents.addAll(getAttributes());
-            } else
-                for (FullObject<String, FuzzyObject<String,Double>> i : this.getValidObjects()) {
-                    if (!dontConsideredObj.contains(i)) {
-                        if (e.contains(i.getIdentifier())) {
-                            TreeSet<String> prev = sort(i.getDescription().getAttributes());
-                            if (count > 0) {
-                                intents = intersectionAttr(prev, intents);
-                            } else {
-                                intents = prev;
-                            }
-                            count++;
-                            c.getExtent().add(i);
-                        }
-                    }
-                }
-            // concepts.put(e, intents);
-            for (String s : intents) {
-                if (!dontConsideredAttr.contains(s))
-                    c.getIntent().add(s);
-            }
-            conceptLattice.add(c);
-        }
-        return conceptLattice;
     }
 
     @Override
@@ -348,88 +134,9 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
 				this.objects.toString();
 	}
 
-	public int supportCount(Set<String> attributes) {
-        if (attributes.isEmpty())
-            return objects.size();
-        int mincount = Integer.MAX_VALUE;
-        String attributeWithMincount = "";
-        // search for the attribute with the fewest objects
-        for (String string : attributes) {
-            if (objectsOfAttribute.get(string).size() < mincount) {
-                mincount = objectsOfAttribute.get(string).size();
-                attributeWithMincount = string;
-            }
-        }
-        int count = 0;
-        boolean notfound;
-        // search the other attributes only in these objects
-        for (FuzzyObject<String,Double> obj : objectsOfAttribute.get(attributeWithMincount)) {
-            notfound = false;
-            for (String att : attributes) {
-                if (!objectHasAttribute(getObject(obj), att)) {
-                    notfound = true;
-                    break;
-                }
-            }
-            if (!notfound)
-                count++;
-        }
-        return count;
-
-    }
-
-    @Override
-    public Set<FCAImplication<String>> getStemBase() {
-        // de.tudresden.inf.tcs.fcalib.ImplicationSet<String> doesn't return the
-        // implications, so we need this result-variable, maybe we should modify
-        // ImplicationSet
-        IndexedSet<FCAImplication<String>> result = new ListSet<>();
-
-        ImplicationSet<String> impl = new ImplicationSet<>(this);
-
-        // Next-Closure
-
-        Set<String> A = new ListSet<>();
-
-        while (!A.equals(getAttributes())) {
-            A = impl.nextClosure(A);
-            if (A == null)
-                return Collections.emptySet();
-            if (!A.equals(doublePrime(A))) {
-                Implication<String> im = new Implication<>(A, doublePrime(A));
-                impl.add(im);
-                result.add(im);
-            }
-        }
-        // remove redundant items in the conclusion
-        for (FCAImplication<String> fcaImplication : result) {
-            fcaImplication.getConclusion().removeAll(fcaImplication.getPremise());
-        }
-
-        return result;
-    }
-
-    @Override
-    public Set<FCAImplication<String>> getDuquenneGuiguesBase() {
-        return getStemBase();
-    }
-
-    /**
-     * Returns objects of this context.
-     * 
-     * @return objects of this context
-     */
-    public IndexedSet<FullObject<String, FuzzyObject<String,Double>>> getObjects() {
-        return objects;
-    }
-    
-    /* Return valid objects */
-    public IndexedSet<FullObject<String, FuzzyObject<String,Double>>> getValidObjects() {
-    	IndexedSet<FullObject<String, FuzzyObject<String,Double>>> validObjects = new ListSet<FullObject<String, FuzzyObject<String,Double>>>();
-    	for (FullObject<String, FuzzyObject<String,Double>> object : objects)
-    		if(object.getIdentifier().getValue() > threshold)
-    			validObjects.add(object);
-        return validObjects;
+    /* Return all objects*/
+    public IndexedSet<FullObject<String, String>> getAllObjects() {
+        return allObjects;
     }
 
     /**
@@ -438,48 +145,69 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
      * @param o
      *            object to remove
      */
-    public void removeObjectOnly(FullObject<String, FuzzyObject<String,Double>> o) {
+    public void removeObjectOnly(FullObject<String, String> o) {
+    	if(allObjects.contains(o))
+            allObjects.remove(o);
+    	
+    	if(objects.contains(o))
         objects.remove(o);
     }
 
     public void transpose() {
-        IndexedSet<FullObject<String, FuzzyObject<String,Double>>> newObjects = new ListSet<>();
+  
+        HashMap<OAPair<String,String>,Double> newComposition = new HashMap<>();
+        
+        for(OAPair<String,String> key : composition.keySet()) {
+        	newComposition.put(new OAPair<String,String>(key.getObject(),key.getAttribute()),composition.get(key));
+        }
+        composition = newComposition;
+        /* Do we need to create and add newObjects */
+
+        IndexedSet<FullObject<String, String>> newObjects = new ListSet<>();
         IndexedSet<String> newAttributes = new ListSet<>();
         for (String attribute : getAttributes()) {
-            IndexedSet<String> allObjectsForAttribute = new ListSet<>();
-            IndexedSet<FuzzyObject<String,Double>> fuzzyObjects = new ListSet<>();
-            for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
-                if (objectHasAttribute(object, attribute)) {
-                    allObjectsForAttribute.add(object.getName());
-                	FuzzyObject<String,Double> newFuzzyObj = new FuzzyObject<String,Double>(attribute,object.getIdentifier().getValue());                	
-                   	fuzzyObjects.add(newFuzzyObj);
-                }
+            IndexedSet<String> objectsForAttribute = new ListSet<>();
+            for (FullObject<String, String> object : objects) {
+                if (objectHasAttribute(object, attribute))
+                    objectsForAttribute.add(object.getIdentifier());
             }
-              for(FuzzyObject<String,Double> fuzzyObj: fuzzyObjects) {
-            	  newObjects.add(new FullObject<>(fuzzyObj,allObjectsForAttribute));
-              }
+            newObjects.add(new FullObject<>(attribute, objectsForAttribute));
         }
-        for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
-            newAttributes.add(object.getIdentifier().getName());
+        for (FullObject<String, String> object : objects) {
+            newAttributes.add(object.getIdentifier());
+        }
+ 
+        // All objs
+        IndexedSet<FullObject<String, String>> newAllObjects = new ListSet<>();
+        for (String attribute : getAttributes()) {
+            IndexedSet<String> objectsForAttribute = new ListSet<>();
+            for (FullObject<String, String> obj : allObjects) {
+                if (obj.getDescription().containsAttribute(attribute)
+)                   objectsForAttribute.add(obj.getIdentifier());
+            }
+            newAllObjects.add(new FullObject<>(attribute, objectsForAttribute));
+        }
+        for (FullObject<String, String> object : allObjects) {
+            newAttributes.add(object.getIdentifier());
         }
 
         objects = newObjects;
-        // Why can I access objects directly but not attributes? (I'm
-        // questioning the API-decision)
+        allObjects = newAllObjects;
+
         getAttributes().clear();
         objectsOfAttribute.clear();
         for (String attribute : newAttributes) {
             getAttributes().add(attribute);
-            objectsOfAttribute.put(attribute, new TreeSet<FuzzyObject<String,Double>>());
+            objectsOfAttribute.put(attribute, new TreeSet<String>());
         }
-        for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
+        for (FullObject<String, String> object : objects) {
             for (String attribute : object.getDescription().getAttributes()) {
                 objectsOfAttribute.get(attribute).add(object.getIdentifier());
             }
         }
     }
 
-    public void toggleAttributeForObject(String attribute, FuzzyObject<String,Double> objectID) {
+    public void toggleAttributeForObject(String attribute, String objectID) {
         if (objectHasAttribute(getObject(objectID), attribute)) {
             try {
                 removeAttributeFromObject(attribute, objectID);
@@ -498,7 +226,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
     public void invert(int objectStartIndex, int objectEndIndex, int attributeStartIndex, int attributeEndIndex) {
         for (int i = objectStartIndex; i < objectEndIndex; i++) {
             for (int j = attributeStartIndex; j < attributeEndIndex; j++) {
-            	FuzzyObject<String,Double> objectID = getObjectAtIndex(i).getIdentifier();
+            	String objectID = getObjectAtIndex(i).getIdentifier();
                 String attribute = getAttributeAtIndex(j);
                 toggleAttributeForObject(attribute, objectID);
             }
@@ -512,7 +240,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
     public void clear(int objectStartIndex, int objectEndIndex, int attributeStartIndex, int attributeEndIndex) {
         for (int i = objectStartIndex; i < objectEndIndex; i++) {
             for (int j = attributeStartIndex; j < attributeEndIndex; j++) {
-                FullObject<String, FuzzyObject<String,Double>> object = getObjectAtIndex(i);
+                FullObject<String, String> object = getObjectAtIndex(i);
                 String attribute = getAttributeAtIndex(j);
                 if (objectHasAttribute(object, attribute)) {
                     try {
@@ -532,7 +260,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
     public void fill(int objectStartIndex, int objectEndIndex, int attributeStartIndex, int attributeEndIndex) {
         for (int i = objectStartIndex; i < objectEndIndex; i++) {
             for (int j = attributeStartIndex; j < attributeEndIndex; j++) {
-                FullObject<String, FuzzyObject<String,Double>> object = getObjectAtIndex(i);
+                FullObject<String, String> object = getObjectAtIndex(i);
                 String attribute = getAttributeAtIndex(j);
                 if (!objectHasAttribute(object, attribute)) {
                     try {
@@ -551,8 +279,8 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
 
     public void renameAttribute(String oldName, String newName) {
         IndexedSet<String> newAttributes = new ListSet<>();
-        IndexedSet<FullObject<String, FuzzyObject<String,Double>>> filteredObjects = new ListSet<>();
-        for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
+        IndexedSet<FullObject<String, String>> filteredObjects = new ListSet<>();
+        for (FullObject<String, String> object : objects) {
             if (objectHasAttribute(object, oldName)) {
                 filteredObjects.add(object);
                 try {
@@ -573,7 +301,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         for (String attribute : newAttributes) {
             getAttributes().add(attribute);
         }
-        for (FullObject<String, FuzzyObject<String,Double>> object : filteredObjects) {
+        for (FullObject<String, String> object : filteredObjects) {
             try {
                 addAttributeToObject(newName, object.getIdentifier());
             } catch (IllegalObjectException e) {
@@ -582,18 +310,18 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         }
     }
 
-    public void renameObject(FuzzyObject<String,Double> oldObject, FuzzyObject<String,Double> newObject) {
-        IndexedSet<FullObject<String, FuzzyObject<String,Double>>> newObjects = new ListSet<>();
+    public void renameObject(String oldObject, String newObject) {
+        IndexedSet<FullObject<String, String>> newObjects = new ListSet<>();
         // IndexedSet<String> filteredAttributes = new ListSet<>();
-        for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
+        for (FullObject<String, String> object : objects) {
             if (object.getIdentifier().equals(oldObject)) {
-                newObjects.add(new FullObject<String, FuzzyObject<String,Double>>(newObject, getAttributesForObject(oldObject)));
+                newObjects.add(new FullObject<String, String>(newObject, getAttributesForObject(oldObject)));
             } else {
                 newObjects.add(object);
             }
         }
         objects = newObjects;
-        for (SortedSet<FuzzyObject<String,Double>> objects : objectsOfAttribute.values()) {
+        for (SortedSet<String> objects : objectsOfAttribute.values()) {
             if (objects.contains(oldObject)) {
                 objects.remove(oldObject);
                 objects.add(newObject);
@@ -602,21 +330,21 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
     }
     
     public void renameObject(String oldName, String newName) {
-        IndexedSet<FullObject<String, FuzzyObject<String,Double>>> newObjects = new ListSet<>();
+        IndexedSet<FullObject<String, String>> newObjects = new ListSet<>();
         // IndexedSet<String> filteredAttributes = new ListSet<>();
-        for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
+        for (FullObject<String, String> object : objects) {
             if (object.getIdentifier().getName().equals(oldName)) {
-            	FuzzyObject<String,Double> newObject = new FuzzyObject<String,Double>(newName,object.getIdentifier().getValue());
-            	newObjects.add(new FullObject<String, FuzzyObject<String,Double>>(newObject, getAttributesForObject(object.getIdentifier())));
+            	String newObject = new String(newName,object.getIdentifier().getValue());
+            	newObjects.add(new FullObject<String, String>(newObject, getAttributesForObject(object.getIdentifier())));
             } else {
                 newObjects.add(object);
             }
         }
         objects = newObjects;
-        for (SortedSet<FuzzyObject<String,Double>> objects : objectsOfAttribute.values()) {
-        	for(FuzzyObject<String,Double> object : objects) {
+        for (SortedSet<String> objects : objectsOfAttribute.values()) {
+        	for(String object : objects) {
         		if (object.contains(oldName)) {
-            	FuzzyObject<String,Double> newObject = new FuzzyObject<String,Double>(newName,object.getValue());
+            	String newObject = new String(newName,object.getValue());
             	objects.remove(object);
                 objects.add(newObject);
             }
@@ -633,24 +361,24 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
     }
 
     public boolean existsObjectAlready(String name) {
-        for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
+        for (FullObject<String, String> object : objects) {
             if (object.getIdentifier().getName().equals(name))
                 return true;
         }
         return false;
     }
 
-    public boolean existsObjectAlready(FuzzyObject<String,Double> name) {
-        for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
+    public boolean existsObjectAlready(String name) {
+        for (FullObject<String, String> object : objects) {
             if (object.getIdentifier().equals(name))
                 return true;
         }
         return false;
     }
 
-    public Set<String> getAttributesForObject(FuzzyObject<String,Double> objectID) {
+    public Set<String> getAttributesForObject(String objectID) {
         Set<String> attributes = new HashSet<>();
-        FullObject<String, FuzzyObject<String,Double>> object = getObject(objectID);
+        FullObject<String, String> object = getObject(objectID);
         for (String attribute : getAttributes()) {
             if (objectHasAttribute(object, attribute)) {
                 attributes.add(attribute);
@@ -661,7 +389,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
 
     public void removeAttribute(String attribute) {
         IndexedSet<String> newAttributes = new ListSet<>();
-        for (FullObject<String, FuzzyObject<String,Double>> object : objects) {
+        for (FullObject<String, String> object : objects) {
             if (objectHasAttribute(object, attribute)) {
                 try {
                     removeAttributeFromObject(attribute, object.getIdentifier());
@@ -697,8 +425,8 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         }
     }
     
-    public void addObjectAt(FullObject<String, FuzzyObject<String,Double>> object, int i) {
-        IndexedSet<FullObject<String, FuzzyObject<String,Double>>> newObjects = new ListSet<>();
+    public void addObjectAt(FullObject<String, String> object, int i) {
+        IndexedSet<FullObject<String, String>> newObjects = new ListSet<>();
         for (int j = 0; j < getObjectCount(); j++) {
             if (j == i)
                 newObjects.add(object);
@@ -722,13 +450,13 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         for (String attr : newAttributes) {
             getAttributes().add(attr);
         }
-        objectsOfAttribute.put(attribute, new TreeSet<FuzzyObject<String,Double>>());
+        objectsOfAttribute.put(attribute, new TreeSet<String>());
     }
 
-    public TreeSet<FuzzyObject<String,Double>> intersection(Set<FuzzyObject<String,Double>> firstSet, Set<FuzzyObject<String,Double>> secondSet) {
-        TreeSet<FuzzyObject<String,Double>> result = new TreeSet<FuzzyObject<String,Double>>();
-        for (FuzzyObject<String,Double> s : firstSet) {
-            for (FuzzyObject<String,Double> t : secondSet) {
+    public TreeSet<String> intersection(Set<String> firstSet, Set<String> secondSet) {
+        TreeSet<String> result = new TreeSet<String>();
+        for (String s : firstSet) {
+            for (String t : secondSet) {
                 if (s.getName() == t.getName() && s.getValue() == t.getValue()) {
                     result.add(s);
                 }
@@ -780,7 +508,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
      * 
      * @param obj
      */
-    public void dontConsiderObject(FullObject<String, FuzzyObject<String,Double>> obj) {
+    public void dontConsiderObject(FullObject<String, String> obj) {
         this.dontConsideredObj.add(obj);
     }
 
@@ -789,7 +517,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
      * 
      * @param obj
      */
-    public void considerObject(FullObject<String, FuzzyObject<String,Double>> obj) {
+    public void considerObject(FullObject<String, String> obj) {
         this.dontConsideredObj.remove(obj);
     }
 
@@ -802,7 +530,7 @@ public class FuzzyFormalContext extends de.tudresden.inf.tcs.fcalib.FormalContex
         return dontConsideredAttr;
     }
 
-    public ArrayList<FullObject<String, FuzzyObject<String,Double>>> getDontConsideredObj() {
+    public ArrayList<FullObject<String, String>> getDontConsideredObj() {
         return dontConsideredObj;
     }
 

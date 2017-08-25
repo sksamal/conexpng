@@ -20,7 +20,7 @@ import fcatools.conexpng.gui.lattice.LatticeGraph;
 import fcatools.conexpng.gui.lattice.LatticeViewUndoManager;
 import fcatools.conexpng.io.locale.LocaleHandler;
 import fcatools.conexpng.model.AssociationRule;
-import fcatools.conexpng.model.FuzzyFormalContext;
+import fcatools.conexpng.model.FuzzyFormalContext1;
 import fcatools.conexpng.model.FuzzyObject;
 
 /**
@@ -36,7 +36,7 @@ import fcatools.conexpng.model.FuzzyObject;
 public class FuzzyConf {
     public String filePath;
     public Vector<String> lastOpened = new Vector<>(5);
-    public FuzzyFormalContext context;
+    public FuzzyFormalContext1 context;
     public Set<AssociationRule> associations;
     public Set<FCAImplication<String>> implications;
     public boolean unsavedChanges = false;
@@ -66,7 +66,7 @@ public class FuzzyConf {
     }
 
     public void init(int rows, int columns) {
-        context = new FuzzyFormalContext(rows, columns);
+        context = new FuzzyFormalContext1(rows, columns);
         associations = new TreeSet<AssociationRule>();
         implications = new TreeSet<FCAImplication<String>>();
         concepts = new HashSet<Concept<String, FullObject<String, FuzzyObject<String,Double>>>>();
@@ -134,7 +134,7 @@ public class FuzzyConf {
 
     public FuzzyConf copy(FuzzyConf conf) {
         FuzzyConf copy = new FuzzyConf();
-        copy.context = new FuzzyFormalContext();
+        copy.context = new FuzzyFormalContext1();
         copy.context.addAttributes(conf.context.getAttributes());
         try {
             copy.context.addObjects(conf.context.getObjects());
@@ -152,7 +152,7 @@ public class FuzzyConf {
         firePropertyChange(ContextChangeEvents.CONTEXTCHANGED, null, context);
     }
 
-    public void newContext(FuzzyFormalContext context) {
+    public void newContext(FuzzyFormalContext1 context) {
         cancelCalculations();
         this.context = context;
         this.context.clearConsidered();
