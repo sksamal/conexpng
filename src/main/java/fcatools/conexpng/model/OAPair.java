@@ -22,4 +22,22 @@ public class OAPair<O,A> {
 		this.attribute = attribute;
 	}
 	
+	@Override
+	public String toString() {
+		return "OAPair [object=" + object + ", attribute=" + attribute + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof OAPair)
+			return (((OAPair) obj).getAttribute().equals(attribute) && ((OAPair) obj).getObject().equals(object));
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return (object.hashCode()+attribute.hashCode());
+	}
+	
+	
 }

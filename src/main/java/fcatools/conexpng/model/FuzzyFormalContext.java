@@ -1,22 +1,14 @@
 package fcatools.conexpng.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
-
-import de.tudresden.inf.tcs.fcaapi.Concept;
-import de.tudresden.inf.tcs.fcaapi.FCAImplication;
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalAttributeException;
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
 import de.tudresden.inf.tcs.fcaapi.utils.IndexedSet;
 import de.tudresden.inf.tcs.fcalib.FullObject;
-import de.tudresden.inf.tcs.fcalib.Implication;
-import de.tudresden.inf.tcs.fcalib.ImplicationSet;
-import de.tudresden.inf.tcs.fcalib.utils.ListSet;
 
 /**
  * A specialization of FormalContext<String,String> with the aim to remove the
@@ -31,10 +23,21 @@ public class FuzzyFormalContext extends FormalContext {
     protected HashMap<OAPair<String,String>,Double> composition = new HashMap<>();
     private double threshold = 0.5;
 
+    @Override
+    public boolean addAttribute(String attribute) throws IllegalAttributeException {
+        if (super.addAttribute(attribute)) {
+            allObjectsOfAttribute.put(attribute, new TreeSet<String>());
+            return true;
+        } else
+            return false;
+    }
+
  
     public boolean addAttributeToObject(String attribute, String id, double value) throws IllegalAttributeException,
             IllegalObjectException {
-    	allObjectsOfAttribute.put(attribute, new TreeSet<String>());
+    	if(!allObjectsOfAttribute.containsKey(attribute))
+    		allObjectsOfAttribute.put(attribute, new TreeSet<String>());
+    	allObjectsOfAttribute.get(attribute).add(id);
     	if(value>=threshold) {
     		if (!super.addAttributeToObject(attribute,id)) return false;
         	composition.put(new OAPair<String,String>(attribute,id), value);
@@ -48,22 +51,29 @@ public class FuzzyFormalContext extends FormalContext {
 }
 
 
-    public boolean addObject(FullObject<String, String> o, double value) throws IllegalObjectException {
-    	if(value>=threshold) super.addObject(o);
-    	
-        if (super.super.addObject(o)) {
-            for (String attribute : o.getDescription().getAttributes()) {
+    public boolean addObject(FullObject<String, String> o, double[] values) throws IllegalObjectException {
+   	    int i=0;
+   	    for (String attribute : o.getDescription().getAttributes()) {
+                composition.put(new OAPair<String,String>(attribute,o.getIdentifier()), values[i]);
+                if(values[i]>=threshold) super.addObject(o);
+               	if(!allObjectsOfAttribute.containsKey(attribute))
+            		allObjectsOfAttribute.put(attribute, new TreeSet<String>());
             	allObjectsOfAttribute.get(attribute).add(o.getIdentifier());
-                if(value>=threshold) objectsOfAttribute.get(attribute).add(o.getIdentifier());
-                composition.put(new OAPair<String,String>(attribute,o.getIdentifier()), value);
+                i++;
             }
-            return true;
-        }
-        return false;
+    	    return true;
     }
 
-    public boolean addObject(FullObject<String, String> arg0) throws IllegalObjectException {
-    	return addObject(arg0,threshold);
+    public boolean addObject(FullObject<String, String> o, double value) throws IllegalObjectException {
+	    for (String attribute : o.getDescription().getAttributes()) {
+        	allObjectsOfAttribute.get(attribute).add(o.getIdentifier());
+            composition.put(new OAPair<String,String>(attribute,o.getIdentifier()), value);
+    		if(value>=threshold) return super.addAttributeToObject(attribute,o.getIdentifier());
+        }
+	    return true;
+}
+    public boolean addObject(FullObject<String, String> o) throws IllegalObjectException {
+    	return addObject(o,threshold);
     }
     
     public boolean removeAttributeFromObject(String attribute, String id) throws IllegalAttributeException,
@@ -87,7 +97,7 @@ public class FuzzyFormalContext extends FormalContext {
     public boolean removeObject(FullObject<String, String> object) throws IllegalObjectException {
     	
     	// remove from all objects
-    	boolean removed = getAllObjects().remove(object);
+    	boolean removed = getObjects().remove(object);
 		if (!removed) {
 			throw new IllegalObjectException("Object" + object.getIdentifier() + "not successfully removed");
 		}
@@ -135,8 +145,8 @@ public class FuzzyFormalContext extends FormalContext {
 	}
 
     /* Return all objects*/
-    public IndexedSet<FullObject<String, String>> getAllObjects() {
-        return allObjects;
+    public IndexedSet<FullObject<String, String>> getObjects() {
+        return objects;
     }
 
     /**
@@ -146,8 +156,6 @@ public class FuzzyFormalContext extends FormalContext {
      *            object to remove
      */
     public void removeObjectOnly(FullObject<String, String> o) {
-    	if(allObjects.contains(o))
-            allObjects.remove(o);
     	
     	if(objects.contains(o))
         objects.remove(o);
@@ -156,320 +164,110 @@ public class FuzzyFormalContext extends FormalContext {
     public void transpose() {
   
         HashMap<OAPair<String,String>,Double> newComposition = new HashMap<>();
-        
         for(OAPair<String,String> key : composition.keySet()) {
         	newComposition.put(new OAPair<String,String>(key.getObject(),key.getAttribute()),composition.get(key));
         }
         composition = newComposition;
-        /* Do we need to create and add newObjects */
+        HashMap<String, SortedSet<String>> newAllObjectsOfAttribute = new HashMap<>();
+        allObjectsOfAttribute.clear();
+   
+        for(String attribute : allObjectsOfAttribute.keySet())
+        	for(String obj: allObjectsOfAttribute.get(attribute)) {
+        		if(!newAllObjectsOfAttribute.containsKey(obj))
+        			newAllObjectsOfAttribute.put(obj,new TreeSet<String>());
+                newAllObjectsOfAttribute.get(obj).add(attribute);
+        	}
+        allObjectsOfAttribute = newAllObjectsOfAttribute;
+        super.transpose();
 
-        IndexedSet<FullObject<String, String>> newObjects = new ListSet<>();
-        IndexedSet<String> newAttributes = new ListSet<>();
-        for (String attribute : getAttributes()) {
-            IndexedSet<String> objectsForAttribute = new ListSet<>();
-            for (FullObject<String, String> object : objects) {
-                if (objectHasAttribute(object, attribute))
-                    objectsForAttribute.add(object.getIdentifier());
-            }
-            newObjects.add(new FullObject<>(attribute, objectsForAttribute));
-        }
-        for (FullObject<String, String> object : objects) {
-            newAttributes.add(object.getIdentifier());
-        }
- 
-        // All objs
-        IndexedSet<FullObject<String, String>> newAllObjects = new ListSet<>();
-        for (String attribute : getAttributes()) {
-            IndexedSet<String> objectsForAttribute = new ListSet<>();
-            for (FullObject<String, String> obj : allObjects) {
-                if (obj.getDescription().containsAttribute(attribute)
-)                   objectsForAttribute.add(obj.getIdentifier());
-            }
-            newAllObjects.add(new FullObject<>(attribute, objectsForAttribute));
-        }
-        for (FullObject<String, String> object : allObjects) {
-            newAttributes.add(object.getIdentifier());
-        }
-
-        objects = newObjects;
-        allObjects = newAllObjects;
-
-        getAttributes().clear();
-        objectsOfAttribute.clear();
-        for (String attribute : newAttributes) {
-            getAttributes().add(attribute);
-            objectsOfAttribute.put(attribute, new TreeSet<String>());
-        }
-        for (FullObject<String, String> object : objects) {
-            for (String attribute : object.getDescription().getAttributes()) {
-                objectsOfAttribute.get(attribute).add(object.getIdentifier());
-            }
-        }
     }
 
     public void toggleAttributeForObject(String attribute, String objectID) {
+    	OAPair<String,String> oapair = new OAPair<String,String>(attribute,objectID);
         if (objectHasAttribute(getObject(objectID), attribute)) {
             try {
                 removeAttributeFromObject(attribute, objectID);
+                this.composition.put(oapair,threshold/2);
             } catch (IllegalObjectException e) {
                 e.printStackTrace();
             }
         } else {
             try {
                 this.addAttributeToObject(attribute, objectID);
+                this.composition.put(new OAPair<String,String>(attribute,objectID),threshold);
+
+                if(!allObjectsOfAttribute.containsKey(attribute))
+        			allObjectsOfAttribute.put(attribute,new TreeSet<String>());
+                if(!allObjectsOfAttribute.get(attribute).contains(objectID))
+                	allObjectsOfAttribute.get(attribute).add(objectID);
+
             } catch (IllegalObjectException e) {
                 e.printStackTrace();
             }
         }
-    }
-
-    public void invert(int objectStartIndex, int objectEndIndex, int attributeStartIndex, int attributeEndIndex) {
-        for (int i = objectStartIndex; i < objectEndIndex; i++) {
-            for (int j = attributeStartIndex; j < attributeEndIndex; j++) {
-            	String objectID = getObjectAtIndex(i).getIdentifier();
-                String attribute = getAttributeAtIndex(j);
-                toggleAttributeForObject(attribute, objectID);
-            }
-        }
-    }
-
-    public void invert() {
-        invert(0, getObjectCount() - 1, 0, getAttributeCount() - 1);
-    }
-
-    public void clear(int objectStartIndex, int objectEndIndex, int attributeStartIndex, int attributeEndIndex) {
-        for (int i = objectStartIndex; i < objectEndIndex; i++) {
-            for (int j = attributeStartIndex; j < attributeEndIndex; j++) {
-                FullObject<String, String> object = getObjectAtIndex(i);
-                String attribute = getAttributeAtIndex(j);
-                if (objectHasAttribute(object, attribute)) {
-                    try {
-                        removeAttributeFromObject(attribute, object.getIdentifier());
-                    } catch (IllegalObjectException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    }
-
-    public void clear() {
-        clear(0, getObjectCount() - 1, 0, getAttributeCount() - 1);
-    }
-
-    public void fill(int objectStartIndex, int objectEndIndex, int attributeStartIndex, int attributeEndIndex) {
-        for (int i = objectStartIndex; i < objectEndIndex; i++) {
-            for (int j = attributeStartIndex; j < attributeEndIndex; j++) {
-                FullObject<String, String> object = getObjectAtIndex(i);
-                String attribute = getAttributeAtIndex(j);
-                if (!objectHasAttribute(object, attribute)) {
-                    try {
-                        addAttributeToObject(attribute, object.getIdentifier());
-                    } catch (IllegalObjectException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    }
-
-    public void fill() {
-        fill(0, getObjectCount() - 1, 0, getAttributeCount() - 1);
     }
 
     public void renameAttribute(String oldName, String newName) {
-        IndexedSet<String> newAttributes = new ListSet<>();
-        IndexedSet<FullObject<String, String>> filteredObjects = new ListSet<>();
-        for (FullObject<String, String> object : objects) {
-            if (objectHasAttribute(object, oldName)) {
-                filteredObjects.add(object);
-                try {
-                    removeAttributeFromObject(oldName, object.getIdentifier());
-                } catch (IllegalObjectException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        for (String attribute : getAttributes()) {
-            if (attribute.equals(oldName)) {
-                newAttributes.add(newName);
-            } else {
-                newAttributes.add(attribute);
-            }
-        }
-        getAttributes().clear();
-        for (String attribute : newAttributes) {
-            getAttributes().add(attribute);
-        }
-        for (FullObject<String, String> object : filteredObjects) {
-            try {
-                addAttributeToObject(newName, object.getIdentifier());
-            } catch (IllegalObjectException e) {
-                e.printStackTrace();
-            }
-        }
+    	super.renameAttribute(oldName, newName);
+    	if (allObjectsOfAttribute.containsKey(oldName)) {
+
+    	  for(String object: allObjectsOfAttribute.get(oldName)) {
+    		this.composition.put(new OAPair<>(newName,object), this.composition.get(new OAPair<>(oldName,object)));
+    		this.composition.remove(new OAPair<>(oldName,object));
+
+    	  }
+    		
+    		allObjectsOfAttribute.put(newName,allObjectsOfAttribute.get(oldName));
+    		allObjectsOfAttribute.remove(oldName);
+
+    	}
     }
 
     public void renameObject(String oldObject, String newObject) {
-        IndexedSet<FullObject<String, String>> newObjects = new ListSet<>();
-        // IndexedSet<String> filteredAttributes = new ListSet<>();
-        for (FullObject<String, String> object : objects) {
-            if (object.getIdentifier().equals(oldObject)) {
-                newObjects.add(new FullObject<String, String>(newObject, getAttributesForObject(oldObject)));
-            } else {
-                newObjects.add(object);
-            }
-        }
-        objects = newObjects;
-        for (SortedSet<String> objects : objectsOfAttribute.values()) {
+    	super.renameObject(oldObject, newObject);
+    	
+  	  for(String attribute: allObjectsOfAttribute.keySet()) {
+  	   	if(allObjectsOfAttribute.get(attribute).contains(oldObject)) {
+  	   		this.composition.put(new OAPair<>(attribute,newObject), this.composition.get(new OAPair<>(attribute,oldObject)));
+  	   		this.composition.remove(new OAPair<>(attribute,oldObject));
+  	   	}
+
+  	   	for (SortedSet<String> objects : allObjectsOfAttribute.values()) {
             if (objects.contains(oldObject)) {
                 objects.remove(oldObject);
                 objects.add(newObject);
             }
         }
+ 
+  	  }
+
     }
     
-    public void renameObject(String oldName, String newName) {
-        IndexedSet<FullObject<String, String>> newObjects = new ListSet<>();
-        // IndexedSet<String> filteredAttributes = new ListSet<>();
-        for (FullObject<String, String> object : objects) {
-            if (object.getIdentifier().getName().equals(oldName)) {
-            	String newObject = new String(newName,object.getIdentifier().getValue());
-            	newObjects.add(new FullObject<String, String>(newObject, getAttributesForObject(object.getIdentifier())));
-            } else {
-                newObjects.add(object);
-            }
-        }
-        objects = newObjects;
-        for (SortedSet<String> objects : objectsOfAttribute.values()) {
-        	for(String object : objects) {
-        		if (object.contains(oldName)) {
-            	String newObject = new String(newName,object.getValue());
-            	objects.remove(object);
-                objects.add(newObject);
-            }
-        }
-        }
-    }
-
-    public boolean existsAttributeAlready(String name) {
-        for (String attribute : getAttributes()) {
-            if (attribute.equals(name))
-                return true;
-        }
-        return false;
-    }
-
-    public boolean existsObjectAlready(String name) {
-        for (FullObject<String, String> object : objects) {
-            if (object.getIdentifier().getName().equals(name))
-                return true;
-        }
-        return false;
-    }
-
-    public boolean existsObjectAlready(String name) {
-        for (FullObject<String, String> object : objects) {
-            if (object.getIdentifier().equals(name))
-                return true;
-        }
-        return false;
-    }
-
-    public Set<String> getAttributesForObject(String objectID) {
-        Set<String> attributes = new HashSet<>();
-        FullObject<String, String> object = getObject(objectID);
-        for (String attribute : getAttributes()) {
-            if (objectHasAttribute(object, attribute)) {
-                attributes.add(attribute);
-            }
-        }
-        return attributes;
-    }
-
+  
     public void removeAttribute(String attribute) {
-        IndexedSet<String> newAttributes = new ListSet<>();
-        for (FullObject<String, String> object : objects) {
-            if (objectHasAttribute(object, attribute)) {
-                try {
-                    removeAttributeFromObject(attribute, object.getIdentifier());
-                } catch (IllegalObjectException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        for (String attr : getAttributes()) {
-            if (attr.equals(attribute)) {
-            } else {
-                newAttributes.add(attr);
-            }
-        }
-        getAttributes().clear();
-        for (String attr : newAttributes) {
-            getAttributes().add(attr);
-        }
+    	super.removeAttribute(attribute);
+    	if(allObjectsOfAttribute.containsKey(attribute)) {
+    	for(String obj: allObjectsOfAttribute.get(attribute))
+    		this.composition.remove(new OAPair<>(attribute,obj));
+    	allObjectsOfAttribute.remove(attribute);
+    	}
     }
 
     // Should not be used outside the context editor
     public void removeAttributeInternal(String attribute) {
-        IndexedSet<String> newAttributes = new ListSet<>();
-        for (String attr : getAttributes()) {
-            if (attr.equals(attribute)) {
-            } else {
-                newAttributes.add(attr);
-            }
-        }
-        getAttributes().clear();
-        for (String attr : newAttributes) {
-            getAttributes().add(attr);
-        }
+    	super.removeAttributeInternal(attribute);
+    	if(allObjectsOfAttribute.containsKey(attribute)) {
+    	for(String obj: allObjectsOfAttribute.get(attribute))
+    		this.composition.remove(new OAPair<>(attribute,obj));
+    	allObjectsOfAttribute.remove(attribute);
+    	}
     }
     
-    public void addObjectAt(FullObject<String, String> object, int i) {
-        IndexedSet<FullObject<String, String>> newObjects = new ListSet<>();
-        for (int j = 0; j < getObjectCount(); j++) {
-            if (j == i)
-                newObjects.add(object);
-            newObjects.add(getObjectAtIndex(j));
-        }
-        if (i == getObjectCount())
-            newObjects.add(object);
-        objects = newObjects;
-    }
-
-    public void addAttributeAt(String attribute, int i) {
-        IndexedSet<String> newAttributes = new ListSet<>();
-        for (int j = 0; j < getAttributeCount(); j++) {
-            if (j == i)
-                newAttributes.add(attribute);
-            newAttributes.add(getAttributeAtIndex(j));
-        }
-        if (i == getAttributeCount())
-            newAttributes.add(attribute);
-        getAttributes().clear();
-        for (String attr : newAttributes) {
-            getAttributes().add(attr);
-        }
-        objectsOfAttribute.put(attribute, new TreeSet<String>());
-    }
-
     public TreeSet<String> intersection(Set<String> firstSet, Set<String> secondSet) {
         TreeSet<String> result = new TreeSet<String>();
         for (String s : firstSet) {
             for (String t : secondSet) {
-                if (s.getName() == t.getName() && s.getValue() == t.getValue()) {
-                    result.add(s);
-                }
-            }
-        }
-        return result;
-    }
-
-    public TreeSet<String> intersectionAttr(Set<String> firstSet, Set<String> secondSet) {
-        TreeSet<String> result = new TreeSet<String>();
-        for (String s : firstSet) {
-            for (String t : secondSet) {
-                if (s == t) {
+                if (s.equals(t)) {
                     result.add(s);
                 }
             }
@@ -491,7 +289,7 @@ public class FuzzyFormalContext extends FormalContext {
      * @param attr
      */
     public void dontConsiderAttribute(String attr) {
-        this.dontConsideredAttr.add(attr);
+        this.getDontConsideredAttr().add(attr);
     }
 
     /**
@@ -500,7 +298,7 @@ public class FuzzyFormalContext extends FormalContext {
      * @param attr
      */
     public void considerAttribute(String attr) {
-        this.dontConsideredAttr.remove(attr);
+        this.getDontConsideredAttr().remove(attr);
     }
 
     /**
@@ -509,7 +307,7 @@ public class FuzzyFormalContext extends FormalContext {
      * @param obj
      */
     public void dontConsiderObject(FullObject<String, String> obj) {
-        this.dontConsideredObj.add(obj);
+        this.getDontConsideredObj().add(obj);
     }
 
     /**
@@ -518,20 +316,20 @@ public class FuzzyFormalContext extends FormalContext {
      * @param obj
      */
     public void considerObject(FullObject<String, String> obj) {
-        this.dontConsideredObj.remove(obj);
+        this.getDontConsideredObj().remove(obj);
     }
 
     public void clearConsidered() {
-        dontConsideredAttr.clear();
-        dontConsideredObj.clear();
+    	this.getDontConsideredAttr().clear();
+        getDontConsideredObj().clear();
     }
 
     public ArrayList<String> getDontConsideredAttr() {
-        return dontConsideredAttr;
+        return this.getDontConsideredAttr();
     }
 
     public ArrayList<FullObject<String, String>> getDontConsideredObj() {
-        return dontConsideredObj;
+        return getDontConsideredObj();
     }
 
 }

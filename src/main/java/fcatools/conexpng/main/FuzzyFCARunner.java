@@ -3,17 +3,15 @@ package fcatools.conexpng.main;
 import java.io.IOException;
 
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
-import fcatools.conexpng.FuzzyConf;
-import fcatools.conexpng.FuzzyConf.StatusMessage;
-import fcatools.conexpng.gui.MainFrame;
-import fcatools.conexpng.gui.actions.OpenSaveExportAction;
+import fcatools.conexpng.Conf;
+import fcatools.conexpng.Conf.StatusMessage;
 import fcatools.conexpng.io.FCSVReader;
 import fcatools.conexpng.io.locale.LocaleHandler;
 
 public class FuzzyFCARunner {
 
 	public static void main(String[] args) {
-		FuzzyConf state = new FuzzyConf();
+		Conf state = new Conf();
 		state.filePath = "";
 	    System.setProperty("user.language", LocaleHandler.readLocale());
 	       

@@ -9,19 +9,18 @@ import java.util.TreeSet;
 
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
 import de.tudresden.inf.tcs.fcalib.FullObject;
-import fcatools.conexpng.FuzzyConf;
-import fcatools.conexpng.model.FuzzyFormalContext1;
-import fcatools.conexpng.model.FuzzyObject;
+import fcatools.conexpng.Conf;
+import fcatools.conexpng.model.FuzzyFormalContext;
 
 public class FCSVReader {
 	public static final String SEP = ",";
 //	public static double TRESH = 0.8;
 
-	public FCSVReader(FuzzyConf state, String path) throws IllegalObjectException, IOException {
+	public FCSVReader(Conf state, String path) throws IllegalObjectException, IOException {
         FileInputStream fis = new FileInputStream(path);
         BufferedReader br = new BufferedReader(new InputStreamReader(fis));
         String line;
-        FuzzyFormalContext1 context = new FuzzyFormalContext1();
+        FuzzyFormalContext context = new FuzzyFormalContext();
 
         line = br.readLine();
         String[] attr = line.split(SEP);
@@ -31,22 +30,24 @@ public class FCSVReader {
         while ((line = br.readLine()) != null) {
             String[] obj = line.split(SEP);
             Set<String> attrForObj = new TreeSet<>();
+            double[] values = new double[attr.length];
             for (int i = 1; i < obj.length; i++) {
 //                if (obj[i].equals("1"))
               try{
  //               if(Double.parseDouble(obj[i]) > TRESH)
-            	  	FuzzyObject<String,Double> fObj = new FuzzyObject<String,Double>(obj[0],Double.parseDouble(obj[i]));
                     attrForObj.add(context.getAttributeAtIndex(i - 1));
-                    context.addObject(new FullObject<>(fObj, attrForObj));
+                    values[i] = Double.parseDouble(obj[i]);
               }
               catch(NumberFormatException e) {
             	  
               }
             }
+            System.out.println(context);
+            context.addObject(new FullObject<>(obj[0],attrForObj),values);
+
         }
         br.close();
-
-        state.setNewFile(path);
+       state.setNewFile(path);
         state.newContext(context);
     }
 }
