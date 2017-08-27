@@ -7,6 +7,7 @@ import fcatools.conexpng.Conf;
 import fcatools.conexpng.Conf.StatusMessage;
 import fcatools.conexpng.io.FCSVReader;
 import fcatools.conexpng.io.locale.LocaleHandler;
+import fcatools.conexpng.model.FuzzyFormalContext;
 
 public class FuzzyFCARunner {
 
@@ -21,6 +22,9 @@ public class FuzzyFCARunner {
 		state.startCalculation(StatusMessage.LOADINGFILE);
 		System.out.println(state.context);
 		System.out.println(state.context.getConcepts());
+		((FuzzyFormalContext)(state.context)).setThreshold(1.0);
+		System.out.println(state.context);
+		
 		}
 		
 		catch(IOException e) {

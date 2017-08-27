@@ -29,21 +29,19 @@ public class FCSVReader {
         }
         while ((line = br.readLine()) != null) {
             String[] obj = line.split(SEP);
-            Set<String> attrForObj = new TreeSet<>();
+            String[] attrForObj = new String[attr.length];
             double[] values = new double[attr.length];
             for (int i = 1; i < obj.length; i++) {
-//                if (obj[i].equals("1"))
               try{
- //               if(Double.parseDouble(obj[i]) > TRESH)
-                    attrForObj.add(context.getAttributeAtIndex(i - 1));
-                    values[i] = Double.parseDouble(obj[i]);
+                    attrForObj[i-1]=context.getAttributeAtIndex(i - 1);
+                    values[i-1] = Double.parseDouble(obj[i]);
               }
               catch(NumberFormatException e) {
             	  
               }
             }
+            context.addObject(obj[0],attrForObj,values);
             System.out.println(context);
-            context.addObject(new FullObject<>(obj[0],attrForObj),values);
 
         }
         br.close();
