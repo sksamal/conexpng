@@ -4,11 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Set;
-import java.util.TreeSet;
+
 
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
-import de.tudresden.inf.tcs.fcalib.FullObject;
 import fcatools.conexpng.Conf;
 import fcatools.conexpng.model.FuzzyFormalContext;
 
@@ -29,8 +27,8 @@ public class FCSVReader {
         }
         while ((line = br.readLine()) != null) {
             String[] obj = line.split(SEP);
-            String[] attrForObj = new String[attr.length];
-            double[] values = new double[attr.length];
+            String[] attrForObj = new String[attr.length-1];
+            double[] values = new double[attr.length-1];
             for (int i = 1; i < obj.length; i++) {
               try{
                     attrForObj[i-1]=context.getAttributeAtIndex(i - 1);

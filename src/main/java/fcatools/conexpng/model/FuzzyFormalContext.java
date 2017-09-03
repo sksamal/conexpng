@@ -28,7 +28,7 @@ public class FuzzyFormalContext extends FormalContext {
 	}
 
 	public void setThreshold(double newThreshold) {
-
+		System.out.println("threshold set to " + newThreshold);
 		try {
 
 			if (newThreshold > threshold) {
@@ -89,6 +89,7 @@ public class FuzzyFormalContext extends FormalContext {
 		int i = 0;
 		Set<String> attrs = new TreeSet<>();
 		for (String attribute : attributes) {
+			System.out.println(attribute + " " + object);
 			composition.put(new OAPair<String, String>(attribute, object), values[i]);
 			if (values[i] >= threshold)
 				attrs.add(attribute);

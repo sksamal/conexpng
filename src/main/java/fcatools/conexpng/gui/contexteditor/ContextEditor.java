@@ -43,6 +43,7 @@ import fcatools.conexpng.gui.StatusBarPropertyChangeListener;
 import fcatools.conexpng.gui.View;
 import fcatools.conexpng.gui.workers.ClarificationReductionWorker;
 import fcatools.conexpng.io.locale.LocaleHandler;
+import fcatools.conexpng.model.FuzzyFormalContext;
 
 /**
  * The class responsible for displaying and interacting with ConExpNG's context
@@ -207,6 +208,7 @@ public class ContextEditor extends View {
         am.put("reduce", new ReduceAction());
         am.put("transpose", new TransposeAction());
         am.put("compact", new CompactAction());
+        am.put("update", new UpdateThresholdAction());
     }
 
     private void createKeyActions() {
@@ -308,6 +310,15 @@ public class ContextEditor extends View {
         group = new WebButtonGroup(WebButtonGroup.VERTICAL, false, compactMatrixButton, showArrowRelationsButton);
         group.setButtonsDrawFocus(false);
         toolbar.add(group);
+        
+        if(state.context instanceof FuzzyFormalContext) {
+        toolbar.addSeparator();
+        group = new WebButtonGroup(WebButtonGroup.VERTICAL, true, createButton(
+                LocaleHandler.getString("ContextEditor.createButtonActions.updateThreshold"), "updateThreshold",
+                "icons/context editor/reduce_context.png", am.get("update")));
+        toolbar.add(group);
+        }
+        
     }
 
     /**
@@ -1020,6 +1031,30 @@ public class ContextEditor extends View {
         }
 
         public void actionPerformed(ActionEvent e) {
+        }
+    }
+    
+    class UpdateThresholdAction extends AbstractAction implements ItemListener {
+        public void itemStateChanged(ItemEvent e) {
+  
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            if (matrix.isRenaming) {
+                return;
+            }
+            if (state.context.getAttributeCount() == 0) {
+                return;
+            }
+            matrix.saveSelection();
+            state.saveConf();
+            ((FuzzyFormalContext)(state.context)).setThreshold(0.4);
+            matrixModel.fireTableStructureChanged();
+            matrix.invalidate();
+            matrix.repaint();
+            matrix.restoreSelection();
+            state.contextChanged();
+            state.getContextEditorUndoManager().makeRedoable();
         }
     }
 
