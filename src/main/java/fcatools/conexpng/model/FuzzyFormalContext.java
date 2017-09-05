@@ -28,7 +28,7 @@ public class FuzzyFormalContext extends FormalContext {
 	}
 
 	public void setThreshold(double newThreshold) {
-		System.out.println("threshold set to " + newThreshold);
+//		System.out.println("threshold set to " + newThreshold);
 		try {
 
 			if (newThreshold > threshold) {

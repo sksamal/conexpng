@@ -83,6 +83,7 @@ public class ContextEditor extends View {
     final WebPopupMenu attributeCellPopupMenu;
 
     WebToggleButton compactMatrixButton, showArrowRelationsButton;
+    WebButtonGroup thresholdGroup;
 
     // For remembering which header cell has been right-clicked
     // For movement inside the matrix
@@ -208,7 +209,8 @@ public class ContextEditor extends View {
         am.put("reduce", new ReduceAction());
         am.put("transpose", new TransposeAction());
         am.put("compact", new CompactAction());
-        am.put("update", new UpdateThresholdAction());
+        am.put("increaseThreshold", new IncreaseThresholdAction());
+        am.put("decreaseThreshold", new DecreaseThresholdAction());
     }
 
     private void createKeyActions() {
@@ -300,6 +302,14 @@ public class ContextEditor extends View {
         group.setButtonsDrawFocus(false);
         toolbar.add(group);
         toolbar.addSeparator();
+ 
+        thresholdGroup = new WebButtonGroup(WebButtonGroup.VERTICAL, true, createButton(
+                LocaleHandler.getString("ContextEditor.createButtonActions.increaseThreshold"), "increaseThreshold",
+                "icons/context editor/arrow_up.png", am.get("increaseThreshold")),createButton(
+                        LocaleHandler.getString("ContextEditor.createButtonActions.decreaseThreshold"), "decreaseThreshold",
+                        "icons/context editor/arrow_down.png", am.get("decreaseThreshold")));
+        thresholdGroup.setButtonsDrawFocus(false);
+ 
         compactMatrixButton = createToggleButton(
                 LocaleHandler.getString("ContextEditor.createButtonActions.compactMatrix"), "compactMatrix",
                 "icons/context editor/compact.png", (ItemListener) am.get("compact"));
@@ -311,14 +321,9 @@ public class ContextEditor extends View {
         group.setButtonsDrawFocus(false);
         toolbar.add(group);
         
-        if(state.context instanceof FuzzyFormalContext) {
         toolbar.addSeparator();
-        group = new WebButtonGroup(WebButtonGroup.VERTICAL, true, createButton(
-                LocaleHandler.getString("ContextEditor.createButtonActions.updateThreshold"), "updateThreshold",
-                "icons/context editor/reduce_context.png", am.get("update")));
-        toolbar.add(group);
-        }
-        
+        toolbar.add(thresholdGroup);
+                
     }
 
     /**
@@ -339,6 +344,12 @@ public class ContextEditor extends View {
             showArrowRelationsButton.setSelected(true);
         } else {
             showArrowRelationsButton.setSelected(false);
+        }
+        
+        if(state.context instanceof FuzzyFormalContext) {
+        	thresholdGroup.setVisible(true);
+        } else {
+        	thresholdGroup.setVisible(false);
         }
     }
 
@@ -1034,7 +1045,7 @@ public class ContextEditor extends View {
         }
     }
     
-    class UpdateThresholdAction extends AbstractAction implements ItemListener {
+    class IncreaseThresholdAction extends AbstractAction implements ItemListener {
         public void itemStateChanged(ItemEvent e) {
   
         }
@@ -1048,7 +1059,7 @@ public class ContextEditor extends View {
             }
             matrix.saveSelection();
             state.saveConf();
-            ((FuzzyFormalContext)(state.context)).setThreshold(0.4);
+            state.increaseThreshold();
             matrixModel.fireTableStructureChanged();
             matrix.invalidate();
             matrix.repaint();
@@ -1058,6 +1069,29 @@ public class ContextEditor extends View {
         }
     }
 
+    class DecreaseThresholdAction extends AbstractAction implements ItemListener {
+        public void itemStateChanged(ItemEvent e) {
+  
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            if (matrix.isRenaming) {
+                return;
+            }
+            if (state.context.getAttributeCount() == 0) {
+                return;
+            }
+            matrix.saveSelection();
+            state.saveConf();
+            state.decreaseThreshold();
+            matrixModel.fireTableStructureChanged();
+            matrix.invalidate();
+            matrix.repaint();
+            matrix.restoreSelection();
+            state.contextChanged();
+            state.getContextEditorUndoManager().makeRedoable();
+        }
+    }
     // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Helper functions
     // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////

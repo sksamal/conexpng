@@ -4,6 +4,7 @@ import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
 import de.tudresden.inf.tcs.fcalib.FullObject;
 import fcatools.conexpng.Conf;
 import fcatools.conexpng.model.FormalContext;
+import fcatools.conexpng.model.FuzzyFormalContext;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -52,6 +53,8 @@ public class ContextMatrixModel extends AbstractTableModel implements Reorderabl
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         if (columnIndex == 0 && rowIndex == 0) {
+          if(state.context instanceof FuzzyFormalContext)
+        	  return "(t=" + ((FuzzyFormalContext)state.context).getThreshold() + ")";
             return "";
         } else if (columnIndex == 0) {
             return String.format("%s", context.getObjectAtIndex(rowIndex - 1).getIdentifier());

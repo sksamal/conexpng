@@ -6,12 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.util.HashSet;
 
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JToggleButton;
@@ -26,6 +29,7 @@ import de.tudresden.inf.tcs.fcalib.FullObject;
 import de.tudresden.inf.tcs.fcalib.utils.ListSet;
 import fcatools.conexpng.Conf;
 import fcatools.conexpng.Conf.ContextChangeEvent;
+import fcatools.conexpng.ContextChangeEvents;
 import fcatools.conexpng.GUIConf;
 import fcatools.conexpng.Util;
 import fcatools.conexpng.gui.MainFrame;
@@ -305,7 +309,65 @@ public class LatticeView extends View {
             }
         });
         toolbar.add(zoomOut);
+        
+        WebButton increaseThreshold = Util.createButton(LocaleHandler.getString("LatticeView.LatticeView.zoomOut"), "increaseThreshold",
+        		"icons/context editor/arrow_up.png");
+        increaseThreshold.addMouseListener(new MouseAdapter() {
+            Timer timer;
 
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                timer.stop();
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // timer used to fire the event as long as the mouse button is
+                // pressed
+                timer = new Timer(100, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent arg0) {
+                    	state.increaseThreshold();
+                        latticeGraphView.repaint();
+                    }
+                });
+                timer.start();
+            }
+        });
+        toolbar.add(increaseThreshold);
+
+        WebButton decreaseThreshold = Util.createButton(LocaleHandler.getString("LatticeView.LatticeView.zoomOut"), "decreaseThreshold",
+        		"icons/context editor/arrow_down.png");
+        
+        decreaseThreshold.addActionListener(new AbstractAction()  {
+        	   public void actionPerformed(ActionEvent e) {
+                   state.decreaseThreshold();
+                   latticeGraphView.firePfirePropertyChange(ContextChangeEvents.CONTEXTCHANGED,true,true);
+        	   }
+        });
+        decreaseThreshold.addMouseListener(new MouseAdapter() {
+            Timer timer;
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                timer.stop();
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // timer used to fire the event as long as the mouse button is
+                // pressed
+                timer = new Timer(100, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent arg0) {
+                        state.decreaseThreshold();
+                    	latticeGraphView.updateLatticeGraph();
+                    	latticeGraphView.repaint();
+                    }
+                });
+                timer.start();
+            }
+        });
+        toolbar.add(decreaseThreshold);
+        
         super.init();
         setSplitPanePosition();
         splitPane.addDividerListener(new ComponentListener() {

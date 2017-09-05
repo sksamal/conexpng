@@ -193,7 +193,10 @@ public class MainFrame extends WebFrame {
         state.guiConf.lastTab = 0;
         removeOldView();
         contextView.setVisible(true);
-        viewTitleLabel.setText(LocaleHandler.getString("MainFrame.showContextEditor.viewTitleLabel") + MARGIN);
+//        if(state.context instanceof FuzzyFormalContext)
+//        	viewTitleLabel.setText(LocaleHandler.getString("MainFrame.showContextEditor.viewTitleLabel") + "  (t=" + ((FuzzyFormalContext)state.context).getThreshold() + ")" + MARGIN);
+//        else
+//        	viewTitleLabel.setText(LocaleHandler.getString("MainFrame.showContextEditor.viewTitleLabel") + MARGIN);
         mainPanel.add(contextView, BorderLayout.CENTER);
         validate();
         revalidate();

@@ -50,7 +50,7 @@ public class Util {
     }
 
     public static WebButton createButton(String tooltip, String name, String iconPath, Action action) {
-        WebButton b = createButton(tooltip, name, iconPath);
+    	WebButton b = createButton(tooltip, name, iconPath);
         b.addActionListener(action);
         return b;
     }

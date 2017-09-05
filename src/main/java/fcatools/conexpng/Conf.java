@@ -21,6 +21,7 @@ import fcatools.conexpng.gui.lattice.LatticeViewUndoManager;
 import fcatools.conexpng.io.locale.LocaleHandler;
 import fcatools.conexpng.model.AssociationRule;
 import fcatools.conexpng.model.FormalContext;
+import fcatools.conexpng.model.FuzzyFormalContext;
 
 /**
  * Contains context, lattice, implications, filePath, snapshots etc.
@@ -197,6 +198,21 @@ public class Conf {
         firePropertyChange(ContextChangeEvents.LOADEDFILE, null, lattice);
     }
 
+    public boolean increaseThreshold() {
+    	if(context instanceof FuzzyFormalContext) {
+    		((FuzzyFormalContext)(context)).setThreshold(Math.round(100*(((FuzzyFormalContext)(context)).getThreshold()+0.1))/100.0);
+    		return true;
+    	}
+    	return false;
+    }
+    
+    public boolean decreaseThreshold() {
+    	if(context instanceof FuzzyFormalContext) {
+    		((FuzzyFormalContext)(context)).setThreshold(Math.round(100*(((FuzzyFormalContext)(context)).getThreshold()-0.1))/100.0);
+    		return true;
+    	}
+    	return false;
+    }
     @SuppressWarnings("serial")
     public class ContextChangeEvent extends PropertyChangeEvent {
 
@@ -262,6 +278,7 @@ public class Conf {
         public String toString() {
             return name;
         }
+        
     }
 
     public class StatusBarMessage extends PropertyChangeEvent {
