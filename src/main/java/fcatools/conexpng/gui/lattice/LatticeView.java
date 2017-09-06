@@ -35,6 +35,7 @@ import fcatools.conexpng.gui.View;
 import fcatools.conexpng.gui.actions.OpenSaveExportAction;
 import fcatools.conexpng.gui.workers.ConceptWorker;
 import fcatools.conexpng.io.locale.LocaleHandler;
+import fcatools.conexpng.model.FuzzyFormalContext;
 
 /**
  * This class implements the lattice tab. It contains the lattice graph view and
@@ -51,6 +52,7 @@ public class LatticeView extends View {
     private MainFrame mainFrame;
     private LatticeGraphView latticeGraphView;
     private JToggleButton showIdealButton;
+    private WebButton increaseThreshold,decreaseThreshold;
 
     private boolean updateLater;
 
@@ -306,8 +308,8 @@ public class LatticeView extends View {
             }
         });
         toolbar.add(zoomOut);
-        
-        WebButton increaseThreshold = Util.createButton(LocaleHandler.getString("LatticeView.LatticeView.zoomOut"), "increaseThreshold",
+     
+        increaseThreshold = Util.createButton(LocaleHandler.getString("LatticeView.LatticeView.increaseThreshold"), "increaseThreshold",
         		"icons/context editor/arrow_up.png");
         
         increaseThreshold.addActionListener(new AbstractAction()  {
@@ -344,7 +346,7 @@ public class LatticeView extends View {
         });
         toolbar.add(increaseThreshold);
 
-        WebButton decreaseThreshold = Util.createButton(LocaleHandler.getString("LatticeView.LatticeView.zoomOut"), "decreaseThreshold",
+        decreaseThreshold = Util.createButton(LocaleHandler.getString("LatticeView.LatticeView.decreaseThreshold"), "decreaseThreshold",
         		"icons/context editor/arrow_down.png");
         
         decreaseThreshold.addActionListener(new AbstractAction()  {
@@ -537,6 +539,14 @@ public class LatticeView extends View {
      */
     public void updateLatticeGraph() {
         latticeGraphView.updateLatticeGraph();
+        if(state.context instanceof FuzzyFormalContext) {
+        	increaseThreshold.setVisible(true);
+        	decreaseThreshold.setVisible(true);
+        } else {
+        	increaseThreshold.setVisible(false);
+        	decreaseThreshold.setVisible(false);
+        }
+        
     }
 
     /**

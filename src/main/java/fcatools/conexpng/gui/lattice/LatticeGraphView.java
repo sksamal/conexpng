@@ -131,7 +131,9 @@ public class LatticeGraphView extends JSVGCanvas {
             }
         }
         
+        if(state.context instanceof FuzzyFormalContext) {
         g.drawString("t=" + ((FuzzyFormalContext)state.context).getThreshold(),5, 5);
+        }
         for (Node n : state.lattice.getNodes()) {
             int x = n.getX();
             int y = n.getY();
