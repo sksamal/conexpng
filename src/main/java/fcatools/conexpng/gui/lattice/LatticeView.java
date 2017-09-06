@@ -6,8 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -29,7 +27,6 @@ import de.tudresden.inf.tcs.fcalib.FullObject;
 import de.tudresden.inf.tcs.fcalib.utils.ListSet;
 import fcatools.conexpng.Conf;
 import fcatools.conexpng.Conf.ContextChangeEvent;
-import fcatools.conexpng.ContextChangeEvents;
 import fcatools.conexpng.GUIConf;
 import fcatools.conexpng.Util;
 import fcatools.conexpng.gui.MainFrame;
@@ -312,6 +309,19 @@ public class LatticeView extends View {
         
         WebButton increaseThreshold = Util.createButton(LocaleHandler.getString("LatticeView.LatticeView.zoomOut"), "increaseThreshold",
         		"icons/context editor/arrow_up.png");
+        
+        increaseThreshold.addActionListener(new AbstractAction()  {
+     	   public void actionPerformed(ActionEvent e) {
+                state.increaseThreshold();
+                Long progressBarId = state.getStatusBar().startCalculation();
+                ConceptWorker coca = new ConceptWorker(LatticeView.this, false, progressBarId);
+                coca.addPropertyChangeListener(new StatusBarPropertyChangeListener(progressBarId, state
+                        .getStatusBar()));
+                state.getStatusBar().addCalculation(progressBarId, coca);
+                coca.execute();
+
+          }
+     });
         increaseThreshold.addMouseListener(new MouseAdapter() {
             Timer timer;
 
@@ -327,8 +337,7 @@ public class LatticeView extends View {
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
                     	state.increaseThreshold();
-                        latticeGraphView.repaint();
-                    }
+                        }
                 });
                 timer.start();
             }
@@ -341,8 +350,13 @@ public class LatticeView extends View {
         decreaseThreshold.addActionListener(new AbstractAction()  {
         	   public void actionPerformed(ActionEvent e) {
                    state.decreaseThreshold();
-                   latticeGraphView.firePfirePropertyChange(ContextChangeEvents.CONTEXTCHANGED,true,true);
-        	   }
+                   Long progressBarId = state.getStatusBar().startCalculation();
+                   ConceptWorker coca = new ConceptWorker(LatticeView.this, false, progressBarId);
+                   coca.addPropertyChangeListener(new StatusBarPropertyChangeListener(progressBarId, state
+                           .getStatusBar()));
+                   state.getStatusBar().addCalculation(progressBarId, coca);
+                   coca.execute();
+                }
         });
         decreaseThreshold.addMouseListener(new MouseAdapter() {
             Timer timer;
@@ -359,8 +373,6 @@ public class LatticeView extends View {
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
                         state.decreaseThreshold();
-                    	latticeGraphView.updateLatticeGraph();
-                    	latticeGraphView.repaint();
                     }
                 });
                 timer.start();

@@ -19,6 +19,7 @@ import javax.swing.SwingUtilities;
 import org.apache.batik.swing.JSVGCanvas;
 
 import fcatools.conexpng.Conf;
+import fcatools.conexpng.model.FuzzyFormalContext;
 
 /**
  * This class represented the graphical visualisation of the graph. It draws the
@@ -129,6 +130,8 @@ public class LatticeGraphView extends JSVGCanvas {
                         .getY() + radius);
             }
         }
+        
+        g.drawString("t=" + ((FuzzyFormalContext)state.context).getThreshold(),5, 5);
         for (Node n : state.lattice.getNodes()) {
             int x = n.getX();
             int y = n.getY();
