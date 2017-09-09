@@ -51,6 +51,7 @@ import fcatools.conexpng.io.CSVReader;
 import fcatools.conexpng.io.CSVWriter;
 import fcatools.conexpng.io.CXTReader;
 import fcatools.conexpng.io.CXTWriter;
+import fcatools.conexpng.io.FCSVClassReader;
 import fcatools.conexpng.io.FCSVReader;
 import fcatools.conexpng.io.GUIReader;
 import fcatools.conexpng.io.GUIWriter;
@@ -168,6 +169,8 @@ public class OpenSaveExportAction extends AbstractAction {
                         f = new File(fName.concat(".svg"));
                     } else if (activeFileFilter.equals(FileFilters.fcsvFilter)) {
                         f = new File(fName.concat(".fcsv"));
+                    } else if (activeFileFilter.equals(FileFilters.fccsvFilter)) {
+                        f = new File(fName.concat(".fccsv"));
                     }
                     setSelectedFile(f);
                 }
@@ -216,6 +219,7 @@ public class OpenSaveExportAction extends AbstractAction {
             fc.addChoosableFileFilter(FileFilters.cxtFilter);
             fc.addChoosableFileFilter(FileFilters.oalFilter);
             fc.addChoosableFileFilter(FileFilters.fcsvFilter);
+            fc.addChoosableFileFilter(FileFilters.fccsvFilter);
             // set default file filter
             fc.setFileFilter(FileFilters.cexFilter);
         }
@@ -278,6 +282,8 @@ public class OpenSaveExportAction extends AbstractAction {
                 new CEXReader(state, path);
             } else if (path.endsWith(".csv")) {
                 new CSVReader(state, path);
+            } else if (path.endsWith(".fccsv")) {
+                new FCSVClassReader(state, path);
             } else if (path.endsWith(".fcsv")) {
                 new FCSVReader(state, path);
             } else if (path.endsWith(".cxt")) {

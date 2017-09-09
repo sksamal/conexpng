@@ -112,7 +112,6 @@ public class FormalContext extends de.tudresden.inf.tcs.fcalib.FormalContext<Str
     @Override
     public Set<Concept<String, FullObject<String, String>>> getConcepts() {
         ListSet<Concept<String, FullObject<String, String>>> conceptLattice = new ListSet<Concept<String, FullObject<String, String>>>();
-
         HashMap<String, Set<String>> extentPerAttr = new HashMap<String, Set<String>>();
         /*
          * Step 1: Initialize a list of concept extents. To begin with, write
