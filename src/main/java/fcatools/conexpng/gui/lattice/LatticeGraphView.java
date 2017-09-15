@@ -165,7 +165,10 @@ public class LatticeGraphView extends JSVGCanvas {
 
                 g.setColor(Color.BLACK);
 
-                g.drawString(content, n.getObjectsLabel().getX(), n.getObjectsLabel().getY() - r.y);
+                if(n instanceof ClassifiedNode)
+                	g.drawString(content + "\n" + ((ClassifiedNode)n).getProbs(), n.getObjectsLabel().getX(), n.getObjectsLabel().getY() - r.y);
+                else
+                	g.drawString(content, n.getObjectsLabel().getX(), n.getObjectsLabel().getY() - r.y);
 
                 g.drawRect(n.getObjectsLabel().getX(), n.getObjectsLabel().getY(), r.width, r.height);
 

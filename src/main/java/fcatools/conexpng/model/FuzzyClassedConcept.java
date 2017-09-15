@@ -8,7 +8,7 @@ import de.tudresden.inf.tcs.fcalib.FullObject;
 
 public class FuzzyClassedConcept extends LatticeConcept {
 
-	List<Double> probs;
+	private List<Double> probs;
 
 	public FuzzyClassedConcept() {
 		super();

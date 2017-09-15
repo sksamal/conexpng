@@ -14,6 +14,8 @@ import fcatools.conexpng.gui.lattice.LatticeGraphComputer;
 import fcatools.conexpng.gui.lattice.LatticeSettings;
 import fcatools.conexpng.gui.lattice.LatticeView;
 import fcatools.conexpng.model.FormalContext;
+import fcatools.conexpng.model.FuzzyClassedConcept;
+import fcatools.conexpng.model.FuzzyClassifierContext;
 import fcatools.conexpng.model.LatticeConcept;
 
 /**
@@ -179,7 +181,32 @@ public class ConceptWorker extends AbstractWorker {
             }
             conceptLattice.add(c);
         }
-        return null;
+     
+      if(this.state.context instanceof FuzzyClassifierContext) {
+   		ListSet<Concept<String, FullObject<String, String>>> fuzzyLattice = new ListSet<Concept<String, FullObject<String, String>>>();
+    	for(Concept<String, FullObject<String, String>> c : conceptLattice) {
+    		HashMap<String,Integer> countMap = new HashMap<String,Integer> ();
+        	FuzzyClassedConcept fcc = new FuzzyClassedConcept(c);
+        	for(FullObject<String, String> obj : fcc.getExtent()) {
+        		String clazz = ((FuzzyClassifierContext)this.state.context).getClassMap().get(obj.getIdentifier());
+        		if(countMap.containsKey(clazz))
+        			countMap.put(clazz, countMap.get(clazz)+1);
+        		else
+        			countMap.put(clazz,1);
+        	}
+   
+        	for(String clazz : ((FuzzyClassifierContext)this.state.context).getClasses()) {
+        		if(countMap.containsKey(clazz))
+        			fcc.addProb(countMap.get(clazz)*1.0/fcc.getExtent().size());
+        		else
+        			fcc.addProb(0.0);
+
+        	}
+        	fuzzyLattice.add(fcc);	
+        }
+    	conceptLattice = fuzzyLattice;
+    }
+    	return null;
     }
 
     /*

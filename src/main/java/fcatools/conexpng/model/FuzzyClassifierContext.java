@@ -92,7 +92,7 @@ public class FuzzyClassifierContext extends FuzzyFormalContext {
 	@Override
 	public String toString() {
 		// For now
-		return super.toString();
+		return "FuzzyClassifierContext " + super.toString();
 	}
 
 	public void removeObjectOnly(FullObject<String, String> o) {
@@ -144,7 +144,23 @@ public class FuzzyClassifierContext extends FuzzyFormalContext {
 	    	return fuzzyLattice;
 	    }
    
-   @Override
+   public HashMap<String, String> getClassMap() {
+	return classMap;
+}
+
+public void setClassMap(HashMap<String, String> classMap) {
+	this.classMap = classMap;
+}
+
+public Set<String> getClasses() {
+	return classes;
+}
+
+public void setClasses(Set<String> classes) {
+	this.classes = classes;
+}
+
+@Override
    public Set<Concept<String, FullObject<String, String>>> getConceptsWithoutConsideredElements() {
 	ListSet<Concept<String, FullObject<String, String>>> fuzzyLattice = new ListSet<Concept<String, FullObject<String, String>>>();
    	for(Concept<String, FullObject<String, String>> c : super.getConcepts()) {
