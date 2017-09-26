@@ -61,6 +61,17 @@ public class ClassifiedNode extends Node {
         return probs;
     }
     
+    public int getProbClass() {
+    	int maxIndex = 0;
+    	for(int i=1;i<probs.size();i++)
+    		if(probs.get(maxIndex) < probs.get(i))
+    			maxIndex = i;
+    	
+        return maxIndex;
+     
+    }
+   
+    
     public Double round(Double prob) {
     	return ((int)(prob*100))/100.0;
     	

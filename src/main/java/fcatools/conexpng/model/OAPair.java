@@ -30,13 +30,18 @@ public class OAPair<O,A> {
 	@Override
 	public boolean equals(Object obj) {
 		if(obj instanceof OAPair)
-			return (((OAPair) obj).getAttribute().equals(attribute) && ((OAPair) obj).getObject().equals(object));
+			if(attribute!=null) 
+				return (((OAPair) obj).getAttribute().equals(attribute) && ((OAPair) obj).getObject().equals(object));
+			else
+				return (((OAPair) obj).getObject().equals(object));
 		return false;
 	}
 	
 	@Override
 	public int hashCode() {
-		return (object.hashCode()+attribute.hashCode());
+		int hashCode = object.hashCode();
+		if(attribute!=null) hashCode+= attribute.hashCode();
+		return hashCode;
 	}
 	
 	

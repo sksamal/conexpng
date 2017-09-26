@@ -23,7 +23,8 @@ public class FuzzyClassifierContext extends FuzzyFormalContext {
 	public boolean addObject(String object, String classifier, String attributes[], double[] values) throws IllegalObjectException {
 		if(super.addObject(object, attributes,values)) {
 			classMap.put(object, classifier);
-			classes.add(classifier);
+			if(classifier!=null) 
+				classes.add(classifier);
 		}
 		else return false;
 		return true;
@@ -32,7 +33,8 @@ public class FuzzyClassifierContext extends FuzzyFormalContext {
 	public boolean addObject(FullObject<String, String> o, String classifier, double value) throws IllegalObjectException {
 		if(super.addObject(o,value)) {
 			classMap.put(o.getIdentifier(), classifier);
-			classes.add(classifier);
+			if(classifier!=null)
+				classes.add(classifier);
 			}
 		else return false;
 		return true;
@@ -41,7 +43,8 @@ public class FuzzyClassifierContext extends FuzzyFormalContext {
 	public boolean addObject(FullObject<String, String> o, String classifier) throws IllegalObjectException {
 		if(super.addObject(o)) {
 			classMap.put(o.getIdentifier(), classifier);
-			classes.add(classifier);
+			if(classifier!=null)
+				classes.add(classifier);
 			}
 		else return false;
 		return true;
@@ -92,7 +95,7 @@ public class FuzzyClassifierContext extends FuzzyFormalContext {
 	@Override
 	public String toString() {
 		// For now
-		return "FuzzyClassifierContext " + super.toString();
+		return "FuzzyClassifierContext " + super.toString() + classes.toString();
 	}
 
 	public void removeObjectOnly(FullObject<String, String> o) {
@@ -158,6 +161,10 @@ public Set<String> getClasses() {
 
 public void setClasses(Set<String> classes) {
 	this.classes = classes;
+}
+
+public String getClassAsString(int index) {
+	return (String) this.classes.toArray()[index];
 }
 
 @Override

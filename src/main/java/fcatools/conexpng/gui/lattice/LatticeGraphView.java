@@ -19,6 +19,7 @@ import javax.swing.SwingUtilities;
 import org.apache.batik.swing.JSVGCanvas;
 
 import fcatools.conexpng.Conf;
+import fcatools.conexpng.model.FuzzyClassifierContext;
 import fcatools.conexpng.model.FuzzyFormalContext;
 
 /**
@@ -166,7 +167,7 @@ public class LatticeGraphView extends JSVGCanvas {
                 g.setColor(Color.BLACK);
 
                 if(n instanceof ClassifiedNode)
-                	g.drawString(content + "\n" + ((ClassifiedNode)n).getProbs(), n.getObjectsLabel().getX(), n.getObjectsLabel().getY() - r.y);
+                	g.drawString(content + "\n" + ((FuzzyClassifierContext)state.context).getClassAsString(((ClassifiedNode)n).getProbClass()), n.getObjectsLabel().getX(), n.getObjectsLabel().getY() - r.y);
                 else
                 	g.drawString(content, n.getObjectsLabel().getX(), n.getObjectsLabel().getY() - r.y);
 

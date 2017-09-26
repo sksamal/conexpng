@@ -25,7 +25,6 @@ public class FCSVClassReader {
             context.addAttribute(attr[i]);
         }
         while ((line = br.readLine()) != null) {
-            System.out.println(line);
             String[] obj = line.split(SEP);
             /* last attribute is class */
             String[] attrForObj = new String[attr.length-2];
@@ -39,9 +38,11 @@ public class FCSVClassReader {
             	  
               }
             }
-            context.addObject(obj[0],obj[obj.length-1],attrForObj,values);
+            if(obj.length < attr.length)
+            	context.addObject(obj[0],null,attrForObj,values);
+            else
+            	context.addObject(obj[0],obj[obj.length-1],attrForObj,values);
             System.out.println(context);
-
         }
         br.close();
        state.setNewFile(path);
