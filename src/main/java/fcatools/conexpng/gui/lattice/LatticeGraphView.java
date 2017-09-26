@@ -168,7 +168,8 @@ public class LatticeGraphView extends JSVGCanvas {
 
                 if(n instanceof ClassifiedNode)
                 	g.drawString(content + "\n" + ((FuzzyClassifierContext)state.context).getClassAsString(((ClassifiedNode)n).getProbClass()), n.getObjectsLabel().getX(), n.getObjectsLabel().getY() - r.y);
-                else
+ //                  	g.drawString(content + "\n" + ((ClassifiedNode)n).getProbs(), n.getObjectsLabel().getX(), n.getObjectsLabel().getY() - r.y);
+                	else
                 	g.drawString(content, n.getObjectsLabel().getX(), n.getObjectsLabel().getY() - r.y);
 
                 g.drawRect(n.getObjectsLabel().getX(), n.getObjectsLabel().getY(), r.width, r.height);
