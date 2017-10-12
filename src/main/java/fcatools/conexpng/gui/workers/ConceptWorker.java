@@ -187,19 +187,22 @@ public class ConceptWorker extends AbstractWorker {
     	for(Concept<String, FullObject<String, String>> c : conceptLattice) {
     		HashMap<String,Integer> countMap = new HashMap<String,Integer> ();
         	FuzzyClassedConcept fcc = new FuzzyClassedConcept(c);
+        	int count=0;
         	for(FullObject<String, String> obj : fcc.getExtent()) {
         		String clazz = ((FuzzyClassifierContext)this.state.context).getClassMap().get(obj.getIdentifier());
-        		System.out.println(clazz);
+        		if(clazz != null) {
+        		count++;
         		if(countMap.containsKey(clazz))
         			countMap.put(clazz, countMap.get(clazz)+1);
         		else
         			countMap.put(clazz,1);
+        		}
         	}
    
         	for(String clazz : ((FuzzyClassifierContext)this.state.context).getClasses()) {
         		if(countMap.containsKey(clazz)) {
-        			fcc.addProb(countMap.get(clazz)*1.0/fcc.getExtent().size());
-        			System.out.println(fcc.getExtent().size() + " " + countMap.get(clazz));
+        			fcc.addProb(countMap.get(clazz)*1.0/count); //fcc.getExtent().size());
+        			System.out.println(fcc.getExtent().size() + " " + count + " " + countMap.get(clazz));
         			
         		}
         		else {
