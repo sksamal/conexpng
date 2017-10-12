@@ -1,6 +1,7 @@
 package fcatools.conexpng.model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 import de.tudresden.inf.tcs.fcaapi.Concept;
@@ -165,6 +166,13 @@ public void setClasses(Set<String> classes) {
 
 public String getClassAsString(int index) {
 	return (String) this.classes.toArray()[index];
+}
+
+public String getClassAsString(List<Integer> indices) {
+	String clazz = "";
+	for(int index: indices)
+		clazz= clazz+ this.classes.toArray()[index] + ",";
+	return clazz;
 }
 
 @Override

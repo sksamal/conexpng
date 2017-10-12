@@ -42,7 +42,7 @@ public class FCSVClassReader {
             	context.addObject(obj[0],null,attrForObj,values);
             else
             	context.addObject(obj[0],obj[obj.length-1],attrForObj,values);
-            System.out.println(context);
+//            System.out.println(context);
         }
         br.close();
        state.setNewFile(path);

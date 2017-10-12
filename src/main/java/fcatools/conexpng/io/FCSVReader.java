@@ -39,7 +39,7 @@ public class FCSVReader {
               }
             }
             context.addObject(obj[0],attrForObj,values);
-            System.out.println(context);
+ //           System.out.println(context);
 
         }
         br.close();

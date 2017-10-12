@@ -61,13 +61,20 @@ public class ClassifiedNode extends Node {
         return probs;
     }
     
-    public int getProbClass() {
+    public List<Integer> getProbClass() {
     	int maxIndex = 0;
-    	for(int i=1;i<probs.size();i++)
-    		if(probs.get(maxIndex) < probs.get(i))
+    	List<Integer> cList = new ArrayList<Integer>();
+    	for(int i=1;i<probs.size();i++) {
+    		if(probs.get(maxIndex) < probs.get(i)) {
     			maxIndex = i;
-    	
-        return maxIndex;
+    			cList.clear();
+    			cList.add(i);
+    		}
+    		else if(probs.get(maxIndex) == probs.get(i)) {
+    			cList.add(i);
+    		}
+    	}
+        return cList;
      
     }
    

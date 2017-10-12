@@ -184,7 +184,9 @@ public class ConceptWorker extends AbstractWorker {
      
       if(this.state.context instanceof FuzzyClassifierContext) {
    		ListSet<Concept<String, FullObject<String, String>>> fuzzyLattice = new ListSet<Concept<String, FullObject<String, String>>>();
-    	for(Concept<String, FullObject<String, String>> c : conceptLattice) {
+       	System.out.println("Classes=" + ((FuzzyClassifierContext)this.state.context).getClasses());
+        
+   		for(Concept<String, FullObject<String, String>> c : conceptLattice) {
     		HashMap<String,Integer> countMap = new HashMap<String,Integer> ();
         	FuzzyClassedConcept fcc = new FuzzyClassedConcept(c);
         	int count=0;
@@ -202,16 +204,17 @@ public class ConceptWorker extends AbstractWorker {
         	for(String clazz : ((FuzzyClassifierContext)this.state.context).getClasses()) {
         		if(countMap.containsKey(clazz)) {
         			fcc.addProb(countMap.get(clazz)*1.0/count); //fcc.getExtent().size());
-        			System.out.println(fcc.getExtent().size() + " " + count + " " + countMap.get(clazz));
+  //      			System.out.println(fcc.getExtent().size() + " " + count + " " + countMap.get(clazz));
         			
         		}
         		else {
         			fcc.addProb(0.0);
-        			System.out.println(fcc.getExtent().size() + " 0.0");
+ //       			System.out.println(fcc.getExtent().size() + " 0.0");
         		}
 
         	}
-        	System.out.println(fcc.getProb());
+        	System.out.println(fcc.getExtent() +" " +  fcc.getProb());
+        	
         	fuzzyLattice.add(fcc);	
         }
     	conceptLattice = fuzzyLattice;
