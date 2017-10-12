@@ -90,6 +90,7 @@ public class Main {
         if (fileOpened) {
             state.loadedFile();
         } else {
+        	
             state.contextChanged();
         }
         state.saveConf();

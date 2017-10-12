@@ -189,6 +189,7 @@ public class ConceptWorker extends AbstractWorker {
         	FuzzyClassedConcept fcc = new FuzzyClassedConcept(c);
         	for(FullObject<String, String> obj : fcc.getExtent()) {
         		String clazz = ((FuzzyClassifierContext)this.state.context).getClassMap().get(obj.getIdentifier());
+        		System.out.println(clazz);
         		if(countMap.containsKey(clazz))
         			countMap.put(clazz, countMap.get(clazz)+1);
         		else
@@ -196,12 +197,18 @@ public class ConceptWorker extends AbstractWorker {
         	}
    
         	for(String clazz : ((FuzzyClassifierContext)this.state.context).getClasses()) {
-        		if(countMap.containsKey(clazz))
+        		if(countMap.containsKey(clazz)) {
         			fcc.addProb(countMap.get(clazz)*1.0/fcc.getExtent().size());
-        		else
+        			System.out.println(fcc.getExtent().size() + " " + countMap.get(clazz));
+        			
+        		}
+        		else {
         			fcc.addProb(0.0);
+        			System.out.println(fcc.getExtent().size() + " 0.0");
+        		}
 
         	}
+        	System.out.println(fcc.getProb());
         	fuzzyLattice.add(fcc);	
         }
     	conceptLattice = fuzzyLattice;
