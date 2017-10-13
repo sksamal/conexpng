@@ -64,6 +64,7 @@ public class ClassifiedNode extends Node {
     public List<Integer> getProbClass() {
     	int maxIndex = 0;
     	List<Integer> cList = new ArrayList<Integer>();
+    	cList.add(0);
     	for(int i=1;i<probs.size();i++) {
     		if(probs.get(maxIndex) < probs.get(i)) {
     			maxIndex = i;
