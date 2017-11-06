@@ -172,7 +172,7 @@ public String getClassAsString(List<Integer> indices) {
 	String clazz = "";
 	for(int index: indices)
 		clazz= clazz+ this.classes.toArray()[index] + ",";
-	return clazz;
+	return clazz.substring(0,clazz.length()-1);
 }
 
 @Override

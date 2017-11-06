@@ -89,7 +89,7 @@ public class FuzzyFormalContext extends FormalContext {
 		int i = 0;
 		Set<String> attrs = new TreeSet<>();
 		for (String attribute : attributes) {
-			System.out.println(attribute + " " + object);
+			System.out.println(attribute + " " + object + " " + values[i]);
 			composition.put(new OAPair<String, String>(attribute, object), values[i]);
 			if (values[i] >= threshold)
 				attrs.add(attribute);

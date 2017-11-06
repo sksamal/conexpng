@@ -1,0 +1,2871 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY OntologyPsych "http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#" >
+    <!ENTITY OntologyPsych2 "http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#3-" >
+    <!ENTITY FAB "http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#FAB/" >
+    <!ENTITY Fab "http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Fab/" >
+    <!ENTITY P_of_r "http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#P_of_r/" >
+    <!ENTITY Behavior_ "http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Behavior_/" >
+    <!ENTITY relaxation "http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#relaxation/" >
+    <!ENTITY Greater_than "http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Greater_than/" >
+    <!ENTITY instance_date "http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#instance_date/" >
+    <!ENTITY social_cognition "http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#social_cognition&amp;" >
+    <!ENTITY Physical_relaxation "http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Physical_relaxation/" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl"
+     xmlns:social_cognition="&OntologyPsych;social_cognition&amp;"
+     xmlns:instance_date="&OntologyPsych;instance_date/"
+     xmlns:FAB="&OntologyPsych;FAB/"
+     xmlns:Physical_relaxation="&OntologyPsych;Physical_relaxation/"
+     xmlns:relaxation="&OntologyPsych;relaxation/"
+     xmlns:P_of_r="&OntologyPsych;P_of_r/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:Greater_than="&OntologyPsych;Greater_than/"
+     xmlns:OntologyPsych="http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#"
+     xmlns:OntologyPsych2="&OntologyPsych;3-"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:Fab="&OntologyPsych;Fab/"
+     xmlns:Behavior_="&OntologyPsych;Behavior_/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl">
+        <rdfs:comment>This is the ontology we have developed for &quot;Psychophysiological Dysregulation&quot;</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&rdfs;comment"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
+
+    <owl:ObjectProperty rdf:about="&owl;topObjectProperty"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#adj_tx -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;adj_tx">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#age -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;age">
+        <rdfs:domain rdf:resource="&OntologyPsych;Basic_Details"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first>female</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first>male</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#bprsPrp -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;bprsPrp">
+        <rdfs:domain rdf:resource="&OntologyPsych;BPRS_items"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#bprsX1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;bprsX1">
+        <rdfs:domain rdf:resource="&OntologyPsych;BPRS_items"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#bprsY1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;bprsY1">
+        <rdfs:domain rdf:resource="&OntologyPsych;BPRS_items"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#bprsZ1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;bprsZ1">
+        <rdfs:domain rdf:resource="&OntologyPsych;BPRS_items"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#currently_active_psychosis -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;currently_active_psychosis">
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Std_Clinical_Assessment"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;mental_status_exam"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#harePrp -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;harePrp">
+        <rdfs:domain rdf:resource="&OntologyPsych;sociopathy_screen-Hare"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hareX1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hareX1">
+        <rdfs:domain rdf:resource="&OntologyPsych;HARE-x"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hareY1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hareY1">
+        <rdfs:domain rdf:resource="&OntologyPsych;HARE-y"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hareZ1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hareZ1">
+        <rdfs:domain rdf:resource="&OntologyPsych;HARE-z"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#his_arc -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;his_arc">
+        <rdfs:domain rdf:resource="&OntologyPsych;Historical_Archive"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_aggr -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_aggr">
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&OntologyPsych;P_of_aggr-indep_of_active_psychosis"/>
+                    <rdf:Description rdf:about="&OntologyPsych;Patient"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_aggr-maintenance_antipsychotic -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_aggr-maintenance_antipsychotic">
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&OntologyPsych;P_of_aggr-indep_of_active_psychosis"/>
+                    <rdf:Description rdf:about="&OntologyPsych;Patient"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_aggr-maintenance_moodstabilizer -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_aggr-maintenance_moodstabilizer">
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&OntologyPsych;P_of_aggr-indep_of_active_psychosis"/>
+                    <rdf:Description rdf:about="&OntologyPsych;Patient"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_aggr-specific_to_acutepsychosis -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_aggr-specific_to_acutepsychosis">
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&OntologyPsych;P_of_aggr-indep_of_active_psychosis"/>
+                    <rdf:Description rdf:about="&OntologyPsych;Patient"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_aggr-specific_to_institutional_context -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_aggr-specific_to_institutional_context">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-social_skill_deficit"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_global_personal_adequacy -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_global_personal_adequacy">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-social_skill_deficit"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_nonaggrsub -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_nonaggrsub">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-unacceptable_behavior"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_nonaggrsub&#45;&#45;maintenance_moodstabilizer -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_nonaggrsub--maintenance_moodstabilizer">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-unacceptable_behavior"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_nonaggrsub-maintenance_antipsychotic -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_nonaggrsub-maintenance_antipsychotic">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-unacceptable_behavior"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_nonaggrsub-specific_to_acutepsychosis -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_nonaggrsub-specific_to_acutepsychosis">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-unacceptable_behavior"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_nonagrsub -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_nonagrsub">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-psychosis_dysreg"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_polysub_abuse -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_polysub_abuse">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-psychosis_dysreg"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_sexual_promiscuity -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_sexual_promiscuity">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-psychosis_dysreg"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hist_of_suicidal -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;hist_of_suicidal">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-psychosis_dysreg"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#nabX1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;nabX1">
+        <rdfs:domain rdf:resource="&OntologyPsych;NAB-S"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#nabY1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;nabY1">
+        <rdfs:domain rdf:resource="&OntologyPsych;NAB-y"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#nabZ1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;nabZ1">
+        <rdfs:domain rdf:resource="&OntologyPsych;NAB-z"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#nabsPrp -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;nabsPrp">
+        <rdfs:domain rdf:resource="&OntologyPsych;NAB-S"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#name -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;name">
+        <rdfs:domain rdf:resource="&OntologyPsych;Basic_Details"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#neurocogn_grossly_intact -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;neurocogn_grossly_intact">
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Std_Clinical_Assessment"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;neuropsych_assessment_battery"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#p1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;p1">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_aggr-indep_of_active_psychosis"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">decreases</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">increases</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#p2 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;p2">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-psychosis_dysreg"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">decreases</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">increases</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#p3 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;p3">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-social_skill_deficit"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">decreases</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">increases</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#p4 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;p4">
+        <rdfs:domain rdf:resource="&OntologyPsych;P_of_r/o-unacceptable_behavior"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">decreases</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">increases</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#prim_tx -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;prim_tx">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#prob_type -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;prob_type">
+        <rdfs:domain rdf:resource="&OntologyPsych;Problem_Type"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first>PPDA Present</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first>PPDA not Present</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#problem_present -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;problem_present">
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Std_Clinical_Assessment"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#psPrp -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;psPrp">
+        <rdfs:domain rdf:resource="&OntologyPsych;problem_solving_intact"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#psX1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;psX1">
+        <rdfs:domain rdf:resource="&OntologyPsych;PS-x"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#psY1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;psY1">
+        <rdfs:domain rdf:resource="&OntologyPsych;PS-y"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#psZ1 -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;psZ1">
+        <rdfs:domain rdf:resource="&OntologyPsych;PS-z"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#sex -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;sex">
+        <rdfs:domain rdf:resource="&OntologyPsych;Basic_Details"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first>female</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first>male</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#social_probsolving_intact -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;social_probsolving_intact">
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Std_Clinical_Assessment"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;problem_solving_intact"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#sociopathy_above_threshold -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;sociopathy_above_threshold">
+        <rdfs:domain rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;Std_Clinical_Assessment"/>
+        <rdfs:domain rdf:resource="&OntologyPsych;sociopathy_screen-Hare"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;string">no</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;string">yes</rdf:first>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#std_cli -->
+
+    <owl:DatatypeProperty rdf:about="&OntologyPsych;std_cli">
+        <rdfs:domain rdf:resource="&OntologyPsych;Std_Clinical_Assessment"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="&owl;topDataProperty"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#3-month_interval -->
+
+    <owl:Class rdf:about="&OntologyPsych;3-month_interval">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;tx_monitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#AIPSS -->
+
+    <owl:Class rdf:about="&OntologyPsych;AIPSS">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;social_cognition&amp;skills_battery"/>
+        <rdfs:comment>The Assessment of Interpersonal Problem Solving Skills (AIPSS) is a role play test of the examinee&#39;s cognitive and behavioral skills to solve interpersonal problems. 
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Aggression_Log -->
+
+    <owl:Class rdf:about="&OntologyPsych;Aggression_Log"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BL_date -->
+
+    <owl:Class rdf:about="&OntologyPsych;BL_date">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;instrument_BMP"/>
+        <rdfs:comment>Programmed consequence date </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BL_down_psychotx -->
+
+    <owl:Class rdf:about="&OntologyPsych;BL_down_psychotx">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Pos_Psycho_Txrspns"/>
+        <rdfs:comment>????</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BL_freq -->
+
+    <owl:Class rdf:about="&OntologyPsych;BL_freq">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;instrument_BMP"/>
+        <rdfs:comment>Weekly Target Behavior Frequency (series of real)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BLdate -->
+
+    <owl:Class rdf:about="&OntologyPsych;BLdate">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;BMP"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BLfreq -->
+
+    <owl:Class rdf:about="&OntologyPsych;BLfreq">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;BMP"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BMP -->
+
+    <owl:Class rdf:about="&OntologyPsych;BMP">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;BL_down_psychotx"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BPRS-x -->
+
+    <owl:Class rdf:about="&OntologyPsych;BPRS-x">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;BPRS_items"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BPRS-y -->
+
+    <owl:Class rdf:about="&OntologyPsych;BPRS-y">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;BPRS_items"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BPRS-z -->
+
+    <owl:Class rdf:about="&OntologyPsych;BPRS-z">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;BPRS_items"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BPRS_change -->
+
+    <owl:Class rdf:about="&OntologyPsych;BPRS_change">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Pos_Psycho_Txrspns"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BPRS_items -->
+
+    <owl:Class rdf:about="&OntologyPsych;BPRS_items">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;mental_status_exam"/>
+        <rdfs:comment>The Brief Psychiatric Rating Scale (BPRS) is rating scale which a clinician or researcher may use to measure psychiatric symptoms such as depression, anxiety, hallucinations and unusual behaviour. Each symptom is rated 1-7 and depending on the version between a total of 18-24 symptoms are scored. [Ref: Wiki]
+
+We show three specific BPRS items, the ones that measure psychotic symptoms
+(hallucinations, delusions, confusion) that contribute to the computed probability
+that the person is presently psychotic.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BPRSx -->
+
+    <owl:Class rdf:about="&OntologyPsych;BPRSx">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;BPRS_change"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BPRSy -->
+
+    <owl:Class rdf:about="&OntologyPsych;BPRSy">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;BPRS_change"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#BPRSz -->
+
+    <owl:Class rdf:about="&OntologyPsych;BPRSz">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;BPRS_change"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Basic_Details -->
+
+    <owl:Class rdf:about="&OntologyPsych;Basic_Details">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Patient"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&OntologyPsych;sex"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&OntologyPsych;age"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&OntologyPsych;name"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#FAB/BMP_and_Psychopharm -->
+
+    <owl:Class rdf:about="&OntologyPsych;FAB/BMP_and_Psychopharm">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;_No"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#FAB/BMP_for_aggr -->
+
+    <owl:Class rdf:about="&OntologyPsych;FAB/BMP_for_aggr">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;yes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Fab/Bmp_for_aggr -->
+
+    <owl:Class rdf:about="&OntologyPsych;Fab/Bmp_for_aggr">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Yes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Fab/Bmp_for_rehab_nonadherence -->
+
+    <owl:Class rdf:about="&OntologyPsych;Fab/Bmp_for_rehab_nonadherence">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;No"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Formulary -->
+
+    <owl:Class rdf:about="&OntologyPsych;Formulary">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;intervention"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Greater_than/equal_to_3 -->
+
+    <owl:Class rdf:about="&OntologyPsych;Greater_than/equal_to_3">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Problem_Priority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#HARE-x -->
+
+    <owl:Class rdf:about="&OntologyPsych;HARE-x">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;sociopathy_screen-Hare"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#HARE-y -->
+
+    <owl:Class rdf:about="&OntologyPsych;HARE-y">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;sociopathy_screen-Hare"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#HARE-z -->
+
+    <owl:Class rdf:about="&OntologyPsych;HARE-z">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;sociopathy_screen-Hare"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Historical_Archive -->
+
+    <owl:Class rdf:about="&OntologyPsych;Historical_Archive">
+        <rdfs:comment>Commonly known as &quot;Social History&quot; this class is a checklist-type inventory of key information and events, from date of birth to time in prison. It is designed to be scored and entered by a clinical social worker or other mental health professional, working off a narrative version that is the standard format for social histories in healthcare settings. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Less_than_3 -->
+
+    <owl:Class rdf:about="&OntologyPsych;Less_than_3">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Problem_Priority"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#MED-types -->
+
+    <owl:Class rdf:about="&OntologyPsych;MED-types">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_aggr-not_medication_responsive"/>
+        <rdfs:comment>????</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#MED_dates -->
+
+    <owl:Class rdf:about="&OntologyPsych;MED_dates">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;baseline_down_med_change"/>
+        <rdfs:comment>defines discreet periods of specific agents/doses</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#NAB-S -->
+
+    <owl:Class rdf:about="&OntologyPsych;NAB-S">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;neuropsych_assessment_battery"/>
+        <rdfs:comment>NAB-Screening determines if the &#39;neurocognition is grossly intact&#39; .
+It takes an hour to do the initial “screening” tests, and several more to complete an entire NAB.
+ 
+In general the Tests and procedures employed in a neuropsychological examination vary as a function of:
+-Purpose of examination.
+-Neurological intactness of the examinee.
+-Thoroughness of the examination.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#NAB-x -->
+
+    <owl:Class rdf:about="&OntologyPsych;NAB-x">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;NAB-S"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#NAB-y -->
+
+    <owl:Class rdf:about="&OntologyPsych;NAB-y">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;NAB-S"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#NAB-z -->
+
+    <owl:Class rdf:about="&OntologyPsych;NAB-z">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;NAB-S"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#No -->
+
+    <owl:Class rdf:about="&OntologyPsych;No">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;past_day"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#No_ -->
+
+    <owl:Class rdf:about="&OntologyPsych;No_">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;adherence_LessThan_75percent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#PS-x -->
+
+    <owl:Class rdf:about="&OntologyPsych;PS-x">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;problem_solving_intact"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#PS-y -->
+
+    <owl:Class rdf:about="&OntologyPsych;PS-y">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;problem_solving_intact"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#PS-z -->
+
+    <owl:Class rdf:about="&OntologyPsych;PS-z">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;problem_solving_intact"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#P_of_aggr-indep_of_active_psychosis -->
+
+    <owl:Class rdf:about="&OntologyPsych;P_of_aggr-indep_of_active_psychosis">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Historical_Archive"/>
+        <rdfs:comment>deteremines the probability of aggression independent of active psychosis.
+This value increases if:
+Hx of aggression = YES
+Hx of aggression is specific to acute psychosis = NO
+Hx of aggression while on maintenance antipsychotic = YES
+Hx of aggression while on maintenance mood stabilizer = YES
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#P_of_aggr-not_instrumental -->
+
+    <owl:Class rdf:about="&OntologyPsych;P_of_aggr-not_instrumental">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Treatment_Episode_Data"/>
+        <rdfs:comment>P(aggression is not instrumental) increases if:
+observed desirable consequences to aggression = NO
+observed physiological arousal antecedent = YES
+aggression is response to specific frustration = YES
+aggression persists despite immediate undesirable consequences = YES
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#P_of_aggr-not_medication_responsive -->
+
+    <owl:Class rdf:about="&OntologyPsych;P_of_aggr-not_medication_responsive">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Treatment_Episode_Data"/>
+        <rdfs:comment>probability of aggression that is not medication responsive
+
+ P(aggression is not medication responsive) increases if:
+frequency decreases from BL after antipsychotic started = YES
+frequency decreases from BL after mood stabilizer started = YES
+frequency decreases from BL after other specific med change = YES
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#P_of_r/o-psychosis_dysreg -->
+
+    <owl:Class rdf:about="&OntologyPsych;P_of_r/o-psychosis_dysreg">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Historical_Archive"/>
+        <rdfs:comment>history of psychophys. dysreg. for multiple systems
+Its probability increases if:
+Hx of non-aggressive SUB = NO
+Hx of non-suicidal self-harm = NO
+Hx of poly-substance abuse = NO
+Hx of sexual promiscuity/heterosexual preoccupation = NO
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#P_of_r/o-social_skill_deficit -->
+
+    <owl:Class rdf:about="&OntologyPsych;P_of_r/o-social_skill_deficit">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Historical_Archive"/>
+        <rdfs:comment>gives the history of developmental social inadequacy in the patient.
+Its probability increases if:
+Hx of severe global personal inadequacy = NO
+Hx of aggression is specific to institutional context = NO</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#P_of_r/o-unacceptable_behavior -->
+
+    <owl:Class rdf:about="&OntologyPsych;P_of_r/o-unacceptable_behavior">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Historical_Archive"/>
+        <rdfs:comment>history of non-aggressive antisocial behavior
+Its probability increases if :
+Hx of non-aggressive SUB = NO
+Hx of non-aggressive SUB specific to acute psychosis = YES
+Hx of non-aggressive SUB while on maintenance antipsychotic = NO
+Hx of non-aggressive SUB while on maintenance mood stabilizer = NO</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Patient -->
+
+    <owl:Class rdf:about="&OntologyPsych;Patient"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Pos_Psycho_Txrspns -->
+
+    <owl:Class rdf:about="&OntologyPsych;Pos_Psycho_Txrspns">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Treatment_Episode_Data"/>
+        <rdfs:comment>this module shows BMP data interacting with BPRS data to determine whether
+key indicators have changed in response to a treatment regimen. The treatment
+regimen is coded in the Therapy/Activity/Class (TAC) part of the database, which
+tracks all treatment that is delivered in real time (BMP’s and medication are
+administered all the time, requiring a different tracking system. If, after treatment
+targeting self-regulation, aggression stops (per BMP data), and the person is less
+interpersonally hostile (per BPRS data), that increments the probability that the
+problem is/was psychophysiological dysregulation.</rdfs:comment>
+        <rdfs:comment>????</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Problem_Priority -->
+
+    <owl:Class rdf:about="&OntologyPsych;Problem_Priority"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Problem_Type -->
+
+    <owl:Class rdf:about="&OntologyPsych;Problem_Type"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Psychopharm_ -->
+
+    <owl:Class rdf:about="&OntologyPsych;Psychopharm_">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Yes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Psychophys_Dysreg_of_Aggression -->
+
+    <owl:Class rdf:about="&OntologyPsych;Psychophys_Dysreg_of_Aggression">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Problem_Type"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Rehab_nonahderence -->
+
+    <owl:Class rdf:about="&OntologyPsych;Rehab_nonahderence">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;No_"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Std_Clinical_Assessment -->
+
+    <owl:Class rdf:about="&OntologyPsych;Std_Clinical_Assessment"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#TAC_System -->
+
+    <owl:Class rdf:about="&OntologyPsych;TAC_System">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;BL_down_psychotx"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#TAC_database -->
+
+    <owl:Class rdf:about="&OntologyPsych;TAC_database"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#TAC_id -->
+
+    <owl:Class rdf:about="&OntologyPsych;TAC_id">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;TAC_database"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#TB_aggr -->
+
+    <owl:Class rdf:about="&OntologyPsych;TB_aggr">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;instrument_BMP"/>
+        <rdfs:comment>Target Behavior Aggression (Y/N)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#TB_aggression -->
+
+    <owl:Class rdf:about="&OntologyPsych;TB_aggression">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_aggr-not_instrumental"/>
+        <rdfs:comment>Target Behavior Aggression </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#TBaggr -->
+
+    <owl:Class rdf:about="&OntologyPsych;TBaggr">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;BMP"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Treatment_Episode_Data -->
+
+    <owl:Class rdf:about="&OntologyPsych;Treatment_Episode_Data"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Treatment_Plan -->
+
+    <owl:Class rdf:about="&OntologyPsych;Treatment_Plan"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Treatment_reqd -->
+
+    <owl:Class rdf:about="&OntologyPsych;Treatment_reqd">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Tx_reqd"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Tx_not_reqd -->
+
+    <owl:Class rdf:about="&OntologyPsych;Tx_not_reqd">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Greater_than/equal_to_3"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Tx_reqd -->
+
+    <owl:Class rdf:about="&OntologyPsych;Tx_reqd">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Less_than_3"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Yes -->
+
+    <owl:Class rdf:about="&OntologyPsych;Yes">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;last_24_hours"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#_No -->
+
+    <owl:Class rdf:about="&OntologyPsych;_No">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;is_aggr_lower_than_last_month"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#_no -->
+
+    <owl:Class rdf:about="&OntologyPsych;_no">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;pref_for_countercondi_over_grprelax"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#_yes -->
+
+    <owl:Class rdf:about="&OntologyPsych;_yes">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;pref_for_countercondi_over_grprelax"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#adherence_LessThan_75percent -->
+
+    <owl:Class rdf:about="&OntologyPsych;adherence_LessThan_75percent">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;past_week"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#adjunctive_tx -->
+
+    <owl:Class rdf:about="&OntologyPsych;adjunctive_tx">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Formulary"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#anger_mgmt_therapy -->
+
+    <owl:Class rdf:about="&OntologyPsych;anger_mgmt_therapy">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;yes_"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#attended -->
+
+    <owl:Class rdf:about="&OntologyPsych;attended">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;hours"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#attention -->
+
+    <owl:Class rdf:about="&OntologyPsych;attention">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;behavior_profile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#baseline_down_med_change -->
+
+    <owl:Class rdf:about="&OntologyPsych;baseline_down_med_change">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_aggr-not_medication_responsive"/>
+        <rdfs:comment>????</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#behavior_profile -->
+
+    <owl:Class rdf:about="&OntologyPsych;behavior_profile">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;TAC_database"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#bizarre -->
+
+    <owl:Class rdf:about="&OntologyPsych;bizarre">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;behavior_profile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#cancelled -->
+
+    <owl:Class rdf:about="&OntologyPsych;cancelled">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;hours"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#cognitive_dimension -->
+
+    <owl:Class rdf:about="&OntologyPsych;cognitive_dimension">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;moderating_factors"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#counterconditioning_therapy -->
+
+    <owl:Class rdf:about="&OntologyPsych;counterconditioning_therapy">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;_yes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#defined_in_terms_of -->
+
+    <owl:Class rdf:about="&OntologyPsych;defined_in_terms_of">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Psychophys_Dysreg_of_Aggression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#dialectical_CBT -->
+
+    <owl:Class rdf:about="&OntologyPsych;dialectical_CBT">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;no_"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#disruptive -->
+
+    <owl:Class rdf:about="&OntologyPsych;disruptive">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;behavior_profile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#does_TAC_show_exp-progress -->
+
+    <owl:Class rdf:about="&OntologyPsych;does_TAC_show_exp-progress">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;3-month_interval"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#excused -->
+
+    <owl:Class rdf:about="&OntologyPsych;excused">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;hours"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#expected_tx_response -->
+
+    <owl:Class rdf:about="&OntologyPsych;expected_tx_response">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;defined_in_terms_of"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hours -->
+
+    <owl:Class rdf:about="&OntologyPsych;hours">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;TAC_database"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_aggr -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_aggr">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_aggr-indep_of_active_psychosis"/>
+        <rdfs:comment>determines the history of aggression of the patient</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_aggr-acute_psychosis -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_aggr-acute_psychosis">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_aggr-indep_of_active_psychosis"/>
+        <rdfs:comment>determines the history of aggression specific to acute psychosis</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_aggr-antipsychotic -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_aggr-antipsychotic">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_aggr-indep_of_active_psychosis"/>
+        <rdfs:comment>determines the history of aggression while on maintenance antipsychotic</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_aggr-institutional_context -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_aggr-institutional_context">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_r/o-social_skill_deficit"/>
+        <owl:disjointWith rdf:resource="&OntologyPsych;hx_of_global_personal_inadequacy"/>
+        <rdfs:comment>history of aggression specific to institutional context </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_aggr-mood_stabilizer -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_aggr-mood_stabilizer">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_aggr-indep_of_active_psychosis"/>
+        <rdfs:comment>determines the history of aggression specific while on maintenance mood stabilizers</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_global_personal_inadequacy -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_global_personal_inadequacy">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_r/o-social_skill_deficit"/>
+        <rdfs:comment>history of severe global personal inadequacy </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_non_aggr_sub -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_non_aggr_sub">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_r/o-psychosis_dysreg"/>
+        <rdfs:comment>history of non-aggressive SUB </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_nonaggrsub -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_nonaggrsub">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_r/o-unacceptable_behavior"/>
+        <rdfs:comment>history of non-aggressive SUB </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_nonaggrsub-_mood_stabilizer -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_nonaggrsub-_mood_stabilizer">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_r/o-unacceptable_behavior"/>
+        <rdfs:comment>history of non-aggressive SUB while on maintenance mood stabilizer </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_nonaggrsub-acute_psychosis -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_nonaggrsub-acute_psychosis">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_r/o-unacceptable_behavior"/>
+        <rdfs:comment>history of non-aggressive SUB specific to acute psychosis </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_nonaggrsub-antipsychotic -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_nonaggrsub-antipsychotic">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_r/o-unacceptable_behavior"/>
+        <rdfs:comment>history of non-aggressive SUB while on maintenance antipsychotic </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_nonsuicidal_self-harm -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_nonsuicidal_self-harm">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_r/o-psychosis_dysreg"/>
+        <rdfs:comment>history of non-suicidal self-harm </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_polysub_abuse -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_polysub_abuse">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_r/o-psychosis_dysreg"/>
+        <rdfs:comment>history of poly-substance abuse </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#hx_of_sexual_promiscuity -->
+
+    <owl:Class rdf:about="&OntologyPsych;hx_of_sexual_promiscuity">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_r/o-psychosis_dysreg"/>
+        <rdfs:comment>history of sexual promiscuity for heterosexual preoccupation </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#instance_date/time -->
+
+    <owl:Class rdf:about="&OntologyPsych;instance_date/time">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Aggression_Log"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#instrument_BMP -->
+
+    <owl:Class rdf:about="&OntologyPsych;instrument_BMP">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;baseline_down_med_change"/>
+        <rdfs:comment>Behavior Management Programs
+
+The BMP data set includes a narrative
+description of the behavior, various flags that indicate 
+-whether the behavior falls in a larger category like “aggression,”
+-frequency of the behavior in specified time frames,
+-and information on environmental events before and after the behavior occurs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#intensity -->
+
+    <owl:Class rdf:about="&OntologyPsych;intensity">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Aggression_Log"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#intervention -->
+
+    <owl:Class rdf:about="&OntologyPsych;intervention">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Treatment_Plan"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#is_aggr_lower_than_last_month -->
+
+    <owl:Class rdf:about="&OntologyPsych;is_aggr_lower_than_last_month">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;past_month"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#key_characteristics -->
+
+    <owl:Class rdf:about="&OntologyPsych;key_characteristics">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;defined_in_terms_of"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#key_indicators -->
+
+    <owl:Class rdf:about="&OntologyPsych;key_indicators">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Psychophys_Dysreg_of_Aggression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#last_24_hours -->
+
+    <owl:Class rdf:about="&OntologyPsych;last_24_hours">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;tx_monitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#long_term_goal -->
+
+    <owl:Class rdf:about="&OntologyPsych;long_term_goal">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Psychophys_Dysreg_of_Aggression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#mental_status_exam -->
+
+    <owl:Class rdf:about="&OntologyPsych;mental_status_exam">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Std_Clinical_Assessment"/>
+        <rdfs:comment>Mental status exam - psychiatric equivalent of a physical or medical exam.
+MSE indicates how the patient is doing right now.
+The type of MSE most useful for this part of the decision-making is an assessment of ongoing “symptoms” and other key indicators.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#modality_progress_scale -->
+
+    <owl:Class rdf:about="&OntologyPsych;modality_progress_scale">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;TAC_database"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#moderating_factors -->
+
+    <owl:Class rdf:about="&OntologyPsych;moderating_factors">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;defined_in_terms_of"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#neuropsych_assessment_battery -->
+
+    <owl:Class rdf:about="&OntologyPsych;neuropsych_assessment_battery">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Std_Clinical_Assessment"/>
+        <rdfs:comment>Neuropsychological Assessment Battery – a set of psychological tests designed explicitly to assess impaired brain function. 
+The tests are administered by a specially trained technician or professional.
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#no -->
+
+    <owl:Class rdf:about="&OntologyPsych;no">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;requiring_immediate_management"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#no_ -->
+
+    <owl:Class rdf:about="&OntologyPsych;no_">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;pref_for_anger_mgmt_over_dcbt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#noo -->
+
+    <owl:Class rdf:about="&OntologyPsych;noo">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;does_TAC_show_exp-progress"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#participation -->
+
+    <owl:Class rdf:about="&OntologyPsych;participation">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;behavior_profile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#past_day -->
+
+    <owl:Class rdf:about="&OntologyPsych;past_day">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;tx_monitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#past_month -->
+
+    <owl:Class rdf:about="&OntologyPsych;past_month">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;tx_monitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#past_week -->
+
+    <owl:Class rdf:about="&OntologyPsych;past_week">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;tx_monitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#phys_ante -->
+
+    <owl:Class rdf:about="&OntologyPsych;phys_ante">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_aggr-not_instrumental"/>
+        <rdfs:comment>observed physiological arousal antecedent </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#physical_assault -->
+
+    <owl:Class rdf:about="&OntologyPsych;physical_assault">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;type"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#physical_intimidation -->
+
+    <owl:Class rdf:about="&OntologyPsych;physical_intimidation">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;type"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#pos_conseq -->
+
+    <owl:Class rdf:about="&OntologyPsych;pos_conseq">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_aggr-not_instrumental"/>
+        <rdfs:comment>observed desirable consequences to aggression </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#pref_for_anger_mgmt_over_dcbt -->
+
+    <owl:Class rdf:about="&OntologyPsych;pref_for_anger_mgmt_over_dcbt">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;tx_selection"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#pref_for_countercondi_over_grprelax -->
+
+    <owl:Class rdf:about="&OntologyPsych;pref_for_countercondi_over_grprelax">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;tx_selection"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#presumptive_cause -->
+
+    <owl:Class rdf:about="&OntologyPsych;presumptive_cause">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;defined_in_terms_of"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#primary_tx -->
+
+    <owl:Class rdf:about="&OntologyPsych;primary_tx">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Formulary"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#priority_level -->
+
+    <owl:Class rdf:about="&OntologyPsych;priority_level">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Psychophys_Dysreg_of_Aggression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#problem_description -->
+
+    <owl:Class rdf:about="&OntologyPsych;problem_description">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Psychophys_Dysreg_of_Aggression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#problem_solving_intact -->
+
+    <owl:Class rdf:about="&OntologyPsych;problem_solving_intact">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;social_cognition&amp;skills_battery"/>
+        <rdfs:comment>a fictional measure of inter-personal problem solving is being used to increment the probability that observed aggression is the result of impaired self-control vs lack of social skills.
+So this test monitors the patient&#39;s problem solving skills.
+Let us take 3 values x,y,z for this purpose.
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#psychopharm_for_aggr -->
+
+    <owl:Class rdf:about="&OntologyPsych;psychopharm_for_aggr">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;yes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#relaxation/stress_mgmt -->
+
+    <owl:Class rdf:about="&OntologyPsych;relaxation/stress_mgmt">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;_no"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#requiring_immediate_management -->
+
+    <owl:Class rdf:about="&OntologyPsych;requiring_immediate_management">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;tx_selection"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#respective_tx_review_algo -->
+
+    <owl:Class rdf:about="&OntologyPsych;respective_tx_review_algo">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;noo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#risk_assessment_battery -->
+
+    <owl:Class rdf:about="&OntologyPsych;risk_assessment_battery">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Std_Clinical_Assessment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#scheduled -->
+
+    <owl:Class rdf:about="&OntologyPsych;scheduled">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;hours"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#short_term_goal -->
+
+    <owl:Class rdf:about="&OntologyPsych;short_term_goal">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Psychophys_Dysreg_of_Aggression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#soc_ante -->
+
+    <owl:Class rdf:about="&OntologyPsych;soc_ante">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;P_of_aggr-not_instrumental"/>
+        <rdfs:comment>??? not sure though abt the below descr.
+
+aggression persists despite immediate undesirable consequences </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#social_cognition&amp;skills_battery -->
+
+    <owl:Class rdf:about="&OntologyPsych;social_cognition&amp;skills_battery">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Std_Clinical_Assessment"/>
+        <rdfs:comment>Social cognition is the study of how people process social information, especially its encoding, storage, retrieval, and application to social situations. (Ref:Wiki)
+Social skills are a behavioral manifestation of social cognition.
+Hence there is a battery of tests to determine these two aspects.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#social_competence_dimension -->
+
+    <owl:Class rdf:about="&OntologyPsych;social_competence_dimension">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;moderating_factors"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#sociopathy_screen-Hare -->
+
+    <owl:Class rdf:about="&OntologyPsych;sociopathy_screen-Hare">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;risk_assessment_battery"/>
+        <rdfs:comment>a specialized type of social history combined with structured
+interview, named the “Hare” after the guy who developed, is determining whether
+the patient is above the statistical threshold for sociopathy, which would reduce the
+probability that aggression results from psychophysiological dysregulation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#spontaneity -->
+
+    <owl:Class rdf:about="&OntologyPsych;spontaneity">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;behavior_profile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#tac_dates -->
+
+    <owl:Class rdf:about="&OntologyPsych;tac_dates">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;TAC_System"/>
+        <rdfs:comment>TAC start date (date)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#tac_id -->
+
+    <owl:Class rdf:about="&OntologyPsych;tac_id">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;TAC_System"/>
+        <rdfs:comment>TACID (= DBT, SST, IPS)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#tac_progress -->
+
+    <owl:Class rdf:about="&OntologyPsych;tac_progress">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;TAC_System"/>
+        <rdfs:comment>TAC progress</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#tac_quizzes -->
+
+    <owl:Class rdf:about="&OntologyPsych;tac_quizzes">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;TAC_System"/>
+        <rdfs:comment>????? not sure though
+
+•	TAC behavioral profile</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#threat -->
+
+    <owl:Class rdf:about="&OntologyPsych;threat">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;type"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#tx_indications -->
+
+    <owl:Class rdf:about="&OntologyPsych;tx_indications">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;defined_in_terms_of"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#tx_monitoring -->
+
+    <owl:Class rdf:about="&OntologyPsych;tx_monitoring">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Treatment_reqd"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#tx_selection -->
+
+    <owl:Class rdf:about="&OntologyPsych;tx_selection">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Treatment_reqd"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#type -->
+
+    <owl:Class rdf:about="&OntologyPsych;type">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Aggression_Log"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#verbal_abuse -->
+
+    <owl:Class rdf:about="&OntologyPsych;verbal_abuse">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;type"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#withdrawn -->
+
+    <owl:Class rdf:about="&OntologyPsych;withdrawn">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;behavior_profile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#x -->
+
+    <owl:Class rdf:about="&OntologyPsych;x">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Problem_Type"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#y -->
+
+    <owl:Class rdf:about="&OntologyPsych;y">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Problem_Type"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#yes -->
+
+    <owl:Class rdf:about="&OntologyPsych;yes">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;requiring_immediate_management"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#yes_ -->
+
+    <owl:Class rdf:about="&OntologyPsych;yes_">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;pref_for_anger_mgmt_over_dcbt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#z -->
+
+    <owl:Class rdf:about="&OntologyPsych;z">
+        <rdfs:subClassOf rdf:resource="&OntologyPsych;Problem_Type"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Anger_management_therapy -->
+
+    <owl:NamedIndividual rdf:about="&OntologyPsych;Anger_management_therapy">
+        <rdf:type rdf:resource="&OntologyPsych;primary_tx"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Behavior_/_contingency_management_program_ -->
+
+    <owl:NamedIndividual rdf:about="&OntologyPsych;Behavior_/_contingency_management_program_">
+        <rdf:type rdf:resource="&OntologyPsych;adjunctive_tx"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Counter-conditioning_therapy -->
+
+    <owl:NamedIndividual rdf:about="&OntologyPsych;Counter-conditioning_therapy">
+        <rdf:type rdf:resource="&OntologyPsych;primary_tx"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Darwin -->
+
+    <owl:NamedIndividual rdf:about="&OntologyPsych;Darwin">
+        <rdf:type rdf:resource="&OntologyPsych;Basic_Details"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Dialectical_cognitive-behavioral_therapy -->
+
+    <owl:NamedIndividual rdf:about="&OntologyPsych;Dialectical_cognitive-behavioral_therapy">
+        <rdf:type rdf:resource="&OntologyPsych;primary_tx"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Physical_relaxation/stress_management_therapy -->
+
+    <owl:NamedIndividual rdf:about="&OntologyPsych;Physical_relaxation/stress_management_therapy">
+        <rdf:type rdf:resource="&OntologyPsych;primary_tx"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Psychopharmacotherapy_ -->
+
+    <owl:NamedIndividual rdf:about="&OntologyPsych;Psychopharmacotherapy_">
+        <rdf:type rdf:resource="&OntologyPsych;adjunctive_tx"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#Social_skills_training_ -->
+
+    <owl:NamedIndividual rdf:about="&OntologyPsych;Social_skills_training_">
+        <rdf:type rdf:resource="&OntologyPsych;adjunctive_tx"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&OntologyPsych;hx_of_non_aggr_sub"/>
+            <rdf:Description rdf:about="&OntologyPsych;hx_of_nonsuicidal_self-harm"/>
+            <rdf:Description rdf:about="&OntologyPsych;hx_of_polysub_abuse"/>
+            <rdf:Description rdf:about="&OntologyPsych;hx_of_sexual_promiscuity"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&OntologyPsych;hx_of_aggr"/>
+            <rdf:Description rdf:about="&OntologyPsych;hx_of_aggr-acute_psychosis"/>
+            <rdf:Description rdf:about="&OntologyPsych;hx_of_aggr-antipsychotic"/>
+            <rdf:Description rdf:about="&OntologyPsych;hx_of_aggr-mood_stabilizer"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&OntologyPsych;hx_of_nonaggrsub"/>
+            <rdf:Description rdf:about="&OntologyPsych;hx_of_nonaggrsub-_mood_stabilizer"/>
+            <rdf:Description rdf:about="&OntologyPsych;hx_of_nonaggrsub-acute_psychosis"/>
+            <rdf:Description rdf:about="&OntologyPsych;hx_of_nonaggrsub-antipsychotic"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <swrl:Variable rdf:about="urn:swrl#p"/>
+    <swrl:Imp>
+        <swrl:head>
+            <swrl:AtomList>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <swrl:DatavaluedPropertyAtom>
+                        <swrl:argument2>increases</swrl:argument2>
+                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;p3"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                    </swrl:DatavaluedPropertyAtom>
+                </rdf:first>
+            </swrl:AtomList>
+        </swrl:head>
+        <swrl:body>
+            <swrl:AtomList>
+                <rdf:rest>
+                    <swrl:AtomList>
+                        <rdf:first>
+                            <swrl:DatavaluedPropertyAtom>
+                                <swrl:argument2>no</swrl:argument2>
+                                <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_aggr-specific_to_institutional_context"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                            </swrl:DatavaluedPropertyAtom>
+                        </rdf:first>
+                        <rdf:rest>
+                            <swrl:AtomList>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                <rdf:first>
+                                    <swrl:DatavaluedPropertyAtom>
+                                        <swrl:argument2>no</swrl:argument2>
+                                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_global_personal_adequacy"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                    </swrl:DatavaluedPropertyAtom>
+                                </rdf:first>
+                            </swrl:AtomList>
+                        </rdf:rest>
+                    </swrl:AtomList>
+                </rdf:rest>
+                <rdf:first>
+                    <swrl:ClassAtom>
+                        <swrl:classPredicate rdf:resource="&OntologyPsych;Patient"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                    </swrl:ClassAtom>
+                </rdf:first>
+            </swrl:AtomList>
+        </swrl:body>
+    </swrl:Imp>
+    <swrl:Imp>
+        <swrl:body>
+            <swrl:AtomList>
+                <rdf:first>
+                    <swrl:ClassAtom>
+                        <swrl:classPredicate rdf:resource="&OntologyPsych;Patient"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                    </swrl:ClassAtom>
+                </rdf:first>
+                <rdf:rest>
+                    <swrl:AtomList>
+                        <rdf:first>
+                            <swrl:DatavaluedPropertyAtom>
+                                <swrl:argument2>no</swrl:argument2>
+                                <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_nonaggrsub"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                            </swrl:DatavaluedPropertyAtom>
+                        </rdf:first>
+                        <rdf:rest>
+                            <swrl:AtomList>
+                                <rdf:rest>
+                                    <swrl:AtomList>
+                                        <rdf:first>
+                                            <swrl:DatavaluedPropertyAtom>
+                                                <swrl:argument2>no</swrl:argument2>
+                                                <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_nonaggrsub-maintenance_antipsychotic"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                            </swrl:DatavaluedPropertyAtom>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <swrl:AtomList>
+                                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                                <rdf:first>
+                                                    <swrl:DatavaluedPropertyAtom>
+                                                        <swrl:argument2>yes</swrl:argument2>
+                                                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_nonaggrsub-specific_to_acutepsychosis"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                                    </swrl:DatavaluedPropertyAtom>
+                                                </rdf:first>
+                                            </swrl:AtomList>
+                                        </rdf:rest>
+                                    </swrl:AtomList>
+                                </rdf:rest>
+                                <rdf:first>
+                                    <swrl:DatavaluedPropertyAtom>
+                                        <swrl:argument2>no</swrl:argument2>
+                                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_nonaggrsub--maintenance_moodstabilizer"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                    </swrl:DatavaluedPropertyAtom>
+                                </rdf:first>
+                            </swrl:AtomList>
+                        </rdf:rest>
+                    </swrl:AtomList>
+                </rdf:rest>
+            </swrl:AtomList>
+        </swrl:body>
+        <swrl:head>
+            <swrl:AtomList>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <swrl:DatavaluedPropertyAtom>
+                        <swrl:argument2>increases</swrl:argument2>
+                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;p4"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                    </swrl:DatavaluedPropertyAtom>
+                </rdf:first>
+            </swrl:AtomList>
+        </swrl:head>
+    </swrl:Imp>
+    <swrl:Imp>
+        <swrl:head>
+            <swrl:AtomList>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <swrl:DatavaluedPropertyAtom>
+                        <swrl:argument2>increases</swrl:argument2>
+                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;p1"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                    </swrl:DatavaluedPropertyAtom>
+                </rdf:first>
+            </swrl:AtomList>
+        </swrl:head>
+        <swrl:body>
+            <swrl:AtomList>
+                <rdf:first>
+                    <swrl:ClassAtom>
+                        <swrl:classPredicate rdf:resource="&OntologyPsych;Patient"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                    </swrl:ClassAtom>
+                </rdf:first>
+                <rdf:rest>
+                    <swrl:AtomList>
+                        <rdf:rest>
+                            <swrl:AtomList>
+                                <rdf:rest>
+                                    <swrl:AtomList>
+                                        <rdf:rest>
+                                            <swrl:AtomList>
+                                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                                <rdf:first>
+                                                    <swrl:DatavaluedPropertyAtom>
+                                                        <swrl:argument2>no</swrl:argument2>
+                                                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_aggr-specific_to_acutepsychosis"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                                    </swrl:DatavaluedPropertyAtom>
+                                                </rdf:first>
+                                            </swrl:AtomList>
+                                        </rdf:rest>
+                                        <rdf:first>
+                                            <swrl:DatavaluedPropertyAtom>
+                                                <swrl:argument2>yes</swrl:argument2>
+                                                <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_aggr-maintenance_moodstabilizer"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                            </swrl:DatavaluedPropertyAtom>
+                                        </rdf:first>
+                                    </swrl:AtomList>
+                                </rdf:rest>
+                                <rdf:first>
+                                    <swrl:DatavaluedPropertyAtom>
+                                        <swrl:argument2>yes</swrl:argument2>
+                                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_aggr-maintenance_antipsychotic"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                    </swrl:DatavaluedPropertyAtom>
+                                </rdf:first>
+                            </swrl:AtomList>
+                        </rdf:rest>
+                        <rdf:first>
+                            <swrl:DatavaluedPropertyAtom>
+                                <swrl:argument2>yes</swrl:argument2>
+                                <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_aggr"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                            </swrl:DatavaluedPropertyAtom>
+                        </rdf:first>
+                    </swrl:AtomList>
+                </rdf:rest>
+            </swrl:AtomList>
+        </swrl:body>
+    </swrl:Imp>
+    <swrl:Imp>
+        <swrl:body>
+            <swrl:AtomList>
+                <rdf:first>
+                    <swrl:ClassAtom>
+                        <swrl:classPredicate rdf:resource="&OntologyPsych;Patient"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                    </swrl:ClassAtom>
+                </rdf:first>
+                <rdf:rest>
+                    <swrl:AtomList>
+                        <rdf:rest>
+                            <swrl:AtomList>
+                                <rdf:rest>
+                                    <swrl:AtomList>
+                                        <rdf:first>
+                                            <swrl:DatavaluedPropertyAtom>
+                                                <swrl:argument2>yes</swrl:argument2>
+                                                <swrl:propertyPredicate rdf:resource="&OntologyPsych;social_probsolving_intact"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                            </swrl:DatavaluedPropertyAtom>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <swrl:AtomList>
+                                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                                <rdf:first>
+                                                    <swrl:DatavaluedPropertyAtom>
+                                                        <swrl:argument2>no</swrl:argument2>
+                                                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;sociopathy_above_threshold"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                                    </swrl:DatavaluedPropertyAtom>
+                                                </rdf:first>
+                                            </swrl:AtomList>
+                                        </rdf:rest>
+                                    </swrl:AtomList>
+                                </rdf:rest>
+                                <rdf:first>
+                                    <swrl:DatavaluedPropertyAtom>
+                                        <swrl:argument2>yes</swrl:argument2>
+                                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;neurocogn_grossly_intact"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                    </swrl:DatavaluedPropertyAtom>
+                                </rdf:first>
+                            </swrl:AtomList>
+                        </rdf:rest>
+                        <rdf:first>
+                            <swrl:DatavaluedPropertyAtom>
+                                <swrl:argument2>no</swrl:argument2>
+                                <swrl:propertyPredicate rdf:resource="&OntologyPsych;currently_active_psychosis"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                            </swrl:DatavaluedPropertyAtom>
+                        </rdf:first>
+                    </swrl:AtomList>
+                </rdf:rest>
+            </swrl:AtomList>
+        </swrl:body>
+        <swrl:head>
+            <swrl:AtomList>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <swrl:DatavaluedPropertyAtom>
+                        <swrl:argument2>yes</swrl:argument2>
+                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;problem_present"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                    </swrl:DatavaluedPropertyAtom>
+                </rdf:first>
+            </swrl:AtomList>
+        </swrl:head>
+    </swrl:Imp>
+    <swrl:Imp>
+        <swrl:head>
+            <swrl:AtomList>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <swrl:DatavaluedPropertyAtom>
+                        <swrl:argument2>increases</swrl:argument2>
+                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;p2"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                    </swrl:DatavaluedPropertyAtom>
+                </rdf:first>
+            </swrl:AtomList>
+        </swrl:head>
+        <swrl:body>
+            <swrl:AtomList>
+                <rdf:rest>
+                    <swrl:AtomList>
+                        <rdf:first>
+                            <swrl:DatavaluedPropertyAtom>
+                                <swrl:argument2>no</swrl:argument2>
+                                <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_nonagrsub"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                            </swrl:DatavaluedPropertyAtom>
+                        </rdf:first>
+                        <rdf:rest>
+                            <swrl:AtomList>
+                                <rdf:first>
+                                    <swrl:DatavaluedPropertyAtom>
+                                        <swrl:argument2>no</swrl:argument2>
+                                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_polysub_abuse"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                    </swrl:DatavaluedPropertyAtom>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <swrl:AtomList>
+                                        <rdf:rest>
+                                            <swrl:AtomList>
+                                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                                <rdf:first>
+                                                    <swrl:DatavaluedPropertyAtom>
+                                                        <swrl:argument2>no</swrl:argument2>
+                                                        <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_suicidal"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                                    </swrl:DatavaluedPropertyAtom>
+                                                </rdf:first>
+                                            </swrl:AtomList>
+                                        </rdf:rest>
+                                        <rdf:first>
+                                            <swrl:DatavaluedPropertyAtom>
+                                                <swrl:argument2>no</swrl:argument2>
+                                                <swrl:propertyPredicate rdf:resource="&OntologyPsych;hist_of_sexual_promiscuity"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                            </swrl:DatavaluedPropertyAtom>
+                                        </rdf:first>
+                                    </swrl:AtomList>
+                                </rdf:rest>
+                            </swrl:AtomList>
+                        </rdf:rest>
+                    </swrl:AtomList>
+                </rdf:rest>
+                <rdf:first>
+                    <swrl:ClassAtom>
+                        <swrl:classPredicate rdf:resource="&OntologyPsych;Patient"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                    </swrl:ClassAtom>
+                </rdf:first>
+            </swrl:AtomList>
+        </swrl:body>
+    </swrl:Imp>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.2.1789) http://owlapi.sourceforge.net -->
+
+

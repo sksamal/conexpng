@@ -29,7 +29,7 @@ public class FCSVClassReader {
             /* last attribute is class */
             String[] attrForObj = new String[attr.length-2];
             double[] values = new double[attr.length-2];
-            for (int i = 1; i < obj.length-1; i++) {
+            for (int i = 1; i < attr.length-1; i++) {
               try{
                     attrForObj[i-1]=context.getAttributeAtIndex(i - 1);
                     values[i-1] = Double.parseDouble(obj[i]);
