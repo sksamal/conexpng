@@ -103,6 +103,25 @@ public class FuzzyFormalContext extends FormalContext {
 		return true;
 	}
 
+	public boolean addObject(String object, String attributes[], Double[] values) throws IllegalObjectException {
+		int i = 0;
+//		System.out.println("Adding object " + object);
+		Set<String> attrs = new TreeSet<>();
+		for (String attribute : attributes) {
+//			System.out.println(attribute + " " + object + " " + values[i]);
+			composition.put(new OAPair<String, String>(attribute, object), values[i]);
+			if (values[i] >= threshold)
+				attrs.add(attribute);
+			if (!allObjectsOfAttribute.containsKey(attribute))
+				allObjectsOfAttribute.put(attribute, new TreeSet<String>());
+			allObjectsOfAttribute.get(attribute).add(object);
+			i++;
+		}
+		if(!attrs.isEmpty())
+			super.addObject(new FullObject<String, String> (object,attrs));
+		return true;
+	}
+	
 	public boolean addObject(FullObject<String, String> o, double value) throws IllegalObjectException {
 		for (String attribute : o.getDescription().getAttributes()) {
 			allObjectsOfAttribute.get(attribute).add(o.getIdentifier());

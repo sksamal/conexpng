@@ -19,6 +19,7 @@ import fcatools.conexpng.gui.lattice.algorithms.ILatticeGraphAlgorithm;
 import fcatools.conexpng.gui.lattice.algorithms.TrivialLatticeGraphAlgorithm;
 import fcatools.conexpng.io.locale.LocaleHandler;
 import fcatools.conexpng.model.FuzzyClassedConcept;
+import fcatools.conexpng.model.FuzzyMultiClassedConcept;
 
 /**
  * This class computes the lattice graph. It contains the available algorithms
@@ -70,6 +71,8 @@ public class LatticeGraphComputer {
 	public static LatticeGraph computeLatticeGraph(Set<Concept<String, FullObject<String, String>>> concepts,
 			Rectangle bounds) {
 		lattConcepts = concepts;
+		// for(Concept c : concepts)
+		// System.out.println(c.getClass());
 		screenWidth = bounds.width;
 		screenHeight = bounds.height;
 		initGraph();
@@ -89,9 +92,13 @@ public class LatticeGraphComputer {
 		while (iter.hasNext()) {
 
 			Concept<String, FullObject<String, String>> c = (Concept<String, FullObject<String, String>>) iter.next();
+			// System.out.println(c.getClass());
 			Node n;
-			if (c instanceof FuzzyClassedConcept)
+			if (c instanceof FuzzyMultiClassedConcept)
+				n = new MultiClassifiedNode(((FuzzyMultiClassedConcept) c).getProbsList());
+			else if (c instanceof FuzzyClassedConcept)
 				n = new ClassifiedNode(((FuzzyClassedConcept) c).getProb());
+
 			else
 				n = new Node();
 
@@ -137,7 +144,6 @@ public class LatticeGraphComputer {
 				}
 			}
 		}
-
 	}
 
 	/**

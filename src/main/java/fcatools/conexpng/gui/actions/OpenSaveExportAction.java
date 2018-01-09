@@ -52,6 +52,7 @@ import fcatools.conexpng.io.CSVWriter;
 import fcatools.conexpng.io.CXTReader;
 import fcatools.conexpng.io.CXTWriter;
 import fcatools.conexpng.io.FCSVClassReader;
+import fcatools.conexpng.io.FCSVMultiClassReader;
 import fcatools.conexpng.io.FCSVReader;
 import fcatools.conexpng.io.GUIReader;
 import fcatools.conexpng.io.GUIWriter;
@@ -283,7 +284,7 @@ public class OpenSaveExportAction extends AbstractAction {
             } else if (path.endsWith(".csv")) {
                 new CSVReader(state, path);
             } else if (path.endsWith(".fccsv")) {
-                new FCSVClassReader(state, path);
+                new FCSVMultiClassReader(state, path);
             } else if (path.endsWith(".fcsv")) {
                 new FCSVReader(state, path);
             } else if (path.endsWith(".cxt")) {

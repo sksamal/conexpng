@@ -1,5 +1,6 @@
 package fcatools.conexpng.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -18,14 +19,28 @@ import de.tudresden.inf.tcs.fcalib.utils.ListSet;
 public class FuzzyClassifierContext extends FuzzyFormalContext {
 
 	// Extra wrapper sets and maps to hold objects and its classes
+	// A list of hashMaps for each set of classes
 	protected HashMap<String, String> classMap;
-	Set<String> classes;
-
+	protected ArrayList<String> classes;
+	
 	public boolean addObject(String object, String classifier, String attributes[], double[] values) throws IllegalObjectException {
 		if(super.addObject(object, attributes,values)) {
+			HashMap<String, String> classMap = new HashMap<String, String>();
 			classMap.put(object, classifier);
-			if(classifier!=null) 
+			if(classifier!=null && !classes.contains(classifier)) 
 				classes.add(classifier);
+		}
+		else return false;
+		return true;
+	}
+	
+	public boolean addObject(String object, ArrayList<String> classifiers, String attributes[], double[] values) throws IllegalObjectException {
+		if(super.addObject(object, attributes,values)) {
+			for(String classifier: classifiers) {
+				classMap.put(object, classifier);
+				if(classifier!=null && !classes.contains(classifier))  
+					classes.add(classifier);
+		  }
 		}
 		else return false;
 		return true;
@@ -34,18 +49,37 @@ public class FuzzyClassifierContext extends FuzzyFormalContext {
 	public boolean addObject(FullObject<String, String> o, String classifier, double value) throws IllegalObjectException {
 		if(super.addObject(o,value)) {
 			classMap.put(o.getIdentifier(), classifier);
-			if(classifier!=null)
+			
+			if(classifier!=null && !classes.contains(classifier)){
 				classes.add(classifier);
+				}
 			}
 		else return false;
 		return true;
 	}
 
+	public boolean addObject(FullObject<String, String> o, ArrayList<String> classifiers, double value) throws IllegalObjectException {
+		if(super.addObject(o,value)) {
+			for(String classifier: classifiers) {
+				classMap.put(o.getIdentifier(), classifier);
+			
+			if(classifier!=null && !classes.contains(classifier)){
+				classes.add(classifier);
+			}
+			}
+		}
+		else return false;
+		return true;
+	}
+
+	
 	public boolean addObject(FullObject<String, String> o, String classifier) throws IllegalObjectException {
 		if(super.addObject(o)) {
+			HashMap<String, String> classMap = new HashMap<String, String>();
 			classMap.put(o.getIdentifier(), classifier);
-			if(classifier!=null)
+			if(classifier!=null && !classes.contains(classifier)) {
 				classes.add(classifier);
+			}
 			}
 		else return false;
 		return true;
@@ -53,13 +87,14 @@ public class FuzzyClassifierContext extends FuzzyFormalContext {
 
 	@Override
 	public boolean removeObject(String id) throws IllegalObjectException {
+		
+		List<String> removeList = new ArrayList<String>();
 		if(removeObject(getObject(id))) {
-			String clazz = classMap.get(id);
-			classMap.remove(id);
+			String clazz = classMap.remove(id);
 			if(!classMap.values().contains(clazz)) {
-				classes.remove(clazz);
+					removeList.add(clazz);
+				}
 			}
-		}
 		else return false;
 		return true;
 	}
@@ -71,26 +106,26 @@ public class FuzzyClassifierContext extends FuzzyFormalContext {
 
 	public FuzzyClassifierContext() {
 		super();
-		this.classMap = new HashMap<String,String>();
-		this.classes = new ListSet<String>();
+		this.classMap = new HashMap<>();
+		this.classes = new ArrayList<>();
 	}
 
 	public FuzzyClassifierContext(double threshold) {
 		super(threshold);
-		this.classMap = new HashMap<String,String>();
-		this.classes = new ListSet<String>();
+		this.classMap = new HashMap<>();
+		this.classes = new ArrayList<>();
 	}
 
 	public FuzzyClassifierContext(int objectsCount, int attributesCount) {
 		super(objectsCount, attributesCount);
-		this.classMap = new HashMap<String,String>();
-		this.classes = new ListSet<String>();
+		this.classMap = new HashMap<>();
+		this.classes = new ArrayList<>();
 	}
 
 	public FuzzyClassifierContext(int objectsCount, int attributesCount, double threshold) {
 		super(objectsCount, attributesCount, threshold);
-		this.classMap = new HashMap<String,String>();
-		this.classes = new ListSet<String>();
+		this.classMap = new HashMap<>();
+		this.classes = new ArrayList<>();
 	}
 
 	@Override
@@ -156,11 +191,11 @@ public void setClassMap(HashMap<String, String> classMap) {
 	this.classMap = classMap;
 }
 
-public Set<String> getClasses() {
+public List<String> getClasses() {
 	return classes;
 }
 
-public void setClasses(Set<String> classes) {
+public void setClasses(ArrayList<String> classes) {
 	this.classes = classes;
 }
 

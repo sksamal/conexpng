@@ -64,6 +64,7 @@ public class LatticeView extends View {
         this.mainFrame = mainframe;
         zoomFactor = state.guiConf.zoomFactor;
         if (state.lattice == null || state.lattice.isEmpty()) {
+        	System.out.println("Calling from LatticeView");
             state.lattice = LatticeGraphComputer.computeLatticeGraph(
                     new ListSet<Concept<String, FullObject<String, String>>>(),
                     new Rectangle(800, 600));

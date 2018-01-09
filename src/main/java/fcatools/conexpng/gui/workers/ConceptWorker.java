@@ -16,6 +16,8 @@ import fcatools.conexpng.gui.lattice.LatticeView;
 import fcatools.conexpng.model.FormalContext;
 import fcatools.conexpng.model.FuzzyClassedConcept;
 import fcatools.conexpng.model.FuzzyClassifierContext;
+import fcatools.conexpng.model.FuzzyMultiClassedConcept;
+import fcatools.conexpng.model.FuzzyMultiClassifierContext;
 import fcatools.conexpng.model.LatticeConcept;
 
 /**
@@ -181,44 +183,96 @@ public class ConceptWorker extends AbstractWorker {
             }
             conceptLattice.add(c);
         }
-     
-      if(this.state.context instanceof FuzzyClassifierContext) {
+   		
+      if(this.state.context instanceof FuzzyMultiClassifierContext) {
    		ListSet<Concept<String, FullObject<String, String>>> fuzzyLattice = new ListSet<Concept<String, FullObject<String, String>>>();
-       	System.out.println("Classes=" + ((FuzzyClassifierContext)this.state.context).getClasses());
+        System.out.println("FuzzyMultiClassifierContext");
+ //  		System.out.println("Classes=" + ((FuzzyMultiClassifierContext)this.state.context).getClasses());
         
-   		for(Concept<String, FullObject<String, String>> c : conceptLattice) {
+       	FuzzyMultiClassifierContext fmcc = (FuzzyMultiClassifierContext)(this.state.context);
+        int count[] = new int[fmcc.getClassesCount()];
+        
+        for(Concept<String, FullObject<String, String>> c : conceptLattice) {
     		HashMap<String,Integer> countMap = new HashMap<String,Integer> ();
-        	FuzzyClassedConcept fcc = new FuzzyClassedConcept(c);
-        	int count=0;
+        	FuzzyMultiClassedConcept fcc = new FuzzyMultiClassedConcept(c);
+        	for(int i=0;i<count.length;i++)
+        		count[i]=0;
+
         	for(FullObject<String, String> obj : fcc.getExtent()) {
-        		String clazz = ((FuzzyClassifierContext)this.state.context).getClassMap().get(obj.getIdentifier());
-        		if(clazz != null) {
-        		count++;
-        		if(countMap.containsKey(clazz))
-        			countMap.put(clazz, countMap.get(clazz)+1);
-        		else
-        			countMap.put(clazz,1);
+        		Set<String> clazzSet = fmcc.getClassMap().get(obj.getIdentifier());
+        		int i=0;
+            	for(String clazz: clazzSet) {
+        			if(clazz != null) {
+        				count[i]++;
+        			if(countMap.containsKey(clazz))
+        				countMap.put(clazz, countMap.get(clazz)+1);
+        			else
+        				countMap.put(clazz,1);
+        			}
         		}
+            	i++;
         	}
    
-        	for(String clazz : ((FuzzyClassifierContext)this.state.context).getClasses()) {
-        		if(countMap.containsKey(clazz)) {
-        			fcc.addProb(countMap.get(clazz)*1.0/count); //fcc.getExtent().size());
+        	int i=0;
+        	for(Set<String> clazzSet : fmcc.getClasses()) {
+        		for(String clazz: clazzSet) {
+        			if(countMap.containsKey(clazz)) {
+        				fcc.addProb(i,countMap.get(clazz)*1.0/count[i]); //fcc.getExtent().size());
   //      			System.out.println(fcc.getExtent().size() + " " + count + " " + countMap.get(clazz));
         			
         		}
         		else {
-        			fcc.addProb(0.0);
+        			fcc.addProb(i,0.0);
  //       			System.out.println(fcc.getExtent().size() + " 0.0");
         		}
-
+        		}
+        		i++;
         	}
-        	System.out.println(fcc.getExtent() +" " +  fcc.getProb());
-        	
+        	//System.out.println(fcc.getExtent() +" " +  fcc.getProbsList());
+        //	System.out.println(fcc.getClass());
         	fuzzyLattice.add(fcc);	
+        	
         }
     	conceptLattice = fuzzyLattice;
-    }
+      }
+   		else if(this.state.context instanceof FuzzyClassifierContext) {
+       		ListSet<Concept<String, FullObject<String, String>>> fuzzyLattice = new ListSet<Concept<String, FullObject<String, String>>>();
+            System.out.println("FuzzyClassifierContext");
+//       		System.out.println("Classes=" + ((FuzzyClassifierContext)this.state.context).getClasses());
+            
+       		for(Concept<String, FullObject<String, String>> c : conceptLattice) {
+        		HashMap<String,Integer> countMap = new HashMap<String,Integer> ();
+            	FuzzyClassedConcept fcc = new FuzzyClassedConcept(c);
+            	int count=0;
+            	for(FullObject<String, String> obj : fcc.getExtent()) {
+            		String clazz = ((FuzzyClassifierContext)this.state.context).getClassMap().get(obj.getIdentifier());
+            		if(clazz != null) {
+            		count++;
+            		if(countMap.containsKey(clazz))
+            			countMap.put(clazz, countMap.get(clazz)+1);
+            		else
+            			countMap.put(clazz,1);
+            		}
+            	}
+       
+            	for(String clazz : ((FuzzyClassifierContext)this.state.context).getClasses()) {
+            		if(countMap.containsKey(clazz)) {
+            			fcc.addProb(countMap.get(clazz)*1.0/count); //fcc.getExtent().size());
+      //      			System.out.println(fcc.getExtent().size() + " " + count + " " + countMap.get(clazz));
+            			
+            		}
+            		else {
+            			fcc.addProb(0.0);
+     //       			System.out.println(fcc.getExtent().size() + " 0.0");
+            		}
+
+            	}
+ //           	System.out.println(fcc.getExtent() +" " +  fcc.getProb());
+            	
+            	fuzzyLattice.add(fcc);	
+            }
+    	conceptLattice = fuzzyLattice;
+    }       	
     	return null;
     }
 
@@ -227,16 +281,18 @@ public class ConceptWorker extends AbstractWorker {
      */
     @Override
     protected void done() {
+    	
         state.endCalculation(StatusMessage.CALCULATINGCONCEPTS);
         // if not cancelled finish the operation
         if (!isCancelled()) {
             state.concepts = conceptLattice;
-//            System.out.println(conceptLattice.toString());
+ //           System.out.println(state.concepts.toString());
             if (lattice) {
                 state.startCalculation(StatusMessage.CALCULATINGLATTICE);
                 setProgress(99);
                 setProgressBarMessage(StatusMessage.CALCULATINGLATTICE.toString());
             }
+            System.out.println("calling from done");
             state.lattice = LatticeGraphComputer.computeLatticeGraph(state.concepts, view.getLatticeGraphViewBounds());
             view.updateLatticeGraph();
             if (lattice) {
