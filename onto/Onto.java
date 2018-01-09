@@ -44,7 +44,8 @@ public class Onto
 	public static void main(String[] args) 
 	{		
 		// call to function InsertValuesIntoDB()
-		InsertValuesIntoDB();
+		//InsertValuesIntoDB();
+		OntoDev();
 		
 	}
 	
@@ -910,14 +911,14 @@ public class Onto
 	{
 		//function creates the ontology and performs the required functions to get the desired o/p
 		
-		  String uri = "file:/C://Protege_4.1_beta/MyProject/OntologyPsych.owl";
+		  String uri = "file:/home/ssamal/workspace/conexpng/onto/OntologyPsych.owl";
 		  //String uri = "http://www.owl-ontologies.com/OntologyPsych.owl";
 		
 		  try
 		  {
 			  
-		OWLModel owlModel = ProtegeOWL.createJenaOWLModelFromURI(uri);
-	    //OWLModel owlModel = ProtegeOWL.createJenaOWLModel();
+		//OWLModel owlModel = ProtegeOWL.createJenaOWLModelFromURI(uri);
+	    OWLModel owlModel = ProtegeOWL.createJenaOWLModel();
 			  
 			  
 		// create the entire class structure of the ontology
