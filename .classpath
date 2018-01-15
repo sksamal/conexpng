@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="onto"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="lib" path="lib/fcaapi-0.10.2.jar"/>
 	<classpathentry kind="lib" path="lib/fcalib-0.10.2.jar" sourcepath="/fcalib"/>
@@ -27,6 +28,15 @@
 	<classpathentry kind="lib" path="lib/xstream-1.4.8.jar"/>
 	<classpathentry kind="lib" path="lib/batik-util-1.7.jar"/>
 	<classpathentry kind="lib" path="lib/batik-css-1.7.jar"/>
-	<classpathentry kind="lib" path="lib/xml-apis-2.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/protege-3.4.8.jar"/>
+	<classpathentry kind="lib" path="lib/protege-owl-3.4.8.jar"/>
+	<classpathentry kind="lib" path="lib/jena-2.6.4.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.25.jar"/>
+	<classpathentry kind="lib" path="lib/xercesImpl-2.10.0.jar"/>
+	<classpathentry kind="lib" path="lib/org.protege.editor.owl-4.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/orphanNodesAlg.jar"/>
+	<classpathentry kind="lib" path="lib/iri-0.8.jar"/>
+	<classpathentry kind="lib" path="lib/icu4j-3.4.4.jar"/>
+	<classpathentry kind="lib" path="lib/xml-apis-2.10.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

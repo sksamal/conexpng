@@ -1,0 +1,500 @@
+2017.11.10 09:52:14.628 CST INFO: *** SYSTEM START ***
+2017.11.10 09:56:57.178 CST INFO: *** SYSTEM START ***
+2017.11.10 09:58:55.984 CST INFO: *** SYSTEM START ***
+2017.11.10 09:58:56.551 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 09:58:56.563 CST SEVERE: Error at loading file file:/C:/Protege_4.1_beta/MyProject/MyProject/OntologyPsych.owl -- Could not get input stream for file:/C:/Protege_4.1_beta/MyProject/MyProject/OntologyPsych.owl
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.getInputStream(Unknown Source)
+	at edu.stanford.smi.protegex.owl.repository.util.XMLBaseExtractor.getXMLBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.run(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.loadKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.loadDomainKB(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.createDomainKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.creator.OwlProjectFromUriCreator.create(Unknown Source)
+	at edu.stanford.smi.protegex.owl.ProtegeOWL.createJenaOWLModelFromURI(Unknown Source)
+	at Onto.OntoDev(Onto.java:920)
+	at Onto.main(Onto.java:48)
+Caused by: java.io.FileNotFoundException: /C:/Protege_4.1_beta/MyProject/MyProject/OntologyPsych.owl (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:90)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:188)
+	at java.net.URL.openStream(URL.java:1045)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.getInputStream(Unknown Source)
+	... 9 more
+
+2017.11.10 09:58:56.611 CST WARNING: Error found WARNING: java.io.FileNotFoundException: /C:/Protege_4.1_beta/MyProject/MyProject/OntologyPsych.owl (No such file or directory) -- ProtegeOWL.handleErrors()
+2017.11.10 09:58:56.611 CST WARNING: Error found WARNING: Errors at loading OWL file from file:/C:/Protege_4.1_beta/MyProject/MyProject/OntologyPsych.owl
+
+Please consider running the file through an RDF or OWL validation service such as:
+  - RDF Validator: http://www.w3.org/RDF/Validator
+  - OWL Validator: http://phoebus.cs.man.ac.uk:9999/OWL/Validator -- ProtegeOWL.handleErrors()
+2017.11.10 09:59:55.751 CST INFO: *** SYSTEM START ***
+2017.11.10 09:59:56.295 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 09:59:56.307 CST SEVERE: Exception caught -- java.lang.IllegalArgumentException: Expected scheme-specific part at index 5: file:
+	at java.net.URI.create(URI.java:852)
+	at edu.stanford.smi.protege.util.URIUtilities.getParentURI(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.getProjectDirectoryURI(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.getFileURI(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.loadKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.loadDomainKB(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.createDomainKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.creator.OwlProjectFromUriCreator.create(Unknown Source)
+	at edu.stanford.smi.protegex.owl.ProtegeOWL.createJenaOWLModelFromURI(Unknown Source)
+	at Onto.OntoDev(Onto.java:920)
+	at Onto.main(Onto.java:48)
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: file:
+	at java.net.URI$Parser.fail(URI.java:2848)
+	at java.net.URI$Parser.failExpecting(URI.java:2854)
+	at java.net.URI$Parser.parse(URI.java:3057)
+	at java.net.URI.<init>(URI.java:588)
+	at java.net.URI.create(URI.java:850)
+	... 10 more
+
+2017.11.10 10:00:21.898 CST INFO: *** SYSTEM START ***
+2017.11.10 10:01:16.977 CST INFO: *** SYSTEM START ***
+2017.11.10 10:01:34.850 CST INFO: *** SYSTEM START ***
+2017.11.10 10:01:35.314 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 10:01:35.326 CST SEVERE: Error at loading file file:/home/ssamal/OntologyPsych.owl -- Could not get input stream for file:/home/ssamal/OntologyPsych.owl
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.getInputStream(Unknown Source)
+	at edu.stanford.smi.protegex.owl.repository.util.XMLBaseExtractor.getXMLBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.run(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.loadKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.loadDomainKB(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.createDomainKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.creator.OwlProjectFromUriCreator.create(Unknown Source)
+	at edu.stanford.smi.protegex.owl.ProtegeOWL.createJenaOWLModelFromURI(Unknown Source)
+	at Onto.OntoDev(Onto.java:920)
+	at Onto.main(Onto.java:48)
+Caused by: java.io.FileNotFoundException: /home/ssamal/OntologyPsych.owl (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:90)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:188)
+	at java.net.URL.openStream(URL.java:1045)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.getInputStream(Unknown Source)
+	... 9 more
+
+2017.11.10 10:01:35.339 CST WARNING: Error found WARNING: java.io.FileNotFoundException: /home/ssamal/OntologyPsych.owl (No such file or directory) -- ProtegeOWL.handleErrors()
+2017.11.10 10:01:35.339 CST WARNING: Error found WARNING: Errors at loading OWL file from file:/home/ssamal/OntologyPsych.owl
+
+Please consider running the file through an RDF or OWL validation service such as:
+  - RDF Validator: http://www.w3.org/RDF/Validator
+  - OWL Validator: http://phoebus.cs.man.ac.uk:9999/OWL/Validator -- ProtegeOWL.handleErrors()
+2017.11.10 10:02:11.704 CST INFO: *** SYSTEM START ***
+2017.11.10 10:02:12.235 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 10:02:38.316 CST INFO: *** SYSTEM START ***
+2017.11.10 10:02:38.762 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 10:02:54.701 CST INFO: *** SYSTEM START ***
+2017.11.10 10:02:55.206 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 10:05:53.719 CST INFO: *** SYSTEM START ***
+2017.11.10 10:05:54.227 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 10:05:54.239 CST SEVERE: Error at loading file file:/home/ssamal/OntologyPsych.owl -- Could not get input stream for file:/home/ssamal/OntologyPsych.owl
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.getInputStream(Unknown Source)
+	at edu.stanford.smi.protegex.owl.repository.util.XMLBaseExtractor.getXMLBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.run(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.loadKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.loadDomainKB(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.createDomainKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.creator.OwlProjectFromUriCreator.create(Unknown Source)
+	at edu.stanford.smi.protegex.owl.ProtegeOWL.createJenaOWLModelFromURI(Unknown Source)
+	at Onto.OntoDev(Onto.java:920)
+	at Onto.main(Onto.java:48)
+Caused by: java.io.FileNotFoundException: /home/ssamal/OntologyPsych.owl (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:90)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:188)
+	at java.net.URL.openStream(URL.java:1045)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.getInputStream(Unknown Source)
+	... 9 more
+
+2017.11.10 10:05:54.249 CST WARNING: Error found WARNING: java.io.FileNotFoundException: /home/ssamal/OntologyPsych.owl (No such file or directory) -- ProtegeOWL.handleErrors()
+2017.11.10 10:05:54.249 CST WARNING: Error found WARNING: Errors at loading OWL file from file:/home/ssamal/OntologyPsych.owl
+
+Please consider running the file through an RDF or OWL validation service such as:
+  - RDF Validator: http://www.w3.org/RDF/Validator
+  - OWL Validator: http://phoebus.cs.man.ac.uk:9999/OWL/Validator -- ProtegeOWL.handleErrors()
+2017.11.10 10:06:23.752 CST INFO: *** SYSTEM START ***
+2017.11.10 10:06:24.283 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 10:10:45.199 CST INFO: *** SYSTEM START ***
+2017.11.10 10:10:45.699 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 10:10:45.779 CST INFO: Loading triples for: file:/home/ssamal/OntologyPsych.owl -- ProtegeOWLParser.loadTriples()
+2017.11.10 10:11:42.739 CST INFO: *** SYSTEM START ***
+2017.11.10 10:11:43.232 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 10:11:43.306 CST INFO: Loading triples for: file:/home/ssamal/OntologyPsych.owl -- ProtegeOWLParser.loadTriples()
+2017.11.10 10:12:43.879 CST INFO: *** SYSTEM START ***
+2017.11.10 10:12:44.396 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 10:12:44.475 CST INFO: Loading triples for: file:/home/ssamal/OntologyPsych.owl -- ProtegeOWLParser.loadTriples()
+2017.11.10 10:12:44.529 CST SEVERE: An error occurred at parsing the OWL ontology 
+
+    file:/home/ssamal/OntologyPsych.owl
+
+    at line -1 and column -1.
+    Jena parse error message: Premature end of file. -- org.xml.sax.SAXParseException; Premature end of file.
+	at org.apache.xerces.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at org.apache.xerces.util.ErrorHandlerWrapper.fatalError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLScanner.reportFatalError(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentScannerImpl$XMLDeclDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.DTDConfiguration.parse(Unknown Source)
+	at org.apache.xerces.parsers.DTDConfiguration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+	at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source)
+	at com.hp.hpl.jena.rdf.arp.impl.RDFXMLParser.parse(RDFXMLParser.java:142)
+	at com.hp.hpl.jena.rdf.arp.ARP.load(ARP.java:143)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser$1.invokeARP(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.loadTriples(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.run(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.loadKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.loadDomainKB(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.createDomainKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.creator.OwlProjectFromUriCreator.create(Unknown Source)
+	at edu.stanford.smi.protegex.owl.ProtegeOWL.createJenaOWLModelFromURI(Unknown Source)
+	at Onto.OntoDev(Onto.java:920)
+	at Onto.main(Onto.java:48)
+
+2017.11.10 10:12:44.530 CST INFO:     Completed triple loading after 7 ms -- ProtegeOWLParser.loadTriples()
+2017.11.10 10:12:44.536 CST INFO: Postprocess: Process entities with incorrect Java type (0 entities) ...  -- TriplePostProcessor.processFramesWithWrongJavaType()
+2017.11.10 10:12:44.536 CST INFO: 0 ms
+ -- TriplePostProcessor.processFramesWithWrongJavaType()
+2017.11.10 10:12:44.536 CST INFO: Postprocess: Process metaclasses (3 metaclasses) ...  -- TriplePostProcessor.processMetaclasses()
+2017.11.10 10:12:44.537 CST INFO: 0 ms
+ -- TriplePostProcessor.processMetaclasses()
+2017.11.10 10:12:44.537 CST INFO: Postprocess: Process subclasses of rdf:List (1 classes) ...  -- TriplePostProcessor.processSubclassesOfRdfList()
+2017.11.10 10:12:44.537 CST INFO: 0 ms
+ -- TriplePostProcessor.processSubclassesOfRdfList()
+2017.11.10 10:12:44.537 CST INFO: Postprocess: Instances with multiple types (0 instances) ...  -- TriplePostProcessor.processInstancesWithMultipleTypes()
+2017.11.10 10:12:44.538 CST INFO: 0 ms
+ -- TriplePostProcessor.processInstancesWithMultipleTypes()
+2017.11.10 10:12:44.538 CST INFO: Postprocess: Add inferred superclasses ...  -- TriplePostProcessor.processInferredSuperclasses()
+2017.11.10 10:12:44.538 CST INFO: 0 ms
+ -- TriplePostProcessor.processInferredSuperclasses()
+2017.11.10 10:12:44.540 CST INFO: Postprocess: Process orphan classes (0 classes) ...  -- TriplePostProcessor.processOrphanClses()
+2017.11.10 10:12:44.540 CST INFO: 0 ms
+ -- TriplePostProcessor.processOrphanClses()
+2017.11.10 10:12:44.541 CST INFO: Postprocess: Generalized Concept Inclusion (0 axioms) ...  -- TriplePostProcessor.processGeneralizedConceptInclusions()
+2017.11.10 10:12:44.542 CST INFO: 1 ms
+ -- TriplePostProcessor.processGeneralizedConceptInclusions()
+2017.11.10 10:12:44.542 CST INFO: Postprocess: Abstract classes...  -- TriplePostProcessor.processAbstractClasses()
+2017.11.10 10:12:44.542 CST INFO: 0 ms
+ -- TriplePostProcessor.processAbstractClasses()
+2017.11.10 10:12:44.542 CST INFO: Postprocess: Domain and range of properties...  -- TriplePostProcessor.processDomainAndRange()
+2017.11.10 10:12:44.543 CST INFO: 0 ms
+ -- TriplePostProcessor.processDomainAndRange()
+2017.11.10 10:12:44.543 CST INFO: Postprocess: Possibly typed entities (0 resources) ...  -- TriplePostProcessor.processPossiblyTypedResources()
+2017.11.10 10:12:44.543 CST INFO: 0 ms
+ -- TriplePostProcessor.processPossiblyTypedResources()
+2017.11.10 10:12:44.544 CST INFO: Updating underlying frames model in 1 ms -- ProtegeOWLParser.doFinalPostProcessing()
+2017.11.10 10:15:28.594 CST INFO: *** SYSTEM START ***
+2017.11.10 10:15:29.078 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 10:15:29.172 CST INFO: Loading triples for: file:/home/ssamal/workspace/conexpng/onto/OntologyPsych.owl -- ProtegeOWLParser.loadTriples()
+2017.11.10 10:19:20.433 CST INFO: *** SYSTEM START ***
+2017.11.10 10:19:20.895 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.10 10:19:20.990 CST INFO: Loading triples for: file:/home/ssamal/workspace/conexpng/onto/OntologyPsych.owl -- ProtegeOWLParser.loadTriples()
+2017.11.10 10:19:21.483 CST INFO:     Completed triple loading after 429 ms -- ProtegeOWLParser.loadTriples()
+2017.11.10 10:19:21.486 CST INFO: Postprocess: Process entities with incorrect Java type (2 entities) ...  -- TriplePostProcessor.processFramesWithWrongJavaType()
+2017.11.10 10:19:21.486 CST INFO: 0 ms
+ -- TriplePostProcessor.processFramesWithWrongJavaType()
+2017.11.10 10:19:21.487 CST INFO: Postprocess: Process metaclasses (3 metaclasses) ...  -- TriplePostProcessor.processMetaclasses()
+2017.11.10 10:19:21.487 CST INFO: 0 ms
+ -- TriplePostProcessor.processMetaclasses()
+2017.11.10 10:19:21.487 CST INFO: Postprocess: Process subclasses of rdf:List (1 classes) ...  -- TriplePostProcessor.processSubclassesOfRdfList()
+2017.11.10 10:19:21.488 CST INFO: 0 ms
+ -- TriplePostProcessor.processSubclassesOfRdfList()
+2017.11.10 10:19:21.488 CST INFO: Postprocess: Instances with multiple types (27 instances) ...  -- TriplePostProcessor.processInstancesWithMultipleTypes()
+2017.11.10 10:19:21.488 CST INFO: 0 ms
+ -- TriplePostProcessor.processInstancesWithMultipleTypes()
+2017.11.10 10:19:21.489 CST WARNING: Could not process untyped resource from statement: (_:A90, http://www.w3.org/2002/07/owl#onProperty, http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#sex) -- java.lang.ClassCastException: edu.stanford.smi.protege.model.DefaultCls cannot be cast to edu.stanford.smi.protegex.owl.model.RDFResource
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractRDFSClass.createInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.handleUndefinedSubject(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedObject(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.resolvUndefinedTriple(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedResources(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessor.createUntypedResources(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TriplePostProcessor.doPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessor.doPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.doFinalPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.loadTriples(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.run(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.loadKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.loadDomainKB(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.createDomainKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.creator.OwlProjectFromUriCreator.create(Unknown Source)
+	at edu.stanford.smi.protegex.owl.ProtegeOWL.createJenaOWLModelFromURI(Unknown Source)
+	at Onto.OntoDev(Onto.java:920)
+	at Onto.main(Onto.java:48)
+
+2017.11.10 10:19:21.492 CST WARNING: Could not process untyped resource from statement: (_:A90, http://www.w3.org/2002/07/owl#onDataRange, http://www.w3.org/2001/XMLSchema#string) -- java.lang.IllegalArgumentException: @A90_a5ae3b9c_7202_47eb_a8c3_fce24c4c6aca not unique
+	at edu.stanford.smi.protege.model.framestore.ImmutableNamesFrameStore.checkUniqueness(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.ImmutableNamesFrameStore.adjustFrameId(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.ImmutableNamesFrameStore.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.framestore.TypeUpdateFrameStore.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.DefaultKnowledgeBase.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.DefaultKnowledgeBase.createInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractOWLModel.createInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractOWLModel.createInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.DefaultCls.createDirectInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractOWLModel.createRDFUntypedResource(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedClassOrResource(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.handleUndefinedSubject(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedObject(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.resolvUndefinedTriple(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedResources(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessor.createUntypedResources(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TriplePostProcessor.doPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessor.doPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.doFinalPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.loadTriples(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.run(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.loadKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.loadDomainKB(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.createDomainKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.creator.OwlProjectFromUriCreator.create(Unknown Source)
+	at edu.stanford.smi.protegex.owl.ProtegeOWL.createJenaOWLModelFromURI(Unknown Source)
+	at Onto.OntoDev(Onto.java:920)
+	at Onto.main(Onto.java:48)
+
+2017.11.10 10:19:21.493 CST WARNING: Could not process untyped resource from statement: (_:A90, http://www.w3.org/2002/07/owl#qualifiedCardinality, 1) -- java.lang.IllegalArgumentException: @A90_a5ae3b9c_7202_47eb_a8c3_fce24c4c6aca not unique
+	at edu.stanford.smi.protege.model.framestore.ImmutableNamesFrameStore.checkUniqueness(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.ImmutableNamesFrameStore.adjustFrameId(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.ImmutableNamesFrameStore.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.framestore.TypeUpdateFrameStore.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.DefaultKnowledgeBase.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.DefaultKnowledgeBase.createInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractOWLModel.createInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractOWLModel.createInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.DefaultCls.createDirectInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractOWLModel.createRDFUntypedResource(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedClassOrResource(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.handleUndefinedSubject(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedObject(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.resolvUndefinedTriple(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedResources(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessor.createUntypedResources(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TriplePostProcessor.doPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessor.doPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.doFinalPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.loadTriples(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.run(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.loadKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.loadDomainKB(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.createDomainKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.creator.OwlProjectFromUriCreator.create(Unknown Source)
+	at edu.stanford.smi.protegex.owl.ProtegeOWL.createJenaOWLModelFromURI(Unknown Source)
+	at Onto.OntoDev(Onto.java:920)
+	at Onto.main(Onto.java:48)
+
+2017.11.10 10:19:21.502 CST INFO: Postprocess: Add inferred superclasses ...  -- TriplePostProcessor.processInferredSuperclasses()
+2017.11.10 10:19:21.502 CST INFO: 0 ms
+ -- TriplePostProcessor.processInferredSuperclasses()
+2017.11.10 10:19:21.505 CST INFO: Postprocess: Process orphan classes (162 classes) ...  -- TriplePostProcessor.processOrphanClses()
+2017.11.10 10:19:21.515 CST INFO: 9 ms
+ -- TriplePostProcessor.processOrphanClses()
+2017.11.10 10:19:21.515 CST INFO: Postprocess: Generalized Concept Inclusion (0 axioms) ...  -- TriplePostProcessor.processGeneralizedConceptInclusions()
+2017.11.10 10:19:21.518 CST INFO: 2 ms
+ -- TriplePostProcessor.processGeneralizedConceptInclusions()
+2017.11.10 10:19:21.519 CST INFO: Postprocess: Abstract classes...  -- TriplePostProcessor.processAbstractClasses()
+2017.11.10 10:19:21.519 CST INFO: 0 ms
+ -- TriplePostProcessor.processAbstractClasses()
+2017.11.10 10:19:21.520 CST INFO: Postprocess: Domain and range of properties...  -- TriplePostProcessor.processDomainAndRange()
+2017.11.10 10:19:21.556 CST INFO: 36 ms
+ -- TriplePostProcessor.processDomainAndRange()
+2017.11.10 10:19:21.557 CST INFO: Postprocess: Possibly typed entities (7 resources) ...  -- TriplePostProcessor.processPossiblyTypedResources()
+2017.11.10 10:19:21.557 CST INFO: 0 ms
+ -- TriplePostProcessor.processPossiblyTypedResources()
+2017.11.10 10:19:21.558 CST INFO: Updating underlying frames model in 1 ms -- ProtegeOWLParser.doFinalPostProcessing()
+2017.11.11 16:50:56.392 CST INFO: *** SYSTEM START ***
+2017.11.11 16:50:57.535 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.11.11 16:50:57.698 CST INFO: Loading triples for: file:/home/ssamal/workspace/conexpng/onto/OntologyPsych.owl -- ProtegeOWLParser.loadTriples()
+2017.11.11 16:50:58.546 CST INFO:     Completed triple loading after 721 ms -- ProtegeOWLParser.loadTriples()
+2017.11.11 16:50:58.551 CST INFO: Postprocess: Process entities with incorrect Java type (2 entities) ...  -- TriplePostProcessor.processFramesWithWrongJavaType()
+2017.11.11 16:50:58.551 CST INFO: 0 ms
+ -- TriplePostProcessor.processFramesWithWrongJavaType()
+2017.11.11 16:50:58.552 CST INFO: Postprocess: Process metaclasses (3 metaclasses) ...  -- TriplePostProcessor.processMetaclasses()
+2017.11.11 16:50:58.552 CST INFO: 0 ms
+ -- TriplePostProcessor.processMetaclasses()
+2017.11.11 16:50:58.553 CST INFO: Postprocess: Process subclasses of rdf:List (1 classes) ...  -- TriplePostProcessor.processSubclassesOfRdfList()
+2017.11.11 16:50:58.553 CST INFO: 0 ms
+ -- TriplePostProcessor.processSubclassesOfRdfList()
+2017.11.11 16:50:58.553 CST INFO: Postprocess: Instances with multiple types (27 instances) ...  -- TriplePostProcessor.processInstancesWithMultipleTypes()
+2017.11.11 16:50:58.554 CST INFO: 0 ms
+ -- TriplePostProcessor.processInstancesWithMultipleTypes()
+2017.11.11 16:50:58.555 CST WARNING: Could not process untyped resource from statement: (_:A92, http://www.w3.org/2002/07/owl#onProperty, http://www.semanticweb.org/ontologies/2011/2/OntologyPsych.owl#name) -- java.lang.ClassCastException: edu.stanford.smi.protege.model.DefaultCls cannot be cast to edu.stanford.smi.protegex.owl.model.RDFResource
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractRDFSClass.createInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.handleUndefinedSubject(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedObject(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.resolvUndefinedTriple(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedResources(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessor.createUntypedResources(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TriplePostProcessor.doPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessor.doPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.doFinalPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.loadTriples(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.run(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.loadKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.loadDomainKB(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.createDomainKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.creator.OwlProjectFromUriCreator.create(Unknown Source)
+	at edu.stanford.smi.protegex.owl.ProtegeOWL.createJenaOWLModelFromURI(Unknown Source)
+	at Onto.OntoDev(Onto.java:920)
+	at Onto.main(Onto.java:48)
+
+2017.11.11 16:50:58.560 CST WARNING: Could not process untyped resource from statement: (_:A92, http://www.w3.org/2002/07/owl#onDataRange, http://www.w3.org/2001/XMLSchema#string) -- java.lang.IllegalArgumentException: @A92_934f5858_feba_40df_af74_3785903472d8 not unique
+	at edu.stanford.smi.protege.model.framestore.ImmutableNamesFrameStore.checkUniqueness(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.ImmutableNamesFrameStore.adjustFrameId(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.ImmutableNamesFrameStore.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.framestore.TypeUpdateFrameStore.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.DefaultKnowledgeBase.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.DefaultKnowledgeBase.createInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractOWLModel.createInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractOWLModel.createInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.DefaultCls.createDirectInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractOWLModel.createRDFUntypedResource(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedClassOrResource(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.handleUndefinedSubject(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedObject(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.resolvUndefinedTriple(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedResources(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessor.createUntypedResources(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TriplePostProcessor.doPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessor.doPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.doFinalPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.loadTriples(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.run(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.loadKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.loadDomainKB(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.createDomainKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.creator.OwlProjectFromUriCreator.create(Unknown Source)
+	at edu.stanford.smi.protegex.owl.ProtegeOWL.createJenaOWLModelFromURI(Unknown Source)
+	at Onto.OntoDev(Onto.java:920)
+	at Onto.main(Onto.java:48)
+
+2017.11.11 16:50:58.565 CST WARNING: Could not process untyped resource from statement: (_:A92, http://www.w3.org/2002/07/owl#qualifiedCardinality, 1) -- java.lang.IllegalArgumentException: @A92_934f5858_feba_40df_af74_3785903472d8 not unique
+	at edu.stanford.smi.protege.model.framestore.ImmutableNamesFrameStore.checkUniqueness(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.ImmutableNamesFrameStore.adjustFrameId(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.ImmutableNamesFrameStore.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.framestore.TypeUpdateFrameStore.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.framestore.FrameStoreAdapter.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.DefaultKnowledgeBase.createSimpleInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.DefaultKnowledgeBase.createInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractOWLModel.createInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractOWLModel.createInstance(Unknown Source)
+	at edu.stanford.smi.protege.model.DefaultCls.createDirectInstance(Unknown Source)
+	at edu.stanford.smi.protegex.owl.model.impl.AbstractOWLModel.createRDFUntypedResource(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedClassOrResource(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.handleUndefinedSubject(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedObject(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.resolvUndefinedTriple(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessorForUntypedResources.createUntypedResources(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessor.createUntypedResources(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TriplePostProcessor.doPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.TripleProcessor.doPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.doFinalPostProcessing(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.loadTriples(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.run(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.loadKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.loadDomainKB(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.createDomainKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.creator.OwlProjectFromUriCreator.create(Unknown Source)
+	at edu.stanford.smi.protegex.owl.ProtegeOWL.createJenaOWLModelFromURI(Unknown Source)
+	at Onto.OntoDev(Onto.java:920)
+	at Onto.main(Onto.java:48)
+
+2017.11.11 16:50:58.586 CST INFO: Postprocess: Add inferred superclasses ...  -- TriplePostProcessor.processInferredSuperclasses()
+2017.11.11 16:50:58.587 CST INFO: 0 ms
+ -- TriplePostProcessor.processInferredSuperclasses()
+2017.11.11 16:50:58.591 CST INFO: Postprocess: Process orphan classes (162 classes) ...  -- TriplePostProcessor.processOrphanClses()
+2017.11.11 16:50:58.598 CST INFO: 7 ms
+ -- TriplePostProcessor.processOrphanClses()
+2017.11.11 16:50:58.599 CST INFO: Postprocess: Generalized Concept Inclusion (0 axioms) ...  -- TriplePostProcessor.processGeneralizedConceptInclusions()
+2017.11.11 16:50:58.602 CST INFO: 3 ms
+ -- TriplePostProcessor.processGeneralizedConceptInclusions()
+2017.11.11 16:50:58.602 CST INFO: Postprocess: Abstract classes...  -- TriplePostProcessor.processAbstractClasses()
+2017.11.11 16:50:58.603 CST INFO: 1 ms
+ -- TriplePostProcessor.processAbstractClasses()
+2017.11.11 16:50:58.603 CST INFO: Postprocess: Domain and range of properties...  -- TriplePostProcessor.processDomainAndRange()
+2017.11.11 16:50:58.645 CST INFO: 42 ms
+ -- TriplePostProcessor.processDomainAndRange()
+2017.11.11 16:50:58.646 CST INFO: Postprocess: Possibly typed entities (8 resources) ...  -- TriplePostProcessor.processPossiblyTypedResources()
+2017.11.11 16:50:58.652 CST INFO: 6 ms
+ -- TriplePostProcessor.processPossiblyTypedResources()
+2017.11.11 16:50:58.653 CST INFO: Updating underlying frames model in 1 ms -- ProtegeOWLParser.doFinalPostProcessing()
+2017.11.11 16:52:43.093 CST INFO: *** SYSTEM START ***
+2017.11.11 16:52:43.778 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.12.02 13:04:36.751 CST INFO: *** SYSTEM START ***
+2017.12.02 13:04:38.362 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.12.02 13:04:45.485 CST INFO: *** SYSTEM START ***
+2017.12.02 13:04:45.975 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.12.02 13:05:51.369 CST INFO: *** SYSTEM START ***
+2017.12.02 13:05:51.813 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.12.02 13:05:56.240 CST INFO: *** SYSTEM START ***
+2017.12.02 13:05:56.735 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2017.12.02 13:06:03.258 CST INFO: *** SYSTEM START ***
+2017.12.02 13:06:03.726 CST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2018.01.06 15:17:19.114 IST INFO: *** SYSTEM START ***
+2018.01.06 15:17:19.867 IST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2018.01.06 15:23:14.303 IST INFO: *** SYSTEM START ***
+2018.01.06 15:23:14.746 IST WARNING: [Local Folder Repository] The specified file must be a directory. (/home/ssamal/workspace/conexpng/plugins/edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2018.01.06 15:23:14.772 IST SEVERE: Error at loading file file:/home/ssamal/workspace/conexpng/onto/OntologyColcan.owl -- Could not get input stream for file:/home/ssamal/workspace/conexpng/onto/OntologyColcan.owl
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.getInputStream(Unknown Source)
+	at edu.stanford.smi.protegex.owl.repository.util.XMLBaseExtractor.getXMLBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.run(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.JenaKnowledgeBaseFactory.loadKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.loadDomainKB(Unknown Source)
+	at edu.stanford.smi.protege.model.Project.createDomainKnowledgeBase(Unknown Source)
+	at edu.stanford.smi.protegex.owl.jena.creator.OwlProjectFromUriCreator.create(Unknown Source)
+	at edu.stanford.smi.protegex.owl.ProtegeOWL.createJenaOWLModelFromURI(Unknown Source)
+	at com.unl.onto.Colcan.main(Colcan.java:44)
+Caused by: java.io.FileNotFoundException: /home/ssamal/workspace/conexpng/onto/OntologyColcan.owl (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:90)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:188)
+	at java.net.URL.openStream(URL.java:1045)
+	at edu.stanford.smi.protegex.owl.jena.parser.ProtegeOWLParser.getInputStream(Unknown Source)
+	... 8 more
+
+2018.01.06 15:23:14.824 IST WARNING: Error found WARNING: java.io.FileNotFoundException: /home/ssamal/workspace/conexpng/onto/OntologyColcan.owl (No such file or directory) -- ProtegeOWL.handleErrors()
+2018.01.06 15:23:14.824 IST WARNING: Error found WARNING: Errors at loading OWL file from file:/home/ssamal/workspace/conexpng/onto/OntologyColcan.owl
+
+Please consider running the file through an RDF or OWL validation service such as:
+  - RDF Validator: http://www.w3.org/RDF/Validator
+  - OWL Validator: http://phoebus.cs.man.ac.uk:9999/OWL/Validator -- ProtegeOWL.handleErrors()
