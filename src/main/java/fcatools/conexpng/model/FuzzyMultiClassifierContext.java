@@ -237,11 +237,13 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 	        	FuzzyMultiClassedConcept fcc = new FuzzyMultiClassedConcept(c);
 	        	for(FullObject<String, String> obj : fcc.getExtent()) {
 	        		Set<String> clazzSet = classSetMap.get(obj.getIdentifier());
+	        		if(clazzSet!=null) {
 	        		for(String clazz: clazzSet) {
 	        			if(countMap.containsKey(clazz))
 	        				countMap.put(clazz, countMap.get(clazz)+1);
 	        			else
 	        				countMap.put(clazz,1);
+	        		}
 	        		}
 	        	}
 	   

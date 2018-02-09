@@ -9,12 +9,12 @@ import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
 import de.tudresden.inf.tcs.fcalib.FullObject;
 import fcatools.conexpng.Conf;
 import fcatools.conexpng.Conf.StatusMessage;
-import fcatools.conexpng.io.CSVReader;
+import fcatools.conexpng.io.FCSVMultiClassReader;
 import fcatools.conexpng.io.locale.LocaleHandler;
-import fcatools.conexpng.model.FuzzyFormalContext;
-import fcatools.conexpng.model.IncrementalFormalContext;
+import fcatools.conexpng.model.FuzzyMultiClassifierContext;
+import fcatools.conexpng.model.IFuzzyMultiClassifierContext;
 
-public class IncrementalFCARunner {
+public class IFuzzyMultiClassedFCARunner {
 
 	public static void main(String[] args) {
 		Conf state = new Conf();
@@ -22,23 +22,23 @@ public class IncrementalFCARunner {
 	    System.setProperty("user.language", LocaleHandler.readLocale());
 	       
 		try {
-		CSVReader csvr = new CSVReader(state, args[0]);
-		StatusMessage status;
+		FCSVMultiClassReader fccsvr = new FCSVMultiClassReader(state, args[0],0);
 		state.startCalculation(StatusMessage.LOADINGFILE);
 //		System.out.println(state.context.getConcepts());
-//		printConcepts(state.context.getConcepts());
 		
-		IncrementalFormalContext ifc = new IncrementalFormalContext(state.context);
-		printConcepts(ifc.getConcepts());
+		IFuzzyMultiClassifierContext ifmc = new IFuzzyMultiClassifierContext((FuzzyMultiClassifierContext)state.context);
+		System.out.println("Original concepts");
+		printConcepts(ifmc.getConcepts());
 		
 		//add a new object
 	     Set<String> attrForObj = new TreeSet<>();
-	     attrForObj.add(ifc.getAttributeAtIndex(0));
-	     attrForObj.add(ifc.getAttributeAtIndex(1));
-	     attrForObj.add(ifc.getAttributeAtIndex(2));
-	     ifc.addObject(new FullObject<String, String>("t4", attrForObj));
+	     attrForObj.add(ifmc.getAttributeAtIndex(0));
+	     attrForObj.add(ifmc.getAttributeAtIndex(1));
+	     attrForObj.add(ifmc.getAttributeAtIndex(2));
+	     ifmc.addObject(new FullObject<String, String>("t4", attrForObj));
 
-	 	printConcepts(ifc.getConcepts());
+	 	System.out.println("\n New concepts after adding t4");
+		printConcepts(ifmc.getConcepts());
 		
 		}
 		

@@ -17,6 +17,9 @@ public class FCSVMultiClassReader {
 	public static final String SEP = ",";
 
 	public FCSVMultiClassReader(Conf state, String path) throws IllegalObjectException, IOException {
+		this(state,path,2);
+	}
+	public FCSVMultiClassReader(Conf state, String path, int numClasses) throws IllegalObjectException, IOException {
         FileInputStream fis = new FileInputStream(path);
         BufferedReader br = new BufferedReader(new InputStreamReader(fis));
         String line;
@@ -25,8 +28,6 @@ public class FCSVMultiClassReader {
         line = br.readLine();
         String[] attr = line.split(SEP);
         
-        // Last two attributes are classes
-        int numClasses = 2;
         for (int i = 1; i < attr.length-numClasses; i++) {
             context.addAttribute(attr[i]);
         }
@@ -57,9 +58,9 @@ public class FCSVMultiClassReader {
 
             
             if(obj.length < attr.length) 
-                context.addObject(obj[0]+numObj,"",attrForObj,values);
+                context.addObject(obj[0]+"_" + numObj,"",attrForObj,values);
            	else
-            	context.addObject(obj[0]+numObj,classes,attrForObj,values);
+            	context.addObject(obj[0]+"_" + numObj,classes,attrForObj,values);
             numObj++;
      //         System.out.println(context);
         }

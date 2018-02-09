@@ -9,6 +9,7 @@ import de.tudresden.inf.tcs.fcaapi.exception.IllegalAttributeException;
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
 import de.tudresden.inf.tcs.fcaapi.utils.IndexedSet;
 import de.tudresden.inf.tcs.fcalib.FullObject;
+import de.tudresden.inf.tcs.fcalib.utils.ListSet;
 
 /**
  * A specialization of FormalContext<String,String> with the aim to remove the
@@ -123,7 +124,15 @@ public class FuzzyFormalContext extends FormalContext {
 	}
 	
 	public boolean addObject(FullObject<String, String> o, double value) throws IllegalObjectException {
-		for (String attribute : o.getDescription().getAttributes()) {
+		Set<String> attributes = new ListSet<String>(o.getDescription().getAttributes());
+
+		// add object o after removing all attributes and 
+		// add the attributes later on if applicable
+		for(String attribute : attributes)
+			o.getDescription().removeAttribute(attribute);
+		super.addObject(o);
+		
+		for (String attribute : attributes) {
 			allObjectsOfAttribute.get(attribute).add(o.getIdentifier());
 			composition.put(new OAPair<String, String>(attribute, o.getIdentifier()), value);
 			if (value >= threshold)

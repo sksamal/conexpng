@@ -17,7 +17,7 @@ public class IncrementalFormalContext extends FormalContext {
  
     
 	// Incremental Concept lattice
-	private Set<Concept<String, FullObject<String, String>>> conceptLattice = new ListSet<Concept<String, FullObject<String, String>>>();
+	private Set<Concept<String, FullObject<String, String>>> conceptLattice ;
 	private Set<FullObject<String, String>> newObjects = new ListSet<FullObject<String, String>>();
     
 	public IncrementalFormalContext() {
@@ -26,6 +26,20 @@ public class IncrementalFormalContext extends FormalContext {
 
     public IncrementalFormalContext(int objectsCount, int attributesCount) {
         super(objectsCount,attributesCount);
+    }
+    
+    public IncrementalFormalContext(FormalContext fc) {
+ 
+    	for(String attr : fc.getAttributes())
+    		this.addAttribute(attr);
+    	
+    	try {
+    	for(FullObject<String,String> o : fc.getObjects())
+    		this.addObject(o);
+    	}
+    	catch (IllegalObjectException e) {
+    		e.printStackTrace();
+    	}
     }
     
     @Override
