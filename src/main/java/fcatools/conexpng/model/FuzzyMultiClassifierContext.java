@@ -254,6 +254,8 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 	        				fcc.addProb(i,countMap.get(clazz)*1.0/fcc.getExtent().size());
 	        			else
 	        				fcc.addProb(i,0.0);
+	 //       		System.out.println(fcc.getProbsList());
+		       	    
 	        		i++;
 	        	}
 	        	fuzzyLattice.add(fcc);	
@@ -318,9 +320,9 @@ public String getClassAsString(int i, List<Integer> indices) {
     		}
     	}
 
-    	int i=0;
-    	for(Set<String> clazzSet : classesSet) {
-    		for(String clazz: clazzSet)
+   	   	int i=0;
+   	 	for(Set<String> clazzSet : classesSet) {
+   	    	for(String clazz: clazzSet) 
     			if(countMap.containsKey(clazz))
     				fcc.addProb(i,countMap.get(clazz)*1.0/fcc.getExtent().size());
     			else

@@ -15,16 +15,27 @@ import fcatools.conexpng.model.FuzzyMultiClassifierContext;
 
 public class FCSVMultiClassReader {
 	public static final String SEP = ",";
+	private BufferedReader br;
+	private int numObj;
+	private int numClasses;
+	private FuzzyMultiClassifierContext context;
 
 	public FCSVMultiClassReader(Conf state, String path) throws IllegalObjectException, IOException {
 		this(state,path,2);
 	}
+	
 	public FCSVMultiClassReader(Conf state, String path, int numClasses) throws IllegalObjectException, IOException {
-        FileInputStream fis = new FileInputStream(path);
-        BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+		this(state,path,numClasses,Integer.MAX_VALUE);
+	}
+	
+	public FCSVMultiClassReader(Conf state, String path, int numClasses, int initialRecords) throws IllegalObjectException, IOException {
+		    
+		FileInputStream fis = new FileInputStream(path);
+        br = new BufferedReader(new InputStreamReader(fis));
+        numObj=0;
         String line;
-        FuzzyMultiClassifierContext context = new FuzzyMultiClassifierContext();
-
+        context = new FuzzyMultiClassifierContext();
+        this.numClasses = numClasses;
         line = br.readLine();
         String[] attr = line.split(SEP);
         
@@ -32,10 +43,27 @@ public class FCSVMultiClassReader {
             context.addAttribute(attr[i]);
         }
   
-      //  System.out.println("Attributes:" + context.getAttributes()); 
+        //  System.out.println("Attributes:" + context.getAttributes()); 
+        while ( initialRecords>0 && (line = br.readLine()) != null) {
+        	process(line);
+        	initialRecords--;
+        }
         
-        int numObj=0;
-        while ((line = br.readLine()) != null) {
+        state.setNewFile(path);
+        state.newContext(context);
+    
+	}
+        
+    public boolean readNext() throws IllegalObjectException, IOException {   
+    	String line = null;
+        if ((line = br.readLine()) != null) 
+        	  process(line);
+        else 
+        	return false;
+        return true;
+    }
+    
+    public void process(String line) throws IllegalObjectException {
         	
             String[] obj = line.split(SEP);
             List<String> attrForObj = new ArrayList<String>();
@@ -43,7 +71,7 @@ public class FCSVMultiClassReader {
             Set<String> classes = new TreeSet<String>();
             
             int i=1;
-            for (; i < attr.length - numClasses; i++) {
+            for (; i <= context.getAttributeCount(); i++) {
             	if (isDouble(obj[i])){
             	    attrForObj.add(context.getAttributeAtIndex(i - 1));
                     values.add(Double.parseDouble(obj[i]));
@@ -51,23 +79,23 @@ public class FCSVMultiClassReader {
             }
             
             // for classes
-            for(; i < attr.length; i++) 
+            for(; i < obj.length; i++) 
             	classes.add(obj[i]);
             
 //            System.out.println("Classes:" + classes); 
 
             
-            if(obj.length < attr.length) 
+            if(obj.length < context.getAttributeCount() + numClasses) 
                 context.addObject(obj[0]+"_" + numObj,"",attrForObj,values);
            	else
             	context.addObject(obj[0]+"_" + numObj,classes,attrForObj,values);
             numObj++;
-     //         System.out.println(context);
-        }
-        br.close();
- //       System.out.println("Classes:" + context.getClasses()); 
-        state.setNewFile(path);
-        state.newContext(context);
+    
+    //      System.out.println("Classes:" + context.getClasses()); 
+    }
+    
+    public void close() throws IOException {
+    	br.close();
     }
 
 	public boolean isDouble(String s) {

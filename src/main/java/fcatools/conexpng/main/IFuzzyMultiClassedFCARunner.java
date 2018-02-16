@@ -58,9 +58,10 @@ public class IFuzzyMultiClassedFCARunner {
 			sb.append("<{");
 			for(FullObject<String, String> o : c.getExtent()) 
 				sb.append(o.getIdentifier() + ",");
-			sb.append("},");
-			sb.append(c.getIntent());
-			sb.append(">");
+			sb.append("},{");
+			for(String attr : c.getIntent())
+				sb.append(attr + ",");
+			sb.append("}>");
 			System.out.println(i + ":" + sb);
 			i++;
 	}
