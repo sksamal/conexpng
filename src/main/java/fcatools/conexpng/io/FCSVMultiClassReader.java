@@ -18,10 +18,11 @@ public class FCSVMultiClassReader {
 	private BufferedReader br;
 	private int numObj;
 	private int numClasses;
+	private boolean unique;
 	private FuzzyMultiClassifierContext context;
 
 	public FCSVMultiClassReader(Conf state, String path) throws IllegalObjectException, IOException {
-		this(state,path,2);
+		this(state,path,1);
 	}
 	
 	public FCSVMultiClassReader(Conf state, String path, int numClasses) throws IllegalObjectException, IOException {
@@ -29,6 +30,14 @@ public class FCSVMultiClassReader {
 	}
 	
 	public FCSVMultiClassReader(Conf state, String path, int numClasses, int initialRecords) throws IllegalObjectException, IOException {
+		this(state,path,numClasses,true, initialRecords);
+	}
+	
+	public FCSVMultiClassReader(Conf state, String path, int numClasses, boolean unique) throws IllegalObjectException, IOException {
+		this(state,path,numClasses,unique, Integer.MAX_VALUE);
+	}
+	
+	public FCSVMultiClassReader(Conf state, String path, int numClasses, boolean unique, int initialRecords) throws IllegalObjectException, IOException {
 		    
 		FileInputStream fis = new FileInputStream(path);
         br = new BufferedReader(new InputStreamReader(fis));
@@ -36,6 +45,7 @@ public class FCSVMultiClassReader {
         String line;
         context = new FuzzyMultiClassifierContext();
         this.numClasses = numClasses;
+        this.unique = unique;
         line = br.readLine();
         String[] attr = line.split(SEP);
         
@@ -86,9 +96,16 @@ public class FCSVMultiClassReader {
 
             
             if(obj.length < context.getAttributeCount() + numClasses) 
-                context.addObject(obj[0]+"_" + numObj,"",attrForObj,values);
+            	if(unique)
+            		context.addObject(obj[0],"",attrForObj,values);
+            	else
+            		context.addObject(obj[0]+"_" + numObj,"",attrForObj,values);
            	else
-            	context.addObject(obj[0]+"_" + numObj,classes,attrForObj,values);
+            	if(unique)
+                	context.addObject(obj[0],classes,attrForObj,values);
+            	else
+                	context.addObject(obj[0]+"_" + numObj,classes,attrForObj,values);
+
             numObj++;
     
     //      System.out.println("Classes:" + context.getClasses()); 

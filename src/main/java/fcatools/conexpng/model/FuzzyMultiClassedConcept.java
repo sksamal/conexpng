@@ -2,9 +2,11 @@ package fcatools.conexpng.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import de.tudresden.inf.tcs.fcaapi.Concept;
 import de.tudresden.inf.tcs.fcalib.FullObject;
+import de.tudresden.inf.tcs.fcalib.utils.ListSet;
 
 public class FuzzyMultiClassedConcept extends LatticeConcept {
 
@@ -46,11 +48,40 @@ public class FuzzyMultiClassedConcept extends LatticeConcept {
 	
 	public void addProb(int i, Double prob) {
 		if(i<this.probsList.size())
-			this.probsList.get(i).add(prob);
+			this.probsList.get(i).add(round(prob));
 		else {
 			List<Double> dbList = new ArrayList<Double>();
-			dbList.add(prob);
+			dbList.add(round(prob));
 			this.probsList.add(dbList);
 		}
 	}
+	
+	 public Double round(Double prob) {
+	    	return ((int)(prob*100))/100.0;
+	    	
+	    }
+	 
+		public List<List<Integer>> getProbClass() {
+			int maxIndex = 0;
+			List<List<Integer>> cList = new ArrayList<List<Integer>>();
+			for(int j=0;j<getProbsList().size();j++) {
+				List<Integer> ccList = new ArrayList<Integer>();
+				ccList.add(0);
+			for(int i=1;i<getProbs(j).size();i++) {
+				if(getProbs(j).get(maxIndex) < getProbs(j).get(i)) {
+					maxIndex = i;
+					ccList.clear();
+					ccList.add(i);
+				}
+				else if(getProbs(j).get(maxIndex) == getProbs(j).get(i)) {
+					ccList.add(i);
+				}
+			}
+			  cList.add(ccList);
+			}
+		    return cList;
+		 
+		}
+
+	
 }

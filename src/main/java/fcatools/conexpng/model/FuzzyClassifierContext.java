@@ -203,6 +203,9 @@ public String getClassAsString(int index) {
 	return (String) this.classes.toArray()[index];
 }
 
+public String getClass(String oid) {
+	return this.classMap.get(oid);
+}
 public String getClassAsString(List<Integer> indices) {
 	String clazz = "";
 	for(int index: indices)

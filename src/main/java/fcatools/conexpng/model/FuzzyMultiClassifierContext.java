@@ -334,6 +334,9 @@ public String getClassAsString(int i, List<Integer> indices) {
 	return fuzzyLattice;
    }
 
+public Set<String> getClass(String oid) {
+	return this.classSetMap.get(oid);
+}
   public ArrayList<Set<String>> getClassesSet() {
 	  return classesSet;
   }
@@ -347,5 +350,74 @@ public String getClassAsString(int i, List<Integer> indices) {
 
 public int getClassesCount() {
 	return this.classesSet.size();
+}
+
+public List<String> getClassAsString(List<Integer> classList) {
+	List<String> classes = new ArrayList<String>();
+	for(int i=0;i<classesSet.size();i++)
+		classes.add(classesSet.get(i).toArray(new String[0])[classList.get(i)]);
+	return classes;
+}
+public List<List<String>> getProbClassAsString(Concept<String, FullObject<String, String>> c) {
+	List<List<String>> csList = new ArrayList<List<String>>();
+	FuzzyMultiClassedConcept fcc = (FuzzyMultiClassedConcept)c;
+	int i=0;
+	for(List<Integer> ccList : fcc.getProbClass()) {
+		List<String> cscList = new ArrayList<String>();
+		for(Integer ic : ccList) {
+			cscList.add(classesSet.get(i).toArray(new String[0])[ccList.get(ic)]);
+		i++;
+		}
+		csList.add(cscList);
+	}
+	return csList;
+}
+
+public Set<Concept<String, FullObject<String, String>>> getConceptsOfObject(String oString) {
+	 
+    ListSet<Concept<String, FullObject<String, String>>> subConcepts = new ListSet<Concept<String, FullObject<String, String>>>();
+
+	 for(Concept<String,FullObject<String, String>> cObj : this.getConcepts()) {
+		 for(FullObject<String, String> o: cObj.getExtent())
+			 if(o.getIdentifier().equals(oString))
+				 subConcepts.add(cObj);	 
+	 }
+	 return subConcepts;
+}
+
+public Set<Concept<String, FullObject<String, String>>> getConceptsOfObject(FullObject<String,String> o) {
+	 
+    ListSet<Concept<String, FullObject<String, String>>> subConcepts = new ListSet<Concept<String, FullObject<String, String>>>();
+
+	 for(Concept<String,FullObject<String, String>> cObj : this.getConcepts()) {
+		 if(cObj.getExtent().contains(o))
+			subConcepts.add(cObj);	 
+	 }
+	 return subConcepts;
+}
+
+public HashMap<String,Set<String>> classify() {
+	
+	 HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = new HashMap<String,Concept<String,FullObject<String, String>>>();
+	 for(Concept<String,FullObject<String, String>> cObj : this.getConcepts()) {
+			for(FullObject<String,String> o : cObj.getExtent())
+				if(minConceptMap.get(o.getIdentifier()) == null)
+					minConceptMap.put(o.getIdentifier(), cObj);
+				else {
+					if(cObj.getExtent().size() < minConceptMap.get(o.getIdentifier()).getExtent().size())
+						minConceptMap.put(o.getIdentifier(),cObj);
+					}
+}
+	 HashMap<String,Set<String>> predictedMap = new HashMap<String,Set<String>>();
+	 for(String ostr : minConceptMap.keySet()) {
+		 Set<String> cSet = new TreeSet<String>();
+		 FuzzyMultiClassedConcept cObj = new FuzzyMultiClassedConcept(minConceptMap.get(ostr));
+		 for(List<String> sList : getProbClassAsString(cObj))
+			 cSet.add(sList.toString());
+		 predictedMap.put(ostr, cSet);
+	 }
+	 
+	 return predictedMap;
+		 
 }
 }

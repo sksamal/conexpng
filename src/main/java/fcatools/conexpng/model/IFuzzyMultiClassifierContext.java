@@ -176,6 +176,7 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 	        	FuzzyMultiClassedConcept fcc = new FuzzyMultiClassedConcept(c);
 	        	for(FullObject<String, String> obj : fcc.getExtent()) {
 	        		Set<String> clazzSet = classSetMap.get(obj.getIdentifier());
+	        		System.out.println(clazzSet);
 	        		for(String clazz: clazzSet) {
 	        			if(countMap.containsKey(clazz))
 	        				countMap.put(clazz, countMap.get(clazz)+1);
@@ -184,7 +185,7 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 	        		}
 	        	}
 	   
-	        	// Calculate probablities
+	        	// Calculate probabilities
 	        	int i=0;
 	        	for(Set<String> clazzSet : classesSet) {
 	        		for(String clazz: clazzSet)
@@ -196,4 +197,7 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 	        	}
 	        	newConceptLattice.add(fcc);	
 	        }
+     
+       
+     
 }
