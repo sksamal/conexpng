@@ -18,9 +18,9 @@ public class IFuzzyTest {
 
 	public static void main(String[] args) {
 		
-		final String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings.fccsv";
+		final String INPUTFILE = "Z:/data-analysis-tools/data/colcan/codings.fccsv";
 		Conf state = new Conf();
-		state.filePath = "/home/ssamal/Downloads/data-analysis-tools/data/colcan";
+		state.filePath = "/home/grad/ssamal/data-analysis-tools/data/colcan";
 	    System.setProperty("user.language", LocaleHandler.readLocale());
 	       
 		try {
@@ -82,17 +82,19 @@ public class IFuzzyTest {
 		// Get concepts for each object
 		int i=0;
 		for(FullObject<String,String> o :state.context.getObjects()) {
-			System.out.println("Concepts containing " + o.getIdentifier() + " are:");
-			printClassedConceptProbs(((FuzzyMultiClassifierContext)(state.context)).getConceptsOfObject(o));
+			//System.out.println("Concepts containing " + o.getIdentifier() + " are:");
+			//printClassedConceptProbs(((FuzzyMultiClassifierContext)(state.context)).getConceptsOfObject(o));
 			if(i==5)
 			break;
 			i++;
 		} 
 		
 		// Classify all objects
-//		HashMap<String,Set<String>> classifiedMap = ((FuzzyMultiClassifierContext)(state.context)).classify();
-	//	for(String o: classifiedMap.keySet())
-		//	System.out.println(o + " " + classifiedMap.get(o).toString());
+		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ((FuzzyMultiClassifierContext)(state.context)).getMinimalConceptMap();
+		for(String o: minConceptMap.keySet()) {
+			System.out.print(o + " ");
+			printClassedConceptProbs(minConceptMap.get(o));
+		}
 	}
 
 	public static void printConcepts(Set<Concept<String, FullObject<String, String>>> concepts) {
@@ -149,5 +151,24 @@ public class IFuzzyTest {
 			System.out.println(i + ":" + sb);
 			i++;
 	}
-}
+	}	
+		public static void printClassedConceptProbs(Concept<String,FullObject<String,String>> concept) 
+		{
+				FuzzyMultiClassedConcept fcc = (FuzzyMultiClassedConcept) concept;
+				StringBuffer sb = new StringBuffer();
+				sb.append("<{");
+				//for(FullObject<String, String> o : fcc.getExtent()) 
+				//	sb.append(o.getIdentifier() + ",");
+				sb.append(fcc.getExtent().size());
+				sb.append("},{");
+				/*	for(String attr : fcc.getIntent())
+					sb.append(attr + ",");
+				sb.append("},{"); */
+				sb.append(fcc.getProbsList());
+				sb.append("-->");
+				sb.append(fcc.getProbClass());
+				sb.append("}>");
+				System.out.println(sb);
+		}
+	
 }

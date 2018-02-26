@@ -365,7 +365,7 @@ public List<List<String>> getProbClassAsString(Concept<String, FullObject<String
 	for(List<Integer> ccList : fcc.getProbClass()) {
 		List<String> cscList = new ArrayList<String>();
 		for(Integer ic : ccList) {
-			cscList.add(classesSet.get(i).toArray(new String[0])[ccList.get(ic)]);
+			cscList.add(classesSet.get(i).toArray(new String[0])[ic]);
 		i++;
 		}
 		csList.add(cscList);
@@ -396,9 +396,9 @@ public Set<Concept<String, FullObject<String, String>>> getConceptsOfObject(Full
 	 return subConcepts;
 }
 
-public HashMap<String,Set<String>> classify() {
-	
+public HashMap<String,Concept<String,FullObject<String, String>>> getMinimalConceptMap() {
 	 HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = new HashMap<String,Concept<String,FullObject<String, String>>>();
+	 
 	 for(Concept<String,FullObject<String, String>> cObj : this.getConcepts()) {
 			for(FullObject<String,String> o : cObj.getExtent())
 				if(minConceptMap.get(o.getIdentifier()) == null)
@@ -408,15 +408,38 @@ public HashMap<String,Set<String>> classify() {
 						minConceptMap.put(o.getIdentifier(),cObj);
 					}
 }
+//	 for(String o : minConceptMap.keySet())
+//		 System.out.println("O= "+o + " Obj= " + minConceptMap.get(o));
+   return minConceptMap;
+}
+public HashMap<String,Set<String>> classify() {
+	
+	 HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = getMinimalConceptMap();
+		 
 	 HashMap<String,Set<String>> predictedMap = new HashMap<String,Set<String>>();
 	 for(String ostr : minConceptMap.keySet()) {
 		 Set<String> cSet = new TreeSet<String>();
-		 FuzzyMultiClassedConcept cObj = new FuzzyMultiClassedConcept(minConceptMap.get(ostr));
+		 
+		 Concept<String,FullObject<String, String>> cObj = minConceptMap.get(ostr);
+	//	 	 System.out.println("O= "+ostr + " Obj= " + cObj);
+		 
 		 for(List<String> sList : getProbClassAsString(cObj))
-			 cSet.add(sList.toString());
+			 for(String sElement: sList)
+				 cSet.add(sElement);
 		 predictedMap.put(ostr, cSet);
 	 }
-	 
+	
+	 int count=0;
+	 System.out.println("Object\tPredicted\tActual\tSuccess");
+	 for(String o : predictedMap.keySet()) {
+		 System.out.println(o + "\t" + predictedMap.get(o) + "\t" + classSetMap.get(o)
+		  + "\t" + classSetMap.get(o).contains(predictedMap.get(o).toArray(new String[0])[0]));
+		 if(classSetMap.get(o).contains(predictedMap.get(o).toArray(new String[0])[0]))
+			 count++;
+	 }
+	 System.out.println("Objects classified correctly:" + count);
+	 System.out.println("Total objects:"+ this.getObjectCount());
+	 System.out.println("% Success:" + count*100.0/this.getObjectCount());
 	 return predictedMap;
 		 
 }
