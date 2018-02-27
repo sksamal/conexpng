@@ -1,5 +1,7 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -80,21 +82,18 @@ public class IFuzzyTest {
 		}
 		
 		// Get concepts for each object
-		int i=0;
-		for(FullObject<String,String> o :state.context.getObjects()) {
+//		int i=0;
+//		for(FullObject<String,String> o :state.context.getObjects()) {
 			//System.out.println("Concepts containing " + o.getIdentifier() + " are:");
 			//printClassedConceptProbs(((FuzzyMultiClassifierContext)(state.context)).getConceptsOfObject(o));
-			if(i==5)
-			break;
-			i++;
-		} 
+//			i++;
+//		} 
 		
 		// Classify all objects
 		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ((FuzzyMultiClassifierContext)(state.context)).getMinimalConceptMap();
-		for(String o: minConceptMap.keySet()) {
-			System.out.print(o + " ");
-			printClassedConceptProbs(minConceptMap.get(o));
-		}
+		HashMap<String,Set<String>> classSetMap = ((FuzzyMultiClassifierContext)(state.context)).getClassSetMap();
+		List<Set<String>> classesSet = ((FuzzyMultiClassifierContext)(state.context)).getClasses();
+		printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
 	}
 
 	public static void printConcepts(Set<Concept<String, FullObject<String, String>>> concepts) {
@@ -113,7 +112,7 @@ public class IFuzzyTest {
 	}
 	}
 		
-	public static void printClassedConcepts(Set<? extends Concept<String, FullObject<String, String>>> concepts) {
+	public static void printClassedConcepts(Set<? extends Concept<String, FullObject<String, String>>> concepts,HashMap<String,Set<String>> classSetMap) {
 			int i=1;
 			for(Concept<String, FullObject<String, String>> c : concepts) {
 				FuzzyMultiClassedConcept fcc = (FuzzyMultiClassedConcept) c;
@@ -152,23 +151,52 @@ public class IFuzzyTest {
 			i++;
 	}
 	}	
-		public static void printClassedConceptProbs(Concept<String,FullObject<String,String>> concept) 
+		public static void printClassedConceptProbs(HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap,
+				List<Set<String>> classesSet, HashMap<String,Set<String>> classSetMap) 
 		{
+			System.out.println(String.format("%8s %10s %65s %10s %10s","Object","ExtentSize","Probabilities","Predicted","Actual"));
+			System.out.println(String.format("%8s %10s %65s %10s %10s","Object","Size","[0   ,1   ,2   ,3   ,4   ,5   ,6   ,7   ,8   ,9   ]","Class","Class"));
+			int count=0;
+			for(String oid: minConceptMap.keySet()) {
+				Concept<String,FullObject<String, String>> concept = minConceptMap.get(oid);
 				FuzzyMultiClassedConcept fcc = (FuzzyMultiClassedConcept) concept;
 				StringBuffer sb = new StringBuffer();
-				sb.append("<{");
+	
+				// Convert class indices to string representation
+				int i=0;
+				List<List<String>> csList = new ArrayList<List<String>>();
+				for(List<Integer> ccList : fcc.getProbClass()) {
+					List<String> cscList = new ArrayList<String>();
+					for(Integer ic : ccList) {
+						cscList.add(classesSet.get(i).toArray(new String[0])[ic]);
+					i++;
+					}
+					csList.add(cscList);
+				}
+				
+				sb.append(String.format("%8s %9s} %65s %10s %10s",oid,"{"+fcc.getExtent().size(),fcc.getProbsList(),csList,classSetMap.get(oid)));
+				if(classSetMap.get(oid).contains(csList.get(0).toArray(new String[0])[0])) {
+					 count++;
+					 sb.append(" _/");
+				}
+				//		sb.append("<{");
 				//for(FullObject<String, String> o : fcc.getExtent()) 
 				//	sb.append(o.getIdentifier() + ",");
-				sb.append(fcc.getExtent().size());
-				sb.append("},{");
+			//	sb.append(fcc.getExtent().size());
+			//	sb.append("},{");
 				/*	for(String attr : fcc.getIntent())
 					sb.append(attr + ",");
 				sb.append("},{"); */
-				sb.append(fcc.getProbsList());
-				sb.append("-->");
-				sb.append(fcc.getProbClass());
-				sb.append("}>");
+//				sb.append(fcc.getProbsList());
+//				sb.append("-->");
+//				sb.append(fcc.getProbClass());
+//				sb.append("}>");
 				System.out.println(sb);
+		}
+			 System.out.println("Objects classified correctly:" + count);
+			 System.out.println("Total objects:"+ minConceptMap.keySet().size());
+			 System.out.println("% Success:" + count*100.0/minConceptMap.keySet().size());
+			
 		}
 	
 }

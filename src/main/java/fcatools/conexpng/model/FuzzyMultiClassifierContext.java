@@ -408,8 +408,6 @@ public HashMap<String,Concept<String,FullObject<String, String>>> getMinimalConc
 						minConceptMap.put(o.getIdentifier(),cObj);
 					}
 }
-//	 for(String o : minConceptMap.keySet())
-//		 System.out.println("O= "+o + " Obj= " + minConceptMap.get(o));
    return minConceptMap;
 }
 public HashMap<String,Set<String>> classify() {
@@ -442,5 +440,13 @@ public HashMap<String,Set<String>> classify() {
 	 System.out.println("% Success:" + count*100.0/this.getObjectCount());
 	 return predictedMap;
 		 
+}
+
+public HashMap<String, Set<String>> getClassSetMap() {
+	return classSetMap;
+}
+
+public void setClassSetMap(HashMap<String, Set<String>> classSetMap) {
+	this.classSetMap = classSetMap;
 }
 }
