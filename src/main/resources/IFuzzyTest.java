@@ -20,7 +20,7 @@ public class IFuzzyTest {
 
 	public static void main(String[] args) {
 		
-		final String INPUTFILE = "Z:/data-analysis-tools/data/colcan/codings.fccsv";
+		final String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings.fccsv";
 		Conf state = new Conf();
 		state.filePath = "/home/grad/ssamal/data-analysis-tools/data/colcan";
 	    System.setProperty("user.language", LocaleHandler.readLocale());
@@ -155,7 +155,7 @@ public class IFuzzyTest {
 				List<Set<String>> classesSet, HashMap<String,Set<String>> classSetMap) 
 		{
 			System.out.println(String.format("%8s %10s %65s %10s %10s","Object","ExtentSize","Probabilities","Predicted","Actual"));
-			System.out.println(String.format("%8s %10s %65s %10s %10s","Object","Size","[0   ,1   ,2   ,3   ,4   ,5   ,6   ,7   ,8   ,9   ]","Class","Class"));
+			System.out.println(String.format("%8s %10s %65s %10s %10s","Object","Size","[0  , 1   , 2   , 3   , 4   , 5   , 6   , 7   , 8   , 9   ]","Class","Class"));
 			int count=0;
 			for(String oid: minConceptMap.keySet()) {
 				Concept<String,FullObject<String, String>> concept = minConceptMap.get(oid);
@@ -174,7 +174,16 @@ public class IFuzzyTest {
 					csList.add(cscList);
 				}
 				
-				sb.append(String.format("%8s %9s} %65s %10s %10s",oid,"{"+fcc.getExtent().size(),fcc.getProbsList(),csList,classSetMap.get(oid)));
+				List<List<String>> psList = new ArrayList<List<String>>();
+				for(List<Double> ppList : fcc.getProbsList()) {
+					List<String> pspList = new ArrayList<String>();
+					for(Double d : ppList) {
+						pspList.add(String.format("%.2f",d));
+					}
+					psList.add(pspList);
+				}
+				
+				sb.append(String.format("%8s %9s} %65s %10s %10s",oid,"{"+fcc.getExtent().size(),psList,csList,classSetMap.get(oid)));
 				if(classSetMap.get(oid).contains(csList.get(0).toArray(new String[0])[0])) {
 					 count++;
 					 sb.append(" _/");
@@ -192,10 +201,11 @@ public class IFuzzyTest {
 //				sb.append(fcc.getProbClass());
 //				sb.append("}>");
 				System.out.println(sb);
+
 		}
-			 System.out.println("Objects classified correctly:" + count);
+			 System.out.println("\nObjects classified correctly:" + count);
 			 System.out.println("Total objects:"+ minConceptMap.keySet().size());
-			 System.out.println("% Success:" + count*100.0/minConceptMap.keySet().size());
+			 System.out.println("Success:" + count*100.0/minConceptMap.keySet().size() + "%");
 			
 		}
 	
