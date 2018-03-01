@@ -20,7 +20,8 @@ public class IFuzzyTest {
 
 	public static void main(String[] args) {
 		
-		final String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings.fccsv";
+		final String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings_16.fccsv";
+		//final String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings.fccsv";
 		Conf state = new Conf();
 		state.filePath = "/home/grad/ssamal/data-analysis-tools/data/colcan";
 	    System.setProperty("user.language", LocaleHandler.readLocale());
