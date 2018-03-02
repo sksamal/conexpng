@@ -89,7 +89,7 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 
 		// copy new structures directly
 		this.classesSet = fc.classesSet;
-	  	this.classSetMap = fc.classSetMap;
+	  	this.trainingSetMap = fc.trainingSetMap;
 	  	this.composition = fc.composition;
 	  	this.allObjectsOfAttribute = fc.allObjectsOfAttribute;
 	  	this.objectsOfAttribute = fc.objectsOfAttribute;
@@ -175,7 +175,7 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 	    		HashMap<String,Integer> countMap = new HashMap<String,Integer> ();
 	        	FuzzyMultiClassedConcept fcc = new FuzzyMultiClassedConcept(c);
 	        	for(FullObject<String, String> obj : fcc.getExtent()) {
-	        		Set<String> clazzSet = classSetMap.get(obj.getIdentifier());
+	        		Set<String> clazzSet = trainingSetMap.get(obj.getIdentifier());
 	        		System.out.println(clazzSet);
 	        		for(String clazz: clazzSet) {
 	        			if(countMap.containsKey(clazz))

@@ -19,8 +19,6 @@ public class Transform {
 	
 	String line = br.readLine();
     String[] attr = line.split(SEP);
-    String[] newAttr = new String[(attr.length-numClasses)*bins + numClasses + 1];
-    
     
     //header
     StringBuffer newline = new StringBuffer(attr[0]);

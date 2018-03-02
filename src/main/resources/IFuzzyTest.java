@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 import de.tudresden.inf.tcs.fcaapi.Concept;
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
@@ -14,13 +13,12 @@ import fcatools.conexpng.io.FCSVMultiClassReader;
 import fcatools.conexpng.io.locale.LocaleHandler;
 import fcatools.conexpng.model.FuzzyMultiClassedConcept;
 import fcatools.conexpng.model.FuzzyMultiClassifierContext;
-import fcatools.conexpng.model.IFuzzyMultiClassifierContext;
 
 public class IFuzzyTest {
 
 	public static void main(String[] args) {
 		
-		final String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings_16.fccsv";
+		final String INPUTFILE = "Z:/data-analysis-tools/data/colcan/codings.fccsv";
 		//final String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings.fccsv";
 		Conf state = new Conf();
 		state.filePath = "/home/grad/ssamal/data-analysis-tools/data/colcan";
@@ -29,18 +27,20 @@ public class IFuzzyTest {
 		try {
 			
 		
-		FCSVMultiClassReader ptdgsReader = new FCSVMultiClassReader(state, INPUTFILE,1); // last 2 are classes
+		FCSVMultiClassReader ptdgsReader = new FCSVMultiClassReader(state, INPUTFILE,1); // last one is a class
 		state.startCalculation(StatusMessage.LOADINGFILE);
 		System.out.println("***Reading entire file***");
 		System.out.println("No of Objects:"+ state.context.getObjectCount());
 		System.out.println("No of attributes:" + state.context.getAttributeCount());
 		long millis = System.currentTimeMillis();
+		FuzzyMultiClassifierContext fmcc = ((FuzzyMultiClassifierContext)(state.context));
+		fmcc.partition(0.4);
 		Set<Concept<String,FullObject<String,String>>> concepts = state.context.getConcepts();
 //		System.out.println(state.context.getConcepts());
 		System.out.println("Directly generating concepts took " + (System.currentTimeMillis() - millis) + "ms");
 		System.out.println("No of concepts:" + concepts.size());
-		System.out.println("No of classSets:" + ((FuzzyMultiClassifierContext)(state.context)).getClassesCount());
-		System.out.println("Classes:" + ((FuzzyMultiClassifierContext)(state.context)).getClassesAsString());
+		System.out.println("No of classSets:" + fmcc.getClassesCount());
+		System.out.println("Classes:" + fmcc.getClassesAsString());
 //		printClassedConceptProbs(concepts);
 
 		ptdgsReader.close();
@@ -92,9 +92,10 @@ public class IFuzzyTest {
 		
 		// Classify all objects
 		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ((FuzzyMultiClassifierContext)(state.context)).getMinimalConceptMap();
-		HashMap<String,Set<String>> classSetMap = ((FuzzyMultiClassifierContext)(state.context)).getClassSetMap();
+		HashMap<String,Set<String>> trainSet = ((FuzzyMultiClassifierContext)(state.context)).getTrainingSet();
+		HashMap<String,Set<String>> testSet = ((FuzzyMultiClassifierContext)(state.context)).getTestSet();
 		List<Set<String>> classesSet = ((FuzzyMultiClassifierContext)(state.context)).getClasses();
-		printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
+		printClassedConceptProbs(minConceptMap,classesSet,trainSet,testSet);
 	}
 
 	public static void printConcepts(Set<Concept<String, FullObject<String, String>>> concepts) {
@@ -153,11 +154,12 @@ public class IFuzzyTest {
 	}
 	}	
 		public static void printClassedConceptProbs(HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap,
-				List<Set<String>> classesSet, HashMap<String,Set<String>> classSetMap) 
+				List<Set<String>> classesSet, HashMap<String,Set<String>> trainSet, HashMap<String,Set<String>> testSet) 
 		{
 			System.out.println(String.format("%8s %10s %65s %10s %10s","Object","ExtentSize","Probabilities","Predicted","Actual"));
 			System.out.println(String.format("%8s %10s %65s %10s %10s","Object","Size","[0  , 1   , 2   , 3   , 4   , 5   , 6   , 7   , 8   , 9   ]","Class","Class"));
-			int count=0;
+			int count=0, testSize=0;
+			int totalSize = minConceptMap.keySet().size();
 			for(String oid: minConceptMap.keySet()) {
 				Concept<String,FullObject<String, String>> concept = minConceptMap.get(oid);
 				FuzzyMultiClassedConcept fcc = (FuzzyMultiClassedConcept) concept;
@@ -184,11 +186,14 @@ public class IFuzzyTest {
 					psList.add(pspList);
 				}
 				
-				sb.append(String.format("%8s %9s} %65s %10s %10s",oid,"{"+fcc.getExtent().size(),psList,csList,classSetMap.get(oid)));
-				if(classSetMap.get(oid).contains(csList.get(0).toArray(new String[0])[0])) {
+				sb.append(String.format("%8s %9s} %65s %10s %10s",oid,"{"+fcc.getExtent().size(),psList,csList,trainSet.get(oid)));
+				if(trainSet.get(oid).contains(csList.get(0).toArray(new String[0])[0])) {
 					 count++;
 					 sb.append(" _/");
 				}
+				
+				if(trainSet.get(oid).size()==0) {
+					testSize++;
 				//		sb.append("<{");
 				//for(FullObject<String, String> o : fcc.getExtent()) 
 				//	sb.append(o.getIdentifier() + ",");
@@ -202,11 +207,14 @@ public class IFuzzyTest {
 //				sb.append(fcc.getProbClass());
 //				sb.append("}>");
 				System.out.println(sb);
+				}
 
 		}
 			 System.out.println("\nObjects classified correctly:" + count);
-			 System.out.println("Total objects:"+ minConceptMap.keySet().size());
-			 System.out.println("Success:" + count*100.0/minConceptMap.keySet().size() + "%");
+			 System.out.println("Total objects:"+ totalSize);
+			 System.out.println("Training Size:" + (totalSize - testSize));
+			 System.out.println("Test Size:" + testSize);
+			 System.out.println("Success:" + count*100.0/(totalSize - testSize) + "%");
 			
 		}
 	

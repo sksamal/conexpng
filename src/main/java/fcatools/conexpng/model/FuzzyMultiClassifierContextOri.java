@@ -1,6 +1,5 @@
 package fcatools.conexpng.model;
 
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,11 +18,10 @@ import de.tudresden.inf.tcs.fcalib.utils.ListSet;
  * An object may be classified as A1 in set S1 and B2 in set S2 and so on.
  * 
  */
-public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
+public class FuzzyMultiClassifierContextOri extends FuzzyFormalContext {
 
-	// A Set of hashMaps holding object and set of classes for training and test sets
-	protected HashMap<String, Set<String>> trainingSetMap;
-	protected HashMap<String, Set<String>> testSetMap;
+	// A Set of hashMaps holding object and set of classes
+	protected HashMap<String, Set<String>> classSetMap;
 	// A List of Set of classes 
 	ArrayList<Set<String>> classesSet;
 	
@@ -39,7 +37,7 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 		if(super.addObject(object, attributes,values)) {
 			Set<String> classSet = new TreeSet<String>();
 			classSet.add(classifier);
-			trainingSetMap.put(object,classSet);
+			classSetMap.put(object,classSet);
 			if(classifier!=null)  {
 				for(Set<String> classes : classesSet) {
 					if(classes.contains(classifier))
@@ -59,7 +57,7 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 	
 	public boolean addObject(String object, Set<String> classifiers, String attributes[], Double[] values) throws IllegalObjectException {
 		if(super.addObject(object, attributes,values)) {
-			trainingSetMap.put(object, classifiers);
+			classSetMap.put(object, classifiers);
 			int i = 0;
 			for(String classifier: classifiers) {
 				if(classesSet.size()<=i)
@@ -83,7 +81,7 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 		if(super.addObject(o,value)) {
 			Set<String> classSet = new TreeSet<String>();
 			classSet.add(classifier);
-			trainingSetMap.put(o.getIdentifier(),classSet);
+			classSetMap.put(o.getIdentifier(),classSet);
 			if(classifier!=null)  {
 				for(Set<String> classes : classesSet) {
 					if(classes.contains(classifier))
@@ -101,7 +99,7 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 
 	public boolean addObject(FullObject<String, String> o, Set<String> classifiers, double value) throws IllegalObjectException {
 		if(super.addObject(o,value)) {
-			trainingSetMap.put(o.getIdentifier(), classifiers);
+			classSetMap.put(o.getIdentifier(), classifiers);
 			int i = 0;
 			for(String classifier: classifiers) {
 				if(classesSet.size()<=i)
@@ -126,7 +124,7 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 		if(super.addObject(o)) {
 			Set<String> classSet = new HashSet<String>();
 			classSet.add(classifier);
-			trainingSetMap.put(o.getIdentifier(),classSet);
+			classSetMap.put(o.getIdentifier(),classSet);
 			if(classifier!=null)  {
 				for(Set<String> classes : classesSet) {
 					if(classes.contains(classifier))
@@ -144,14 +142,14 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 	@Override
 	public boolean removeObject(String id) throws IllegalObjectException {
 		if(removeObject(getObject(id))) {
-			Set<String> clazzSet = trainingSetMap.get(id);
-			trainingSetMap.remove(id);
+			Set<String> clazzSet = classSetMap.get(id);
+			classSetMap.remove(id);
 			
 			Set<String> removeList = new TreeSet<String>();
 			for(String clazz : clazzSet)
 				removeList.add(clazz);
 			
-			for(Set<String> classSet : trainingSetMap.values()) {
+			for(Set<String> classSet : classSetMap.values()) {
 				for(String clazz: clazzSet) {
 					if(classSet.contains(clazz))
 						removeList.remove(clazz);
@@ -166,7 +164,7 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 							removeSet.add(classes);
 				}
 			}
-			trainingSetMap.remove(removeSet);
+			classSetMap.remove(removeSet);
 			}
 		}
 		else return false;
@@ -178,31 +176,27 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 		return removeObject(object.getIdentifier());
 	}
 
-	public FuzzyMultiClassifierContext() {
+	public FuzzyMultiClassifierContextOri() {
 		super();
-		this.trainingSetMap = new HashMap<>();
-		this.testSetMap = new HashMap<>();
+		this.classSetMap = new HashMap<>();
 		this.classesSet = new ArrayList<>();
 	}
 
-	public FuzzyMultiClassifierContext(double threshold) {
+	public FuzzyMultiClassifierContextOri(double threshold) {
 		super(threshold);
-		this.trainingSetMap = new HashMap<>();
-		this.testSetMap = new HashMap<>();
+		this.classSetMap = new HashMap<>();
 		this.classesSet = new ArrayList<>();
 	}
 
-	public FuzzyMultiClassifierContext(int objectsCount, int attributesCount) {
+	public FuzzyMultiClassifierContextOri(int objectsCount, int attributesCount) {
 		super(objectsCount, attributesCount);
-		this.trainingSetMap = new HashMap<>();
-		this.testSetMap = new HashMap<>();
+		this.classSetMap = new HashMap<>();
 		this.classesSet = new ArrayList<>();
 	}
 
-	public FuzzyMultiClassifierContext(int objectsCount, int attributesCount, double threshold) {
+	public FuzzyMultiClassifierContextOri(int objectsCount, int attributesCount, double threshold) {
 		super(objectsCount, attributesCount, threshold);
-		this.trainingSetMap = new HashMap<>();
-		this.testSetMap = new HashMap<>();
+		this.classSetMap = new HashMap<>();
 		this.classesSet = new ArrayList<>();
 	}
 
@@ -216,8 +210,8 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 	public void removeObjectOnly(FullObject<String, String> o) {
 
 		super.removeObjectOnly(o);
-		if(trainingSetMap.containsKey(o.getIdentifier()))
-			trainingSetMap.remove(o.getIdentifier());
+		if(classSetMap.containsKey(o.getIdentifier()))
+			classSetMap.remove(o.getIdentifier());
 	
 	}
 
@@ -229,8 +223,8 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 	
 	public void renameObject(String oldObject, String newObject) {
 		super.renameObject(oldObject, newObject);
-		trainingSetMap.put(newObject, trainingSetMap.get(oldObject));
-		trainingSetMap.remove(oldObject);
+		classSetMap.put(newObject, classSetMap.get(oldObject));
+		classSetMap.remove(oldObject);
 	}
 
    @Override
@@ -242,7 +236,7 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 	    		HashMap<String,Integer> countMap = new HashMap<String,Integer> ();
 	        	FuzzyMultiClassedConcept fcc = new FuzzyMultiClassedConcept(c);
 	        	for(FullObject<String, String> obj : fcc.getExtent()) {
-	        		Set<String> clazzSet = trainingSetMap.get(obj.getIdentifier());
+	        		Set<String> clazzSet = classSetMap.get(obj.getIdentifier());
 	        		if(clazzSet!=null) {
 	        		for(String clazz: clazzSet) {
 	        			if(countMap.containsKey(clazz))
@@ -269,12 +263,12 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 	    	return fuzzyLattice;
 	    }
    
-   public HashMap<String, Set<String>> getTrainingSet() {
-	return trainingSetMap;
+   public HashMap<String, Set<String>> getClassMap() {
+	return classSetMap;
 }
 
 public void setClassMap(HashMap<String, Set<String>> classMap) {
-	this.trainingSetMap = classMap;
+	this.classSetMap = classMap;
 }
 
 public ArrayList<Set<String>> getClasses() {
@@ -317,7 +311,7 @@ public String getClassAsString(int i, List<Integer> indices) {
 		HashMap<String,Integer> countMap = new HashMap<String,Integer> ();
      	FuzzyMultiClassedConcept fcc = new FuzzyMultiClassedConcept(c);
     	for(FullObject<String, String> obj : fcc.getExtent()) {
-    		Set<String> clazzSet = trainingSetMap.get(obj.getIdentifier());
+    		Set<String> clazzSet = classSetMap.get(obj.getIdentifier());
     		for(String clazz: clazzSet) {
     			if(countMap.containsKey(clazz))
     				countMap.put(clazz, countMap.get(clazz)+1);
@@ -341,7 +335,7 @@ public String getClassAsString(int i, List<Integer> indices) {
    }
 
 public Set<String> getClass(String oid) {
-	return this.trainingSetMap.get(oid);
+	return this.classSetMap.get(oid);
 }
   public ArrayList<Set<String>> getClassesSet() {
 	  return classesSet;
@@ -416,34 +410,6 @@ public HashMap<String,Concept<String,FullObject<String, String>>> getMinimalConc
 }
    return minConceptMap;
 }
-
-public void partition(double testPercentage) {
-	long totalSize = this.objects.size();
-	
-	// generate test indices
-	long testSize = (int)(totalSize*(testPercentage));
-	Set<Long> test = new TreeSet<Long>();
-	System.out.println("TrainSize=" + (totalSize - testSize));
-	System.out.println("TestSize=" + testSize);
-	while(test.size() < testSize) {
-		long number =(long)(Math.random()*totalSize); 
-		test.add(number);
-	}
-	
-	long index=0;
-	for(String obj : this.trainingSetMap.keySet()) {
-		if(test.contains(index)) {
-			testSetMap.put(obj, trainingSetMap.get(obj));
-			trainingSetMap.put(obj, null);
-		}
-		index++;
-	}
-	
-}
-
-public HashMap<String,Set<String>> getTestSet() {
-  return this.testSetMap;
-}
 public HashMap<String,Set<String>> classify() {
 	
 	 HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = getMinimalConceptMap();
@@ -464,9 +430,9 @@ public HashMap<String,Set<String>> classify() {
 	 int count=0;
 	 System.out.println("Object\tPredicted\tActual\tSuccess");
 	 for(String o : predictedMap.keySet()) {
-		 System.out.println(o + "\t" + predictedMap.get(o) + "\t" + trainingSetMap.get(o)
-		  + "\t" + trainingSetMap.get(o).contains(predictedMap.get(o).toArray(new String[0])[0]));
-		 if(trainingSetMap.get(o).contains(predictedMap.get(o).toArray(new String[0])[0]))
+		 System.out.println(o + "\t" + predictedMap.get(o) + "\t" + classSetMap.get(o)
+		  + "\t" + classSetMap.get(o).contains(predictedMap.get(o).toArray(new String[0])[0]));
+		 if(classSetMap.get(o).contains(predictedMap.get(o).toArray(new String[0])[0]))
 			 count++;
 	 }
 	 System.out.println("Objects classified correctly:" + count);
@@ -476,7 +442,11 @@ public HashMap<String,Set<String>> classify() {
 		 
 }
 
-public void setTrainingSet(HashMap<String, Set<String>> classSetMap) {
-	this.trainingSetMap = classSetMap;
+public HashMap<String, Set<String>> getClassSetMap() {
+	return classSetMap;
+}
+
+public void setClassSetMap(HashMap<String, Set<String>> classSetMap) {
+	this.classSetMap = classSetMap;
 }
 }
