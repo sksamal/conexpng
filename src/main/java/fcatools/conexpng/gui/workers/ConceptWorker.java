@@ -199,7 +199,7 @@ public class ConceptWorker extends AbstractWorker {
         		count[i]=0;
 
         	for(FullObject<String, String> obj : fcc.getExtent()) {
-        		Set<String> clazzSet = fmcc.getClassMap().get(obj.getIdentifier());
+        		Set<String> clazzSet = fmcc.getTrainingSet().get(obj.getIdentifier());
         		int i=0;
             	for(String clazz: clazzSet) {
         			if(clazz != null) {
