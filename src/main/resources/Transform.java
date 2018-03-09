@@ -7,18 +7,22 @@ import java.io.PrintWriter;
 
 public class Transform {
 	public static void main(String args[]) throws NumberFormatException, IOException {
-	String path = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings.fccsv";
-	int bins=16;
+	String path = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2.fccsv";
+	int bins=8;
 	double RANGE_MIN = 0.0, RANGE_MAX = 1.0;
 	int numClasses = 1;
 	String SEP = ",";
 	FileInputStream fis = new FileInputStream(path);
 	BufferedReader br = new BufferedReader(new InputStreamReader(fis));
-	PrintWriter pw = new PrintWriter(new File(path + "_" + bins));
+	
+	String rawpath = path.substring(0, path.lastIndexOf('.'));
+	String ext = path.substring(path.lastIndexOf('.')+1,path.length());
+	PrintWriter pw = new PrintWriter(new File(rawpath + "_" + bins + "." + ext));
 	
 	
 	String line = br.readLine();
     String[] attr = line.split(SEP);
+    
     
     //header
     StringBuffer newline = new StringBuffer(attr[0]);
