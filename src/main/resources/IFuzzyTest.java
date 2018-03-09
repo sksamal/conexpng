@@ -104,7 +104,7 @@ public class IFuzzyTest {
 		
 		// Classify all objects
 		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ((FuzzyMultiClassifierContext)(newState.context)).getMinimalConceptMap();
-		HashMap<String,Set<String>> classSetMap = ((FuzzyMultiClassifierContext)(newState.context)).getClassSetMap();
+		HashMap<String,Set<String>> classSetMap = ((FuzzyMultiClassifierContext)(newState.context)).getTrainingSet();
 		List<Set<String>> classesSet = ((FuzzyMultiClassifierContext)(newState.context)).getClasses();
 		printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
 	}
