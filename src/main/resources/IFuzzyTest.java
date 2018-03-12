@@ -20,8 +20,9 @@ public class IFuzzyTest {
 
 	private static TeeWriter tee = null;
 	public static void main(String[] args) {
-		
-		final String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2_4.fccsv";
+	//	String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2.fccsv";
+		String INPUTFILE = "/home/ssamal/dl/codings.fccsv";
+		if(args.length ==1) INPUTFILE = args[0];
 		//final String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings.fccsv";
 		Conf state = new Conf();
 		state.filePath = "/home/grad/ssamal/data-analysis-tools/data/colcan";
@@ -51,7 +52,8 @@ public class IFuzzyTest {
 //		printConcepts(concepts);
 	
 		pwStream = new PrintStream(INPUTFILE + ".log");
-		tee = new TeeWriter(pwStream, null);
+		HTMLWriter htmlStream = new HTMLWriter(INPUTFILE + ".html");
+		tee = new TeeWriter(pwStream, htmlStream);
 		newState.filePath = "";
 		tee.println("Reading " + INPUTFILE);
 		long currentms = System.currentTimeMillis();
@@ -185,7 +187,7 @@ public class IFuzzyTest {
 					i++;
 					}
 					csList.add(cscList);
-				}
+				}	
 				
 				List<List<String>> psList = new ArrayList<List<String>>();
 				for(List<Double> ppList : fcc.getProbsList()) {
@@ -201,6 +203,7 @@ public class IFuzzyTest {
 					 count++;
 					 sb.append(" _/");
 				}
+				sb.append("\t<img src=\"/home/ssamal/dl/out/training/" + (int)(Double.parseDouble(classSetMap.get(oid).toArray(new String[0])[0])) + "/" + (int)(Double.parseDouble(oid)) + ".png\">");
 				//		sb.append("<{");
 				//for(FullObject<String, String> o : fcc.getExtent()) 
 				//	sb.append(o.getIdentifier() + ",");
