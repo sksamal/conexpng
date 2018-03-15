@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Cryptography" default="dist" basedir=".">
+<project name="conexpng" default="dist" basedir=".">
 	 <!-- set global properties for this build -->
-	  <property name="src" location="src"/>
+	  <property name="src" location="src/main/java"/>
+	  <property name="src1" location="src/main/resources"/>
 	  <property name="build" location="build"/>
 	  <property name="lib" location="lib"/>
 	
-	<path id="project.class.path">  
+	<path id="project.class.path">  	
 	    <pathelement location="."/>  
 	    <pathelement path="${java.class.path}/"/>
-	    <pathelement path="lib/*.jar"/>
+			<fileset dir="${lib}">
+		            <include name="**/*.jar" />
+		    </fileset>
+	<!--    <pathelement path="lib/*.jar"/> -->
 	</path> 
 	
 	<target name="init">
@@ -22,25 +26,30 @@
 	        description="compile the source " >
 	    <!-- Compile the java code from ${src} into ${build} -->
 	    <javac includeantruntime="false" srcdir="${src}" destdir="${build}" classpathref="project.class.path"/>
+	    <javac includeantruntime="false" srcdir="${src1}" destdir="${build}" classpathref="project.class.path"/>
 	  </target>
 	
 	  <target name="build" depends="init"
 		        description="compile the source " >
 		    <!-- Compile the java code from ${src} into ${build} -->
 		    <javac includeantruntime="false" srcdir="${src}" destdir="${build}" classpathref="project.class.path"/>
-		  </target>
+		    <javac includeantruntime="false" srcdir="${src1}" destdir="${build}" classpathref="project.class.path"/>
+	 </target>
 	
 
   	  <target name="dist" depends="compile"
 	        description="generate the distribution" >
 	    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-		<jar destfile="conexpng.jar" basedir="${build}">
+		<jar destfile="fcaclassifier.jar" basedir="${build}">
   	            <manifest>
-  	                <attribute name="Main-Class" value="fcatools.conexpng.Main"/>
-  	            </manifest>
+  	                <attribute name="Main-Class" value="examples.IFuzzyTest"/>
+  	            	<attribute name="Class-Path" value="**/*.jar"/>
+  	             </manifest>
+				<zipfileset dir="${lib}" includes="**/*.jar"/>
+	      	
   	    </jar> 
   		<exec executable="chmod"> 
-  			<arg line="+x ./conexpng.jar"/>
+  			<arg line="+x ./fcaclassifier.jar"/>
   		</exec>
 	 </target>
 	

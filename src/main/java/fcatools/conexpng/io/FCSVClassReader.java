@@ -39,7 +39,7 @@ public class FCSVClassReader {
               }
             }
             if(obj.length < attr.length)
-            	context.addObject(obj[0],null,attrForObj,values);
+            	context.addObject(obj[0],attrForObj,values);
             else
             	context.addObject(obj[0],obj[obj.length-1],attrForObj,values);
 //            System.out.println(context);
