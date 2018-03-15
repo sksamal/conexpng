@@ -1,55 +1,61 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="Cryptography" default="dist" basedir=".">
-	 <!-- set global properties for this build -->
-	  <property name="src" location="src"/>
-	  <property name="build" location="build"/>
-	  <property name="lib" location="lib"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project conexpng with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
+    <!--ANT 1.7 is required-->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="${dir.buildfile}/.."/>
+    <property name="dir.jarfile" value="${dir.buildfile}"/>
+	<property name="src" location="src/main/java"/>
+	<property name="src1" location="src/main/resources"/>
+	<property name="build" location="build"/>
+	<property name="lib" location="lib"/>
 	
-	<path id="project.class.path">  
-	    <pathelement location="."/>  
-	    <pathelement path="${java.class.path}/"/>
-	    <pathelement path="lib/*.jar"/>
+	<path id="project.class.path">  	
+		    <pathelement location="."/>  
+		    <pathelement path="${java.class.path}/"/>
+				<fileset dir="${lib}">
+			            <include name="**/*.jar" />
+		    </fileset>
+		<!--    <pathelement path="lib/*.jar"/> -->
 	</path> 
-	
+		
 	<target name="init">
 	    <!-- Create the time stamp -->
-	    <tstamp/>
+		    <tstamp/>
 	    <!-- Create the build directory structure used by compile -->
 	    <mkdir dir="${build}"/>
-	  </target>
+	 </target>
 
-	  <target name="compile" depends="init"
-	        description="compile the source " >
+	 <target name="compile" depends="init" description="compile the source ">
 	    <!-- Compile the java code from ${src} into ${build} -->
 	    <javac includeantruntime="false" srcdir="${src}" destdir="${build}" classpathref="project.class.path"/>
+	    <javac includeantruntime="false" srcdir="${src1}" destdir="${build}" classpathref="project.class.path"/>
+	 	<copy todir="${build}"> 
+	 		<fileset dir="${src1}" />
+	 	</copy>
 	  </target>
-	
-	  <target name="build" depends="init"
-		        description="compile the source " >
-		    <!-- Compile the java code from ${src} into ${build} -->
-		    <javac includeantruntime="false" srcdir="${src}" destdir="${build}" classpathref="project.class.path"/>
-		  </target>
-	
-
-  	  <target name="dist" depends="compile"
-	        description="generate the distribution" >
-	    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-		<jar destfile="conexpng.jar" basedir="${build}">
-  	            <manifest>
-  	                <attribute name="Main-Class" value="fcatools.conexpng.Main"/>
-  	            </manifest>
-  	    </jar> 
-  		<exec executable="chmod"> 
-  			<arg line="+x ./conexpng.jar"/>
-  		</exec>
-	 </target>
-	
-	<target name="clean"
-	        description="Clean up" >
-	    <!-- Delete the ${build} and ${dist} directory trees -->
-	    <delete dir="${build}"/>
-	  	 <delete>
-	  	    <fileset dir="." includes="*.jar"/>
-	  	  </delete>
-	  </target>
-</project>																																																																																																																																																																																																																																																																																																																																																																																														
+		
+    <target name="create_run_jar" depends="compile">
+        <jar destfile="${dir.jarfile}/ifuzzytest.jar">
+            <manifest>
+           <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/> 
+                <attribute name="Rsrc-Main-Class" value="examples.IFuzzyTest"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ fcaapi-0.10.2.jar fcalib-0.10.2.jar slf4j-log4j12-1.7.7.jar log4j-1.2.17.jar batik-codec-1.7.jar batik-swing-1.7.jar batik-transcoder-1.7.jar batik-bridge-1.7.jar svg-dom-java-1.1.jar batik-gvt-1.7.jar guava-21.0.jar weblaf-core-1.2.8.jar weblaf-ui-1.2.8.jar batik-dom-1.7.jar batik-svg-dom-1.7.jar batik-svggen-1.7.jar fop-0.94.jar batik-awt-util-1.7.jar avalon-framework-api-4.3.1.jar LatDraw.jar combinatoricslib-2.0.jar xstream-1.4.8.jar batik-util-1.7.jar batik-css-1.7.jar protege-3.4.8.jar protege-owl-3.4.8.jar jena-2.6.4.jar slf4j-api-1.7.25.jar xercesImpl-2.10.0.jar org.protege.editor.owl-4.3.0.jar orphanNodesAlg.jar iri-0.8.jar icu4j-3.4.4.jar xml-apis-2.10.0.jar"/>
+            </manifest>
+            <zipfileset src="${lib}/jar-in-jar-loader.zip"/> 
+            <fileset dir="${dir.jarfile}/build"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="**/*.jar"/>
+        </jar>
+    </target>	
+    <target name="clean"
+            description="Clean up" >
+    		    <!-- Delete the ${build} and ${dist} directory trees -->
+        <delete dir="${build}"/>
+      	 <delete>
+    	    <fileset dir="." includes="*.jar"/>
+     	 </delete>
+      </target>
+    
+</project>
