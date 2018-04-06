@@ -22,7 +22,7 @@ public class IFuzzyTest {
 	public static void main(String[] args) {
 			
 	//	String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2.fccsv";
-		String INPUTFILE = "/home/ssamal/dl/codings.fccsv";
+		String INPUTFILE = "/home/ssamal/dl/201803/out/codings1000.fccsv";
 		String imageLocation = "/home/ssamal/dl/out";
 		if(args.length >=1) INPUTFILE = args[0];
 		if(args.length >=2) imageLocation = args[1];
@@ -57,18 +57,19 @@ public class IFuzzyTest {
 		pwStream = new PrintStream(INPUTFILE + ".log");
 		HTMLWriter htmlStream = new HTMLWriter(INPUTFILE + ".html");
 		htmlStream.setImageLocation(imageLocation + "/training");
-		tee = new TeeWriter(pwStream, htmlStream);
+		tee = new TeeWriter(pwStream, System.out);
 		newState.filePath = "";
 		tee.println("Reading " + INPUTFILE);
 		long currentms = System.currentTimeMillis();
-		FCSVMultiClassReader ptdgsReader = new FCSVMultiClassReader(newState, INPUTFILE,1,true,10); // last 1 are classes
+		FCSVMultiClassReader ptdgsReader = new FCSVMultiClassReader(newState, INPUTFILE,1,true,10); // last 1 are classes, uniqueness
 		IFuzzyMultiClassifierContext ifmc = new IFuzzyMultiClassifierContext((FuzzyMultiClassifierContext)newState.context);
 		tee.println("\n\n***Reading first 10 records***");
 		tee.println("No of Objects:"+ newState.context.getObjectCount());
 		tee.println("No of attributes:" + newState.context.getAttributeCount());
 		Set<Concept<String,FullObject<String,String>>> concepts = newState.context.getConcepts();
 		tee.println("No of concepts:" + concepts.size());
-//		printClassedConceptProbs(concepts);
+	//	printClassedConceptProbs(concepts);
+	//	System.exit(1);
 	
 		// Incrementally add objects
 		int i=0;
@@ -107,7 +108,9 @@ public class IFuzzyTest {
 			//printClassedConceptProbs(((FuzzyMultiClassifierContext)(state.context)).getConceptsOfObject(o));
 //			i++;
 //		} 
-		
+		// Classify all objects
+	//	((FuzzyMultiClassifierContext)(newState.context)).kpartition(10);;
+			
 		// Classify all objects
 		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ((FuzzyMultiClassifierContext)(newState.context)).getMinimalConceptMap();
 		HashMap<String,Set<String>> classSetMap = ((FuzzyMultiClassifierContext)(newState.context)).getTrainingSet();
@@ -156,15 +159,15 @@ public class IFuzzyTest {
 			FuzzyMultiClassedConcept fcc = (FuzzyMultiClassedConcept) c;
 			StringBuffer sb = new StringBuffer();
 			sb.append("<{");
-	//		for(FullObject<String, String> o : fcc.getExtent()) 
-	//			sb.append(o.getIdentifier() + ",");
+			for(FullObject<String, String> o : fcc.getExtent()) 
+				sb.append(o.getIdentifier() + ",");
 			sb.append("},{");
-			/*	for(String attr : fcc.getIntent())
-				sb.append(attr + ",");
-			sb.append("},{"); */
+//				for(String attr : fcc.getIntent())
+//				sb.append(attr + ",");
+//			sb.append("},{"); 
 			sb.append(fcc.getProbsList());
-			sb.append("-->");
-			sb.append(fcc.getProbClass());
+	//		sb.append("-->");
+	//		sb.append(fcc.getProbClass());
 			sb.append("}>");
 			tee.println(i + ":" + sb);
 			i++;
@@ -210,7 +213,9 @@ public class IFuzzyTest {
 					 count++;
 					 sb.append(" _/");
 				}
-				sb.append("\t mnistImage="+ (int)(Double.parseDouble(classSetMap.get(oid).toArray(new String[0])[0])) + "/" + (int)(Double.parseDouble(oid)) + ".png");
+		//		sb.append("\t mnistImage=out/o" + (int)(Double.parseDouble(oid)) + ".png");
+				
+			//	sb.append("\t mnistImage="+ (int)(Double.parseDouble(classSetMap.get(oid).toArray(new String[0])[0])) + "/o" + (int)(Double.parseDouble(oid)) + ".png");
 				//		sb.append("<{");
 				//for(FullObject<String, String> o : fcc.getExtent()) 
 				//	sb.append(o.getIdentifier() + ",");

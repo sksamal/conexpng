@@ -8,10 +8,12 @@ import java.io.PrintWriter;
 
 public class Transform {
 	public static void main(String args[]) throws NumberFormatException, IOException {
-	String path = "/home/ssamal/dl/codings.fccsv";
-	int bins=32;
+	String path = "/home/ssamal/dl/201803/codings.fccsv";
+	int bins=1;
+	boolean noattr = true;
 	if(args.length==1)	path = args[0];
 	if(args.length==2)  bins = Integer.parseInt(args[1]);
+	if(args.length==3)  noattr = false;
 	double RANGE_MIN = 0.0, RANGE_MAX = 1.0;
 	int numClasses = 1;
 	String SEP = ",";
@@ -24,8 +26,14 @@ public class Transform {
 	
 	
 	String line = br.readLine();
-    String[] attr = line.split(SEP);
-    
+	String[] attr = line.split(SEP);
+	   
+	if(noattr) {
+		for(int i=0;i<attr.length;i++)
+			attr[i] = "feat"+ i;
+		br.close();
+		br = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
+	}
     
     //header
     StringBuffer newline = new StringBuffer(attr[0]);

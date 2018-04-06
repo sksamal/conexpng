@@ -53,7 +53,8 @@ public class FCSVMultiClassReader {
             context.addAttribute(attr[i]);
         }
   
-        //  System.out.println("Attributes:" + context.getAttributes()); 
+     //   System.out.println("Attributes:" + context.getAttributes()); 
+     
         while ( initialRecords>0 && (line = br.readLine()) != null) {
         	process(line);
         	initialRecords--;
@@ -79,7 +80,10 @@ public class FCSVMultiClassReader {
             List<String> attrForObj = new ArrayList<String>();
             List<Double> values = new ArrayList<Double>();
             Set<String> classes = new TreeSet<String>();
-            
+  
+//            System.out.println("Attributes:" + context.getAttributes()); 
+//            System.out.println("AttributeCount:" + context.getAttributeCount()); 
+//            System.out.println(obj.length);
             int i=1;
             for (; i <= context.getAttributeCount(); i++) {
             	if (isDouble(obj[i])){
@@ -108,7 +112,7 @@ public class FCSVMultiClassReader {
 
             numObj++;
     
-    //      System.out.println("Classes:" + context.getClasses()); 
+ //         System.out.println("Classes:" + context.getClasses()); 
     }
     
     public void close() throws IOException {

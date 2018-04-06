@@ -1,6 +1,5 @@
 package fcatools.conexpng.model;
 
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -439,6 +438,52 @@ public void partition(double testPercentage) {
 		index++;
 	}
 	
+}
+
+public void kpartition(int k) {
+	
+	long totalSize = this.objects.size();
+	HashMap<String, Set<String>> kset[] = new HashMap[k];
+	for(int i=0;i<k;i++)
+		kset[i] = new HashMap<String,Set<String>>();
+	
+	long testSize = totalSize/k;
+	System.out.println("TrainSize=" + (totalSize - testSize));
+	System.out.println("TestSize=" + testSize);
+	Set<String> keys = this.trainingSetMap.keySet();
+	
+	for(String key: keys) {
+		int number =(int)(Math.random()*(k)); 
+		kset[number].put(key,this.trainingSetMap.get(key));
+	}
+	
+	for(int i=0;i<k;i++) {
+		FuzzyMultiClassifierContext fmcc = new FuzzyMultiClassifierContext();
+		
+		for (int j=0;j<k ; j++) {
+			try {
+				
+			for(String obj: kset[j].keySet()) {
+				for(String attribute: this.getAttributesForObject(obj)) {
+					Double value = this.composition.get(new OAPair<String,String>(obj,attribute));
+					if(i!=j)
+							fmcc.addObject(this.getObject(obj),trainingSetMap.get(obj), value);
+					else
+						{
+					Set<String> nullSet = null;
+					fmcc.addObject(this.getObject(obj),nullSet, value);
+						}
+				}
+			  }
+			}
+			catch (IllegalObjectException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+
+		 fmcc.classify();
+		}	
+	}
+	}
 }
 
 public HashMap<String,Set<String>> getTestSet() {
