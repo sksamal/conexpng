@@ -10,6 +10,7 @@ import de.tudresden.inf.tcs.fcaapi.Concept;
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
 import de.tudresden.inf.tcs.fcalib.FullObject;
 import fcatools.conexpng.Conf;
+import fcatools.conexpng.gui.workers.TAssociationWorker;
 import fcatools.conexpng.io.FCSVMultiClassReader;
 import fcatools.conexpng.io.locale.LocaleHandler;
 import fcatools.conexpng.model.FuzzyMultiClassedConcept;
@@ -22,7 +23,8 @@ public class IFuzzyTest {
 	public static void main(String[] args) {
 			
 	//	String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2.fccsv";
-		String INPUTFILE = "/home/ssamal/dl/201803/out/codings1000.fccsv";
+	//	String INPUTFILE = "/home/ssamal/dl/201803/out/codings1000.fccsv";
+		String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/mnistonto.fccsv";
 		String imageLocation = "/home/ssamal/dl/out";
 		if(args.length >=1) INPUTFILE = args[0];
 		if(args.length >=2) imageLocation = args[1];
@@ -57,7 +59,7 @@ public class IFuzzyTest {
 		pwStream = new PrintStream(INPUTFILE + ".log");
 		HTMLWriter htmlStream = new HTMLWriter(INPUTFILE + ".html");
 		htmlStream.setImageLocation(imageLocation + "/training");
-		tee = new TeeWriter(pwStream, System.out);
+		tee = new TeeWriter(pwStream, htmlStream);
 		newState.filePath = "";
 		tee.println("Reading " + INPUTFILE);
 		long currentms = System.currentTimeMillis();
@@ -90,8 +92,11 @@ public class IFuzzyTest {
 ////		printClassedConcepts(concepts);
 //	
 		ptdgsReader.close();
-//		
-//				
+		
+		printConcepts(concepts);
+		TAssociationWorker taworker = new TAssociationWorker(newState,0.5,0.5,(long) 0);
+		taworker.run();
+		taworker.print();
 		}
 		
 		catch(IOException e) {
@@ -115,7 +120,7 @@ public class IFuzzyTest {
 		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ((FuzzyMultiClassifierContext)(newState.context)).getMinimalConceptMap();
 		HashMap<String,Set<String>> classSetMap = ((FuzzyMultiClassifierContext)(newState.context)).getTrainingSet();
 		List<Set<String>> classesSet = ((FuzzyMultiClassifierContext)(newState.context)).getClasses();
-		printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
+	//	printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
 	}
 
 	public static void printConcepts(Set<Concept<String, FullObject<String, String>>> concepts) {
@@ -213,7 +218,7 @@ public class IFuzzyTest {
 					 count++;
 					 sb.append(" _/");
 				}
-		//		sb.append("\t mnistImage=out/o" + (int)(Double.parseDouble(oid)) + ".png");
+				sb.append("\t mnistImage=o" + (int)(Double.parseDouble(oid.substring(3,oid.length()))) + ".png");
 				
 			//	sb.append("\t mnistImage="+ (int)(Double.parseDouble(classSetMap.get(oid).toArray(new String[0])[0])) + "/o" + (int)(Double.parseDouble(oid)) + ".png");
 				//		sb.append("<{");
