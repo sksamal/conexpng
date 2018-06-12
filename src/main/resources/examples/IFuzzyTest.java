@@ -24,13 +24,13 @@ public class IFuzzyTest {
 			
 	//	String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2.fccsv";
 	//	String INPUTFILE = "/home/ssamal/dl/201803/out/codings1000.fccsv";
-		String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/mnistonto.fccsv";
+		String INPUTFILE = "/home/ssamal/data-analysis-tools/data/codings_1.fccsv";
 		String imageLocation = "/home/ssamal/dl/out";
 		if(args.length >=1) INPUTFILE = args[0];
 		if(args.length >=2) imageLocation = args[1];
 		
 		Conf state = new Conf();
-		state.filePath = "/home/grad/ssamal/data-analysis-tools/data/colcan";
+		state.filePath = "/home/ssamal/data-analysis-tools/data/colcan";
 	    System.setProperty("user.language", LocaleHandler.readLocale());
 	    PrintStream pwStream = null;
 
@@ -63,14 +63,14 @@ public class IFuzzyTest {
 		newState.filePath = "";
 		tee.println("Reading " + INPUTFILE);
 		long currentms = System.currentTimeMillis();
-		FCSVMultiClassReader ptdgsReader = new FCSVMultiClassReader(newState, INPUTFILE,1,true,10); // last 1 are classes, uniqueness
+		FCSVMultiClassReader ptdgsReader = new FCSVMultiClassReader(newState, INPUTFILE,1,false,10); // last 1 are classes, uniqueness
 		IFuzzyMultiClassifierContext ifmc = new IFuzzyMultiClassifierContext((FuzzyMultiClassifierContext)newState.context);
 		tee.println("\n\n***Reading first 10 records***");
 		tee.println("No of Objects:"+ newState.context.getObjectCount());
 		tee.println("No of attributes:" + newState.context.getAttributeCount());
 		Set<Concept<String,FullObject<String,String>>> concepts = newState.context.getConcepts();
 		tee.println("No of concepts:" + concepts.size());
-	//	printClassedConceptProbs(concepts);
+		printClassedConceptProbs(concepts);
 	//	System.exit(1);
 	
 		// Incrementally add objects
@@ -89,14 +89,14 @@ public class IFuzzyTest {
 		concepts = newState.context.getConcepts();
 		tee.println("No of concepts: " + concepts.size());
 		tee.println("Read time: " + (System.currentTimeMillis()-currentms) + "ms");
-////		printClassedConcepts(concepts);
+	//	printClassedConcepts(concepts);
 //	
 		ptdgsReader.close();
 		
-		printConcepts(concepts);
-		TAssociationWorker taworker = new TAssociationWorker(newState,0.5,0.5,(long) 0);
-		taworker.run();
-		taworker.print();
+//		printConcepts(concepts);
+//		TAssociationWorker taworker = new TAssociationWorker(newState,0.5,0.5,(long) 0);
+//		taworker.run();
+//		taworker.print();
 		}
 		
 		catch(IOException e) {
@@ -120,7 +120,7 @@ public class IFuzzyTest {
 		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ((FuzzyMultiClassifierContext)(newState.context)).getMinimalConceptMap();
 		HashMap<String,Set<String>> classSetMap = ((FuzzyMultiClassifierContext)(newState.context)).getTrainingSet();
 		List<Set<String>> classesSet = ((FuzzyMultiClassifierContext)(newState.context)).getClasses();
-	//	printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
+		printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
 	}
 
 	public static void printConcepts(Set<Concept<String, FullObject<String, String>>> concepts) {
@@ -182,8 +182,8 @@ public class IFuzzyTest {
 				List<Set<String>> classesSet, HashMap<String,Set<String>> classSetMap) 
 		{
 			tee.println("\n-----------------------------------------------------------------------------------------------------------------------");
-			tee.println(String.format("%8s %10s %65s %10s %10s","Object","Extent","Probabilities","Predicted","Actual"));
-			tee.println(String.format("%8s %10s %65s %10s %10s","        "," Size","[0  , 1   , 2   , 3   , 4   , 5   , 6   , 7   , 8   , 9   ]","Class","Class"));
+			tee.println(String.format("%8s %10s %45s %50s%10s","Object","Extent","Probabilities","Predicted","Actual"));
+			tee.println(String.format("%8s %10s %65s %30s %10s","         "," Size","[0  , 1   , 2   , 3   , 4   , 5   , 6   , 7   , 8   , 9   ]","Class","Class"));
 			tee.println("-----------------------------------------------------------------------------------------------------------------------");
 			
 			int count=0;
@@ -218,7 +218,7 @@ public class IFuzzyTest {
 					 count++;
 					 sb.append(" _/");
 				}
-				sb.append("\t mnistImage=o" + (int)(Double.parseDouble(oid.substring(3,oid.length()))) + ".png");
+		//s		sb.append("\t mnistImage=o" + (int)(Double.parseDouble(oid.substring(3,oid.length()))) + ".png");
 				
 			//	sb.append("\t mnistImage="+ (int)(Double.parseDouble(classSetMap.get(oid).toArray(new String[0])[0])) + "/o" + (int)(Double.parseDouble(oid)) + ".png");
 				//		sb.append("<{");
