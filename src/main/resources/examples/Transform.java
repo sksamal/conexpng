@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 public class Transform {
 	public static void main(String args[]) throws NumberFormatException, IOException {
 	//String path = "/home/ssamal/dl/201803/codings.fccsv";
-	String path = "/home/ssamal/data-analysis-tools/data/codings.csv";
+	String path = "/home/ssamal/workspace/conexpng/codings.csv";
 	int bins=1;
 	boolean noattr = true;
 	if(args.length==1)	path = args[0];
@@ -30,15 +30,17 @@ public class Transform {
 	String[] attr = line.split(SEP);
 	   
 	if(noattr) {
-		for(int i=0;i<attr.length;i++)
+		for(int i=0;i<attr.length - numClasses;i++)
 			attr[i] = "feat"+ i;
+		for(int i=0;i<numClasses;i++)
+			attr[attr.length - numClasses] = "class"+ i;
 		br.close();
 		br = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
 	}
     
-    //header
-    StringBuffer newline = new StringBuffer(attr[0]);
-    for(int i=1;i<attr.length-numClasses; i++) {
+    //header - when no objs present
+    StringBuffer newline = new StringBuffer("objs");
+    for(int i=0;i<attr.length-numClasses; i++) {
     	for(int j=0;j<bins;j++) {
     		newline.append(SEP + attr[i]+ "_" + j);
     	}
@@ -53,9 +55,13 @@ public class Transform {
     double rangeSize = (RANGE_MAX - RANGE_MIN)/bins;
     while((line = br.readLine()) != null) {
     	String values[] = line.split(SEP);
-    	newline = new StringBuffer(values[0]);
+    	
+   // 	newline = new StringBuffer(values[0]);  // not always an object
+    //	If no object id exists, use the class as objectid
+    	newline = new StringBuffer("o" + values[values.length-1]);
     
-    	for(int i=1;i<values.length-numClasses; i++) {
+    	// start from 1 if first field is object, else from 0
+    	for(int i=0;i<values.length-numClasses; i++) {
     	//	int binIndex = (int) ((Double.parseDouble(values[i]) - RANGE_MIN)/rangeSize);
     		for(int j=0;j<bins;j++) {
     	//		if(j==binIndex)

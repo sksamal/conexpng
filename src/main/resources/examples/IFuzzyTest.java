@@ -24,7 +24,7 @@ public class IFuzzyTest {
 			
 	//	String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2.fccsv";
 	//	String INPUTFILE = "/home/ssamal/dl/201803/out/codings1000.fccsv";
-		String INPUTFILE = "/home/ssamal/data-analysis-tools/data/codings_1.fccsv";
+		String INPUTFILE = "/home/ssamal/workspace/conexpng/codings_1.fccsv";
 		String imageLocation = "/home/ssamal/dl/out";
 		if(args.length >=1) INPUTFILE = args[0];
 		if(args.length >=2) imageLocation = args[1];
@@ -70,7 +70,7 @@ public class IFuzzyTest {
 		tee.println("No of attributes:" + newState.context.getAttributeCount());
 		Set<Concept<String,FullObject<String,String>>> concepts = newState.context.getConcepts();
 		tee.println("No of concepts:" + concepts.size());
-		printClassedConceptProbs(concepts);
+	//	printClassedConceptProbs(concepts);
 	//	System.exit(1);
 	
 		// Incrementally add objects

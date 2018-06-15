@@ -11,10 +11,10 @@ for i in range(1,20):
             for key, value in criteria.iteritems():
                 try:
                     if key == "food":
-                        print (value["label"] + ":" + value["brand"] + ":" + value["source"]) + ":",
+#                        print (value["label"] + ":" + value["brand"] + ":" + value["source"]) + ":",
                         for strr in sorted(value["foodContentsLabel"].split(";")):
-                            print(strr + ":"),
-                        print()
+                            print(strr)
+#                        print()
                 except:
                     pass
     #for key, value in criteria.iteritems():
