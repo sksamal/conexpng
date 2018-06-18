@@ -9,8 +9,8 @@ import java.io.PrintWriter;
 public class Transform {
 	public static void main(String args[]) throws NumberFormatException, IOException {
 	//String path = "/home/ssamal/dl/201803/codings.fccsv";
-	String path = "/home/ssamal/workspace/conexpng/codings.csv";
-	int bins=1;
+	String path = "/home/ssamal/workspace/conexpng/floating_codings.csv";
+	int bins=2;
 	boolean noattr = true;
 	if(args.length==1)	path = args[0];
 	if(args.length==2)  bins = Integer.parseInt(args[1]);
@@ -62,12 +62,12 @@ public class Transform {
     
     	// start from 1 if first field is object, else from 0
     	for(int i=0;i<values.length-numClasses; i++) {
-    	//	int binIndex = (int) ((Double.parseDouble(values[i]) - RANGE_MIN)/rangeSize);
+    		int binIndex = (int) ((Double.parseDouble(values[i]) - RANGE_MIN)/rangeSize);
     		for(int j=0;j<bins;j++) {
-    	//		if(j==binIndex)
-    				newline.append(SEP + String.format("%.1f",Double.parseDouble(values[i])));
-    	//		else
-    		//		newline.append(SEP + 0.0);
+    			if(j==binIndex)
+    				newline.append(SEP + String.format("%.4f",Double.parseDouble(values[i])));
+    			else
+    				newline.append(SEP + 0.0);
     		} 
     }
     	
