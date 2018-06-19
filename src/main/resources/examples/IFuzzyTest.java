@@ -24,7 +24,7 @@ public class IFuzzyTest {
 			
 	//	String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2.fccsv";
 	//	String INPUTFILE = "/home/ssamal/dl/201803/out/codings1000.fccsv";
-		String INPUTFILE = "/home/ssamal/workspace/conexpng/floating_codings_2.fccsv";
+		String INPUTFILE = "/home/ssamal/workspace/conexpng/floating_codings100_1.fccsv";
 		String imageLocation = "/home/ssamal/dl/out";
 		if(args.length >=1) INPUTFILE = args[0];
 		if(args.length >=2) imageLocation = args[1];
