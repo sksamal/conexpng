@@ -1,6 +1,6 @@
-rm -rf recipe.csv
-for file in $(ls recipe*.json)
+rm -rf alling.csv
+for file in $(ls recipe_json/recipe*.json)
   do
      echo $file
-     python recipExtract.py $file >> recipe.csv
+     python recipExtract.py $file >> alling.csv
   done

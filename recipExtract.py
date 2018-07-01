@@ -12,5 +12,6 @@ for criteria in values['hits']:
    source=criteria['recipe']['source']
    ingredients=""
    for value in criteria['recipe']['ingredients']:
-       ingredients= ingredients + "$" + (value['text'] + "$" + str(value['weight']))
+       #print (value['text'] + "$" + str(value['weight']))
+       ingredients= ingredients + ";" + (value['text'] + ";" + str(value['weight']))
    print(label + "$" + image + "$" + source + "$" + ingredients)
