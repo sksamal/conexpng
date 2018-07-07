@@ -24,7 +24,8 @@ public class IFuzzyTest {
 			
 	//	String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2.fccsv";
 	//	String INPUTFILE = "/home/ssamal/dl/201803/out/codings1000.fccsv";
-		String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
+//		String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
+		String INPUTFILE = "/home/ssamal/java_projs/conexpng/recipe_parser/ingsdata.fccsv";
 		String imageLocation = "/home/ssamal/dl/out";
 		if(args.length >=1) INPUTFILE = args[0];
 		if(args.length >=2) imageLocation = args[1];
@@ -59,7 +60,7 @@ public class IFuzzyTest {
 		pwStream = new PrintStream(INPUTFILE + ".log");
 		HTMLWriter htmlStream = new HTMLWriter(INPUTFILE + ".html");
 		htmlStream.setImageLocation(imageLocation + "/training");
-		tee = new TeeWriter(pwStream, htmlStream);
+		tee = new TeeWriter(pwStream, System.out);
 		newState.filePath = "";
 		tee.println("Reading " + INPUTFILE);
 		long currentms = System.currentTimeMillis();
@@ -70,7 +71,7 @@ public class IFuzzyTest {
 		tee.println("No of attributes:" + newState.context.getAttributeCount());
 		Set<Concept<String,FullObject<String,String>>> concepts = newState.context.getConcepts();
 		tee.println("No of concepts:" + concepts.size());
-		printClassedConceptProbs(concepts);
+	//	printClassedConceptProbs(concepts);
 	//	System.exit(1);
 	
 		// Incrementally add objects
@@ -92,11 +93,13 @@ public class IFuzzyTest {
 	//	printClassedConcepts(concepts);
 //	
 		ptdgsReader.close();
-		
+	
 //		printConcepts(concepts);
 //		TAssociationWorker taworker = new TAssociationWorker(newState,0.5,0.5,(long) 0);
 //		taworker.run();
 //		taworker.print();
+
+
 		}
 		
 		catch(IOException e) {
@@ -109,8 +112,8 @@ public class IFuzzyTest {
 		// Get concepts for each object
 //		int i=0;
 //		for(FullObject<String,String> o :state.context.getObjects()) {
-			//System.out.println("Concepts containing " + o.getIdentifier() + " are:");
-			//printClassedConceptProbs(((FuzzyMultiClassifierContext)(state.context)).getConceptsOfObject(o));
+//			System.out.println("Concepts containing " + o.getIdentifier() + " are:");
+//			printClassedConceptProbs(((FuzzyMultiClassifierContext)(state.context)).getConceptsOfObject(o));
 //			i++;
 //		} 
 		// Classify all objects
@@ -120,6 +123,8 @@ public class IFuzzyTest {
 		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ((FuzzyMultiClassifierContext)(newState.context)).getMinimalConceptMap();
 		HashMap<String,Set<String>> classSetMap = ((FuzzyMultiClassifierContext)(newState.context)).getTrainingSet();
 		List<Set<String>> classesSet = ((FuzzyMultiClassifierContext)(newState.context)).getClasses();
+//		for (Set<String> clazz : classesSet)
+//			System.out.println(clazz.size() + ":" + clazz);
 		printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
 	}
 
