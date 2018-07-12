@@ -71,7 +71,7 @@ public class FCSVMultiClassReader {
         	  process(line);
         else 
         	return false;
-        return true;
+	        return true;
     }
     
     public void process(String line) throws IllegalObjectException {
@@ -95,8 +95,6 @@ public class FCSVMultiClassReader {
             // for classes
             for(; i < obj.length; i++) 
             	classes.add(obj[i]);
-            
-//            System.out.println("Classes:" + classes); 
 
             
             if(obj.length < context.getAttributeCount() + numClasses) 
