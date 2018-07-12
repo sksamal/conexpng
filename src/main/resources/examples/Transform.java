@@ -9,7 +9,8 @@ import java.io.PrintWriter;
 public class Transform {
 	public static void main(String args[]) throws NumberFormatException, IOException {
 	//String path = "/home/ssamal/dl/201803/codings.fccsv";
-	String path = "/home/ssamal/workspace/conexpng/floating_codings100.csv";
+//	String path = "/home/ssamal/workspace/conexpng/floating_codings100.csv";
+	String path = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/coding.fccsv";
 	int bins=1;
 	boolean noattr = true;
 	if(args.length==1)	path = args[0];

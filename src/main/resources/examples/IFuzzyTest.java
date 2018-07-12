@@ -12,6 +12,7 @@ import de.tudresden.inf.tcs.fcalib.FullObject;
 import fcatools.conexpng.Conf;
 import fcatools.conexpng.gui.workers.TAssociationWorker;
 import fcatools.conexpng.io.FCSVMultiClassReader;
+import fcatools.conexpng.io.IFCSVMultiClassReader;
 import fcatools.conexpng.io.locale.LocaleHandler;
 import fcatools.conexpng.model.FuzzyMultiClassedConcept;
 import fcatools.conexpng.model.FuzzyMultiClassifierContext;
@@ -24,7 +25,9 @@ public class IFuzzyTest {
 			
 	//	String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2.fccsv";
 	//	String INPUTFILE = "/home/ssamal/dl/201803/out/codings1000.fccsv";
-		String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
+	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
+		String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/coding_1.fccsv";
+
 		String imageLocation = "/home/ssamal/dl/out";
 		if(args.length >=1) INPUTFILE = args[0];
 		if(args.length >=2) imageLocation = args[1];
@@ -63,14 +66,14 @@ public class IFuzzyTest {
 		newState.filePath = "";
 		tee.println("Reading " + INPUTFILE);
 		long currentms = System.currentTimeMillis();
-		FCSVMultiClassReader ptdgsReader = new FCSVMultiClassReader(newState, INPUTFILE,1,false,10); // last 1 are classes, uniqueness
-		IFuzzyMultiClassifierContext ifmc = new IFuzzyMultiClassifierContext((FuzzyMultiClassifierContext)newState.context);
+		IFCSVMultiClassReader ptdgsReader = new IFCSVMultiClassReader(newState, INPUTFILE,1,false,10); // last 1 are classes, uniqueness
+		//IFuzzyMultiClassifierContext ifmc = new IFuzzyMultiClassifierContext((FuzzyMultiClassifierContext)newState.context);
 		tee.println("\n\n***Reading first 10 records***");
 		tee.println("No of Objects:"+ newState.context.getObjectCount());
 		tee.println("No of attributes:" + newState.context.getAttributeCount());
 		Set<Concept<String,FullObject<String,String>>> concepts = newState.context.getConcepts();
 		tee.println("No of concepts:" + concepts.size());
-		printClassedConceptProbs(concepts);
+//		printClassedConceptProbs(concepts);
 	//	System.exit(1);
 	
 		// Incrementally add objects
@@ -79,10 +82,12 @@ public class IFuzzyTest {
 			i++;
 			if(i%1000==0) {
 				tee.println("	Read " + i + " records");
-			concepts = newState.context.getConcepts();
+				concepts = newState.context.getConcepts();
 			}
-			if(i==1000) break;
+			
+//			if(i==1000) break;
 		}
+		//concepts = newState.context.getConcepts();
 		tee.println("	Completed reading " + i + " records");
 		tee.println("No of Objects: "+ newState.context.getObjectCount());
 		tee.println("No of attributes: " + newState.context.getAttributeCount());
@@ -183,7 +188,7 @@ public class IFuzzyTest {
 		{
 			tee.println("\n-----------------------------------------------------------------------------------------------------------------------");
 			tee.println(String.format("%8s %10s %45s %50s%10s","Object","Extent","Probabilities","Predicted","Actual"));
-			tee.println(String.format("%8s %10s %65s %30s %10s","         "," Size","[0  , 1   , 2   , 3   , 4   , 5   , 6   , 7   , 8   , 9   ]","Class","Class"));
+			tee.println(String.format("%8s %10s %65s %30s %10s","         "," Size",classesSet,"Class","Class"));
 			tee.println("-----------------------------------------------------------------------------------------------------------------------");
 			
 			int count=0;
@@ -208,7 +213,7 @@ public class IFuzzyTest {
 				for(List<Double> ppList : fcc.getProbsList()) {
 					List<String> pspList = new ArrayList<String>();
 					for(Double d : ppList) {
-						pspList.add(String.format("%.2f",d));
+						pspList.add(String.format("%2.2f",d));
 					}
 					psList.add(pspList);
 				}

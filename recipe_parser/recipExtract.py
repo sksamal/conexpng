@@ -34,7 +34,7 @@ for filename in recipes:
                     break
                 i=i+1
         num=num+1
-        
+        label = label.replace(",","-"); 
         ingCSV="obj" + str(num) + ","
         for ing in ingredients: 
             ingCSV=ingCSV+ str(ing) + ","
