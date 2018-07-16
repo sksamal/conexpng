@@ -106,7 +106,7 @@ public class FuzzyFormalContext extends FormalContext {
 
 	public boolean addObject(String object, String attributes[], Double[] values) throws IllegalObjectException {
 		int i = 0;
-//		System.out.println("Adding object " + object);
+		System.out.println("FFC:Adding object " + object);
 		Set<String> attrs = new TreeSet<>();
 		for (String attribute : attributes) {
 //			System.out.println(attribute + " " + object + " " + values[i]);

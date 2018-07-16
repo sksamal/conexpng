@@ -38,7 +38,7 @@ public class IFuzzyTest {
 		state.filePath = "/home/ssamal/data-analysis-tools/data/colcan";
 	    System.setProperty("user.language", LocaleHandler.readLocale());
 	    PrintStream pwStream = null;
-
+	    IFuzzyMultiClassifierContext ifmc = null;
 		Conf newState = new Conf();
 		try {
 			
@@ -69,35 +69,46 @@ public class IFuzzyTest {
 		tee.println("Reading " + INPUTFILE);
 		long currentms = System.currentTimeMillis();
 		IFCSVMultiClassReader ptdgsReader = new IFCSVMultiClassReader(newState, INPUTFILE,1,false,10); // last 1 are classes, uniqueness
-		//IFuzzyMultiClassifierContext ifmc = new IFuzzyMultiClassifierContext((FuzzyMultiClassifierContext)newState.context);
+		ifmc = new IFuzzyMultiClassifierContext((FuzzyMultiClassifierContext)newState.context);
 		tee.println("\n\n***Reading first 10 records***");
-		tee.println("No of Objects:"+ newState.context.getObjectCount());
-		tee.println("No of attributes:" + newState.context.getAttributeCount());
-		Set<Concept<String,FullObject<String,String>>> concepts = newState.context.getConcepts();
+		tee.println("No of Objects:"+ ifmc.getObjectCount());
+		tee.println("No of attributes:" + ifmc.getAttributeCount());
+		Set<Concept<String,FullObject<String,String>>> concepts = ifmc.getConcepts();
 		tee.println("No of concepts:" + concepts.size());
-<<<<<<< HEAD
 //		printClassedConceptProbs(concepts);
-=======
-	//	printClassedConceptProbs(concepts);
->>>>>>> 32daee2eddae3b17e7647b3581c5c8b266e97efc
 	//	System.exit(1);
 	
+		for(FullObject o : ifmc.getObjects())
+			System.out.println(o.toString());
 		// Incrementally add objects
 		int i=0;
-		while(ptdgsReader.readNext()) {
+		if(ptdgsReader.readNext()) {
 			i++;
-			if(i%1000==0) {
+			tee.println("Objects now:" + ifmc.getObjectCount());
+		}
+		for(FullObject o : ifmc.getObjects())
+			tee.println(o.toString());
+	
+		if(ptdgsReader.readNext()) {
+			
+	//	while(ptdgsReader.readNext()) {
+			i++;
+			if(i%1000 == 0) {
 				tee.println("	Read " + i + " records");
-				concepts = newState.context.getConcepts();
+				long ms = System.currentTimeMillis();
+				concepts = ifmc.getConcepts();
+				System.out.println("1000 records took " + (System.currentTimeMillis() - ms) + " ms");
+				tee.println("Concepts now: " + concepts.size());
+				tee.println("Objects now:" + ifmc.getObjectCount());
 			}
 			
 //			if(i==1000) break;
 		}
 		//concepts = newState.context.getConcepts();
 		tee.println("	Completed reading " + i + " records");
-		tee.println("No of Objects: "+ newState.context.getObjectCount());
-		tee.println("No of attributes: " + newState.context.getAttributeCount());
-		concepts = newState.context.getConcepts();
+		tee.println("No of Objects: "+ ifmc.getObjectCount());
+		tee.println("No of attributes: " + ifmc.getAttributeCount());
+		concepts = ifmc.getConcepts();
 		tee.println("No of concepts: " + concepts.size());
 		tee.println("Read time: " + (System.currentTimeMillis()-currentms) + "ms");
 	//	printClassedConcepts(concepts);
@@ -130,9 +141,9 @@ public class IFuzzyTest {
 	//	((FuzzyMultiClassifierContext)(newState.context)).kpartition(10);;
 			
 		// Classify all objects
-		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ((FuzzyMultiClassifierContext)(newState.context)).getMinimalConceptMap();
-		HashMap<String,Set<String>> classSetMap = ((FuzzyMultiClassifierContext)(newState.context)).getTrainingSet();
-		List<Set<String>> classesSet = ((FuzzyMultiClassifierContext)(newState.context)).getClasses();
+		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ifmc.getMinimalConceptMap();
+		HashMap<String,Set<String>> classSetMap = ifmc.getTrainingSet();
+		List<Set<String>> classesSet = ifmc.getClasses();
 //		for (Set<String> clazz : classesSet)
 //			System.out.println(clazz.size() + ":" + clazz);
 		printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
