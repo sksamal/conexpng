@@ -90,7 +90,7 @@ public class FuzzyFormalContext extends FormalContext {
 		int i = 0;
 		Set<String> attrs = new TreeSet<>();
 		for (String attribute : attributes) {
-			System.out.println(attribute + " " + object + " " + values[i]);
+//			System.out.println(attribute + " " + object + " " + values[i]);
 			composition.put(new OAPair<String, String>(attribute, object), values[i]);
 			if (values[i] >= threshold)
 				attrs.add(attribute);
@@ -106,7 +106,6 @@ public class FuzzyFormalContext extends FormalContext {
 
 	public boolean addObject(String object, String attributes[], Double[] values) throws IllegalObjectException {
 		int i = 0;
-		System.out.println("FFC:Adding object " + object);
 		Set<String> attrs = new TreeSet<>();
 		for (String attribute : attributes) {
 //			System.out.println(attribute + " " + object + " " + values[i]);
@@ -120,6 +119,8 @@ public class FuzzyFormalContext extends FormalContext {
 		}
 		if(!attrs.isEmpty())
 			super.addObject(new FullObject<String, String> (object,attrs));
+//		System.out.println("FFC:Added object " + object + " " + this.getObjectCount());
+
 		return true;
 	}
 	

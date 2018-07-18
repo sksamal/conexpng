@@ -1,8 +1,12 @@
 package fcatools.conexpng.model;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+
+import com.thoughtworks.xstream.XStream;
 
 import de.tudresden.inf.tcs.fcaapi.Concept;
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
@@ -85,6 +89,20 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 		super(objectsCount, attributesCount, threshold);
 	}
 
+	public void toXml(String fileName) {
+		
+        XStream xstream = new XStream();
+        PrintWriter pw = null;
+        try {
+                pw = new PrintWriter(new File(fileName));
+        } catch (Exception e) {
+                throw new RuntimeException(e);
+        }
+        	pw.print(xstream.toXML(this)+"\n");
+        	pw.print(conceptLattice + "\n");
+        	pw.println(newObjects + "\n");
+        	pw.close();
+	}
 	public IFuzzyMultiClassifierContext(FuzzyMultiClassifierContext fc) {
 
 		// copy new structures directly
@@ -111,19 +129,22 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
     public Set<Concept<String, FullObject<String, String>>> getConcepts() {
 	   
 		// compute all if existing lattice is null
-	   if(conceptLattice ==null) {
+	   if(this.conceptLattice ==null) {
+		   System.out.println("Lattice not present, regenerating from scratch");
 		   newObjects.clear();
-		   return super.getConcepts();
+		   this.conceptLattice = super.getConcepts();
+		   return this.conceptLattice;
 	   }
    	
    		// nothing changed, just send whats existing, no new objects added
-   		if(conceptLattice !=null && newObjects.size()==0)
+   		if(this.conceptLattice !=null && newObjects.size()==0)
    			return conceptLattice;
    		
-        ListSet<Concept<String, FullObject<String, String>>> newConceptLattice = new ListSet<Concept<String, FullObject<String, String>>>();
-
+	    System.out.println("added " + newObjects.size() + "new objects, using addIntent");
+        
 		// Add Intent algorithm
         for(FullObject<String, String> newObj : newObjects) {
+        	ListSet<Concept<String, FullObject<String, String>>> newConceptLattice = new ListSet<Concept<String, FullObject<String, String>>>();
             for(Concept<String, FullObject<String,String>> c : this.conceptLattice) {
             	
             	// Get the extent of concept
@@ -176,7 +197,7 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 	        	FuzzyMultiClassedConcept fcc = new FuzzyMultiClassedConcept(c);
 	        	for(FullObject<String, String> obj : fcc.getExtent()) {
 	        		Set<String> clazzSet = trainingSetMap.get(obj.getIdentifier());
-	        		System.out.println(clazzSet);
+	//        		System.out.println(clazzSet);
 	        		for(String clazz: clazzSet) {
 	        			if(countMap.containsKey(clazz))
 	        				countMap.put(clazz, countMap.get(clazz)+1);

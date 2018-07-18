@@ -22,6 +22,8 @@ public class IFuzzyTest {
 
 	private static TeeWriter tee = null;
 	public static void main(String[] args) {
+		
+		System.out.println("IfuzzyTest v12");
 			
 	//	String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2.fccsv";
 	//	String INPUTFILE = "/home/ssamal/dl/201803/out/codings1000.fccsv";
@@ -32,8 +34,9 @@ public class IFuzzyTest {
 	//	String INPUTFILE = "/home/ssamal/java_projs/conexpng/recipe_parser/ingsdata.fccsv";
 		String imageLocation = "/home/ssamal/dl/out";
 		if(args.length >=1) INPUTFILE = args[0];
-		if(args.length >=2) imageLocation = args[1];
-		
+	//	if(args.length >=2) imageLocation = args[1];
+		int expr = 10;
+		if(args.length>=2) expr = Integer.parseInt(args[1]);
 		Conf state = new Conf();
 		state.filePath = "/home/ssamal/data-analysis-tools/data/colcan";
 	    System.setProperty("user.language", LocaleHandler.readLocale());
@@ -69,7 +72,7 @@ public class IFuzzyTest {
 		tee.println("Reading " + INPUTFILE);
 		long currentms = System.currentTimeMillis();
 		IFCSVMultiClassReader ptdgsReader = new IFCSVMultiClassReader(newState, INPUTFILE,1,false,10); // last 1 are classes, uniqueness
-		ifmc = new IFuzzyMultiClassifierContext((FuzzyMultiClassifierContext)newState.context);
+		ifmc = ((IFuzzyMultiClassifierContext)newState.context);
 		tee.println("\n\n***Reading first 10 records***");
 		tee.println("No of Objects:"+ ifmc.getObjectCount());
 		tee.println("No of attributes:" + ifmc.getAttributeCount());
@@ -78,33 +81,37 @@ public class IFuzzyTest {
 //		printClassedConceptProbs(concepts);
 	//	System.exit(1);
 	
-		for(FullObject o : ifmc.getObjects())
-			System.out.println(o.toString());
+//		for(FullObject o : ifmc.getObjects())
+//			System.out.println(o.toString());
 		// Incrementally add objects
 		int i=0;
-		if(ptdgsReader.readNext()) {
-			i++;
-			tee.println("Objects now:" + ifmc.getObjectCount());
-		}
-		for(FullObject o : ifmc.getObjects())
-			tee.println(o.toString());
-	
-		if(ptdgsReader.readNext()) {
-			
-	//	while(ptdgsReader.readNext()) {
+		long ms = System.currentTimeMillis();
+		while(ptdgsReader.readNext()) {
 			i++;
 			if(i%1000 == 0) {
 				tee.println("	Read " + i + " records");
-				long ms = System.currentTimeMillis();
+				long ms1 = System.currentTimeMillis();
+				tee.println("1000 records took " + (ms1 - ms) + " ms");
 				concepts = ifmc.getConcepts();
-				System.out.println("1000 records took " + (System.currentTimeMillis() - ms) + " ms");
+				ms = System.currentTimeMillis();
+				tee.println("Generating concepts took " + (ms - ms1) + " ms");
 				tee.println("Concepts now: " + concepts.size());
 				tee.println("Objects now:" + ifmc.getObjectCount());
 			}
-			
+			if(i>1000 && i%expr == 0) {
+				tee.println("	Read " + i + " records");
+				long ms1 = System.currentTimeMillis();
+				tee.println("10 records took " + (ms1 - ms) + " ms");
+				concepts = ifmc.getConcepts();
+				ms = System.currentTimeMillis();
+				tee.println("Generating concepts took " + (ms - ms1) + " ms");
+				tee.println("Concepts now: " + concepts.size());
+				tee.println("Objects now:" + ifmc.getObjectCount());
+			}
+		
 //			if(i==1000) break;
 		}
-		//concepts = newState.context.getConcepts();
+		ifmc.toXml(INPUTFILE+"_" + expr + "_context.txt");
 		tee.println("	Completed reading " + i + " records");
 		tee.println("No of Objects: "+ ifmc.getObjectCount());
 		tee.println("No of attributes: " + ifmc.getAttributeCount());

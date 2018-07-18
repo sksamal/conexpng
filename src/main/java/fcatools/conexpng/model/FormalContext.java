@@ -53,15 +53,15 @@ public class FormalContext extends de.tudresden.inf.tcs.fcalib.FormalContext<Str
 
     @Override
     public boolean addObject(FullObject<String, String> arg0) throws IllegalObjectException {
-		System.out.println("FC:Adding object " + arg0.getIdentifier());
 
         if (super.addObject(arg0)) {
             for (String attribute : arg0.getDescription().getAttributes()) {
                 objectsOfAttribute.get(attribute).add(arg0.getIdentifier());
             }
+   //     	System.out.println("FC:Added object " + arg0.getIdentifier() + " " + this.getObjectCount());
             return true;
-        }
-        return false;
+          }
+	    return false;
     }
 
     @Override

@@ -98,7 +98,7 @@ public class IFCSVMultiClassReader {
             	classes.add(obj[i]);
             
 //            System.out.println("Classes:" + classes); 
-            System.out.println(obj[0]);
+//            System.out.println(obj[0]);
             
             if(obj.length < context.getAttributeCount() + numClasses) 
             	if(unique)
