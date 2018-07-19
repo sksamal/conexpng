@@ -28,7 +28,7 @@ public class IFuzzyTest {
 	//	String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2.fccsv";
 	//	String INPUTFILE = "/home/ssamal/dl/201803/out/codings1000.fccsv";
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
-		String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/coding_1.fccsv";
+		String INPUTFILE = "/home/ssamal/java_projs/conexpng/codings_1.fccsv";
 
 //		String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
 	//	String INPUTFILE = "/home/ssamal/java_projs/conexpng/recipe_parser/ingsdata.fccsv";
@@ -71,7 +71,7 @@ public class IFuzzyTest {
 		newState.filePath = "";
 		tee.println("Reading " + INPUTFILE);
 		long currentms = System.currentTimeMillis();
-		IFCSVMultiClassReader ptdgsReader = new IFCSVMultiClassReader(newState, INPUTFILE,1,false,10); // last 1 are classes, uniqueness
+		IFCSVMultiClassReader ptdgsReader = new IFCSVMultiClassReader(newState, INPUTFILE,1,false,12); // last 1 are classes, uniqueness
 		ifmc = ((IFuzzyMultiClassifierContext)newState.context);
 		tee.println("\n\n***Reading first 10 records***");
 		tee.println("No of Objects:"+ ifmc.getObjectCount());
@@ -79,7 +79,7 @@ public class IFuzzyTest {
 		Set<Concept<String,FullObject<String,String>>> concepts = ifmc.getConcepts();
 		tee.println("No of concepts:" + concepts.size());
 //		printClassedConceptProbs(concepts);
-	//	System.exit(1);
+//		System.exit(1);
 	
 //		for(FullObject o : ifmc.getObjects())
 //			System.out.println(o.toString());

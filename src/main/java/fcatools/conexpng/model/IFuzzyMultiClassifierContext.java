@@ -140,7 +140,7 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
    		if(this.conceptLattice !=null && newObjects.size()==0)
    			return conceptLattice;
    		
-	    System.out.println("added " + newObjects.size() + "new objects, using addIntent");
+	    System.out.println("added " + newObjects.size() + " new objects, using addIntent");
         
 		// Add Intent algorithm
         for(FullObject<String, String> newObj : newObjects) {
@@ -148,42 +148,57 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
             for(Concept<String, FullObject<String,String>> c : this.conceptLattice) {
             	
             	// Get the extent of concept
-            	Set<FullObject<String,String>> extent = c.getExtent();
+            	Set<FullObject<String,String>> extent = c.getExtent();   // A
             	Set<String> extentAttributes = new ListSet<String>();
             	for(FullObject<String,String> obj : extent)
-            		extentAttributes.addAll(obj.getDescription().getAttributes());
+            		extentAttributes.addAll(obj.getDescription().getAttributes()); //B
             	
-            	// Case I - Add a new concept (A,B) U g 
-            	if(newObj.getDescription().getAttributes().containsAll(extentAttributes)) {
-            	      c.getIntent().add(newObj.getIdentifier());
+            	// Case I - Add a new concept (A U g',B) if g' contains B ?
+            	if(newObj.getDescription().getAttributes().containsAll(extentAttributes)) { // g' contains B ?
+            	      c.getIntent().add(newObj.getIdentifier());  // add (A U g', B) to new context
             	      addConceptToLattice(newConceptLattice,c);
             	}
             	else {
             		
             		//Case III - Add existing concept and another one if its the generator concept (not duplicate)
-            		addConceptToLattice(newConceptLattice,c);    
+            		addConceptToLattice(newConceptLattice,c);  // add existing (A,B) from previous lattice	  
+            		
+            		// compute D = intersection of B and g'
             		Set<String> newExtentAttributes = this.intersection(newObj.getDescription().getAttributes(),extentAttributes);
             		
+            		// Case II - Add new concept (D',D) to new lattice
+            		// but only if (A,B) is its unique generator
+            		// Algorithm of Norris
+            		
+            		// Update D' as A U g
             		Concept<String, FullObject<String, String>> newC = new LatticeConcept();
             		newC.getIntent().addAll(c.getIntent());
             		newC.getIntent().add(newObj.getIdentifier());
             		
+            		// find all objects that have the new attributes
             		boolean donotAdd = false;
           	        for (FullObject<String, String> f : this.getObjects()) {
-            	        if (f.getDescription().getAttributes().contains(newExtentAttributes)) {
+          	        	for (String attr : newExtentAttributes) {
+          	        		if (!f.getDescription().getAttributes().contains(attr)) 
+          	        			break;
+          	        	}
             	               newC.getExtent().add(f);
-            	             }
-            	        if(!newC.getIntent().contains(f.getIdentifier()))  
+            	             
+          	        	}
+            	        if(!newC.getIntent().contains(f.getIdentifier()))  {
             	        	donotAdd = true; // Not an generator, no need to add, it will be a duplicate
+            	            break;
+            	        }
             	    }
           	        
           	        if(!donotAdd)
               	      addConceptToLattice(newConceptLattice,newC);
             				
             }
-            }
+            } // end of traversing lattice objects
             	this.conceptLattice = newConceptLattice;
-            }
+            	System.out.println(conceptLattice.size());
+            } // end of newobjects list
             	newObjects.clear();
                 return conceptLattice;
 	   
