@@ -140,7 +140,7 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
    		if(this.conceptLattice !=null && newObjects.size()==0)
    			return conceptLattice;
    		
-	    System.out.println(" added " + newObjects.size() + " new objects, using addIntent algorithm");
+	//    System.out.println(" added " + newObjects.size() + " new objects, using addIntent algorithm");
         
 		// Add Intent algorithm
 	    	// concept is (A,B)
@@ -154,29 +154,29 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 
             for(Concept<String, FullObject<String,String>> c : this.conceptLattice) {
             	z++;
-    //        	System.out.println("Concept " + z + " [" + c.getExtent() + c.getIntent() + "]");
+      //      	System.out.println("Concept " + z + " [" + c.getExtent() + c.getIntent() + "]");
             	// Get the extent A of concept (A,B)
             	Set<FullObject<String,String>> extent = c.getExtent();   // A
-     //       	System.out.println("A=" + c.getExtent());
-     //       	System.out.println("B=" + c.getIntent());
+       //     	System.out.println("A=" + c.getExtent());
+       //     	System.out.println("B=" + c.getIntent());
 
             	Set<String> intent = c.getIntent();  // B
 //            	
             	// newObj is (g,g')
-//            	System.out.println("New obj = [" + newObj.getIdentifier() + "," + newObj.getDescription().getAttributes() + "]");
+      //      	System.out.println("New obj = [" + newObj.getIdentifier() + "," + newObj.getDescription().getAttributes() + "]");
             	// Case I - Add a new concept (A U g',B) if g' contains B 
             	if(newObj.getDescription().getAttributes().containsAll(intent)) { // g' contains B ?
             	      c.getExtent().add(newObj);  // add (A U g, B) to new context
             	      addConceptToLattice(newConceptLattice,c);
-       //     	      System.out.println("Case I applies, \n\tConcept " + z + " +newObj added to new lattice");
-       //     	      System.out.println(c);
+         //   	      System.out.println("Case I applies, \n\tConcept " + z + " +newObj added to new lattice");
+         //   	      System.out.println(c);
             	}
             	else {
             		
             		//Case III - Add existing concept (A,B) to the new lattice 
             		//and another one if its the generator concept (not duplicate)
-         //   		 System.out.println("Case III, \n\tadd Concept " + z + " anyway to the new lattice");
-         //   		 System.out.println(c);
+          //  		 System.out.println("Case III, \n\tadd Concept " + z + " anyway to the new lattice");
+          //  		 System.out.println(c);
 
             		addConceptToLattice(newConceptLattice,c);  	  
             		
@@ -188,23 +188,27 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
             		// Algorithm of Norris
             		
             		// Update D' as A U g
-            		Concept<String, FullObject<String, String>> newC = new LatticeConcept();
-            		newC.getExtent().addAll(c.getExtent());
+            		LatticeConcept newC = new LatticeConcept();
+            		for(FullObject<String,String> f : c.getExtent())
+            			newC.getExtent().add(f);
+           // 		System.out.println(c.getExtent().size() + " " + newC.getExtent().size());
             		newC.getExtent().add(newObj);
+         
             		// Update D as D
             		for(String attr: newIntentAttributes)
             			newC.getIntent().add(attr);
-         //   		System.out.println("\tD = " + newC.getIntent());
-         //   		System.out.println("\tD' = " + newC.getExtent());
+            //		System.out.println("\tD = " + newC.getIntent());
+            //		System.out.println("\tD' = " + newC.getExtent());
             
             		
             		// find all objects that have the new attributes D
-         //   		System.out.println("\tFinding other objects having attributes as D if they exist..");
+            //		System.out.println("\tFinding other objects having attributes as D if they exist..");
             		boolean donotAdd = false;
             		int o = 0;
           	        for (FullObject<String, String> f : this.getObjects()) {
           	        	o++;
-          	        	if(newObj.getIdentifier().equals(f.getIdentifier())) continue;
+          	        	if(newC.getExtentIds().contains(f.getIdentifier()))
+          	        		continue;
          // 	        	System.out.println("\t\tObject " + o + ": " + f.getDescription().getAttributes());
           	        	boolean subset = true;
           	        	// Does f contain all attributes D
@@ -212,26 +216,27 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
           	        		if (!f.getDescription().getAttributes().contains(attr)) 
           	        			{ subset = false; break; }
           	        	}
-         //   	        if(subset)
-         //   	        	System.out.println("\t\tObject " + o + " contains all newintentattributes");
+           // 	        if(subset)
+           // 	        	System.out.println("\t\tObject " + o + " contains all newintentattributes");
             	        
-          //  	        System.out.println("Does newC extent (D') contains object " + o + " " + f.getIdentifier() + " ?");
-          //  	        System.out.println("\nD'=" + newC.getExtent());
-          //  	        System.out.println("\nf=" + f);
+           // 	        System.out.println("Does newC extent (D') contains object " + o + " " + f.getIdentifier() + " ?");
+           // 	        System.out.println("\nD'=" + newC.getExtent());
+           // 	        System.out.println("\nf=" + f);
           	        	// If f contains all new attributes, is it present in D'
             	        if(subset && !newC.getExtent().contains(f))  {
             	        	donotAdd = true; // (A,B) is not a generator of (D',D), hence no need to add, as it will be a duplicate
-          //  	        	System.out.println("\t\tNo:(A,B) not generator of (D'D), hence skipping.");
+     //       	        	System.out.println("\t\tNo:(A,B) not generator of (D'D), hence skipping.");
             	            break;
-            	        }
+            	        } 
+          //  	        else
+         //   	        	System.out.print("Yes");
             	    }
           	        
           	        // Add (D',D) to the new lattice
           	        if(!donotAdd) {
-          //	        	System.out.println("\t\tYes: Adding (D',D) since it is a generator");
+       //   	        	System.out.println("\t\tYes: Adding (D',D) since it is a generator");
                 	    addConceptToLattice(newConceptLattice,newC);
-            //    	    System.out.println(newC);
-
+          //      	    System.out.println(newC);
           	        }
             	}
             	

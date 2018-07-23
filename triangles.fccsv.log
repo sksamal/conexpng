@@ -8,29 +8,11 @@ No of concepts:6
 No of Objects: 4 (Correct:4)
 No of attributes: 5 (Correct:5)
 No of concepts: 7 (Correct:7)
-<{t1_0,t2_1,t3_2,t4_3,},{}>
-<{t1_0,t2_1,t3_2,t4_3,},{}>
-Both concepts are identical?:false
-1:<{t1_0,t2_1,t3_2,t4_3,},{}>
-2:<{},{a,b,c,d,e,}>
-3:<{t4_3,},{a,b,c,}>
-4:<{t1_0,t2_1,t4_3,},{b,}>
-5:<{t2_1,},{b,e,}>
-6:<{t3_2,t4_3,},{c,}>
-7:<{t1_0,},{b,d,}>
-1:<{},{a,b,c,d,e,}>
-2:<{t4_3,},{a,b,c,}>
-3:<{t1_0,t2_1,t3_2,t4_3,},{}>
-4:<{t1_0,t2_1,t4_3,},{b,}>
-5:<{t2_1,},{b,e,}>
-6:<{t1_0,},{b,d,}>
-7:<{t3_2,t4_3,},{c,}>
+Both concepts are identical?:true
 No of Objects: 5 (Correct:5)
 No of attributes: 5 (Correct:5)
 No of concepts: 8 (Correct:8)
-<{t1_0,t2_1,t3_2,t4_3,t5_4,},{}>
-<{t1_0,t2_1,t3_2,t4_3,t5_4,},{}>
-Both concepts are identical?:false
+Both concepts are identical?:true
 1:<{t1_0,t2_1,t3_2,t4_3,t5_4,},{}>
 2:<{},{a,b,c,d,e,}>
 3:<{t4_3,},{a,b,c,}>
@@ -47,53 +29,3 @@ Both concepts are identical?:false
 6:<{t1_0,},{b,d,}>
 7:<{t3_2,t4_3,},{c,}>
 8:<{t1_0,t5_4,},{d,}>
-No of Objects: 6 (Correct:6)
-No of attributes: 5 (Correct:5)
-No of concepts: 9 (Correct:9)
-<{t1_0,t2_1,t3_2,t4_3,t5_4,t6_5,},{}>
-<{t1_0,t2_1,t3_2,t4_3,t5_4,t6_5,},{}>
-Both concepts are identical?:false
-1:<{t1_0,t2_1,t3_2,t4_3,t5_4,t6_5,},{}>
-2:<{},{a,b,c,d,e,}>
-3:<{t4_3,},{a,b,c,}>
-4:<{t4_3,t6_5,},{b,c,}>
-5:<{t1_0,t2_1,t4_3,t6_5,},{b,}>
-6:<{t2_1,},{b,e,}>
-7:<{t3_2,t4_3,t6_5,},{c,}>
-8:<{t1_0,},{b,d,}>
-9:<{t1_0,t5_4,},{d,}>
-1:<{},{a,b,c,d,e,}>
-2:<{t4_3,},{a,b,c,}>
-3:<{t1_0,t2_1,t3_2,t4_3,t5_4,t6_5,},{}>
-4:<{t2_1,},{b,e,}>
-5:<{t4_3,t6_5,},{b,c,}>
-6:<{t1_0,},{b,d,}>
-7:<{t1_0,t2_1,t4_3,t6_5,},{b,}>
-8:<{t3_2,t4_3,t6_5,},{c,}>
-9:<{t1_0,t5_4,},{d,}>
-No of Objects: 7 (Correct:7)
-No of attributes: 5 (Correct:5)
-No of concepts: 10 (Correct:10)
-<{t1_0,t2_1,t3_2,t4_3,t5_4,t6_5,t7_6,},{}>
-<{t1_0,t2_1,t3_2,t4_3,t5_4,t6_5,t7_6,},{}>
-Both concepts are identical?:false
-1:<{t1_0,t2_1,t3_2,t4_3,t5_4,t6_5,t7_6,},{}>
-2:<{},{a,b,c,d,e,}>
-3:<{t4_3,},{a,b,c,}>
-4:<{t4_3,t6_5,},{b,c,}>
-5:<{t1_0,t2_1,t4_3,t6_5,},{b,}>
-6:<{t2_1,},{b,e,}>
-7:<{t2_1,t7_6,},{e,}>
-8:<{t3_2,t4_3,t6_5,},{c,}>
-9:<{t1_0,},{b,d,}>
-10:<{t1_0,t5_4,},{d,}>
-1:<{},{a,b,c,d,e,}>
-2:<{t4_3,},{a,b,c,}>
-3:<{t2_1,t7_6,},{e,}>
-4:<{t2_1,},{b,e,}>
-5:<{t4_3,t6_5,},{b,c,}>
-6:<{t1_0,t2_1,t3_2,t4_3,t5_4,t6_5,t7_6,},{}>
-7:<{t1_0,},{b,d,}>
-8:<{t1_0,t2_1,t4_3,t6_5,},{b,}>
-9:<{t3_2,t4_3,t6_5,},{c,}>
-10:<{t1_0,t5_4,},{d,}>

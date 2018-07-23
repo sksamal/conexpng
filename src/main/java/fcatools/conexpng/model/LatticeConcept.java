@@ -25,6 +25,13 @@ public class LatticeConcept implements Concept<String, FullObject<String, String
     public Set<FullObject<String, String>> getExtent() {
         return this.extent;
     }
+    
+    public Set<String> getExtentIds() {
+    	ListSet<String> extentids = new ListSet<String> ();
+    	for(FullObject<String, String> o : this.extent)
+    		extentids.add(o.getIdentifier());
+        return extentids;
+    }
 
     @Override
     public Set<String> getIntent() {

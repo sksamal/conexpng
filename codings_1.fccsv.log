@@ -2,30 +2,11 @@ Reading /home/ssamal/workspace/conexpng/codings_1.fccsv
 
 
 ***Reading first 10 records***
-No of Objects:10
-No of attributes:65
-No of concepts:8
-No of Objects: 11 (Correct:11)
-No of attributes: 65 (Correct:65)
-No of concepts: 8 (Correct:8)
-<{},{class0,feat0_0,feat10_0,feat11_0,feat12_0,feat13_0,feat14_0,feat15_0,feat16_0,feat17_0,feat18_0,feat19_0,feat1_0,feat20_0,feat21_0,feat22_0,feat23_0,feat24_0,feat25_0,feat26_0,feat27_0,feat28_0,feat29_0,feat2_0,feat30_0,feat31_0,feat32_0,feat33_0,feat34_0,feat35_0,feat36_0,feat37_0,feat38_0,feat39_0,feat3_0,feat40_0,feat41_0,feat42_0,feat43_0,feat44_0,feat45_0,feat46_0,feat47_0,feat48_0,feat49_0,feat4_0,feat50_0,feat51_0,feat52_0,feat53_0,feat54_0,feat55_0,feat56_0,feat57_0,feat58_0,feat59_0,feat5_0,feat60_0,feat61_0,feat62_0,feat63_0,feat6_0,feat7_0,feat8_0,feat9_0,}>
-<{},{class0,feat0_0,feat10_0,feat11_0,feat12_0,feat13_0,feat14_0,feat15_0,feat16_0,feat17_0,feat18_0,feat19_0,feat1_0,feat20_0,feat21_0,feat22_0,feat23_0,feat24_0,feat25_0,feat26_0,feat27_0,feat28_0,feat29_0,feat2_0,feat30_0,feat31_0,feat32_0,feat33_0,feat34_0,feat35_0,feat36_0,feat37_0,feat38_0,feat39_0,feat3_0,feat40_0,feat41_0,feat42_0,feat43_0,feat44_0,feat45_0,feat46_0,feat47_0,feat48_0,feat49_0,feat4_0,feat50_0,feat51_0,feat52_0,feat53_0,feat54_0,feat55_0,feat56_0,feat57_0,feat58_0,feat59_0,feat5_0,feat60_0,feat61_0,feat62_0,feat63_0,feat6_0,feat7_0,feat8_0,feat9_0,}>
-<{o9.0_0,o2.0_1,o7.0_2,o2.0_3,},{class0,feat0_0,feat12_0,feat14_0,feat16_0,feat18_0,feat19_0,feat23_0,feat26_0,feat28_0,feat29_0,feat2_0,feat30_0,feat31_0,feat32_0,feat35_0,feat36_0,feat38_0,feat40_0,feat41_0,feat43_0,feat44_0,feat48_0,feat49_0,feat50_0,feat51_0,feat54_0,feat57_0,feat58_0,feat61_0,feat63_0,feat6_0,feat9_0,}>
-<{o9.0_0,o2.0_1,o7.0_2,o2.0_3,},{class0,feat0_0,feat12_0,feat14_0,feat16_0,feat18_0,feat19_0,feat23_0,feat26_0,feat28_0,feat29_0,feat2_0,feat30_0,feat31_0,feat32_0,feat35_0,feat36_0,feat38_0,feat40_0,feat41_0,feat43_0,feat44_0,feat48_0,feat49_0,feat50_0,feat51_0,feat54_0,feat57_0,feat58_0,feat61_0,feat63_0,feat6_0,feat9_0,}>
-Both concepts are identical?:false
-1:<{},{class0,feat0_0,feat10_0,feat11_0,feat12_0,feat13_0,feat14_0,feat15_0,feat16_0,feat17_0,feat18_0,feat19_0,feat1_0,feat20_0,feat21_0,feat22_0,feat23_0,feat24_0,feat25_0,feat26_0,feat27_0,feat28_0,feat29_0,feat2_0,feat30_0,feat31_0,feat32_0,feat33_0,feat34_0,feat35_0,feat36_0,feat37_0,feat38_0,feat39_0,feat3_0,feat40_0,feat41_0,feat42_0,feat43_0,feat44_0,feat45_0,feat46_0,feat47_0,feat48_0,feat49_0,feat4_0,feat50_0,feat51_0,feat52_0,feat53_0,feat54_0,feat55_0,feat56_0,feat57_0,feat58_0,feat59_0,feat5_0,feat60_0,feat61_0,feat62_0,feat63_0,feat6_0,feat7_0,feat8_0,feat9_0,}>
-2:<{o9.0_0,o2.0_1,o7.0_2,o2.0_3,},{class0,feat0_0,feat12_0,feat14_0,feat16_0,feat18_0,feat19_0,feat23_0,feat26_0,feat28_0,feat29_0,feat2_0,feat30_0,feat31_0,feat32_0,feat35_0,feat36_0,feat38_0,feat40_0,feat41_0,feat43_0,feat44_0,feat48_0,feat49_0,feat50_0,feat51_0,feat54_0,feat57_0,feat58_0,feat61_0,feat63_0,feat6_0,feat9_0,}>
-3:<{o9.0_0,o2.0_1,o7.0_2,o2.0_3,o7.0_4,o2.0_5,o7.0_6,o5.0_7,},{class0,feat12_0,feat16_0,feat18_0,feat23_0,feat26_0,feat28_0,feat30_0,feat32_0,feat38_0,feat44_0,feat49_0,feat51_0,feat54_0,feat57_0,feat63_0,feat6_0,feat9_0,}>
-4:<{o7.0_8,o5.0_9,o2.0_10,},{class0,feat0_0,feat10_0,feat14_0,feat19_0,feat1_0,feat21_0,feat22_0,feat23_0,feat24_0,feat25_0,feat28_0,feat2_0,feat30_0,feat31_0,feat35_0,feat37_0,feat38_0,feat39_0,feat3_0,feat41_0,feat44_0,feat46_0,feat47_0,feat49_0,feat51_0,feat52_0,feat53_0,feat56_0,feat60_0,feat61_0,feat63_0,feat9_0,}>
-5:<{o9.0_0,o2.0_1,o7.0_2,o2.0_3,o7.0_8,o5.0_9,o2.0_10,},{class0,feat0_0,feat14_0,feat19_0,feat23_0,feat28_0,feat2_0,feat30_0,feat31_0,feat35_0,feat38_0,feat41_0,feat44_0,feat49_0,feat51_0,feat61_0,feat63_0,feat9_0,}>
-6:<{o9.0_0,o2.0_1,o7.0_2,o2.0_3,o7.0_4,o2.0_5,o7.0_6,o5.0_7,o7.0_8,o5.0_9,o2.0_10,},{class0,feat23_0,feat28_0,feat30_0,feat38_0,feat44_0,feat49_0,feat51_0,feat63_0,feat9_0,}>
-7:<{o7.0_4,o2.0_5,o7.0_6,o5.0_7,o7.0_8,o5.0_9,o2.0_10,},{class0,feat10_0,feat1_0,feat23_0,feat25_0,feat28_0,feat30_0,feat38_0,feat44_0,feat46_0,feat49_0,feat51_0,feat52_0,feat60_0,feat63_0,feat9_0,}>
-8:<{o7.0_4,o2.0_5,o7.0_6,o5.0_7,},{class0,feat10_0,feat12_0,feat15_0,feat16_0,feat18_0,feat1_0,feat20_0,feat23_0,feat25_0,feat26_0,feat27_0,feat28_0,feat30_0,feat32_0,feat33_0,feat38_0,feat44_0,feat45_0,feat46_0,feat49_0,feat4_0,feat51_0,feat52_0,feat54_0,feat55_0,feat57_0,feat59_0,feat60_0,feat63_0,feat6_0,feat9_0,}>
-1:<{},{class0,feat0_0,feat10_0,feat11_0,feat12_0,feat13_0,feat14_0,feat15_0,feat16_0,feat17_0,feat18_0,feat19_0,feat1_0,feat20_0,feat21_0,feat22_0,feat23_0,feat24_0,feat25_0,feat26_0,feat27_0,feat28_0,feat29_0,feat2_0,feat30_0,feat31_0,feat32_0,feat33_0,feat34_0,feat35_0,feat36_0,feat37_0,feat38_0,feat39_0,feat3_0,feat40_0,feat41_0,feat42_0,feat43_0,feat44_0,feat45_0,feat46_0,feat47_0,feat48_0,feat49_0,feat4_0,feat50_0,feat51_0,feat52_0,feat53_0,feat54_0,feat55_0,feat56_0,feat57_0,feat58_0,feat59_0,feat5_0,feat60_0,feat61_0,feat62_0,feat63_0,feat6_0,feat7_0,feat8_0,feat9_0,}>
-2:<{o9.0_0,o2.0_1,o7.0_2,o2.0_3,},{class0,feat0_0,feat12_0,feat14_0,feat16_0,feat18_0,feat19_0,feat23_0,feat26_0,feat28_0,feat29_0,feat2_0,feat30_0,feat31_0,feat32_0,feat35_0,feat36_0,feat38_0,feat40_0,feat41_0,feat43_0,feat44_0,feat48_0,feat49_0,feat50_0,feat51_0,feat54_0,feat57_0,feat58_0,feat61_0,feat63_0,feat6_0,feat9_0,}>
-3:<{o9.0_0,o2.0_1,o7.0_2,o2.0_3,o7.0_4,o2.0_5,o7.0_6,o5.0_7,},{class0,feat12_0,feat16_0,feat18_0,feat23_0,feat26_0,feat28_0,feat30_0,feat32_0,feat38_0,feat44_0,feat49_0,feat51_0,feat54_0,feat57_0,feat63_0,feat6_0,feat9_0,}>
-4:<{o7.0_4,o2.0_5,o7.0_6,o5.0_7,o7.0_8,o5.0_9,o2.0_10,},{class0,feat10_0,feat1_0,feat23_0,feat25_0,feat28_0,feat30_0,feat38_0,feat44_0,feat46_0,feat49_0,feat51_0,feat52_0,feat60_0,feat63_0,feat9_0,}>
-5:<{o9.0_0,o2.0_1,o7.0_2,o2.0_3,o7.0_8,o5.0_9,o2.0_10,},{class0,feat0_0,feat14_0,feat19_0,feat23_0,feat28_0,feat2_0,feat30_0,feat31_0,feat35_0,feat38_0,feat41_0,feat44_0,feat49_0,feat51_0,feat61_0,feat63_0,feat9_0,}>
-6:<{o7.0_8,o5.0_9,o2.0_10,},{class0,feat0_0,feat10_0,feat14_0,feat19_0,feat1_0,feat21_0,feat22_0,feat23_0,feat24_0,feat25_0,feat28_0,feat2_0,feat30_0,feat31_0,feat35_0,feat37_0,feat38_0,feat39_0,feat3_0,feat41_0,feat44_0,feat46_0,feat47_0,feat49_0,feat51_0,feat52_0,feat53_0,feat56_0,feat60_0,feat61_0,feat63_0,feat9_0,}>
-7:<{o9.0_0,o2.0_1,o7.0_2,o2.0_3,o7.0_4,o2.0_5,o7.0_6,o5.0_7,o7.0_8,o5.0_9,o2.0_10,},{class0,feat23_0,feat28_0,feat30_0,feat38_0,feat44_0,feat49_0,feat51_0,feat63_0,feat9_0,}>
-8:<{o7.0_4,o2.0_5,o7.0_6,o5.0_7,},{class0,feat10_0,feat12_0,feat15_0,feat16_0,feat18_0,feat1_0,feat20_0,feat23_0,feat25_0,feat26_0,feat27_0,feat28_0,feat30_0,feat32_0,feat33_0,feat38_0,feat44_0,feat45_0,feat46_0,feat49_0,feat4_0,feat51_0,feat52_0,feat54_0,feat55_0,feat57_0,feat59_0,feat60_0,feat63_0,feat6_0,feat9_0,}>
+No of Objects:200
+No of attributes:64
+No of concepts:2077
+	Completed reading 800 records
+No of Objects: 1000
+No of attributes: 64
+No of concepts: 2077
+Read time: 7264216ms
