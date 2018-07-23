@@ -1,9 +1,12 @@
 package examples;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -25,7 +28,18 @@ public class IFuzzyTest {
 	private static TeeWriter tee = null;
 	public static void main(String[] args) {
 		
+		// Version info 
 		System.out.println("IfuzzyTest v13");
+		try {
+			Scanner sc = new Scanner(new File (".build.txt"));
+			while(sc.hasNextLine()) {
+				System.out.println(sc.nextLine());
+			}
+			sc.close();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 			
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/staralliance.fccsv";
