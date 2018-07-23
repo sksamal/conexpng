@@ -58,7 +58,7 @@ public class IFuzzyTest {
 	    System.setProperty("user.language", LocaleHandler.readLocale());
 	    PrintStream pwStream = null;
 	    IFuzzyMultiClassifierContext ifmc = null;
-	    IFuzzyMultiClassifierContext ifmc1 = null;
+//	    IFuzzyMultiClassifierContext ifmc1 = null;
 
 		Conf newState = new Conf();
 		try {
@@ -103,7 +103,8 @@ public class IFuzzyTest {
 				tee.println("Objects now:" + ifmc.getObjectCount());
 			}
 
-			if(i>1000 && i%expr == 0) {
+			if(i%expr == 0) {
+		//	if(i>1000 && i%expr == 0) {
 				tee.println("	Read " + i + " records");
 				long ms1 = System.currentTimeMillis();
 				tee.println("10 records took " + (ms1 - ms) + " ms");
@@ -113,17 +114,17 @@ public class IFuzzyTest {
 				tee.println("Concepts now: " + concepts.size());
 				tee.println("Objects now:" + ifmc.getObjectCount());
 				
-				Conf newState1 = new Conf();
-				newState1.filePath = "";
-				IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,0,false,11+i); // last 1 are classes, uniqueness
-				ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
-				tee.println("No of Objects: "+ ifmc.getObjectCount() + " (Correct:" + ifmc1.getObjectCount() + ")");
-				tee.println("No of attributes: " + ifmc.getAttributeCount() + " (Correct:" + ifmc1.getAttributeCount() + ")");
-				concepts = ifmc.getConcepts();
-				Set<Concept<String,FullObject<String,String>>> concepts1 = ifmc1.getConcepts();
-				tee.println("No of concepts: " + concepts.size() + " (Correct:" + concepts1.size() + ")");
-				tee.println("Both concepts are identical?:" +areIdentical(concepts,concepts1));
-				ptdgsReader1.close();
+//				Conf newState1 = new Conf();
+//				newState1.filePath = "";
+//				IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,1,false,initial+i); // last 1 are classes, uniqueness
+//				ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
+//				tee.println("No of Objects: "+ ifmc.getObjectCount() + " (Correct:" + ifmc1.getObjectCount() + ")");
+//				tee.println("No of attributes: " + ifmc.getAttributeCount() + " (Correct:" + ifmc1.getAttributeCount() + ")");
+//				concepts = ifmc.getConcepts();
+//				Set<Concept<String,FullObject<String,String>>> concepts1 = ifmc1.getConcepts();
+//				tee.println("No of concepts: " + concepts.size() + " (Correct:" + concepts1.size() + ")");
+//				tee.println("Both concepts are identical?:" +areIdentical(concepts,concepts1));
+//				ptdgsReader1.close();
 
 			}
 //			Conf newState1 = new Conf();
