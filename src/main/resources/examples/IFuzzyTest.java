@@ -25,20 +25,20 @@ public class IFuzzyTest {
 	private static TeeWriter tee = null;
 	public static void main(String[] args) {
 		
-		System.out.println("IfuzzyTest v12");
+		System.out.println("IfuzzyTest v13");
 			
-	//	String INPUTFILE = "/home/ssamal/Downloads/data-analysis-tools/data/colcan/codings2.fccsv";
-	//	String INPUTFILE = "/home/ssamal/dl/201803/out/codings1000.fccsv";
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/staralliance.fccsv";
-		String INPUTFILE = "/home/ssamal/workspace/conexpng/codings_1.fccsv";
-//		String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
+		String INPUTFILE = "/home/ssamal/java_projs/conexpng/codings_1.fccsv";
 	//	String INPUTFILE = "/home/ssamal/java_projs/conexpng/recipe_parser/ingsdata.fccsv";
 		String imageLocation = "/home/ssamal/dl/out";
 		if(args.length >=1) INPUTFILE = args[0];
 	//	if(args.length >=2) imageLocation = args[1];
+		int initial = 100;
+		if(args.length>=2) initial = Integer.parseInt(args[1]);
 		int expr = 10;
-		if(args.length>=2) expr = Integer.parseInt(args[1]);
+		if(args.length>=2) expr = Integer.parseInt(args[2]);
+		
 		Conf state = new Conf();
 		state.filePath = "/home/ssamal/data-analysis-tools/data/colcan";
 	    System.setProperty("user.language", LocaleHandler.readLocale());
@@ -49,33 +49,16 @@ public class IFuzzyTest {
 		Conf newState = new Conf();
 		try {
 			
-		
-//		FCSVMultiClassReader ptdgsReader = new FCSVMultiClassReader(state, INPUTFILE,1); // last 2 are classes
-//		state.startCalculation(StatusMessage.LOADINGFILE);
-//		System.out.println("***Reading entire file***");
-//		System.out.println("No of Objects:"+ state.context.getObjectCount());
-//		System.out.println("No of attributes:" + state.context.getAttributeCount());
-//		long millis = System.currentTimeMillis();
-//		Set<Concept<String,FullObject<String,String>>> concepts = state.context.getConcepts();
-//		System.out.println(state.context.getConcepts());
-//		System.out.println("Directly generating concepts took " + (System.currentTimeMillis() - millis) + "ms");
-//		System.out.println("No of concepts:" + concepts.size());
-//		System.out.println("No of classSets:" + ((FuzzyMultiClassifierContext)(state.context)).getClassesCount());
-//		System.out.println("Classes:" + ((FuzzyMultiClassifierContext)(state.context)).getClassesAsString());
-//		printClassedConceptProbs(concepts);
-
-//		ptdgsReader.close();
-
-//		printConcepts(concepts);
-	
+		// Logging using tee
 		pwStream = new PrintStream(INPUTFILE + ".log");
 		HTMLWriter htmlStream = new HTMLWriter(INPUTFILE + ".html");
 		htmlStream.setImageLocation(imageLocation + "/training");
 		tee = new TeeWriter(pwStream, System.out);
+		
 		newState.filePath = "";
 		tee.println("Reading " + INPUTFILE);
 		long currentms = System.currentTimeMillis();
-		IFCSVMultiClassReader ptdgsReader = new IFCSVMultiClassReader(newState, INPUTFILE,1,false,200); // last 1 are classes, uniqueness
+		IFCSVMultiClassReader ptdgsReader = new IFCSVMultiClassReader(newState, INPUTFILE,1,false,initial); // last 1 are classes, uniqueness
 		ifmc = ((IFuzzyMultiClassifierContext)newState.context);
 		tee.println("\n\n***Reading first 10 records***");
 		tee.println("No of Objects:"+ ifmc.getObjectCount());
@@ -105,6 +88,7 @@ public class IFuzzyTest {
 				tee.println("Concepts now: " + concepts.size());
 				tee.println("Objects now:" + ifmc.getObjectCount());
 			}
+
 			if(i>1000 && i%expr == 0) {
 				tee.println("	Read " + i + " records");
 				long ms1 = System.currentTimeMillis();
@@ -114,6 +98,19 @@ public class IFuzzyTest {
 				tee.println("Generating concepts took " + (ms - ms1) + " ms");
 				tee.println("Concepts now: " + concepts.size());
 				tee.println("Objects now:" + ifmc.getObjectCount());
+				
+				Conf newState1 = new Conf();
+				newState1.filePath = "";
+				IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,0,false,11+i); // last 1 are classes, uniqueness
+				ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
+				tee.println("No of Objects: "+ ifmc.getObjectCount() + " (Correct:" + ifmc1.getObjectCount() + ")");
+				tee.println("No of attributes: " + ifmc.getAttributeCount() + " (Correct:" + ifmc1.getAttributeCount() + ")");
+				concepts = ifmc.getConcepts();
+				Set<Concept<String,FullObject<String,String>>> concepts1 = ifmc1.getConcepts();
+				tee.println("No of concepts: " + concepts.size() + " (Correct:" + concepts1.size() + ")");
+				tee.println("Both concepts are identical?:" +areIdentical(concepts,concepts1));
+				ptdgsReader1.close();
+
 			}
 //			Conf newState1 = new Conf();
 //			newState1.filePath = "";

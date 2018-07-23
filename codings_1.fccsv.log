@@ -1,12 +1,10 @@
-Reading /home/ssamal/workspace/conexpng/codings_1.fccsv
+Reading /home/ssamal/java_projs/conexpng/codings_1.fccsv
 
 
 ***Reading first 10 records***
-No of Objects:200
+No of Objects:100
 No of attributes:64
-No of concepts:2077
-	Completed reading 800 records
+No of concepts:1822
+	Completed reading 900 records
 No of Objects: 1000
 No of attributes: 64
-No of concepts: 2077
-Read time: 7264216ms

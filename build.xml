@@ -17,7 +17,7 @@
 				<fileset dir="${lib}">
 			            <include name="**/*.jar" />
 		    </fileset>
-		<!--    <pathelement path="lib/*.jar"/> -->
+		    <pathelement path="lib/*.jar"/>
 	</path> 
 		
 	<target name="init">
@@ -42,7 +42,7 @@
            <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/> 
                 <attribute name="Rsrc-Main-Class" value="examples.IFuzzyTest"/>
                 <attribute name="Class-Path" value="."/>
-                <attribute name="Rsrc-Class-Path" value="./ fcaapi-0.10.2.jar fcalib-0.10.2.jar slf4j-log4j12-1.7.7.jar log4j-1.2.17.jar batik-codec-1.7.jar batik-swing-1.7.jar batik-transcoder-1.7.jar batik-bridge-1.7.jar svg-dom-java-1.1.jar batik-gvt-1.7.jar guava-21.0.jar weblaf-core-1.2.8.jar weblaf-ui-1.2.8.jar batik-dom-1.7.jar batik-svg-dom-1.7.jar batik-svggen-1.7.jar fop-0.94.jar batik-awt-util-1.7.jar avalon-framework-api-4.3.1.jar LatDraw.jar combinatoricslib-2.0.jar xstream-1.4.8.jar batik-util-1.7.jar batik-css-1.7.jar protege-3.4.8.jar protege-owl-3.4.8.jar jena-2.6.4.jar slf4j-api-1.7.25.jar xercesImpl-2.10.0.jar org.protege.editor.owl-4.3.0.jar orphanNodesAlg.jar iri-0.8.jar icu4j-3.4.4.jar xml-apis-2.10.0.jar"/>
+                <attribute name="Rsrc-Class-Path" value="./ fcaapi-0.10.2.jar fcalib-0.10.2.jar slf4j-log4j12-1.7.7.jar log4j-1.2.17.jar batik-codec-1.7.jar batik-swing-1.7.jar batik-transcoder-1.7.jar batik-bridge-1.7.jar svg-dom-java-1.1.jar batik-gvt-1.7.jar guava-21.0.jar weblaf-core-1.2.8.jar weblaf-ui-1.2.8.jar batik-dom-1.7.jar batik-svg-dom-1.7.jar batik-svggen-1.7.jar fop-0.94.jar batik-awt-util-1.7.jar avalon-framework-api-4.3.1.jar LatDraw.jar combinatoricslib-2.0.jar xstream-1.4.8.jar batik-util-1.7.jar batik-css-1.7.jar protege-3.4.8.jar protege-owl-3.4.8.jar jena-2.6.4.jar slf4j-api-1.7.25.jar xercesImpl-2.10.0.jar org.protege.editor.owl-4.3.0.jar orphanNodesAlg.jar iri-0.8.jar icu4j-3.4.4.jar xml-apis-2.10.0.jar xpp3_min-1.1.4c.jar"/>
             </manifest>
             <zipfileset src="${lib}/jar-in-jar-loader.zip"/> 
             <fileset dir="${dir.jarfile}/build"/>
