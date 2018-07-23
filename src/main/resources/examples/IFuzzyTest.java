@@ -51,7 +51,7 @@ public class IFuzzyTest {
 		int initial = 100;
 		if(args.length>=2) initial = Integer.parseInt(args[1]);
 		int expr = 10;
-		if(args.length>=2) expr = Integer.parseInt(args[2]);
+		if(args.length>=3) expr = Integer.parseInt(args[2]);
 		
 		Conf state = new Conf();
 		state.filePath = "/home/ssamal/data-analysis-tools/data/colcan";
