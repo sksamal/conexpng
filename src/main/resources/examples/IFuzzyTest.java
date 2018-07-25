@@ -135,7 +135,7 @@ public class IFuzzyTest {
 		
 //		printConcepts(concepts);
 //		printConcepts(concepts1);
-		ifmc.toXml(INPUTFILE+"_" + expr + "_context.txt");
+//		ifmc.toXml(INPUTFILE+"_" + expr + "_context.txt");
 		tee.println("	Completed reading " + i + " records");
 		tee.println("No of Objects: "+ ifmc.getObjectCount());
 		tee.println("No of attributes: " + ifmc.getAttributeCount());
