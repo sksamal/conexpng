@@ -1,9 +1,12 @@
 package examples;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -25,7 +28,18 @@ public class IFuzzyTest {
 	private static TeeWriter tee = null;
 	public static void main(String[] args) {
 		
+		// Version info 
 		System.out.println("IfuzzyTest v13");
+		try {
+			Scanner sc = new Scanner(new File (".build.txt"));
+			while(sc.hasNextLine()) {
+				System.out.println(sc.nextLine());
+			}
+			sc.close();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 			
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/staralliance.fccsv";
@@ -37,14 +51,14 @@ public class IFuzzyTest {
 		int initial = 100;
 		if(args.length>=2) initial = Integer.parseInt(args[1]);
 		int expr = 10;
-		if(args.length>=2) expr = Integer.parseInt(args[2]);
+		if(args.length>=3) expr = Integer.parseInt(args[2]);
 		
 		Conf state = new Conf();
 		state.filePath = "/home/ssamal/data-analysis-tools/data/colcan";
 	    System.setProperty("user.language", LocaleHandler.readLocale());
 	    PrintStream pwStream = null;
 	    IFuzzyMultiClassifierContext ifmc = null;
-	    IFuzzyMultiClassifierContext ifmc1 = null;
+//	    IFuzzyMultiClassifierContext ifmc1 = null;
 
 		Conf newState = new Conf();
 		try {
@@ -89,7 +103,8 @@ public class IFuzzyTest {
 				tee.println("Objects now:" + ifmc.getObjectCount());
 			}
 
-			if(i>1000 && i%expr == 0) {
+			if(i%expr == 0) {
+		//	if(i>1000 && i%expr == 0) {
 				tee.println("	Read " + i + " records");
 				long ms1 = System.currentTimeMillis();
 				tee.println("10 records took " + (ms1 - ms) + " ms");
@@ -99,17 +114,17 @@ public class IFuzzyTest {
 				tee.println("Concepts now: " + concepts.size());
 				tee.println("Objects now:" + ifmc.getObjectCount());
 				
-				Conf newState1 = new Conf();
-				newState1.filePath = "";
-				IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,0,false,11+i); // last 1 are classes, uniqueness
-				ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
-				tee.println("No of Objects: "+ ifmc.getObjectCount() + " (Correct:" + ifmc1.getObjectCount() + ")");
-				tee.println("No of attributes: " + ifmc.getAttributeCount() + " (Correct:" + ifmc1.getAttributeCount() + ")");
-				concepts = ifmc.getConcepts();
-				Set<Concept<String,FullObject<String,String>>> concepts1 = ifmc1.getConcepts();
-				tee.println("No of concepts: " + concepts.size() + " (Correct:" + concepts1.size() + ")");
-				tee.println("Both concepts are identical?:" +areIdentical(concepts,concepts1));
-				ptdgsReader1.close();
+//				Conf newState1 = new Conf();
+//				newState1.filePath = "";
+//				IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,1,false,initial+i); // last 1 are classes, uniqueness
+//				ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
+//				tee.println("No of Objects: "+ ifmc.getObjectCount() + " (Correct:" + ifmc1.getObjectCount() + ")");
+//				tee.println("No of attributes: " + ifmc.getAttributeCount() + " (Correct:" + ifmc1.getAttributeCount() + ")");
+//				concepts = ifmc.getConcepts();
+//				Set<Concept<String,FullObject<String,String>>> concepts1 = ifmc1.getConcepts();
+//				tee.println("No of concepts: " + concepts.size() + " (Correct:" + concepts1.size() + ")");
+//				tee.println("Both concepts are identical?:" +areIdentical(concepts,concepts1));
+//				ptdgsReader1.close();
 
 			}
 //			Conf newState1 = new Conf();
@@ -132,7 +147,7 @@ public class IFuzzyTest {
 		
 //		printConcepts(concepts);
 //		printConcepts(concepts1);
-		ifmc.toXml(INPUTFILE+"_" + expr + "_context.txt");
+//		ifmc.toXml(INPUTFILE+"_" + expr + "_context.txt");
 		tee.println("	Completed reading " + i + " records");
 		tee.println("No of Objects: "+ ifmc.getObjectCount());
 		tee.println("No of attributes: " + ifmc.getAttributeCount());
