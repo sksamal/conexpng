@@ -107,7 +107,7 @@ public class IFuzzyTest {
 		//	if(i>1000 && i%expr == 0) {
 				tee.println("	Read " + i + " records");
 				long ms1 = System.currentTimeMillis();
-				tee.println("10 records took " + (ms1 - ms) + " ms");
+				tee.println(expr + " records took " + (ms1 - ms) + " ms");
 				concepts = ifmc.getConcepts();
 				ms = System.currentTimeMillis();
 				tee.println("Generating concepts took " + (ms - ms1) + " ms");
@@ -153,6 +153,7 @@ public class IFuzzyTest {
 		tee.println("No of attributes: " + ifmc.getAttributeCount());
 		concepts = ifmc.getConcepts();
 		tee.println("No of concepts: " + concepts.size());
+		tee.println("All data read successfully");
 		tee.println("Read time: " + (System.currentTimeMillis()-currentms) + "ms");
 //	//	printClassedConcepts(concepts);
 //	
@@ -184,12 +185,16 @@ public class IFuzzyTest {
 	//	((FuzzyMultiClassifierContext)(newState.context)).kpartition(10);;
 			
 		// Classify all objects
+		System.out.println("Starting to classify now");
+		long ms = System.currentTimeMillis();
 		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ifmc.getMinimalConceptMap();
+		System.out.println("Generated classification");
 		HashMap<String,Set<String>> classSetMap = ifmc.getTrainingSet();
 		List<Set<String>> classesSet = ifmc.getClasses();
-//		for (Set<String> clazz : classesSet)
-//			System.out.println(clazz.size() + ":" + clazz);
-//		printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
+		for (Set<String> clazz : classesSet)
+		System.out.println(clazz.size() + ":" + clazz);
+		printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
+
 	}
 
 	public static boolean areIdentical(Set<Concept<String, FullObject<String, String>>> concepts, Set<Concept<String, FullObject<String, String>>> concepts1) {
