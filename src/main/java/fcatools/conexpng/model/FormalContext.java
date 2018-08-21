@@ -1,6 +1,7 @@
 package fcatools.conexpng.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -190,6 +191,18 @@ public class FormalContext extends de.tudresden.inf.tcs.fcalib.FormalContext<Str
             if (!extents.contains(e))
                 extents.add(e);
         }
+        
+        String[] sortedAttributes = this.getAttributes().toArray(new String[0]);
+        Arrays.sort(sortedAttributes);
+        HashMap<String,Long> attrIdMap = new HashMap<String,Long>();
+        Long value = (long)1;
+        for(int i=sortedAttributes.length-1;i>=0;i--) {
+        	attrIdMap.put(sortedAttributes[i], value);
+        	value = value *2;
+ //           System.out.println(sortedAttributes[i] + " " + attrIdMap.get(sortedAttributes[i]));
+        }
+        
+        
         for (Set<String> e : extents) {
             TreeSet<String> intents = new TreeSet<String>();
             int count = 0;
@@ -209,10 +222,13 @@ public class FormalContext extends de.tudresden.inf.tcs.fcalib.FormalContext<Str
                         c.getExtent().add(i);
                     }
                 }
+            
             // concepts.put(e, intents);
             for (String s : intents) {
                 c.getIntent().add(s);
+                ((LatticeConcept)c).addToId(attrIdMap.get(s));
             }
+       //     System.out.println(((LatticeConcept)c).getId());
             conceptLattice.add(c);
         }
         return conceptLattice;

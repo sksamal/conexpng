@@ -22,7 +22,7 @@ public class FCSVMultiClassReader {
 	private FuzzyMultiClassifierContext context;
 
 	public FCSVMultiClassReader(Conf state, String path) throws IllegalObjectException, IOException {
-		this(state,path,1);
+		this(state,path,0);
 	}
 	
 	public FCSVMultiClassReader(Conf state, String path, int numClasses) throws IllegalObjectException, IOException {
@@ -80,7 +80,7 @@ public class FCSVMultiClassReader {
             List<String> attrForObj = new ArrayList<String>();
             List<Double> values = new ArrayList<Double>();
             Set<String> classes = new TreeSet<String>();
-  
+//            System.out.println(line);
 //            System.out.println("Attributes:" + context.getAttributes()); 
 //            System.out.println("AttributeCount:" + context.getAttributeCount()); 
 //            System.out.println(obj.length);
@@ -109,8 +109,11 @@ public class FCSVMultiClassReader {
                 	context.addObject(obj[0]+"_" + numObj,classes,attrForObj,values);
 
             numObj++;
-    
+  //          System.out.println(numObj);
+  //          System.out.println(context.getObjects());
+            
  //         System.out.println("Classes:" + context.getClasses()); 
+     
     }
     
     public void close() throws IOException {

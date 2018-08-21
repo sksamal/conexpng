@@ -31,14 +31,14 @@ public class IFuzzyMultiClassedFCARunner {
 		printConcepts(ifmc.getConcepts());
 		
 		//add a new object
-	     Set<String> attrForObj = new TreeSet<>();
-	     attrForObj.add(ifmc.getAttributeAtIndex(0));
-	     attrForObj.add(ifmc.getAttributeAtIndex(1));
-	     attrForObj.add(ifmc.getAttributeAtIndex(2));
-	     ifmc.addObject(new FullObject<String, String>("t4", attrForObj));
-
-	 	System.out.println("\n New concepts after adding t4");
-		printConcepts(ifmc.getConcepts());
+//	     Set<String> attrForObj = new TreeSet<>();
+//	     attrForObj.add(ifmc.getAttributeAtIndex(0));
+//	     attrForObj.add(ifmc.getAttributeAtIndex(1));
+//	     attrForObj.add(ifmc.getAttributeAtIndex(2));
+//	     ifmc.addObject(new FullObject<String, String>("t4", attrForObj));
+//
+//	 	System.out.println("\n New concepts after adding t4");
+//		printConcepts(ifmc.getConcepts());
 		
 		}
 		

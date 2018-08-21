@@ -1,5 +1,6 @@
 package fcatools.conexpng.gui.workers;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -152,6 +153,16 @@ public class ConceptWorker extends AbstractWorker {
             if (!extents.contains(e))
                 extents.add(e);
         }
+        
+        String[] sortedAttributes = context.getAttributes().toArray(new String[0]);
+        Arrays.sort(sortedAttributes);
+        HashMap<String,Long> attrIdMap = new HashMap<String,Long>();
+        Long value = (long)1;
+        for(int i=sortedAttributes.length-1;i>=0;i--) {
+        	attrIdMap.put(sortedAttributes[i], value);
+        	value = value *2;
+        }
+
         for (Set<String> e : extents) {
             TreeSet<String> intents = new TreeSet<String>();
             int count = 0;
@@ -178,8 +189,10 @@ public class ConceptWorker extends AbstractWorker {
                 return null;
             }
             for (String s : intents) {
-                if (!context.getDontConsideredAttr().contains(s))
+                if (!context.getDontConsideredAttr().contains(s)) {
                     c.getIntent().add(s);
+                    ((LatticeConcept)c).addToId(attrIdMap.get(s));
+                }
             }
             conceptLattice.add(c);
         }
@@ -272,10 +285,31 @@ public class ConceptWorker extends AbstractWorker {
             	fuzzyLattice.add(fcc);	
             }
     	conceptLattice = fuzzyLattice;
-    }       	
+    }     
+        printConcepts(conceptLattice);
     	return null;
     }
 
+    public static void printConcepts(ListSet<Concept<String, FullObject<String, String>>> cLattice) {
+    	
+    	int i=1;
+    	for(Concept<String, FullObject<String, String>> c : cLattice) {
+		// concept (A,B)
+		// A is set of objects which is extent
+		// B is set of attributes which is intent
+			StringBuffer sb = new StringBuffer();
+			sb.append(i + ": <{");
+			for(FullObject<String, String> o : c.getExtent()) 
+				sb.append(o.getIdentifier() + ",");//  "[" + o.getDescription().getAttributes() + "]" + ",");
+			sb.append("},{");
+			for(String attr : c.getIntent())
+				sb.append(attr + ",");
+			sb.append("}>");
+			System.out.println(sb + "[" + ((LatticeConcept)c).getId() + "]");
+			i++;
+    	}
+	}
+    
     /*
      * executed in EDT so no computations here.
      */

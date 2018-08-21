@@ -22,6 +22,7 @@ import fcatools.conexpng.model.FuzzyFormalContext;
 import fcatools.conexpng.model.FuzzyMultiClassedConcept;
 import fcatools.conexpng.model.FuzzyMultiClassifierContext;
 import fcatools.conexpng.model.IFuzzyMultiClassifierContext;
+import fcatools.conexpng.model.LatticeConcept;
 
 public class IFuzzyTest {
 
@@ -37,14 +38,15 @@ public class IFuzzyTest {
 			}
 			sc.close();
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 			
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/staralliance.fccsv";
-		String INPUTFILE = "/home/ssamal/java_projs/conexpng/codings_1.fccsv";
+	//	String INPUTFILE = "/home/ssamal/java_projs/conexpng/codings_1.fccsv";
 	//	String INPUTFILE = "/home/ssamal/java_projs/conexpng/recipe_parser/ingsdata.fccsv";
+		String INPUTFILE = "/home/ssamal/workspace/conexpng/og_fabricated.fccsv";
+
 		String imageLocation = "/home/ssamal/dl/out";
 		if(args.length >=1) INPUTFILE = args[0];
 	//	if(args.length >=2) imageLocation = args[1];
@@ -81,7 +83,7 @@ public class IFuzzyTest {
 		tee.println("No of concepts:" + concepts.size());
 //		printConcepts(concepts);
 //		printClassedConceptProbs(concepts);
-//		System.exit(1);
+		System.exit(1);
 	
 //		for(FullObject o : ifmc.getObjects())
 //			System.out.println(o.toString());
@@ -268,7 +270,7 @@ public class IFuzzyTest {
 			for(String attr : c.getIntent())
 				sb.append(attr + ",");
 			sb.append("}>");
-			tee.println(i + ":" + sb);
+			tee.println(i + ":" + sb + "[" + ((LatticeConcept)c).getId() + "]");
 			i++;
 	}
 	}

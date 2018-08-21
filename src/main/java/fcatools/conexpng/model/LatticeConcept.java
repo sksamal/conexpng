@@ -15,8 +15,21 @@ public class LatticeConcept implements Concept<String, FullObject<String, String
 
     private ListSet<FullObject<String, String>> extent;
     private ListSet<String> intent;
+    private long id = 0;
 
-    public LatticeConcept() {
+    public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	public void addToId(long i) {
+		this.id+= i;
+	}
+
+	public LatticeConcept() {
         extent = new ListSet<>();
         intent = new ListSet<>();
     }

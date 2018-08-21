@@ -124,7 +124,7 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 	  	
  }
 	 
-
+	
    @Override
     public Set<Concept<String, FullObject<String, String>>> getConcepts() {
 	   
