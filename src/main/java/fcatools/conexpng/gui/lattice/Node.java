@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 import javax.swing.JPanel;
 
+import de.tudresden.inf.tcs.fcalib.FullObject;
 import de.tudresden.inf.tcs.fcalib.utils.ListSet;
 
 /**
@@ -26,6 +28,8 @@ public class Node extends JPanel implements LatticeGraphElement, Comparable<Node
      */
     private static final long serialVersionUID = 4253192979583459657L;
     private Set<String> objects;
+    private Set<FullObject<String, String>> fullObjects;
+    private Long id;
     private Set<String> attributes;
     private int x;
     private int y;
@@ -70,18 +74,27 @@ public class Node extends JPanel implements LatticeGraphElement, Comparable<Node
         this.setBounds(x, y, 15, 15);
         positionLabels();
     }
+    
 
+//    public Node(Node n) {
+//    	this.attributes = n.getAttributes().stream().collect(Collectors.toSet());
+//		this.objects = n.getObjects().stream().collect(Collectors.toSet());
+//		this.fullObjects = n.getObjects().stream().collect(Collectors.toSet());
+//		
+//    }
     /**
      *
      */
     public Node() {
         this.objects = new TreeSet<>();
         this.attributes = new TreeSet<>();
+        this.fullObjects = new ListSet<>();
         this.visibleObjects = new Label(new TreeSet<String>(), this);
         this.visibleAttributes = new Label(new TreeSet<String>(), this);
         this.ideal = new ListSet<>();
         this.x = 0;
         this.y = 0;
+        this.id = (long)0;
         currentForce = new Point2D.Double();
         previousForce = null;
         this.setBounds(x, y, 15, 15);
@@ -134,6 +147,10 @@ public class Node extends JPanel implements LatticeGraphElement, Comparable<Node
     public void addObject(String extent) {
         objects.add(extent);
     }
+    
+    public void addFullObject(FullObject<String,String> extent) {
+        fullObjects.add(extent);
+    }
 
     /**
      * 
@@ -170,6 +187,14 @@ public class Node extends JPanel implements LatticeGraphElement, Comparable<Node
      */
     public void addChildNode(Node n) {
         children.add(n);
+    }
+    
+    public void setId(Long id) {
+    	this.id = id;
+    }
+    
+    public Long getId() {
+    	return this.id;
     }
 
     /**
@@ -291,6 +316,10 @@ public class Node extends JPanel implements LatticeGraphElement, Comparable<Node
         return objects;
     }
 
+    public Set<FullObject<String,String>> getFullObjects() {
+        return fullObjects;
+    }
+    
     public Set<String> getAttributes() {
         return attributes;
     }

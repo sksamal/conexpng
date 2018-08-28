@@ -27,6 +27,7 @@ public class FuzzyMultiClassedConcept extends LatticeConcept {
 			this.getExtent().add(obj);
 		for(String att: c.getIntent())
 			this.getIntent().add(att);
+		this.setId(((LatticeConcept)c).getId());
 		probsList = new ArrayList<>();
 	}
 	

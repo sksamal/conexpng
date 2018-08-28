@@ -192,12 +192,10 @@ public class FormalContext extends de.tudresden.inf.tcs.fcalib.FormalContext<Str
                 extents.add(e);
         }
         
-        String[] sortedAttributes = this.getAttributes().toArray(new String[0]);
-        Arrays.sort(sortedAttributes);
         HashMap<String,Long> attrIdMap = new HashMap<String,Long>();
         Long value = (long)1;
-        for(int i=sortedAttributes.length-1;i>=0;i--) {
-        	attrIdMap.put(sortedAttributes[i], value);
+        for(int i=this.getAttributes().size()-1;i>=0;i--) {
+        	attrIdMap.put(this.getAttributeAtIndex(i), value);
         	value = value *2;
  //           System.out.println(sortedAttributes[i] + " " + attrIdMap.get(sortedAttributes[i]));
         }
@@ -228,7 +226,6 @@ public class FormalContext extends de.tudresden.inf.tcs.fcalib.FormalContext<Str
                 c.getIntent().add(s);
                 ((LatticeConcept)c).addToId(attrIdMap.get(s));
             }
-       //     System.out.println(((LatticeConcept)c).getId());
             conceptLattice.add(c);
         }
         return conceptLattice;
@@ -316,6 +313,15 @@ public class FormalContext extends de.tudresden.inf.tcs.fcalib.FormalContext<Str
             if (!extents.contains(e))
                 extents.add(e);
         }
+   
+        HashMap<String,Long> attrIdMap = new HashMap<String,Long>();
+        Long value = (long)1;
+        for(int i=this.getAttributes().size()-1;i>=0;i--) {
+        	attrIdMap.put(this.getAttributeAtIndex(i), value);
+        	value = value *2;
+ //           System.out.println(sortedAttributes[i] + " " + attrIdMap.get(sortedAttributes[i]));
+        }
+   
         for (Set<String> e : extents) {
             TreeSet<String> intents = new TreeSet<String>();
             int count = 0;
@@ -339,8 +345,10 @@ public class FormalContext extends de.tudresden.inf.tcs.fcalib.FormalContext<Str
                 }
             // concepts.put(e, intents);
             for (String s : intents) {
-                if (!dontConsideredAttr.contains(s))
+                if (!dontConsideredAttr.contains(s)) {
                     c.getIntent().add(s);
+                    ((LatticeConcept)c).addToId(attrIdMap.get(s));
+                }
             }
             conceptLattice.add(c);
         }

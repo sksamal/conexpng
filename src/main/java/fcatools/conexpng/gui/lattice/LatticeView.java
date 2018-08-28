@@ -516,6 +516,7 @@ public class LatticeView extends View {
                     state.getStatusBar().addCalculation(progressBarId, coca);
                     coca.execute();
                 } else {
+                	System.out.println(state.lattice);
                     state.lattice.addEdges(state.concepts);
                     updateLatticeGraph();
                 }

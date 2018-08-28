@@ -2,30 +2,17 @@ Reading /home/ssamal/workspace/conexpng/triangles.fccsv
 
 
 ***Reading first 10 records***
-No of Objects:3
+No of Objects:7
 No of attributes:5
-No of concepts:6
-No of Objects: 4 (Correct:4)
-No of attributes: 5 (Correct:5)
-No of concepts: 7 (Correct:7)
-Both concepts are identical?:true
-No of Objects: 5 (Correct:5)
-No of attributes: 5 (Correct:5)
-No of concepts: 8 (Correct:8)
-Both concepts are identical?:true
-1:<{t1_0,t2_1,t3_2,t4_3,t5_4,},{}>
-2:<{},{a,b,c,d,e,}>
-3:<{t4_3,},{a,b,c,}>
-4:<{t1_0,t2_1,t4_3,},{b,}>
-5:<{t2_1,},{b,e,}>
-6:<{t3_2,t4_3,},{c,}>
-7:<{t1_0,},{b,d,}>
-8:<{t1_0,t5_4,},{d,}>
-1:<{},{a,b,c,d,e,}>
-2:<{t1_0,t2_1,t3_2,t4_3,t5_4,},{}>
-3:<{t4_3,},{a,b,c,}>
-4:<{t1_0,t2_1,t4_3,},{b,}>
-5:<{t2_1,},{b,e,}>
-6:<{t1_0,},{b,d,}>
-7:<{t3_2,t4_3,},{c,}>
-8:<{t1_0,t5_4,},{d,}>
+No of concepts:10
+	Completed reading 0 records
+No of Objects: 7
+No of attributes: 5
+No of concepts: 10
+All data read successfully
+Read time: 118ms
+
+-----------------------------------------------------------------------------------------------------------------------
+  Object     Extent                                 Probabilities                                          Predicted    Actual
+                Size                                                                []                          Class      Class
+-----------------------------------------------------------------------------------------------------------------------

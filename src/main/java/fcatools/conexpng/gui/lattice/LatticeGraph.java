@@ -7,6 +7,8 @@ import java.util.Set;
 
 import de.tudresden.inf.tcs.fcaapi.Concept;
 import de.tudresden.inf.tcs.fcalib.FullObject;
+import de.tudresden.inf.tcs.fcalib.utils.ListSet;
+import fcatools.conexpng.model.LatticeConcept;
 
 /**
  * This class implemented the graph model for the lattice. It contains a list of
@@ -17,8 +19,9 @@ public class LatticeGraph {
 
     private List<Node> nodes;
     private List<Edge> edges;
+	private Node bottomNode;
     private int maxLevel;
-
+ 
     /**
      *
      */
@@ -46,6 +49,13 @@ public class LatticeGraph {
         return nodes.get(i);
     }
 
+	public Node getBottomNode() {
+		return bottomNode;
+	}
+
+	public void setBottomNode(Node bottomNode) {
+		this.bottomNode = bottomNode;
+	}
     /**
      * 
      * @return
@@ -111,7 +121,54 @@ public class LatticeGraph {
         }
     }
 
-    public void addEdges(Set<Concept<String, FullObject<String, String>>> concepts) {
+    public Set<Concept<String, FullObject<String, String>>> getConcepts() {
+    	Set<Concept<String, FullObject<String, String>>> concepts = new ListSet<Concept<String, FullObject<String, String>>> ();
+    	for(Node n: this.nodes) {
+    		Concept<String, FullObject<String, String>> c = new LatticeConcept();
+            c.getExtent().addAll(n.getFullObjects());
+    		c.getIntent().addAll(n.getAttributes());
+    		((LatticeConcept)c).setId(n.getId());
+    		concepts.add(c);
+    	}
+    	System.out.println(concepts.size());
+    	return concepts;
+	}
+
+    public void createLattice(Set<Concept<String, FullObject<String, String>>> concepts) {
+    	LatticeGraphComputer.init();
+        LatticeGraph temp = LatticeGraphComputer.computeLatticeGraph(concepts, new Rectangle(800, 600));
+        this.setNodes(temp.getNodes());
+        this.setBottomNode(temp.getBottomNode());
+        for (Edge e : temp.edges) {
+            Node u = getNodeWithIntent(e.getU().getAttributes());
+            Node v = getNodeWithIntent(e.getV().getAttributes());
+            if (u != null && v != null && !u.equals(v)) {
+                u.getObjects().addAll(e.getU().getObjects());
+                v.getObjects().addAll(e.getV().getObjects());
+                u.setVisibleAttributes(e.getU().getVisibleAttributes());
+                v.setVisibleAttributes(e.getV().getVisibleAttributes());
+                u.setVisibleObjects(e.getU().getVisibleObjects());
+                v.setVisibleObjects(e.getV().getVisibleObjects());
+                u.setLevel(temp.maxLevel - e.getU().getLevel());
+                v.setLevel(temp.maxLevel - e.getV().getLevel());
+                v.addChildNode(u);
+                u.addParentNode(v);
+                if (u.getAttributesLabel().getX() == 0 && u.getAttributesLabel().getY() == 0)
+                    u.getAttributesLabel().setXY(e.getU().getAttributesLabel().getX(),
+                            e.getU().getAttributesLabel().getY());
+                if (v.getAttributesLabel().getX() == 0 && v.getAttributesLabel().getY() == 0)
+                    v.getAttributesLabel().setXY(e.getV().getAttributesLabel().getX(),
+                            e.getV().getAttributesLabel().getY());
+                if (u.getObjectsLabel().getX() == 0 && u.getObjectsLabel().getY() == 0)
+                    u.getObjectsLabel().setXY(e.getU().getObjectsLabel().getX(), e.getU().getObjectsLabel().getY());
+                if (v.getObjectsLabel().getX() == 0 && v.getObjectsLabel().getY() == 0)
+                    v.getObjectsLabel().setXY(e.getV().getObjectsLabel().getX(), e.getV().getObjectsLabel().getY());
+                edges.add(new Edge(u, v));
+            }
+        }
+        computeAllIdeals();
+    }
+	public void addEdges(Set<Concept<String, FullObject<String, String>>> concepts) {
     	System.out.println("Add edges called");
         LatticeGraph temp = LatticeGraphComputer.computeLatticeGraph(concepts, new Rectangle(800, 600));
         for (Edge e : temp.edges) {

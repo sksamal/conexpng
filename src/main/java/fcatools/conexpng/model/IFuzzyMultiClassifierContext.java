@@ -2,9 +2,12 @@ package fcatools.conexpng.model;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 import com.thoughtworks.xstream.XStream;
 
@@ -12,6 +15,9 @@ import de.tudresden.inf.tcs.fcaapi.Concept;
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
 import de.tudresden.inf.tcs.fcalib.FullObject;
 import de.tudresden.inf.tcs.fcalib.utils.ListSet;
+import fcatools.conexpng.gui.lattice.Edge;
+import fcatools.conexpng.gui.lattice.LatticeGraph;
+import fcatools.conexpng.gui.lattice.Node;
 
 /**
  * A specialization of FormalContext<String,String> that can be used for multi-classification
@@ -23,6 +29,10 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 
 	// Incremental Fuzzy Concept lattice
 	private Set<Concept<String, FullObject<String, String>>> conceptLattice ;
+	private LatticeGraph latticeGraph = new LatticeGraph();
+	private HashMap<Long,FullObject<String,String>> objMap;
+	private HashMap<String,Long> attrIdMap = new HashMap<String,Long>();
+
 	private Set<FullObject<String, String>> newObjects = new ListSet<FullObject<String, String>>();
 
 	
@@ -34,7 +44,20 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 		return this.addObject(object, classifiers, attributes.toArray(new String[0]),values.toArray(new Double[0]));
 	}
 
+	public void generateAttrIdMap() {
+		attrIdMap = new HashMap<String,Long>();
+		Long value = (long)1;
+        for(int i=this.getAttributes().size()-1;i>=0;i--) {
+        	attrIdMap.put(this.getAttributeAtIndex(i), value);
+        	value = value *2;
+ //           System.out.println(sortedAttributes[i] + " " + attrIdMap.get(sortedAttributes[i]));
+        }
+   
+	}
+	
+	
 	public boolean addObject(String object, String classifier, String attributes[], Double[] values) throws IllegalObjectException {
+		
 		newObjects.add(new FullObject<String,String>(object));
 		return super.addObject(object,classifier,attributes,values);
 	}
@@ -124,13 +147,121 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 	  	
  }
 	 
+	public Node getMaximalConcept(Set<String> intent, Node generator) {
+		boolean parentIsMaximal = true;
+		Node maximalGenerator = generator;
+		while(parentIsMaximal) {
+			parentIsMaximal = false;
+			List<Node> parents = maximalGenerator.getParentNodes();
+			for(Node parent : parents) {
+				if(parent.getAttributes().containsAll(intent)) {
+					maximalGenerator = parent;
+				    parentIsMaximal = true;
+				    break;
+			}
+		}
+		}
+		return maximalGenerator;
+	}
 	
+	public Node addIntent(Set<String> intent, Node generator) {
+		Node maximalGenerator = getMaximalConcept(intent,generator);
+		if(maximalGenerator.getAttributes().containsAll(intent) && intent.containsAll(maximalGenerator.getAttributes())) 
+			return maximalGenerator;
+		
+		List<Node> maxGenParents = maximalGenerator.getParentNodes();
+		List<Node> newParents = new ArrayList<Node>();
+		
+		for(Node parent: maxGenParents) {
+			Node candidate = null;
+			if(!intent.containsAll(parent.getAttributes())) {
+				TreeSet<String> intersectSet = this.intersection(parent.getAttributes(),intent);
+				candidate = addIntent(intersectSet, parent);
+			}
+			boolean addParent = true;
+			
+			for(Node newParent: newParents) {
+				if(newParent.getAttributes().containsAll(candidate.getAttributes())) {
+					addParent = false;
+				    break;
+				}
+				else if(candidate.getAttributes().containsAll(newParent.getAttributes())) {
+					newParents.remove(newParent);
+				}
+				
+			} // End For
+			
+			if(addParent) {
+				newParents.add(candidate);
+			}
+		}   // End For
+		
+		// Create new Node
+		Node newNode = new Node(maximalGenerator.getObjects(), intent, maximalGenerator.getX(), maximalGenerator.getY());
+		this.latticeGraph.getNodes().add(newNode);
+		
+		for(Node parent: newParents) {
+			latticeGraph.getEdges().remove(new Edge(parent,maximalGenerator));
+			parent.getChildNodes().remove(maximalGenerator);
+			maximalGenerator.getParentNodes().remove(parent);
+			parent.addChildNode(newNode);
+			newNode.addParentNode(parent);
+			latticeGraph.getEdges().add(new Edge(parent,newNode));			
+		}							
+		
+			// set link and return
+			newNode.addChildNode(maximalGenerator);
+			maximalGenerator.addParentNode(newNode);
+			latticeGraph.getEdges().add(new Edge(newNode,maximalGenerator));
+			
+			return newNode;
+	}
+
+	public Set<Concept<String, FullObject<String, String>>> getConceptsUsingAddIntent() {
+		if(attrIdMap == null)
+			generateAttrIdMap();
+		
+		 if(this.conceptLattice ==null) {
+				newObjects.clear();
+				this.conceptLattice = super.getConcepts();
+				latticeGraph.createLattice(conceptLattice);
+				return this.conceptLattice;
+		 }
+		
+		// nothing changed, just send whats existing, no new objects added
+	   		if(this.conceptLattice !=null && newObjects.size()==0)
+	   			return conceptLattice;
+	   		
+		 // Add Intent Algorithm
+	   	    for(FullObject<String, String> newobj : newObjects) {
+	   	    	
+	   	    	Long id = (long)0;
+	   			for(String attribute:newobj.getDescription().getAttributes())
+	   				id+= attrIdMap.get(attribute);
+	   			
+	   			Node n = addIntent(newobj.getDescription().getAttributes(), latticeGraph.getBottomNode());
+	   			List<Node> nodes = new ArrayList<Node>();
+	   			nodes.add(n);
+	   			while(nodes.size()>0) {
+	   				n = nodes.remove(0);
+	   				if((n.getAttributes().containsAll(newobj.getDescription().getAttributes())) && 
+	   						(newobj.getDescription().getAttributes().containsAll(n.getAttributes()))) {
+	   					n.getObjects().add(newobj.getIdentifier());
+	   				n.getFullObjects().add(newobj);
+	   				nodes.addAll(n.getParentNodes());
+	   			}
+	   	    }
+	   	   }
+		 // Finally return the concepts
+		 return latticeGraph.getConcepts();
+	}
+
    @Override
     public Set<Concept<String, FullObject<String, String>>> getConcepts() {
 	   
 		// compute all if existing lattice is null
 	   if(this.conceptLattice ==null) {
-	//	   System.out.println("Lattice not present, regenerating from scratch");
+		//   System.out.println("Lattice not present, regenerating from scratch");
 		   newObjects.clear();
 		   this.conceptLattice = super.getConcepts();
 		   return this.conceptLattice;

@@ -153,15 +153,15 @@ public class ConceptWorker extends AbstractWorker {
             if (!extents.contains(e))
                 extents.add(e);
         }
-        
-        String[] sortedAttributes = context.getAttributes().toArray(new String[0]);
-        Arrays.sort(sortedAttributes);
+       
         HashMap<String,Long> attrIdMap = new HashMap<String,Long>();
         Long value = (long)1;
-        for(int i=sortedAttributes.length-1;i>=0;i--) {
-        	attrIdMap.put(sortedAttributes[i], value);
+        for(int i=context.getAttributes().size()-1;i>=0;i--) {
+        	attrIdMap.put(context.getAttributeAtIndex(i), value);
         	value = value *2;
+ //           System.out.println(sortedAttributes[i] + " " + attrIdMap.get(sortedAttributes[i]));
         }
+   
 
         for (Set<String> e : extents) {
             TreeSet<String> intents = new TreeSet<String>();

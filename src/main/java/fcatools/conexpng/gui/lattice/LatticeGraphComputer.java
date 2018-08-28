@@ -20,6 +20,7 @@ import fcatools.conexpng.gui.lattice.algorithms.TrivialLatticeGraphAlgorithm;
 import fcatools.conexpng.io.locale.LocaleHandler;
 import fcatools.conexpng.model.FuzzyClassedConcept;
 import fcatools.conexpng.model.FuzzyMultiClassedConcept;
+import fcatools.conexpng.model.LatticeConcept;
 
 /**
  * This class computes the lattice graph. It contains the available algorithms
@@ -58,7 +59,8 @@ public class LatticeGraphComputer {
 			usedAlgorithm = algorithms.get(name);
 		}
 	}
-
+	
+	
 	/**
 	 * This method computes the lattice graph.
 	 * 
@@ -107,10 +109,16 @@ public class LatticeGraphComputer {
 			ListSet<String> extent = new ListSet<>();
 			for (FullObject<String, String> fo : c.getExtent()) {
 				extent.add(fo.getIdentifier());
+				n.addObject(fo.getIdentifier());
+				n.addFullObject(fo);
 			}
-			n.getObjects().addAll(extent);
+			n.setId(((LatticeConcept)c).getId());
 
 			graph.getNodes().add(n);
+			if(c.getExtent().size()==0 && n.getObjects().size()==0) {
+				graph.setBottomNode(n);			
+				System.out.println("Bottom Node set " + n.getAttributes());
+			}
 		}
 
 		graph.removeAllDuplicates();
