@@ -31,7 +31,7 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 	private Set<Concept<String, FullObject<String, String>>> conceptLattice ;
 	private LatticeGraph latticeGraph = new LatticeGraph();
 	private HashMap<Long,FullObject<String,String>> objMap;
-	private HashMap<String,Long> attrIdMap = new HashMap<String,Long>();
+	private HashMap<String,Long> attrIdMap = null;
 
 	private Set<FullObject<String, String>> newObjects = new ListSet<FullObject<String, String>>();
 
@@ -53,7 +53,7 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
  //           System.out.println(sortedAttributes[i] + " " + attrIdMap.get(sortedAttributes[i]));
         }
    
-	}
+ 	}
 	
 	
 	public boolean addObject(String object, String classifier, String attributes[], Double[] values) throws IllegalObjectException {
@@ -165,22 +165,38 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 	}
 	
 	public Node addIntent(Set<String> intent, Node generator) {
+//		System.out.println("addIntent, intent=" + intent);
 		Node maximalGenerator = getMaximalConcept(intent,generator);
+//		System.out.println("maximalConcept");
+//		printConcept(maximalGenerator);
+				
+		
 		if(maximalGenerator.getAttributes().containsAll(intent) && intent.containsAll(maximalGenerator.getAttributes())) 
 			return maximalGenerator;
 		
 		List<Node> maxGenParents = maximalGenerator.getParentNodes();
 		List<Node> newParents = new ArrayList<Node>();
+//		System.out.println("maxGenparents=" + maxGenParents.size());
+//		System.out.println("newParents=" + newParents + " " + newParents.size());
+
+//		int i=0;
+//		for(Node parent: maxGenParents) {
+//			i++;
+//			System.out.print(i + ": ");
+//			printConcept(parent);
+//		}
 		
 		for(Node parent: maxGenParents) {
-			Node candidate = null;
+			Node candidate = parent;
 			if(!intent.containsAll(parent.getAttributes())) {
 				TreeSet<String> intersectSet = this.intersection(parent.getAttributes(),intent);
 				candidate = addIntent(intersectSet, parent);
 			}
+
 			boolean addParent = true;
-			
-			for(Node newParent: newParents) {
+
+//			System.out.println("newParents=" + newParents + " " + newParents.size());
+			for(Node newParent: newParents.toArray(new Node[0])) {
 				if(newParent.getAttributes().containsAll(candidate.getAttributes())) {
 					addParent = false;
 				    break;
@@ -196,8 +212,16 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 			}
 		}   // End For
 		
+//		System.out.println("maximalGenerator:"); 
+//		printConcept(maximalGenerator);
+//		System.out.println("newParents=" + newParents + " " + newParents.size());
+//		if(newParents.size() > 0) {
+//			for(Node p : newParents)
+//		printConcept(p);
+//		}
+
 		// Create new Node
-		Node newNode = new Node(maximalGenerator.getObjects(), intent, maximalGenerator.getX(), maximalGenerator.getY());
+		Node newNode = new Node(maximalGenerator.getObjects(), intent, maximalGenerator.getFullObjects(),maximalGenerator.getX(), maximalGenerator.getY());
 		this.latticeGraph.getNodes().add(newNode);
 		
 		for(Node parent: newParents) {
@@ -214,6 +238,8 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 			maximalGenerator.addParentNode(newNode);
 			latticeGraph.getEdges().add(new Edge(newNode,maximalGenerator));
 			
+//			System.out.println("Newnode=");
+//			printConcept(newNode);
 			return newNode;
 	}
 
@@ -235,30 +261,48 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 		 // Add Intent Algorithm
 	   	    for(FullObject<String, String> newobj : newObjects) {
 	   	    	
+	 //  	    	System.out.println("ADDING object" + newobj);
+	        	FullObject<String, String> newObj = this.getObject(newobj.getIdentifier());
+	   	    	
 	   	    	Long id = (long)0;
-	   			for(String attribute:newobj.getDescription().getAttributes())
+	   			for(String attribute:newObj.getDescription().getAttributes())
 	   				id+= attrIdMap.get(attribute);
-	   			
-	   			Node n = addIntent(newobj.getDescription().getAttributes(), latticeGraph.getBottomNode());
+
+      			Node n = addIntent(newObj.getDescription().getAttributes(), latticeGraph.getBottomNode());
+   				n.setId(id);
+		
+   				
 	   			List<Node> nodes = new ArrayList<Node>();
 	   			nodes.add(n);
+				
+   				
 	   			while(nodes.size()>0) {
 	   				n = nodes.remove(0);
-	   				if((n.getAttributes().containsAll(newobj.getDescription().getAttributes())) && 
-	   						(newobj.getDescription().getAttributes().containsAll(n.getAttributes()))) {
-	   					n.getObjects().add(newobj.getIdentifier());
-	   				n.getFullObjects().add(newobj);
+   	//				System.out.println("newobj=" + newObj.getDescription().getAttributes());
+	   				if((newObj.getDescription().getAttributes().containsAll(n.getAttributes())) || n.getAttributes().isEmpty()) {
+	   					n.getObjects().add(newObj.getIdentifier());
+	   					n.getFullObjects().add(newObj);
+//	   					if(n.getParentNodes().size()>0) {
+//	   						for(Node x : n.getParentNodes())
+//	   							printConcept(x);
+//	   						
+//	   					}
 	   				nodes.addAll(n.getParentNodes());
-	   			}
+	   				}
 	   	    }
+	   			
 	   	   }
+	   	    this.conceptLattice = latticeGraph.getConcepts();
 		 // Finally return the concepts
-		 return latticeGraph.getConcepts();
+		 return conceptLattice;
 	}
 
    @Override
     public Set<Concept<String, FullObject<String, String>>> getConcepts() {
 	   
+		if(attrIdMap == null)
+			generateAttrIdMap();
+	
 		// compute all if existing lattice is null
 	   if(this.conceptLattice ==null) {
 		//   System.out.println("Lattice not present, regenerating from scratch");
@@ -279,6 +323,7 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 	 		// B is set of attributes which is intent
 	 		
         for(FullObject<String, String> newobj : newObjects) {
+        	
         	ListSet<Concept<String, FullObject<String, String>>> newConceptLattice = new ListSet<Concept<String, FullObject<String, String>>>();
         	int z = 0;
         	FullObject<String, String> newObj = this.getObject(newobj.getIdentifier());
@@ -326,8 +371,10 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
             		newC.getExtent().add(newObj);
          
             		// Update D as D
-            		for(String attr: newIntentAttributes)
+            		for(String attr: newIntentAttributes) {
             			newC.getIntent().add(attr);
+            			newC.addToId(attrIdMap.get(attr));
+            		}
             //		System.out.println("\tD = " + newC.getIntent());
             //		System.out.println("\tD' = " + newC.getExtent());
             
@@ -409,5 +456,27 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 	        	}
 	        	newConceptLattice.add(fcc);	
 	        }
+     
+ 	public static void printConcept(Node n) {
+		// concept (A,B)
+		// A is set of objects which is extent
+		// B is set of attributes which is intent
+			StringBuffer sb = new StringBuffer();
+			sb.append("<{");
+			for(FullObject<String, String> o : n.getFullObjects()) 
+				sb.append(o.getIdentifier() + ",");//  "[" + o.getDescription().getAttributes() + "]" + ",");
+			sb.append("},{");
+			for(String attr : n.getAttributes())
+				sb.append(attr + ",");
+			sb.append("}>");
+			System.out.println(sb.toString());
+	}
+ 	
+ 	public static void printConcepts(List<Node> nodes) {
+ 		int i=1;
+ 		for(Node n: nodes) {
+ 			printConcept(n);
+ 		}
+ 	}
      
 }

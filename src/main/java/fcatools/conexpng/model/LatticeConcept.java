@@ -32,6 +32,7 @@ public class LatticeConcept implements Concept<String, FullObject<String, String
 	public LatticeConcept() {
         extent = new ListSet<>();
         intent = new ListSet<>();
+        this.id = (long)0;
     }
 
     @Override

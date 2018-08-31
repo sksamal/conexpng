@@ -72,9 +72,51 @@ public class Node extends JPanel implements LatticeGraphElement, Comparable<Node
         currentForce = new Point2D.Double();
         previousForce = null;
         this.setBounds(x, y, 15, 15);
+        
+        this.fullObjects = new ListSet<>();
+        this.visibleObjects = new Label(new TreeSet<String>(), this);
+        this.visibleAttributes = new Label(new TreeSet<String>(), this);
+        this.ideal = new ListSet<>();
+        this.id = (long)0;
+        this.setBackground(Color.white);
+        this.filter = new ListSet<Node>();
         positionLabels();
     }
+   
+    public Node(Set<String> extent, Set<String> intent, Set<FullObject<String,String>> fullObjects, int x, int y) {
+    	// do a deep copy
+        this.objects = new TreeSet<>();
+    	for (String e : extent)
+    		this.objects.add(new String(e));
     
+    	this.attributes = new TreeSet<>();
+    	for (String e : intent)
+    		this.attributes.add(new String(e));
+    
+        this.fullObjects = new ListSet<>();
+        for (FullObject<String,String> o : fullObjects) {
+        	TreeSet<String> ointent = new TreeSet<String>();
+        	for(String str : o.getDescription().getAttributes())
+        		ointent.add(new String(str));
+        	FullObject<String,String> o1 = new FullObject<String,String>(new String(o.getIdentifier()),ointent);
+        	this.fullObjects.add(o1);
+        }
+    
+    	this.x = x;
+    	this.y = y;
+        currentForce = new Point2D.Double();
+        previousForce = null;
+        this.setBounds(x, y, 15, 15);
+        this.visibleObjects = new Label(new TreeSet<String>(), this);
+        this.visibleAttributes = new Label(new TreeSet<String>(), this);
+        this.ideal = new ListSet<>();
+        this.id = (long)0;
+        this.setBackground(Color.white);
+        this.filter = new ListSet<Node>();
+        positionLabels();
+  
+    }
+   
 
 //    public Node(Node n) {
 //    	this.attributes = n.getAttributes().stream().collect(Collectors.toSet());

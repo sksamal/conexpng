@@ -1,44 +1,59 @@
-Reading /home/ssamal/workspace/conexpng/staralliance.fccsv
+Reading staralliance.fccsv
 
 
-***Reading first 10 records***
-No of Objects:10
+***AddIntent() algorithm ***
+***Reading first 5 records, then incrementally ***
+No of Objects:5
 No of attributes:8
-No of concepts:17
-1:<{},{ Africa, Asia Pacific, Canada, Caribbean, Europe, Latin America, Mexico, Middle East,}>[11111111]
-2:<{Austrian Airlines Group_4,Lufthansa_6,Scandinavian Airlines_8,Singapore Airlines_9,},{ Africa, Asia Pacific, Europe,}>[1010100]
-3:<{Air Canada_0,},{ Asia Pacific, Canada, Caribbean, Europe, Latin America, Mexico, Middle East,}>[11111011]
-4:<{Lufthansa_6,Scandinavian Airlines_8,},{ Africa, Asia Pacific, Europe, Latin America,}>[11010100]
-5:<{Air Canada_0,Air NewZealand_1,AllNippon Airways_2,Austrian Airlines Group_4,British Midland_5,Lufthansa_6,Scandinavian Airlines_8,Singapore Airlines_9,},{ Europe,}>[1000000]
-6:<{Air Canada_0,Air NewZealand_1,AllNippon Airways_2,Ansett Australia_3,Austrian Airlines Group_4,Lufthansa_6,Scandinavian Airlines_8,Singapore Airlines_9,},{ Asia Pacific,}>[10000]
-7:<{Air Canada_0,Austrian Airlines Group_4,Lufthansa_6,Mexicana_7,Singapore Airlines_9,},{ Canada,}>[100000]
-8:<{Air Canada_0,Austrian Airlines Group_4,Lufthansa_6,Singapore Airlines_9,},{ Asia Pacific, Canada, Europe, Middle East,}>[1111000]
-9:<{Air Canada_0,Air NewZealand_1,AllNippon Airways_2,Ansett Australia_3,Austrian Airlines Group_4,British Midland_5,Lufthansa_6,Mexicana_7,Scandinavian Airlines_8,Singapore Airlines_9,},{}>[0]
-10:<{Austrian Airlines Group_4,Lufthansa_6,Singapore Airlines_9,},{ Africa, Asia Pacific, Canada, Europe, Middle East,}>[1111100]
-11:<{Air Canada_0,Lufthansa_6,Mexicana_7,Scandinavian Airlines_8,},{ Latin America,}>[10000000]
-12:<{Air Canada_0,Air NewZealand_1,AllNippon Airways_2,Austrian Airlines Group_4,Lufthansa_6,Scandinavian Airlines_8,Singapore Airlines_9,},{ Asia Pacific, Europe,}>[1010000]
-13:<{Lufthansa_6,},{ Africa, Asia Pacific, Canada, Europe, Latin America, Mexico, Middle East,}>[11111110]
-14:<{Air Canada_0,Lufthansa_6,Mexicana_7,},{ Canada, Latin America, Mexico,}>[10100010]
-15:<{Air Canada_0,Mexicana_7,},{ Canada, Caribbean, Latin America, Mexico,}>[10100011]
-16:<{Air Canada_0,Lufthansa_6,Scandinavian Airlines_8,},{ Asia Pacific, Europe, Latin America,}>[11010000]
-17:<{Air Canada_0,Lufthansa_6,},{ Asia Pacific, Canada, Europe, Latin America, Mexico, Middle East,}>[11111010]
+No of concepts:6
 No of Objects: 13
 No of attributes: 8
-No of concepts: 17
-1:<{},{ Africa,}>[11111111]
-2:<{Austrian Airlines Group_4,},{ Africa,}>[1010100]
-3:<{Air Canada_0,},{ Asia Pacific,}>[11111011]
-4:<{Lufthansa_6,},{ Africa,}>[11010100]
-5:<{Air Canada_0,},{ Europe,}>[1000000]
-6:<{Air Canada_0,},{ Asia Pacific,}>[10000]
-7:<{Air Canada_0,},{ Canada,}>[100000]
-8:<{Air Canada_0,},{ Asia Pacific,}>[1111000]
-9:<{Air Canada_0,},{}>[0]
-10:<{Austrian Airlines Group_4,},{ Africa,}>[1111100]
-11:<{Air Canada_0,},{ Latin America,}>[10000000]
-12:<{Air Canada_0,},{ Asia Pacific,}>[1010000]
-13:<{Lufthansa_6,},{ Africa,}>[11111110]
-14:<{Air Canada_0,},{ Canada,}>[10100010]
-15:<{Air Canada_0,},{ Canada,}>[10100011]
-16:<{Air Canada_0,},{ Asia Pacific,}>[11010000]
-17:<{Air Canada_0,},{ Asia Pacific,}>[11111010]
+No of concepts: 25
+1:<{},{ Africa, Asia Pacific, Canada, Caribbean, Europe, Latin America, Mexico, Middle East,}>[11111111]
+2:<{Air Canada_0,},{ Asia Pacific, Canada, Caribbean, Europe, Latin America, Mexico, Middle East,}>[11111011]
+3:<{Air Canada_0,Air NewZealand_1,AllNippon Airways_2,Austrian Airlines Group_4,Lufthansa_6,Scandinavian Airlines_8,Singapore Airlines_9,Thai Airways_10,United Airlines_11,VARIG_12,},{ Asia Pacific, Europe,}>[1010000]
+4:<{Austrian Airlines Group_4,Lufthansa_6,Singapore Airlines_9,},{ Africa, Asia Pacific, Canada, Europe, Middle East,}>[1111100]
+5:<{Air Canada_0,Air NewZealand_1,AllNippon Airways_2,Ansett Australia_3,Austrian Airlines Group_4,Lufthansa_6,Scandinavian Airlines_8,Singapore Airlines_9,Thai Airways_10,United Airlines_11,VARIG_12,},{ Asia Pacific,}>[10000]
+6:<{Air Canada_0,Austrian Airlines Group_4,Lufthansa_6,Singapore Airlines_9,},{ Asia Pacific, Canada, Europe, Middle East,}>[1111000]
+7:<{Air Canada_0,Air NewZealand_1,AllNippon Airways_2,Ansett Australia_3,Austrian Airlines Group_4,British Midland_5,Lufthansa_6,Mexicana_7,Scandinavian Airlines_8,Singapore Airlines_9,Thai Airways_10,United Airlines_11,VARIG_12,},{}>[0]
+8:<{Air Canada_0,Air NewZealand_1,AllNippon Airways_2,Austrian Airlines Group_4,British Midland_5,Lufthansa_6,Scandinavian Airlines_8,Singapore Airlines_9,Thai Airways_10,United Airlines_11,VARIG_12,},{ Europe,}>[1000000]
+9:<{Air Canada_0,Lufthansa_6,},{ Asia Pacific, Canada, Europe, Latin America, Mexico, Middle East,}>[0]
+10:<{Lufthansa_6,},{ Africa, Asia Pacific, Canada, Europe, Latin America, Mexico, Middle East,}>[11111110]
+11:<{Air Canada_0,Austrian Airlines Group_4,Lufthansa_6,Mexicana_7,Singapore Airlines_9,United Airlines_11,},{ Canada,}>[0]
+12:<{Air Canada_0,Lufthansa_6,Mexicana_7,United Airlines_11,},{ Canada, Latin America, Mexico,}>[0]
+13:<{Air Canada_0,Mexicana_7,United Airlines_11,},{ Canada, Caribbean, Latin America, Mexico,}>[10100011]
+14:<{Air Canada_0,Lufthansa_6,Mexicana_7,Scandinavian Airlines_8,Thai Airways_10,United Airlines_11,VARIG_12,},{ Latin America,}>[0]
+15:<{Air Canada_0,Lufthansa_6,Scandinavian Airlines_8,Thai Airways_10,United Airlines_11,VARIG_12,},{ Asia Pacific, Europe, Latin America,}>[0]
+16:<{Austrian Airlines Group_4,Lufthansa_6,Scandinavian Airlines_8,Singapore Airlines_9,VARIG_12,},{ Africa, Asia Pacific, Europe,}>[0]
+17:<{Lufthansa_6,Scandinavian Airlines_8,VARIG_12,},{ Africa, Asia Pacific, Europe, Latin America,}>[11010100]
+18:<{Air Canada_0,Mexicana_7,Thai Airways_10,United Airlines_11,},{ Caribbean, Latin America,}>[0]
+19:<{Air Canada_0,Thai Airways_10,United Airlines_11,},{ Asia Pacific, Caribbean, Europe, Latin America,}>[11010001]
+20:<{Air Canada_0,Austrian Airlines Group_4,Lufthansa_6,Singapore Airlines_9,United Airlines_11,},{ Asia Pacific, Canada, Europe,}>[0]
+21:<{Air Canada_0,Lufthansa_6,United Airlines_11,},{ Asia Pacific, Canada, Europe, Latin America, Mexico,}>[0]
+22:<{Air Canada_0,United Airlines_11,},{ Asia Pacific, Canada, Caribbean, Europe, Latin America, Mexico,}>[11110011]
+23:<{Air Canada_0,Lufthansa_6,Mexicana_7,United Airlines_11,VARIG_12,},{ Latin America, Mexico,}>[0]
+24:<{Air Canada_0,Lufthansa_6,United Airlines_11,VARIG_12,},{ Asia Pacific, Europe, Latin America, Mexico,}>[0]
+25:<{Lufthansa_6,VARIG_12,},{ Africa, Asia Pacific, Europe, Latin America, Mexico,}>[11010110]
+
+
+***Normal Incremental Method(). Reading first 5 records, then the rest***
+No of Objects: 5
+No of attributes: 8
+No of concepts: 6
+No of Objects: 13 (Correct:13)
+No of attributes: 8 (Correct:8)
+No of concepts: 25 (Correct:13)
+Both concepts are identical?:false
+1:<{},{ Africa, Asia Pacific, Canada, Caribbean, Europe, Latin America, Mexico, Middle East,}>[11111111]
+2:<{Lufthansa_6,},{ Africa, Asia Pacific, Canada, Europe, Latin America, Mexico, Middle East,}>[11111110]
+3:<{Lufthansa_6,VARIG_12,},{ Africa, Asia Pacific, Europe, Latin America, Mexico,}>[11010110]
+4:<{Air Canada_0,},{ Asia Pacific, Canada, Caribbean, Europe, Latin America, Mexico, Middle East,}>[11111011]
+5:<{Air Canada_0,United Airlines_11,},{ Asia Pacific, Canada, Caribbean, Europe, Latin America, Mexico,}>[11110011]
+6:<{Air Canada_0,Lufthansa_6,},{ Asia Pacific, Canada, Europe, Latin America, Mexico, Middle East,}>[11111010]
+7:<{Air Canada_0,Lufthansa_6,United Airlines_11,},{ Asia Pacific, Canada, Europe, Latin America, Mexico,}>[11110010]
+8:<{Air Canada_0,Lufthansa_6,United Airlines_11,VARIG_12,},{ Asia Pacific, Europe, Latin America, Mexico,}>[11010010]
+9:<{Air Canada_0,Air NewZealand_1,AllNippon Airways_2,Austrian Airlines Group_4,Lufthansa_6,Scandinavian Airlines_8,Singapore Airlines_9,Thai Airways_10,United Airlines_11,VARIG_12,},{ Asia Pacific, Europe,}>[1010000]
+10:<{Austrian Airlines Group_4,Lufthansa_6,Singapore Airlines_9,},{ Africa, Asia Pacific, Canada, Europe, Middle East,}>[1111100]
+11:<{Air Canada_0,Air NewZealand_1,AllNippon Airways_2,Ansett Australia_3,Austrian Airlines Group_4,Lufthansa_6,Scandinavian Airlines_8,Singapore Airlines_9,Thai Airways_10,United Airlines_11,VARIG_12,},{ Asia Pacific,}>[10000]
+12:<{Air Canada_0,Austrian Airlines Group_4,Lufthansa_6,Singapore Airlines_9,},{ Asia Pacific, Canada, Europe, Middle East,}>[1111000]
+13:<{Air Canada_0,Austrian Airlines Group_4,Lufthansa_6,Singapore Airlines_9,United Airlines_11,},{ Asia Pacific, Canada, Europe,}>[1110000]

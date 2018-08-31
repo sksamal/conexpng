@@ -125,12 +125,16 @@ public class LatticeGraph {
     	Set<Concept<String, FullObject<String, String>>> concepts = new ListSet<Concept<String, FullObject<String, String>>> ();
     	for(Node n: this.nodes) {
     		Concept<String, FullObject<String, String>> c = new LatticeConcept();
-            c.getExtent().addAll(n.getFullObjects());
-    		c.getIntent().addAll(n.getAttributes());
+    		for(FullObject<String,String> o : n.getFullObjects())
+    			c.getExtent().add(o);
+    
+    		for(String a : n.getAttributes())
+    			c.getIntent().add(a);
+    		
+  //  		System.out.println(n.getObjects() + " :" + n.getAttributes());
     		((LatticeConcept)c).setId(n.getId());
     		concepts.add(c);
     	}
-    	System.out.println(concepts.size());
     	return concepts;
 	}
 

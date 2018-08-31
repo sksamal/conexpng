@@ -316,6 +316,7 @@ public class FormalContext extends de.tudresden.inf.tcs.fcalib.FormalContext<Str
    
         HashMap<String,Long> attrIdMap = new HashMap<String,Long>();
         Long value = (long)1;
+        attrIdMap.put(null,(long)0);
         for(int i=this.getAttributes().size()-1;i>=0;i--) {
         	attrIdMap.put(this.getAttributeAtIndex(i), value);
         	value = value *2;
