@@ -42,76 +42,15 @@ src
 │   └── fcatools
 │       └── conexpng
 │           ├── gui
-│           │   ├── lattice
-│           │   │   ├── algorithms
-│           │   │   │   ├── ExternalFreeseLatticeGraphAlgorithm.java
-│           │   │   │   ├── FreeseLatticeGraphAlgorithm.java
-│           │   │   │   ├── ILatticeGraphAlgorithm.java
-│           │   │   │   └── TrivialLatticeGraphAlgorithm.java
-│           │   │   ├── ClassifiedNode.java
-│           │   │   ├── Edge.java
-│           │   │   ├── Label.java
-│           │   │   ├── LatticeGraphComputer.java
-│           │   │   ├── LatticeGraphElement.java
-│           │   │   ├── LatticeGraph.java
-│           │   │   ├── LatticeGraphView.java
-│           │   │   ├── LatticeSettings.java
-│           │   │   ├── LatticeViewInteractions.java
-│           │   │   ├── LatticeView.java
-│           │   │   ├── LatticeViewUndoManager.java
-│           │   │   ├── MultiClassifiedNode.java
-│           │   │   └── Node.java
-│           │   └── workers
-│           │       ├── AbstractAssociationWorker.java
-│           │       ├── AbstractWorker.java
-│           │       ├── AssociationWorker.java
-│           │       ├── ClarificationReductionWorker.java
-│           │       ├── ConceptWorker.java
-│           │       ├── ImplicationWorker.java
-│           │       └── TAssociationWorker.java
 │           ├── io
-│           │   ├── CEXReader.java
-│           │   ├── CEXWriter.java
-│           │   ├── CSVReader.java
-│           │   ├── CSVWriter.java
-│           │   ├── CXTReader.java
-│           │   ├── CXTWriter.java
-│           │   ├── FCCSVWriter.java
-│           │   ├── FCSVClassReader.java
-│           │   ├── FCSVMultiClassReader.java
-│           │   ├── FCSVReader.java
-│           │   ├── GUIReader.java
-│           │   ├── GUIWriter.java
-│           │   ├── IFCSVMultiClassReader.java
-│           │   ├── OALReader.java
-│           │   └── OALWriter.java
 │           ├── main
-│           │   ├── FuzzyClassedFCARunner.java
-│           │   ├── FuzzyFCARunner.java
-│           │   ├── FuzzyMultiClassedFCARunner.java
-│           │   ├── IFuzzyMultiClassedFCARunner.java
-│           │   ├── IncrementalFCARunner.java
 │           ├── Main.java
 │           ├── model
-│           │   ├── AssociationRule.java
-│           │   ├── FormalContext.java
-│           │   ├── FuzzyClassedConcept.java
-│           │   ├── FuzzyClassifierContext.java
-│           │   ├── FuzzyFormalContext.java
-│           │   ├── FuzzyMultiClassedConcept.java
-│           │   ├── FuzzyMultiClassifierContext.java
-│           │   ├── FuzzyMultiClassifierContextOri.java
-│           │   ├── FuzzyObject.java
-│           │   ├── IFuzzyMultiClassifierContext.java
-│           │   ├── IncrementalFormalContext.java
-│           │   ├── LatticeConcept.java
-│           │   └── OAPair.java
 └── resources
     ├─ examples
        ├── AddIntentTest.java
        ├── ClassifyRecipe.java
        ├── FCATest.java
-       ├── HTMLWriter.java
        ├── IFuzzyPizzaTest.java
        ├── IFuzzyTest.java
        ├── Partition.java
