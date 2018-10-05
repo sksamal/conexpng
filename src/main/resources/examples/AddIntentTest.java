@@ -14,6 +14,7 @@ import de.tudresden.inf.tcs.fcaapi.Concept;
 import de.tudresden.inf.tcs.fcaapi.exception.IllegalObjectException;
 import de.tudresden.inf.tcs.fcalib.FullObject;
 import fcatools.conexpng.Conf;
+import fcatools.conexpng.gui.lattice.LatticeGraph;
 import fcatools.conexpng.gui.workers.TAssociationWorker;
 import fcatools.conexpng.io.FCSVMultiClassReader;
 import fcatools.conexpng.io.IFCSVMultiClassReader;
@@ -42,17 +43,17 @@ public class AddIntentTest {
 		}
 			
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
-		String INPUTFILE = "staralliance.fccsv";
-	//	String INPUTFILE = "/home/ssamal/java_projs/conexpng/codings_1.fccsv";
+	//	String INPUTFILE = "staralliance.fccsv";
+		String INPUTFILE = "codings_1.fccsv";
 	//	String INPUTFILE = "/home/ssamal/java_projs/conexpng/recipe_parser/ingsdata.fccsv";
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/og_fabricated.fccsv";
 
 		String imageLocation = "/home/ssamal/dl/out";
 		if(args.length >=1) INPUTFILE = args[0];
 	//	if(args.length >=2) imageLocation = args[1];
-		int initial = 5;
+		int initial = 100;
 		if(args.length>=2) initial = Integer.parseInt(args[1]);
-		int expr = 10;
+		int expr = 100;
 		if(args.length>=3) expr = Integer.parseInt(args[2]);
 		
 		Conf state = new Conf();
@@ -81,8 +82,11 @@ public class AddIntentTest {
 		tee.println("No of Objects:"+ ifmc.getObjectCount());
 		tee.println("No of attributes:" + ifmc.getAttributeCount());
 //		Set<Concept<String,FullObject<String,String>>> concepts1 = ifmc.getConceptsUsingAddIntent();
-		Set<Concept<String,FullObject<String,String>>> concepts = ifmc.getConceptsUsingAddIntent();
-		tee.println("No of concepts:" + concepts.size());
+//		Set<Concept<String,FullObject<String,String>>> concepts = ifmc.getConceptsUsingAddIntent();
+		LatticeGraph lgraph = ifmc.getLatticeUsingAddIntent();
+//		tee.println("No of concepts:" + concepts.size());
+		tee.println("No of nodes (concepts):" + lgraph.getNodes().size());
+		
 //		printConcepts(concepts);
 //		printClassedConceptProbs(concepts);
 //		System.exit(1);
@@ -99,10 +103,13 @@ public class AddIntentTest {
 				tee.println("	Read " + i + " records");
 				long ms1 = System.currentTimeMillis();
 				tee.println("1000 records took " + (ms1 - ms) + " ms");
-				concepts = ifmc.getConcepts();
+				lgraph = ifmc.getLatticeUsingAddIntent();
+				//	concepts = ifmc.getConcepts();
 				ms = System.currentTimeMillis();
 				tee.println("Generating concepts took " + (ms - ms1) + " ms");
-				tee.println("Concepts now: " + concepts.size());
+//				tee.println("Concepts now: " + concepts.size());
+				tee.println("No of nodes (concepts):" + lgraph.getNodes().size());
+
 				tee.println("Objects now:" + ifmc.getObjectCount());
 			}
 
@@ -111,45 +118,51 @@ public class AddIntentTest {
 				tee.println("	Read " + i + " records");
 				long ms1 = System.currentTimeMillis();
 				tee.println(expr + " records took " + (ms1 - ms) + " ms");
-				concepts = ifmc.getConceptsUsingAddIntent();
+			//	concepts = ifmc.getConceptsUsingAddIntent();
+				lgraph = ifmc.getLatticeUsingAddIntent();
 				ms = System.currentTimeMillis();
 				tee.println("Generating concepts took " + (ms - ms1) + " ms");
-				tee.println("Concepts now: " + concepts.size());
+	//			tee.println("Concepts now: " + concepts.size());
+				tee.println("No of nodes (concepts):" + lgraph.getNodes().size());
+
 				tee.println("Objects now:" + ifmc.getObjectCount());
 				
 			}
 		}
 
-		concepts = ifmc.getConceptsUsingAddIntent();
+		//concepts = ifmc.getConceptsUsingAddIntent();
+		lgraph = ifmc.getLatticeUsingAddIntent();
 		tee.println("No of Objects: "+ ifmc.getObjectCount());
 		tee.println("No of attributes: " + ifmc.getAttributeCount());
-		tee.println("No of concepts: " + concepts.size());
-		printConcepts(concepts);
+//		tee.println("No of concepts: " + concepts.size());
+		tee.println("No of nodes (concepts):" + lgraph.getNodes().size());
+
+//		printConcepts(concepts);
 
 		
-		// Normal incremental process
-		Conf newState1 = new Conf();
-		newState1.filePath = "";
-		IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,1,false,initial); // last 1 are classes, uniqueness
-		ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
-		tee.println("\n\n***Normal Incremental Method(). Reading first " + initial + " records, then the rest***");
-		tee.println("No of Objects: "+ ifmc1.getObjectCount());
-		tee.println("No of attributes: " + ifmc1.getAttributeCount());
-		tee.println("No of concepts: " + ifmc1.getConcepts().size());
-	
-		
-//		if(ptdgsReader1.readNext());
-		while(ptdgsReader1.readNext());
-	
-		tee.println("No of Objects: "+ ifmc.getObjectCount() + " (Correct:" + ifmc1.getObjectCount() + ")");
-		tee.println("No of attributes: " + ifmc.getAttributeCount() + " (Correct:" + ifmc1.getAttributeCount() + ")");
-		Set<Concept<String,FullObject<String,String>>> concepts1 = ifmc1.getConcepts();
-		tee.println("No of concepts: " + concepts.size() + " (Correct:" + concepts1.size() + ")");
-		tee.println("Both concepts are identical?:" +areIdentical(concepts,concepts1));
-		ptdgsReader1.close();
+//		// Normal incremental process
+//		Conf newState1 = new Conf();
+//		newState1.filePath = "";
+//		IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,1,false,initial + i); // last 1 are classes, uniqueness
+//		ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
+//		tee.println("\n\n***Normal Incremental Method(). Reading first " + (initial+i) + " records, then the rest***");
+//		tee.println("No of Objects: "+ ifmc1.getObjectCount());
+//		tee.println("No of attributes: " + ifmc1.getAttributeCount());
+//		tee.println("No of concepts: " + ifmc1.getConcepts().size());
+//	
+//		
+////		if(ptdgsReader1.readNext());
+////		while(ptdgsReader1.readNext());
+//	
+//		tee.println("No of Objects: "+ ifmc.getObjectCount() + " (Correct:" + ifmc1.getObjectCount() + ")");
+//		tee.println("No of attributes: " + ifmc.getAttributeCount() + " (Correct:" + ifmc1.getAttributeCount() + ")");
+//		Set<Concept<String,FullObject<String,String>>> concepts1 = ifmc1.getConcepts();
+//		tee.println("No of concepts: " + concepts.size() + " (Correct:" + concepts1.size() + ")");
+//		tee.println("Both concepts are identical?:" +areIdentical(concepts,concepts1));
+//		ptdgsReader1.close();
 
 				
-		printConcepts(concepts1);
+//		printConcepts(concepts1);
 		ptdgsReader.close();
 	
 
@@ -181,7 +194,7 @@ public class AddIntentTest {
 		List<Set<String>> classesSet = ifmc.getClasses();
 		for (Set<String> clazz : classesSet)
 		System.out.println(clazz.size() + ":" + clazz);
-//		printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
+		printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
 
 	}
 

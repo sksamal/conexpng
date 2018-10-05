@@ -82,9 +82,9 @@ public class IFCSVMultiClassReader {
             List<Double> values = new ArrayList<Double>();
             Set<String> classes = new TreeSet<String>();
   
-//            System.out.println("Attributes:" + context.getAttributes()); 
-//            System.out.println("AttributeCount:" + context.getAttributeCount()); 
-//            System.out.println(obj.length);
+//          System.out.println("Attributes:" + context.getAttributes()); 
+//          System.out.println("AttributeCount:" + context.getAttributeCount()); 
+//          System.out.println(obj.length);
             int i=1;
             for (; i <= context.getAttributeCount(); i++) {
             	if (isDouble(obj[i])){
