@@ -1,57 +1,66 @@
+OVERVIEW
+This project is an extension of Concept Explorer
+http://conexp.sourceforge.net/
+
+* Implements Fuzzy Formal Context
+* Classifies objects into classes based on extent/intent size
+* Incremental Lattice building algorithms (AddIntent,InClose,etc)
+* Ontology integration (still in progress) 
+
+DEPENDENCIES
+
 Requires Java 1.8
 Requires > Ant 1.9
 .
 ├── build.xml
-├── conexp
-├── data
+├── conexp		<-- Concept Explorer (http://conexp.sourceforge.net/)
+├── data		<-- contains contexts, encodings, logs etc
 ├── ifuzzytest.jar
-├── java-lattices
-├── java-lattices-bin
+├── java-lattices       <-- some thirdparty java based code
+├── java-lattices-bin   <-- some thirdparty java based code
 ├── lib
 ├── manualbuild.xml
-├── onto
+├── onto       <-- ontology related code
 ├── protege.properties
 ├── README
-├── scripts
-│   ├── build.sh
-│   ├── commit.sh
-│   ├── extractallings.sh
-│   ├── extractall.sh
-│   ├── extract_ingredients.py
-│   ├── extractOntoCSV.py
-│   ├── extractOnto.py
-│   ├── extract.py
-│   ├── ingExtract.py
-│   ├── labels
-│   ├── pizza.json
-│   ├── pizzarecipe1.json
-│   ├── recipe_json
-│   ├── recipe_parser
-│   ├── reciperetrieve.sh
-│   ├── recipExtract.py
-│   ├── runfuzzy.sh
-├─ src
-   └── main
-       ├── java
-       └── resources
+├── scripts   <-- pizza ontology related parsing scripts
+   ├── build.sh
+   ├── commit.sh
+   ├── extractallings.sh
+   ├── extractall.sh
+   ├── extract_ingredients.py
+   ├── extractOntoCSV.py
+   ├── extractOnto.py
+   ├── extract.py
+   ├── ingExtract.py
+   ├── labels
+   ├── pizza.json
+   ├── pizzarecipe1.json
+   ├── recipe_json
+   ├── recipe_parser
+   ├── reciperetrieve.sh
+   ├── recipExtract.py
+   ├── runfuzzy.sh
 
-SOURCES
+IMPORTANT SOURCES
 
 src
 ├── java
 │   └── fcatools
 │       └── conexpng
-│           ├── gui
-│           ├── io
+│           ├── gui      <-- gui related (not used by us)
+│           ├── io       <-- Input/output context readers
 │           ├── main
 │           ├── Main.java
-│           ├── model
+│           ├── model    <-- Context,Concept,Node and other basic codes
 └── resources
     ├─ examples
-       ├── AddIntentTest.java
+       ├── AddIntentTest.java   <-- AddIntent algorithm testing
        ├── ClassifyRecipe.java
        ├── FCATest.java
        ├── IFuzzyPizzaTest.java
-       ├── IFuzzyTest.java
-       ├── Partition.java
+       ├── IFuzzyTest.java  <-- Tester/Classifier for encodings
+       ├── Partition.java   <-- utilities to transform data from csv to fccsv
        └── Transform.java
+
+Contact us at mailto:sksamal@gmail.com
