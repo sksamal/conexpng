@@ -63,4 +63,22 @@ src
        ├── Partition.java   <-- utilities to transform data from csv to fccsv
        └── Transform.java
 
+BUILD AND RUN
+
+1. Download as zip file from the repository.
+2. Use Eclipse (Java), instructions in certain versions might differ slightly.
+     File --> Import "Existing Projects from Workspace" 
+          --> Select archive file, Click Browse, select the zip file. 
+              Select "conexpng" from the Projects textarea displayed.
+          --> Click next and then Finish.
+ 
+3. Choose the java class containing main (e.g IFuzzyTest from examples folder) from the package explorer, then select "Run"(Ctrl + F11) from the Menu. 
+
+  	[ OR on commandline ]
+   	user@host>cd conexpng
+   	user@host> ant build
+        user@host> java -jar ./ifuzzytest.jar <ClassName>
+	   where ClassName is the java main program
+		(e.g java -jar ./ifuzzytest.jar examples.IFuzzyTest )
+         
 Contact us at mailto:sksamal@gmail.com
