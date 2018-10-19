@@ -3,6 +3,11 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="onto"/>
+	<classpathentry kind="src" path="java-lattices/src/examples"/>
+	<classpathentry kind="src" path="java-lattices/src/main/java"/>
+	<classpathentry kind="src" path="java-lattices/src/test/java"/>
+	<classpathentry kind="src" path="java-lattices-bin/src/main/java"/>
+	<classpathentry kind="src" path="java-lattices-bin/src/test/java"/>
 	<classpathentry kind="lib" path="lib/avalon-framework-api-4.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/batik-awt-util-1.7.jar"/>
 	<classpathentry kind="lib" path="lib/batik-bridge-1.7.jar"/>
@@ -41,5 +46,6 @@
 	<classpathentry kind="lib" path="lib/xstream-1.4.8.jar"/>
 	<classpathentry kind="lib" path="lib/xpp3_min-1.1.4c.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/ssamal/.m2/repository/args4j/args4j/2.33/args4j-2.33.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

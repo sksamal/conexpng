@@ -297,6 +297,63 @@ public class IFuzzyMultiClassifierContext extends FuzzyMultiClassifierContext {
 		 return conceptLattice;
 	}
 
+	public LatticeGraph getLatticeUsingAddIntent() {
+		if(attrIdMap == null)
+			generateAttrIdMap();
+		
+		 if(this.conceptLattice ==null) {
+				newObjects.clear();
+				this.conceptLattice = super.getConcepts();
+				latticeGraph.createLattice(conceptLattice);
+				return latticeGraph;
+		 }
+		
+		// nothing changed, just send whats existing, no new objects added
+	   		if(this.conceptLattice !=null && newObjects.size()==0)
+	   			return latticeGraph;
+	   		
+	   		long tms1=0, tms2=0;
+		 // Add Intent Algorithm
+	   	    for(FullObject<String, String> newobj : newObjects) {
+	   	    	
+	 //  	    	System.out.println("ADDING object" + newobj);
+	        	FullObject<String, String> newObj = this.getObject(newobj.getIdentifier());
+	   	    	
+	   	    	Long id = (long)0;
+	   			for(String attribute:newObj.getDescription().getAttributes())
+	   				id+= attrIdMap.get(attribute);
+
+	   			long ms = System.currentTimeMillis();
+      			Node n = addIntent(newObj.getDescription().getAttributes(), latticeGraph.getBottomNode());
+   				n.setId(id);
+   				tms1+= (System.currentTimeMillis() - ms);
+   				
+	   			List<Node> nodes = new ArrayList<Node>();
+	   			nodes.add(n);
+   			
+	   			ms = System.currentTimeMillis();
+	   			while(nodes.size()>0) {
+	   				n = nodes.remove(0);
+   	//				System.out.println("newobj=" + newObj.getDescription().getAttributes());
+	   				if((newObj.getDescription().getAttributes().containsAll(n.getAttributes())) || n.getAttributes().isEmpty()) {
+	   					n.getObjects().add(newObj.getIdentifier());
+	   					n.getFullObjects().add(newObj);
+//	   					if(n.getParentNodes().size()>0) {
+//	   						for(Node x : n.getParentNodes())
+//	   							printConcept(x);
+//	   						
+//	   					}
+	   				nodes.addAll(n.getParentNodes());
+	   				}
+	   	    }
+	   		tms2+= (System.currentTimeMillis() - ms);
+	   	   		
+	   	   }
+	   	 System.out.println("AddIntent took " + tms1 + " ms, adding obj to concept took " + tms2 + " ms");
+		 // Finally return the graph
+		 return latticeGraph;
+	}
+
    @Override
     public Set<Concept<String, FullObject<String, String>>> getConcepts() {
 	   

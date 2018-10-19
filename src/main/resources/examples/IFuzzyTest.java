@@ -138,7 +138,8 @@ public class IFuzzyTest {
 			Conf newState1 = new Conf();
 			newState1.filePath = "";
 			concepts = ifmc.getConcepts();
-			IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,1,false,initial+3); // last 1 are classes, uniqueness
+			IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,1,false,initial+i); // last 1 are classes, uniqueness
+			System.out.println("\n**Reading " + (initial + i) + " records directly");
 			ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
 			tee.println("No of Objects: "+ ifmc.getObjectCount() + " (Correct:" + ifmc1.getObjectCount() + ")");
 			tee.println("No of attributes: " + ifmc.getAttributeCount() + " (Correct:" + ifmc1.getAttributeCount() + ")");

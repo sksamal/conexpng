@@ -1,0 +1,33 @@
+Reading staralliance.fccsv
+
+
+***AddIntent() algorithm ***
+***Reading first 5 records, then incrementally ***
+No of Objects:5
+No of attributes:8
+No of concepts:6
+No of Objects: 13
+No of attributes: 8
+No of concepts: 25
+
+-----------------------------------------------------------------------------------------------------------------------
+  Object     Extent                                 Probabilities                                          Predicted    Actual
+                Size                                                      [[0, 1, 1 ]]                          Class      Class
+-----------------------------------------------------------------------------------------------------------------------
+AllNippon Airways_2       {10}                                              [[0.00, 0.90, 0.10]]      [[1]]        [1] _/
+Air Canada_0        {1}                                              [[0.00, 1.00, 0.00]]      [[1]]        [1] _/
+Austrian Airlines Group_4        {3}                                              [[0.00, 1.00, 0.00]]      [[1]]        [1] _/
+Air NewZealand_1       {10}                                              [[0.00, 0.90, 0.10]]      [[1]]        [1] _/
+Thai Airways_10        {3}                                              [[0.00, 1.00, 0.00]]      [[1]]        [1] _/
+United Airlines_11        {2}                                              [[0.00, 1.00, 0.00]]      [[1]]        [1] _/
+Singapore Airlines_9        {3}                                              [[0.00, 1.00, 0.00]]      [[1]]        [1] _/
+VARIG_12        {2}                                              [[0.00, 0.50, 0.50]]      [[1]]       [1 ]
+Lufthansa_6        {1}                                              [[0.00, 1.00, 0.00]]      [[1]]        [1] _/
+British Midland_5       {11}                                              [[0.09, 0.81, 0.09]]      [[1]]        [0]
+Ansett Australia_3       {11}                                              [[0.09, 0.81, 0.09]]      [[1]]        [0]
+Scandinavian Airlines_8        {4}                                              [[0.00, 0.75, 0.25]]      [[1]]        [1] _/
+Mexicana_7        {3}                                              [[0.00, 1.00, 0.00]]      [[1]]        [1] _/
+
+Objects classified correctly: 10
+Total objects: 13
+Success: 76.92307692307692%

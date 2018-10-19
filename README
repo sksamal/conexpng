@@ -1,2 +1,84 @@
+OVERVIEW
+This project is an extension of Concept Explorer
+http://conexp.sourceforge.net/
+
+* Implements Fuzzy Formal Context
+* Classifies objects into classes based on extent/intent size
+* Incremental Lattice building algorithms (AddIntent,InClose,etc)
+* Ontology integration (still in progress) 
+
+DEPENDENCIES
+
 Requires Java 1.8
 Requires > Ant 1.9
+.
+├── build.xml
+├── conexp		<-- Concept Explorer (http://conexp.sourceforge.net/)
+├── data		<-- contains contexts, encodings, logs etc
+├── ifuzzytest.jar
+├── java-lattices       <-- some thirdparty java based code
+├── java-lattices-bin   <-- some thirdparty java based code
+├── lib
+├── manualbuild.xml
+├── onto       <-- ontology related code
+├── protege.properties
+├── README
+├── scripts   <-- pizza ontology related parsing scripts
+   ├── build.sh
+   ├── commit.sh
+   ├── extractallings.sh
+   ├── extractall.sh
+   ├── extract_ingredients.py
+   ├── extractOntoCSV.py
+   ├── extractOnto.py
+   ├── extract.py
+   ├── ingExtract.py
+   ├── labels
+   ├── pizza.json
+   ├── pizzarecipe1.json
+   ├── recipe_json
+   ├── recipe_parser
+   ├── reciperetrieve.sh
+   ├── recipExtract.py
+   ├── runfuzzy.sh
+
+IMPORTANT SOURCES
+
+src
+├── java
+│   └── fcatools
+│       └── conexpng
+│           ├── gui      <-- gui related (not used by us)
+│           ├── io       <-- Input/output context readers
+│           ├── main
+│           ├── Main.java
+│           ├── model    <-- Context,Concept,Node and other basic codes
+└── resources
+    ├─ examples
+       ├── AddIntentTest.java   <-- AddIntent algorithm testing
+       ├── ClassifyRecipe.java
+       ├── FCATest.java
+       ├── IFuzzyPizzaTest.java
+       ├── IFuzzyTest.java  <-- Tester/Classifier for encodings
+       ├── Partition.java   <-- utilities to transform data from csv to fccsv
+       └── Transform.java
+
+BUILD AND RUN
+
+1. Download as zip file from the repository.
+2. Use Eclipse (Java), instructions in certain versions might differ slightly.
+     File --> Import "Existing Projects from Workspace" 
+          --> Select archive file, Click Browse, select the zip file. 
+              Select "conexpng" from the Projects textarea displayed.
+          --> Click next and then Finish.
+ 
+3. Choose the java class containing main (e.g IFuzzyTest from examples folder) from the package explorer, then select "Run"(Ctrl + F11) from the Menu. 
+
+  	[ OR on commandline ]
+   	user@host>cd conexpng
+   	user@host> ant build
+        user@host> java -jar ./ifuzzytest.jar <ClassName>
+	   where ClassName is the java main program
+		(e.g java -jar ./ifuzzytest.jar examples.IFuzzyTest )
+         
+Contact us at mailto:sksamal@gmail.com

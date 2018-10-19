@@ -112,7 +112,7 @@ public class FCATest {
 			sb.append("}>");
 			tee.println(i + ":" + sb);
 			i++;
-	}
+		}
 	}
 		
 		

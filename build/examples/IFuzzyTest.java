@@ -22,6 +22,7 @@ import fcatools.conexpng.model.FuzzyFormalContext;
 import fcatools.conexpng.model.FuzzyMultiClassedConcept;
 import fcatools.conexpng.model.FuzzyMultiClassifierContext;
 import fcatools.conexpng.model.IFuzzyMultiClassifierContext;
+import fcatools.conexpng.model.LatticeConcept;
 
 public class IFuzzyTest {
 
@@ -37,18 +38,19 @@ public class IFuzzyTest {
 			}
 			sc.close();
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 			
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
-	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/staralliance.fccsv";
-		String INPUTFILE = "/home/ssamal/java_projs/conexpng/codings_1.fccsv";
+		String INPUTFILE = "staralliance.fccsv";
+	//	String INPUTFILE = "/home/ssamal/java_projs/conexpng/codings_1.fccsv";
 	//	String INPUTFILE = "/home/ssamal/java_projs/conexpng/recipe_parser/ingsdata.fccsv";
+	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/og_fabricated.fccsv";
+
 		String imageLocation = "/home/ssamal/dl/out";
 		if(args.length >=1) INPUTFILE = args[0];
 	//	if(args.length >=2) imageLocation = args[1];
-		int initial = 100;
+		int initial = 10;
 		if(args.length>=2) initial = Integer.parseInt(args[1]);
 		int expr = 10;
 		if(args.length>=3) expr = Integer.parseInt(args[2]);
@@ -58,7 +60,7 @@ public class IFuzzyTest {
 	    System.setProperty("user.language", LocaleHandler.readLocale());
 	    PrintStream pwStream = null;
 	    IFuzzyMultiClassifierContext ifmc = null;
-//	    IFuzzyMultiClassifierContext ifmc1 = null;
+	    IFuzzyMultiClassifierContext ifmc1 = null;
 
 		Conf newState = new Conf();
 		try {
@@ -74,6 +76,7 @@ public class IFuzzyTest {
 		long currentms = System.currentTimeMillis();
 		IFCSVMultiClassReader ptdgsReader = new IFCSVMultiClassReader(newState, INPUTFILE,1,false,initial); // last 1 are classes, uniqueness
 		ifmc = ((IFuzzyMultiClassifierContext)newState.context);
+		tee.println("**Reading " + initial + " records directly, rest incrementally from the file**");
 		tee.println("\n\n***Reading first 10 records***");
 		tee.println("No of Objects:"+ ifmc.getObjectCount());
 		tee.println("No of attributes:" + ifmc.getAttributeCount());
@@ -83,12 +86,9 @@ public class IFuzzyTest {
 //		printClassedConceptProbs(concepts);
 //		System.exit(1);
 	
-//		for(FullObject o : ifmc.getObjects())
-//			System.out.println(o.toString());
 		// Incrementally add objects
 		int i=0;
 		long ms = System.currentTimeMillis();
-//		if(ptdgsReader.readNext()) {
 			
 		while(ptdgsReader.readNext()) {
 			i++;
@@ -114,47 +114,60 @@ public class IFuzzyTest {
 				tee.println("Concepts now: " + concepts.size());
 				tee.println("Objects now:" + ifmc.getObjectCount());
 				
-//				Conf newState1 = new Conf();
-//				newState1.filePath = "";
-//				IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,1,false,initial+i); // last 1 are classes, uniqueness
-//				ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
-//				tee.println("No of Objects: "+ ifmc.getObjectCount() + " (Correct:" + ifmc1.getObjectCount() + ")");
-//				tee.println("No of attributes: " + ifmc.getAttributeCount() + " (Correct:" + ifmc1.getAttributeCount() + ")");
-//				concepts = ifmc.getConcepts();
-//				Set<Concept<String,FullObject<String,String>>> concepts1 = ifmc1.getConcepts();
-//				tee.println("No of concepts: " + concepts.size() + " (Correct:" + concepts1.size() + ")");
-//				tee.println("Both concepts are identical?:" +areIdentical(concepts,concepts1));
-//				ptdgsReader1.close();
+				Conf newState1 = new Conf();
+				newState1.filePath = "";
+				IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,1,false,initial+i); // last 1 are classes, uniqueness
+				ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
+				tee.println("**Directly reading all records from the file**");
+				tee.println("\n\n***Reading first "+ (initial + i) + " records***");
+				tee.println("No of Objects: "+ ifmc.getObjectCount() + " (Correct:" + ifmc1.getObjectCount() + ")");
+				tee.println("No of attributes: " + ifmc.getAttributeCount() + " (Correct:" + ifmc1.getAttributeCount() + ")");
+				concepts = ifmc.getConcepts();
+				Set<Concept<String,FullObject<String,String>>> concepts1 = ifmc1.getConcepts();
+				tee.println("No of concepts: " + concepts.size() + " (Correct:" + concepts1.size() + ")");
+				tee.println("Both concepts are identical?:" +areIdentical(concepts,concepts1));
+				ptdgsReader1.close();
 
 			}
-//			Conf newState1 = new Conf();
-//			newState1.filePath = "";
-//			IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,0,false,11+i); // last 1 are classes, uniqueness
-//			ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
-//			tee.println("No of Objects: "+ ifmc.getObjectCount() + " (Correct:" + ifmc1.getObjectCount() + ")");
-//			tee.println("No of attributes: " + ifmc.getAttributeCount() + " (Correct:" + ifmc1.getAttributeCount() + ")");
-//			concepts = ifmc.getConcepts();
-//			Set<Concept<String,FullObject<String,String>>> concepts1 = ifmc1.getConcepts();
-//			tee.println("No of concepts: " + concepts.size() + " (Correct:" + concepts1.size() + ")");
-//			tee.println("Both concepts are identical?:" +areIdentical(concepts,concepts1));
-//			ptdgsReader1.close();
 //			if(i==2) { 
 //				printConcepts(concepts);
 //				printConcepts(concepts1);
 //				break;			
 //			}
 		}
+			Conf newState1 = new Conf();
+			newState1.filePath = "";
+			concepts = ifmc.getConcepts();
+			IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,1,false,initial+i); // last 1 are classes, uniqueness
+			System.out.println("\n**Reading " + (initial + i) + " records directly");
+			ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
+			tee.println("No of Objects: "+ ifmc.getObjectCount() + " (Correct:" + ifmc1.getObjectCount() + ")");
+			tee.println("No of attributes: " + ifmc.getAttributeCount() + " (Correct:" + ifmc1.getAttributeCount() + ")");
+			Set<Concept<String,FullObject<String,String>>> concepts1 = ifmc1.getConcepts();
+			tee.println("No of concepts: " + concepts.size() + " (Correct:" + concepts1.size() + ")");
+			tee.println("Both concepts are identical?:" +areIdentical(concepts,concepts1));
+			ptdgsReader1.close();
+
 		
-//		printConcepts(concepts);
-//		printConcepts(concepts1);
-//		ifmc.toXml(INPUTFILE+"_" + expr + "_context.txt");
-		tee.println("	Completed reading " + i + " records");
 		tee.println("No of Objects: "+ ifmc.getObjectCount());
 		tee.println("No of attributes: " + ifmc.getAttributeCount());
-		concepts = ifmc.getConcepts();
 		tee.println("No of concepts: " + concepts.size());
-		tee.println("All data read successfully");
-		tee.println("Read time: " + (System.currentTimeMillis()-currentms) + "ms");
+
+		printConcepts(concepts);
+		printConcepts(concepts1);
+//		ifmc.toXml(INPUTFILE+"_" + expr + "_context.txt");
+//		tee.println("	Completed reading " + i + " records");
+//		concepts = ifmc.getConcepts();
+////		Set<Concept<String,FullObject<String,String>>> concepts = ifmc.getConceptsUsingAddIntent();
+//		tee.println("No of concepts: " + concepts.size());
+//		tee.println("All data read successfully");
+//		tee.println("Read time: " + (System.currentTimeMillis()-currentms) + "ms");
+//		printConcepts(concepts);
+//		printConcepts(concepts1);
+//		tee.println("Both concepts are identical?:" +areIdentical(concepts,concepts1));
+
+
+
 //	//	printClassedConcepts(concepts);
 //	
 		ptdgsReader.close();
@@ -268,7 +281,7 @@ public class IFuzzyTest {
 			for(String attr : c.getIntent())
 				sb.append(attr + ",");
 			sb.append("}>");
-			tee.println(i + ":" + sb);
+			tee.println(i + ":" + sb + "[" + Long.toBinaryString(((LatticeConcept)c).getId()) + "]");
 			i++;
 	}
 	}
