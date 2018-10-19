@@ -42,7 +42,8 @@ public class AddIntentTest {
 		}
 			
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/pizza_onto_context.fccsv";
-		String INPUTFILE = "staralliance.fccsv";
+//		String INPUTFILE = "staralliance.fccsv";
+		String INPUTFILE = "sa12.csv";
 	//	String INPUTFILE = "/home/ssamal/java_projs/conexpng/codings_1.fccsv";
 	//	String INPUTFILE = "/home/ssamal/java_projs/conexpng/recipe_parser/ingsdata.fccsv";
 	//	String INPUTFILE = "/home/ssamal/workspace/conexpng/og_fabricated.fccsv";
@@ -74,7 +75,7 @@ public class AddIntentTest {
 		newState.filePath = "";
 		tee.println("Reading " + INPUTFILE);
 		long currentms = System.currentTimeMillis();
-		IFCSVMultiClassReader ptdgsReader = new IFCSVMultiClassReader(newState, INPUTFILE,1,false,initial); // last 1 are classes, uniqueness
+		IFCSVMultiClassReader ptdgsReader = new IFCSVMultiClassReader(newState, INPUTFILE,0,false,initial); // last 1 are classes, uniqueness
 		ifmc = ((IFuzzyMultiClassifierContext)newState.context);
 		tee.println("\n\n***AddIntent() algorithm ***");
 		tee.println("***Reading first " + initial + " records, then incrementally ***");
@@ -130,7 +131,7 @@ public class AddIntentTest {
 		// Normal incremental process
 		Conf newState1 = new Conf();
 		newState1.filePath = "";
-		IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,1,false,initial); // last 1 are classes, uniqueness
+		IFCSVMultiClassReader ptdgsReader1 = new IFCSVMultiClassReader(newState1, INPUTFILE,0,false,initial); // last 1 are classes, uniqueness
 		ifmc1 = ((IFuzzyMultiClassifierContext)newState1.context);
 		tee.println("\n\n***Normal Incremental Method(). Reading first " + initial + " records, then the rest***");
 		tee.println("No of Objects: "+ ifmc1.getObjectCount());
