@@ -1,98 +1,146 @@
-id$label$prefLabel$atlLabel$definition$intersection$attributes$subId$superId
-58$InterestingPizza$Interesting Pizza;$$Any pizza that has at least 3 toppings. Note that this is a cardinality constraint on the hasTopping property and NOT a qualified cardinality constraint (QCR). A QCR would specify from which class the members in this relationship must be. eg has at least 3 toppings from PizzaTopping. This is currently not supported in OWL.;$59;$intersection;external;$$
-143$RealItalianPizza$Real Italian Pizza;$$Any Pizza that has the country of origin, Italy.  RealItalianPizzas must also only have ThinAndCrispy bases.;$59;$intersection;external;$$
-145$DomainConcept$Domain Thing;$$$$external;$146;$
-68$Hot$Hot;$$$$external;$$102;
-92$GoatsCheeseTopping$Goats Cheese;$$$$external;$$15;
-85$GorgonzolaTopping$Gorgonzola;$$$$external;$$15;
-59$Pizza$Pizza;$$$$external;$4;148;$146;
-6$Capricciosa$Capricciosa;$Capricciosa Pizza;Capricciosa;$$$external;$$148;
-248$MixedSeafoodTopping$Mixed Seafood;$$$$external;$$249;
-250$HerbSpiceTopping$Herb Spice;$$$$external;$67;75;$176;
-80$Parmense$Parmense;$Parmese Pizza;Parmese;$$$external;$$148;
-36$Siciliana$Siciliana;$Siciliana;Siciliana Pizza;$$$external;$$148;
-267$DeepPanBase$Deep Pan Base;$$$$external;$$170;
-106$Cajun$Cajun;$Cajun Pizza;Cajun;$$$external;$$148;
-252$PeperoniSausageTopping$Peperoni Sausage;$$$$external;$$253;
-169$IceCream$Ice Cream;$$$$external;$$146;
-31$VegetarianPizza$Vegetarian Pizza;$$Any pizza that does not have fish topping and does not have meat topping is a VegetarianPizza. Note that instances of this class do not need to have any toppings at all.;$59;$intersection;external;$$
-108$Margherita$Margherita;$Margherita Pizza;Margherita;$$$external;$$148;
-232$American$American;$American;American Pizza;$$$external;$$148;
-125$Giardiniera$Giardiniera;$Giardiniera;Giardiniera Pizza;$$$external;$$148;
-390$ValuePartition$Value Partition;$$$$external;$102;$
-170$PizzaBase$Pizza Base;$$$$external;$268;267;$146;
-156$AmericanHot$American Hot;$American Hot;American Hot Pizza;$$$external;$$148;
-99$LeekTopping$Leek;$$$$external;$$275;
-426$SpicyTopping$Spicy;$$Any pizza topping that has spiciness Hot;$176;$intersection;external;$$
-4$UnclosedPizza$Unclosed Pizza;$$$$external;$$59;
-41$NutTopping$Nut;$$$$external;$441;$176;
-244$HotGreenPepperTopping$Hot Green Pepper;$$$$external;$$61;
-21$OliveTopping$Olive;$$$$external;$$275;
-482$SultanaTopping$Sultana;$$$$external;$$206;
-279$SauceTopping$Sauce;$$$$external;$114;$176;
-253$MeatTopping$Meat;$$$$external;$283;202;252;29;$176;
-12$CaperTopping$Caper;$$$$external;$$275;
-64$Mushroom$Mushroom;$Mushroom Pizza;Mushroom;$$$external;$$148;
-140$OnionTopping$Onion;$$$$external;$259;$275;
-152$SpinachTopping$Spinach;$$$$external;$$275;
-111$FourSeasons$Four Seasons;$Four Seasons Pizza;Four Seasons;$$$external;$$148;
-153$RocketTopping$Rocket;$$$$external;$$275;
-590$SpicyPizzaEquivalent$Spicy Pizza Equivalent;$$$59;$intersection;external;$$
-130$SweetPepperTopping$Sweet Pepper;$$$$external;$$62;
-97$AsparagusTopping$Asparagus;$$$$external;$$275;
-114$TobascoPepperSauce$Tobasco Pepper Sauce;$$$$external;$$279;
-102$Spiciness$Spiciness;$$$$union;external;$101;42;68;$390;
-174$PetitPoisTopping$Petit Pois;$$$$external;$$275;
-62$PepperTopping$Pepper;$$$$external;$123;130;61;54;$275;
-46$SloppyGiuseppe$Sloppy Giuseppe;$Sloppy Giuseppe;Sloppy Giuseppe Pizza;$$$external;$$148;
-268$ThinAndCrispyBase$Thin And Crispy Base;$$$$external;$$170;
-34$SundriedTomatoTopping$Sundried Tomato;$$$$external;$$7;
-118$FruttiDiMare$Frutti Di Mare;$Frutti Di Mare Pizza;Frutti Di Mare;$$$external;$$148;
-15$CheeseTopping$Cheese;$$$$external;$72;78;85;92;14;24;$176;
-202$HotSpicedBeefTopping$Hot Spiced Beef;$$$$external;$$253;
-132$LaReine$La Reine;$La Reine;La Reine Pizza;$$$external;$$148;
-7$TomatoTopping$Tomato;$$$$external;$34;44;$275;
-75$RosemaryTopping$Rosemary;$$$$external;$$250;
-277$ArtichokeTopping$Artichoke;$$$$external;$$275;
-659$SpicyPizza$Spicy Pizza;$$Any pizza that has a spicy topping is a SpicyPizza;$59;$intersection;external;$$
-44$SlicedTomatoTopping$Sliced Tomato;$$$$external;$$7;
-283$ChickenTopping$Chicken;$$$$external;$$253;
-206$FruitTopping$Fruit;$$$$external;$482;$176;
-54$PeperonataTopping$Peperonata;$$$$external;$$62;
-259$RedOnionTopping$Red Onion;$$$$external;$$140;
-32$NonVegetarianPizza$Non Vegetarian Pizza;$$Any Pizza that is not a VegetarianPizza;$59;$intersection;external;$$
-87$PolloAdAstra$Pollo Ad Astra;$Pollo Ad Astra Pizza;Pollo Ad Astra;$$$external;$$148;
-135$PrawnsTopping$Prawns;$$$$external;$$249;
-39$AnchoviesTopping$Anchovies;$$$$external;$$249;
-26$Rosa$Rosa;$Rosa Pizza;Rosa;$$$external;$$148;
-176$PizzaTopping$Pizza Topping;$$$$external;$253;41;249;250;206;279;15;275;$146;
-441$PineKernels$Pine Kernel;$$$$external;$$41;
-678$CheeseyPizza$Cheesy Pizza;$$Any pizza that has at least 1 cheese topping.;$59;$intersection;external;$$
-24$ParmesanTopping$Parmezan;$$$$external;$$15;
-686$Country$Country;$$$145;$intersection;external;$$
-687$VegetarianPizzaEquivalent1$Vegetarian Pizza1;$$$59;$intersection;external;$$
-688$VegetarianPizzaEquivalent2$Vegetarian Pizza2;$$$59;$intersection;external;$$
-11$Napoletana$Napoletana;$Napoletana Pizza;Napoletana;$$$external;$$148;
-94$Caprina$Caprina;$Caprina;Caprina Pizza;$$$external;$$148;
-397$ParmaHamTopping$Parma Ham;$$$$external;$$29;
-275$VegetableTopping$Vegetable Topping;$$$$external;$277;62;99;152;70;12;265;97;14;21;7;140;153;174;$176;
-78$FourCheesesTopping$Four Cheeses;$$$$external;$$15;
-67$CajunSpiceTopping$Cajun Spice;$$$$external;$$250;
-61$GreenPepperTopping$Green Pepper;$$$$external;$244;$62;
-101$Medium$Medium;$$$$external;$$102;
-249$FishTopping$Seafood;$$$$external;$135;39;248;$176;
-29$HamTopping$Ham;$$$$external;$397;$253;
-726$MeatyPizza$Meaty Pizza;$$Any pizza that has at least one meat topping;$59;$intersection;external;$$
-123$JalapenoPepperTopping$Jalapeno Pepper;$$$$external;$$62;
-146$Food$Food;$$$$external;$169;59;170;176;$145;
-51$Soho$Soho;$Soho Pizza;Soho;$$$external;$$148;
-727$VegetarianTopping$Vegetarian Topping;$$$176;$intersection;external;$$
-1$PrinceCarlo$Prince Carlo;$Prince Carlo Pizza;Prince Carlo;$$$external;$$148;
-728$ThinAndCrispyPizza$Thin And Crispy Pizza;$$$59;$intersection;external;$$
-2$Fiorentina$Fiorentina;$Fiorentina;Fiorentina Pizza;$$$external;$$148;
-70$MushroomTopping$Mushroom;$$$$external;$$275;
-19$Veneziana$Veneziana;$Veneziana;Veneziana Pizza;$$$external;$$148;
-72$MozzarellaTopping$Mozzarella;$$$$external;$$15;
-265$GarlicTopping$Garlic;$$$$external;$$275;
-17$QuattroFormaggi$Quattro Formaggi;$Quattro Formaggi;Quattro Formaggi Pizza;$$$external;$$148;
-42$Mild$Mild;$$$$external;$$102;
+   o1_42, {5},,,,,,,   [[0.20, 0.40]]      [[1]], [1] _/
+   o0_74, {2},,,,,,,   [[0.50, 0.00]]      [[0]], [0] _/
+   o1_41,{53},,,,,,,   [[0.66, 0.07]]      [[0]], [1]
+   o0_72,{12},,,,,,,   [[0.83, 0.00]]      [[0]], [0] _/
+   o0_71, {2},,,,,,,   [[1.00, 0.00]]      [[0]], [0] _/
+   o1_46, {8},,,,,,,   [[0.50, 0.25]]      [[0]], [1]
+   o0_78,{28},,,,,,,   [[0.60, 0.21]]      [[0]], [0] _/
+   o0_76, {9},,,,,,,   [[0.44, 0.22]]      [[0]], [0] _/
+  o1_149,{16},,,,,,,   [[0.31, 0.50]]      [[1]], [1] _/
+   o0_69, {5},,,,,,,   [[0.80, 0.00]]      [[0]], [0] _/
+   o0_68,{13},,,,,,,   [[0.76, 0.00]]      [[0]], [0] _/
+  o1_146, {7},,,,,,,   [[0.14, 0.57]]      [[1]], [1] _/
+ oun_193,{53},,,,,,,   [[0.66, 0.07]]      [[0]],  []
+    o0_0, {9},,,,,,,   [[0.44, 0.22]]      [[0]], [0] _/
+ oun_194, {5},,,,,,,   [[0.20, 0.40]]      [[1]],  []
+ oun_195, {9},,,,,,,   [[0.66, 0.00]]      [[0]],  []
+ oun_196, {8},,,,,,,   [[0.62, 0.00]]      [[0]],  []
+    o0_5, {9},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+ oun_190, {5},,,,,,,   [[0.80, 0.00]]      [[0]],  []
+    o0_3,{21},,,,,,,   [[0.61, 0.19]]      [[0]], [0] _/
+    o0_2,{28},,,,,,,   [[0.60, 0.21]]      [[0]], [0] _/
+   o1_31,{23},,,,,,,   [[0.65, 0.17]]      [[0]], [1]
+    o0_8,{14},,,,,,,   [[0.71, 0.00]]      [[0]], [0] _/
+   o0_62, {7},,,,,,,   [[0.71, 0.00]]      [[0]], [0] _/
+    o0_7, {6},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+   o0_60, {2},,,,,,,   [[1.00, 0.00]]      [[0]], [0] _/
+    o0_6, {3},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+   o1_35, {6},,,,,,,   [[0.33, 0.33]]      [[0]], [1]
+ oun_198, {8},,,,,,,   [[0.50, 0.25]]      [[0]],  []
+   o0_66,{19},,,,,,,   [[0.63, 0.10]]      [[0]], [0] _/
+   o0_65,{12},,,,,,,   [[0.83, 0.00]]      [[0]], [0] _/
+ oun_199,{49},,,,,,,   [[0.77, 0.00]]      [[0]],  []
+   o0_64, {8},,,,,,,   [[0.75, 0.00]]      [[0]], [0] _/
+   o0_59,{56},,,,,,,   [[0.69, 0.07]]      [[0]], [0] _/
+   o0_58, {8},,,,,,,   [[0.87, 0.00]]      [[0]], [0] _/
+   o0_57, {5},,,,,,,   [[0.80, 0.00]]      [[0]], [0] _/
+  o0_119, {9},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+   o0_91,{36},,,,,,,   [[0.77, 0.00]]      [[0]], [0] _/
+   o0_96,{10},,,,,,,   [[0.80, 0.00]]      [[0]], [0] _/
+  o0_110,{47},,,,,,,   [[0.57, 0.21]]      [[0]], [0] _/
+   o0_95,{22},,,,,,,   [[0.63, 0.09]]      [[0]], [0] _/
+   o0_94, {7},,,,,,,   [[0.57, 0.28]]      [[0]], [0] _/
+  o0_114, {5},,,,,,,   [[0.80, 0.00]]      [[0]], [0] _/
+   o0_12, {3},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+   o0_11,{10},,,,,,,   [[0.80, 0.00]]      [[0]], [0] _/
+   o0_99, {6},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+   o0_98,{13},,,,,,,   [[0.76, 0.00]]      [[0]], [0] _/
+  o0_112, {3},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+  o0_113, {8},,,,,,,   [[0.75, 0.00]]      [[0]], [0] _/
+   o0_97,{73},,,,,,,   [[0.61, 0.16]]      [[0]], [0] _/
+  o1_129,{15},,,,,,,   [[0.73, 0.13]]      [[0]], [1]
+  o1_122, {8},,,,,,,   [[0.50, 0.25]]      [[0]], [1]
+  o1_124, {6},,,,,,,   [[0.50, 0.33]]      [[0]], [1]
+  o0_106,{19},,,,,,,   [[0.57, 0.10]]      [[0]], [0] _/
+   o0_81, {9},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+  o0_109, {3},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+   o1_53,{15},,,,,,,   [[0.73, 0.13]]      [[0]], [1]
+   o0_84,{14},,,,,,,   [[0.71, 0.00]]      [[0]], [0] _/
+  o0_100, {9},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+   o0_83, {6},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+   o0_82, {3},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+   o0_89, {8},,,,,,,   [[0.75, 0.00]]      [[0]], [0] _/
+  o0_104,{17},,,,,,,   [[0.82, 0.00]]      [[0]], [0] _/
+   o0_88, {3},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+   o0_87,{10},,,,,,,   [[0.80, 0.00]]      [[0]], [0] _/
+  o0_102,{14},,,,,,,   [[0.71, 0.00]]      [[0]], [0] _/
+   o1_48, {6},,,,,,,   [[0.50, 0.33]]      [[0]], [1]
+   o0_79,{21},,,,,,,   [[0.61, 0.19]]      [[0]], [0] _/
+ oun_160,{14},,,,,,,   [[0.71, 0.00]]      [[0]],  []
+  o0_138, {7},,,,,,,   [[0.71, 0.00]]      [[0]], [0] _/
+ oun_163,{10},,,,,,,   [[0.80, 0.00]]      [[0]],  []
+  o0_132,{14},,,,,,,   [[0.71, 0.00]]      [[0]], [0] _/
+   o0_30,{19},,,,,,,   [[0.57, 0.10]]      [[0]], [0] _/
+  o0_133, {5},,,,,,,   [[0.80, 0.00]]      [[0]], [0] _/
+  o0_131,{13},,,,,,,   [[0.92, 0.00]]      [[0]], [0] _/
+  o0_136, {2},,,,,,,   [[1.00, 0.00]]      [[0]], [0] _/
+ oun_164, {3},,,,,,,   [[0.66, 0.00]]      [[0]],  []
+   o0_34,{47},,,,,,,   [[0.57, 0.21]]      [[0]], [0] _/
+   o0_33, {3},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+ oun_165, {8},,,,,,,   [[0.75, 0.00]]      [[0]],  []
+  o0_134, {8},,,,,,,   [[0.87, 0.00]]      [[0]], [0] _/
+ oun_167,{36},,,,,,,   [[0.77, 0.00]]      [[0]],  []
+  o0_135,{56},,,,,,,   [[0.69, 0.07]]      [[0]], [0] _/
+   o0_26,{14},,,,,,,   [[0.71, 0.00]]      [[0]], [0] _/
+   o0_24, {9},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+  o1_107,{23},,,,,,,   [[0.65, 0.17]]      [[0]], [1]
+   o0_28,{17},,,,,,,   [[0.82, 0.00]]      [[0]], [0] _/
+ oun_150, {2},,,,,,,   [[0.50, 0.00]]      [[0]],  []
+ oun_151,{23},,,,,,,   [[0.47, 0.21]]      [[0]],  []
+ oun_152, {9},,,,,,,   [[0.44, 0.22]]      [[0]],  []
+   o1_70, {7},,,,,,,   [[0.14, 0.57]]      [[1]], [1] _/
+ oun_157, {9},,,,,,,   [[0.66, 0.00]]      [[0]],  []
+   o1_75,{23},,,,,,,   [[0.47, 0.21]]      [[0]], [1]
+ oun_158, {3},,,,,,,   [[0.66, 0.00]]      [[0]],  []
+   o1_73,{16},,,,,,,   [[0.31, 0.50]]      [[1]], [1] _/
+ oun_159, {6},,,,,,,   [[0.66, 0.00]]      [[0]],  []
+  o0_120, {8},,,,,,,   [[0.62, 0.00]]      [[0]], [0] _/
+  o0_125, {2},,,,,,,   [[1.00, 0.00]]      [[0]], [0] _/
+   o0_23, {6},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+   o0_22,{13},,,,,,,   [[0.76, 0.00]]      [[0]], [0] _/
+  o0_126, {8},,,,,,,   [[0.75, 0.00]]      [[0]], [0] _/
+ oun_154,{28},,,,,,,   [[0.60, 0.21]]      [[0]],  []
+  o0_123,{49},,,,,,,   [[0.77, 0.00]]      [[0]], [0] _/
+ oun_155,{21},,,,,,,   [[0.61, 0.19]]      [[0]],  []
+   o0_21,{73},,,,,,,   [[0.61, 0.16]]      [[0]], [0] _/
+   o0_20,{10},,,,,,,   [[0.80, 0.00]]      [[0]], [0] _/
+   o0_15,{36},,,,,,,   [[0.77, 0.00]]      [[0]], [0] _/
+  o1_117,{53},,,,,,,   [[0.66, 0.07]]      [[0]], [1]
+  o1_118, {5},,,,,,,   [[0.20, 0.40]]      [[1]], [1] _/
+   o0_13, {8},,,,,,,   [[0.75, 0.00]]      [[0]], [0] _/
+   o0_19,{22},,,,,,,   [[0.63, 0.09]]      [[0]], [0] _/
+   o0_18, {7},,,,,,,   [[0.57, 0.28]]      [[0]], [0] _/
+  o1_111, {6},,,,,,,   [[0.33, 0.33]]      [[0]], [1]
+ oun_182,{19},,,,,,,   [[0.57, 0.10]]      [[0]],  []
+ oun_183,{23},,,,,,,   [[0.65, 0.17]]      [[0]],  []
+ oun_185, {3},,,,,,,   [[0.66, 0.00]]      [[0]],  []
+ oun_180,{17},,,,,,,   [[0.82, 0.00]]      [[0]],  []
+   o0_50, {8},,,,,,,   [[0.75, 0.00]]      [[0]], [0] _/
+   o0_56,{14},,,,,,,   [[0.71, 0.00]]      [[0]], [0] _/
+ oun_186,{47},,,,,,,   [[0.57, 0.21]]      [[0]],  []
+   o0_55,{13},,,,,,,   [[0.92, 0.00]]      [[0]], [0] _/
+ oun_187, {6},,,,,,,   [[0.33, 0.33]]      [[0]],  []
+ oun_188, {3},,,,,,,   [[0.66, 0.00]]      [[0]],  []
+ oun_189, {8},,,,,,,   [[0.75, 0.00]]      [[0]],  []
+   o0_49, {2},,,,,,,   [[1.00, 0.00]]      [[0]], [0] _/
+   o0_47,{49},,,,,,,   [[0.77, 0.00]]      [[0]], [0] _/
+ oun_171,{22},,,,,,,   [[0.63, 0.09]]      [[0]],  []
+ oun_172,{10},,,,,,,   [[0.80, 0.00]]      [[0]],  []
+ oun_173,{73},,,,,,,   [[0.61, 0.16]]      [[0]],  []
+ oun_174,{13},,,,,,,   [[0.76, 0.00]]      [[0]],  []
+ oun_170, {7},,,,,,,   [[0.57, 0.28]]      [[0]],  []
+  o0_144,{13},,,,,,,   [[0.76, 0.00]]      [[0]], [0] _/
+  o0_141,{12},,,,,,,   [[0.83, 0.00]]      [[0]], [0] _/
+  o0_142,{19},,,,,,,   [[0.63, 0.10]]      [[0]], [0] _/
+  o0_147, {2},,,,,,,   [[1.00, 0.00]]      [[0]], [0] _/
+ oun_175, {6},,,,,,,   [[0.66, 0.00]]      [[0]],  []
+  o0_148,{12},,,,,,,   [[0.83, 0.00]]      [[0]], [0] _/
+   o0_44, {8},,,,,,,   [[0.62, 0.00]]      [[0]], [0] _/
+ oun_176, {9},,,,,,,   [[0.66, 0.00]]      [[0]],  []
+   o0_43, {9},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+  o0_145, {5},,,,,,,   [[0.80, 0.00]]      [[0]], [0] _/
+ oun_178,{14},,,,,,,   [[0.71, 0.00]]      [[0]],  []
+   o0_38, {5},,,,,,,   [[0.80, 0.00]]      [[0]], [0] _/
+   o0_37, {8},,,,,,,   [[0.75, 0.00]]      [[0]], [0] _/
+   o0_36, {3},,,,,,,   [[0.66, 0.00]]      [[0]], [0] _/
+  o0_140, {8},,,,,,,   [[0.75, 0.00]]      [[0]], [0] _/

@@ -1,19 +1,11 @@
-Reading /home/ssamal/workspace/conexpng/floating_codings_1.fccsv
-
-
-***Reading first 10 records***
-No of Objects:10
-No of attributes:64
-No of concepts:386
-	Completed reading 490 records
+Reading data/floating_codings_1.fccsv
 No of Objects: 500
 No of attributes: 64
 No of concepts: 2080
-Read time: 5848ms
 
 -----------------------------------------------------------------------------------------------------------------------
   Object     Extent                                 Probabilities                                          Predicted    Actual
-                Size       [0  , 1   , 2   , 3   , 4   , 5   , 6   , 7   , 8   , 9   ]                          Class      Class
+                Size              [[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]]                          Class      Class
 -----------------------------------------------------------------------------------------------------------------------
 o0.0_488       {66}    [[0.24, 0.01, 0.15, 0.13, 0.04, 0.09, 0.10, 0.01, 0.07, 0.12]]    [[0.0]]      [0.0] _/
 o0.0_367       {60}    [[0.16, 0.08, 0.10, 0.18, 0.15, 0.10, 0.03, 0.10, 0.03, 0.05]]    [[3.0]]      [0.0]

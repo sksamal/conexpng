@@ -1,0 +1,27 @@
+Reading /home/ssamal/workspace/conexpng/pizza_onto_context.fccsv
+
+
+***Reading first 10 records***
+No of Objects:10
+No of attributes:41
+No of concepts:15
+1:<{},{AnchoviesTopping,ArtichokeTopping,AsparagusTopping,CajunSpiceTopping,CaperTopping,CheeseTopping,ChickenTopping,FourCheeseTopping,GarlicTopping,GoatCheeseTopping,Gorgonzola Topping,GreenPepperTopping,HamTopping,HotGreenPepperTopping,HotSpicedBeefTopping,JalapenoPepperTopping,LeekTopping,MeatTopping,MixedSeaFoodTopping,MozzarellaTopping,MushroomTopping,OliveTopping,OnionTopping,ParmezanTopping,PeperonataTopping,PeperoniSausageTopping,PetitPoisTopping,PineKernelTopping,PizzaTopping,PrawnsTopping,RedOnionTopping,RocketTopping,RosemaryTopping,SlicedTomatoTopping,SpicyTopping,SpinachTopping,SultanaTopping,SundriedTomatoTopping,SweetPepperTopping,TobascoPepperSauceTopping,TomatoTopping,}>
+2:<{SpicyPizza_2,},{SpicyTopping,}>
+3:<{CheesyPizza_0,MeatyPizza_1,SpicyPizza_2,SpicyPizzaEquivalent_3,American_4,AmericanHot_5,Cajun_6,Capricciosa_7,Caprina_8,Fiorentina_9,},{}>
+4:<{American_4,AmericanHot_5,Cajun_6,Capricciosa_7,Caprina_8,Fiorentina_9,},{MozzarellaTopping,TomatoTopping,}>
+5:<{Cajun_6,},{MozzarellaTopping,OnionTopping,PeperonataTopping,PrawnsTopping,TobascoPepperSauceTopping,TomatoTopping,}>
+6:<{CheesyPizza_0,},{CheeseTopping,}>
+7:<{Capricciosa_7,Fiorentina_9,},{MozzarellaTopping,OliveTopping,TomatoTopping,}>
+8:<{Caprina_8,},{GoatCheeseTopping,MozzarellaTopping,SundriedTomatoTopping,TomatoTopping,}>
+9:<{Cajun_6,Capricciosa_7,},{MozzarellaTopping,PeperonataTopping,TomatoTopping,}>
+10:<{MeatyPizza_1,},{MeatTopping,}>
+11:<{Fiorentina_9,},{GarlicTopping,MozzarellaTopping,OliveTopping,ParmezanTopping,SpinachTopping,TomatoTopping,}>
+12:<{American_4,AmericanHot_5,},{MozzarellaTopping,PeperoniSausageTopping,TomatoTopping,}>
+13:<{SpicyPizzaEquivalent_3,},{PizzaTopping,}>
+14:<{AmericanHot_5,},{HotGreenPepperTopping,JalapenoPepperTopping,MozzarellaTopping,PeperoniSausageTopping,TomatoTopping,}>
+15:<{Capricciosa_7,},{AnchoviesTopping,CaperTopping,HamTopping,MozzarellaTopping,OliveTopping,PeperonataTopping,TomatoTopping,}>
+	Completed reading 16 records
+No of Objects: 26
+No of attributes: 41
+No of concepts: 45
+Read time: 138ms
