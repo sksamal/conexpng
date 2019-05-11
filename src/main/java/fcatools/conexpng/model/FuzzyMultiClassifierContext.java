@@ -1,5 +1,7 @@
 package fcatools.conexpng.model;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -235,8 +237,17 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
    @Override
     public Set<Concept<String, FullObject<String, String>>> getConcepts() {
 	   		ListSet<Concept<String, FullObject<String, String>>> fuzzyLattice = new ListSet<Concept<String, FullObject<String, String>>>();
+	   		PrintWriter pw = null;
+	   		try {
+	   		pw = new PrintWriter("data/concepts.txt");
+	   		}
+	   		catch(FileNotFoundException f) {
+	   			f.printStackTrace();
+	   		}
 	    	for(Concept<String, FullObject<String, String>> c : super.getConcepts()) {
 	    		
+	    		
+	    		pw.println(c);
 	    		// A map that stores count of objects for various classes
 	    		HashMap<String,Integer> countMap = new HashMap<String,Integer> ();
 	        	FuzzyMultiClassedConcept fcc = new FuzzyMultiClassedConcept(c);
@@ -265,6 +276,7 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 	        	}
 	        	fuzzyLattice.add(fcc);	
 	        }
+	    	pw.close();
 	    	return fuzzyLattice;
 	    }
    
@@ -405,14 +417,17 @@ public HashMap<String,Concept<String,FullObject<String, String>>> getMinimalConc
 	 HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = new HashMap<String,Concept<String,FullObject<String, String>>>();
 	 
 	 for(Concept<String,FullObject<String, String>> cObj : this.getConcepts()) {
-			for(FullObject<String,String> o : cObj.getExtent())
+			for(FullObject<String,String> o : cObj.getExtent()) {				
 				if(minConceptMap.get(o.getIdentifier()) == null)
 					minConceptMap.put(o.getIdentifier(), cObj);
 				else {
 					if(cObj.getExtent().size() < minConceptMap.get(o.getIdentifier()).getExtent().size())
 						minConceptMap.put(o.getIdentifier(),cObj);
 					}
+			}
 }
+   System.out.println("Size:" + this.getObjects().size());
+   System.out.println("Size:" + minConceptMap.size());
    return minConceptMap;
 }
 

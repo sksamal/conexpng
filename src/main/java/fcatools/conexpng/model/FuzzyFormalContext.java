@@ -117,8 +117,9 @@ public class FuzzyFormalContext extends FormalContext {
 			allObjectsOfAttribute.get(attribute).add(object);
 			i++;
 		}
-		if(!attrs.isEmpty())
-			super.addObject(new FullObject<String, String> (object,attrs));
+//		System.out.println("FFC:" + attrs);
+//		if(!attrs.isEmpty())
+		super.addObject(new FullObject<String, String> (object,attrs));
 //		System.out.println("FFC:Added object " + object + " " + this.getObjectCount());
 
 		return true;

@@ -10,7 +10,7 @@ public class Transform {
 	public static void main(String args[]) throws NumberFormatException, IOException {
 	//String path = "/home/ssamal/dl/201803/codings.fccsv";
 //	String path = "/home/ssamal/workspace/conexpng/floating_codings100.csv";
-	String path = "/home/ssamal/workspace/conexpng/og_coding.fccsv";
+	String path = "data/exp108_coding.csv";
 	int bins=1;
 	boolean noattr = true;
 	if(args.length==1)	path = args[0];
@@ -23,7 +23,8 @@ public class Transform {
 	BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 	
 	String rawpath = path.substring(0, path.lastIndexOf('.'));
-	String ext = path.substring(path.lastIndexOf('.')+1,path.length());
+	//String ext = path.substring(path.lastIndexOf('.')+1,path.length());
+	String ext = "fccsv";
 	PrintWriter pw = new PrintWriter(new File(rawpath + "_" + bins + "." + ext));
 	
 	
@@ -59,16 +60,19 @@ public class Transform {
     	
    // 	newline = new StringBuffer(values[0]);  // not always an object
     //	If no object id exists, use the class as objectid
-    	newline = new StringBuffer("o" + values[values.length-1]);
+    	if(attr.length == values.length)
+    		newline = new StringBuffer("o" + values[values.length-1]);
+    	else
+    		newline = new StringBuffer("oun");
     
     	// start from 1 if first field is object, else from 0
     	for(int i=0;i<values.length-numClasses; i++) {
     		int binIndex = (int) ((Double.parseDouble(values[i]) - RANGE_MIN)/rangeSize);
     		for(int j=0;j<bins;j++) {
-    	//		if(j==binIndex)
+    			if(j==binIndex)
     				newline.append(SEP + String.format("%.4f",Double.parseDouble(values[i])));
-    	//		else
-    	//			newline.append(SEP + 0.0);
+    			else
+    				newline.append(SEP + 0.0);
     		} 
     }
     	
@@ -79,5 +83,6 @@ public class Transform {
     }
     br.close();
     pw.close();
+    System.out.println("Written to " + rawpath + "_" + bins + "." + ext + "\n");
 	}
 }

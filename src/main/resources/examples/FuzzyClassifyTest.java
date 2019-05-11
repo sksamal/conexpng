@@ -35,9 +35,8 @@ public class FuzzyClassifyTest {
 			e1.printStackTrace();
 		}
 			
-		String INPUTFILE = "data/floating_codings_1.fccsv";
-	
-		String imageLocation = "/home/ssamal/dl/out";
+		String INPUTFILE = "data/exp108_coding_1.fccsv";
+			
 		if(args.length >=1) INPUTFILE = args[0];
 	//	if(args.length >=2) imageLocation = args[1];
 		int initial = 10;
@@ -52,8 +51,6 @@ public class FuzzyClassifyTest {
 			
 		// Logging using tee
 		pwStream = new PrintStream(INPUTFILE + ".log");
-		HTMLWriter htmlStream = new HTMLWriter(INPUTFILE + ".html");
-		htmlStream.setImageLocation(imageLocation + "/training");
 		tee = new TeeWriter(pwStream, System.out);
 		
 		newState.filePath = "";
@@ -106,6 +103,7 @@ public class FuzzyClassifyTest {
 		// Classify all objects
 		System.out.println("Starting to classify now");
 		long ms = System.currentTimeMillis();
+//		classifyAndPrint(ifmc1);
 		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ifmc1.getMinimalConceptMap();
 		System.out.println("Generated classification");
 		HashMap<String,Set<String>> classSetMap = ifmc1.getTrainingSet();
@@ -246,6 +244,81 @@ public class FuzzyClassifyTest {
 			i++;
 	}	
 	}	
+	
+	    public static void classifyAndPrint(IFuzzyMultiClassifierContext ifmc) {
+	    	HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ifmc.getMinimalConceptMap();
+			System.out.println("Generated classification");
+			HashMap<String,Set<String>> classSetMap = ifmc.getTrainingSet();
+			List<Set<String>> classesSet = ifmc.getClasses();
+			for (Set<String> clazz : classesSet)
+			System.out.println(clazz.size() + ":" + clazz);
+			
+			tee.println("\n-----------------------------------------------------------------------------------------------------------------------");
+			tee.println(String.format("%8s %10s %45s %50s%10s","Object","Extent","Probabilities","Predicted","Actual"));
+			tee.println(String.format("%8s %10s %65s %30s %10s","         "," Size",classesSet,"Class","Class"));
+			tee.println("-----------------------------------------------------------------------------------------------------------------------");
+			
+			int count=0;
+			for(FullObject<String, String> obj: ifmc.getObjects()) {
+				String oid = obj.getIdentifier();
+			//for(String oid: minConceptMap.keySet()) {
+				if(minConceptMap.containsKey(oid)) {
+					Concept<String,FullObject<String, String>> concept = minConceptMap.get(oid);
+					FuzzyMultiClassedConcept fcc = (FuzzyMultiClassedConcept) concept;
+					StringBuffer sb = new StringBuffer();
+	
+					// Convert class indices to string representation
+					int i=0;
+					List<List<String>> csList = new ArrayList<List<String>>();
+					for(List<Integer> ccList : fcc.getProbClass()) {
+						List<String> cscList = new ArrayList<String>();
+						for(Integer ic : ccList) {
+							cscList.add(classesSet.get(i).toArray(new String[0])[ic]);
+							i++;
+					}
+					csList.add(cscList);
+				}	
+				
+				List<List<String>> psList = new ArrayList<List<String>>();
+				for(List<Double> ppList : fcc.getProbsList()) {
+					List<String> pspList = new ArrayList<String>();
+					for(Double d : ppList) {
+						pspList.add(String.format("%2.2f",d));
+					}
+					psList.add(pspList);
+				}
+				
+				sb.append(String.format("%8s %9s} %65s %10s %10s",oid,"{"+fcc.getExtent().size(),psList,csList,classSetMap.get(oid)));
+				if(classSetMap.get(oid).contains(csList.get(0).toArray(new String[0])[0])) {
+					 count++;
+					 sb.append(" _/");
+				}
+		//s		sb.append("\t mnistImage=o" + (int)(Double.parseDouble(oid.substring(3,oid.length()))) + ".png");
+				
+			//	sb.append("\t mnistImage="+ (int)(Double.parseDouble(classSetMap.get(oid).toArray(new String[0])[0])) + "/o" + (int)(Double.parseDouble(oid)) + ".png");
+				//		sb.append("<{");
+				//for(FullObject<String, String> o : fcc.getExtent()) 
+				//	sb.append(o.getIdentifier() + ",");
+			//	sb.append(fcc.getExtent().size());
+			//	sb.append("},{");
+				/*	for(String attr : fcc.getIntent())
+					sb.append(attr + ",");
+				sb.append("},{"); */
+//				sb.append(fcc.getProbsList());
+//				sb.append("-->");
+//				sb.append(fcc.getProbClass());
+//				sb.append("}>");
+				
+				tee.println(sb.toString());
+				}
+		}
+			 tee.println("\nObjects classified correctly: " + count);
+			 tee.println("Total objects: "+ minConceptMap.keySet().size());
+			 tee.println("Success: " + count*100.0/minConceptMap.keySet().size() + "%");
+			
+
+		
+	    }
 		public static void printClassedConceptProbs(HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap,
 				List<Set<String>> classesSet, HashMap<String,Set<String>> classSetMap) 
 		{

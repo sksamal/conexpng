@@ -59,9 +59,10 @@ public class FormalContext extends de.tudresden.inf.tcs.fcalib.FormalContext<Str
             for (String attribute : arg0.getDescription().getAttributes()) {
                 objectsOfAttribute.get(attribute).add(arg0.getIdentifier());
             }
-   //     	System.out.println("FC:Added object " + arg0.getIdentifier() + " " + this.getObjectCount());
+ //       	System.out.println("FC:Added object " + arg0.getIdentifier() + " " + this.getObjectCount());
             return true;
           }
+//      	System.out.println("FC:Couldnot add object " + arg0.getIdentifier() + " " + this.getObjectCount());
 	    return false;
     }
 
