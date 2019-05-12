@@ -466,7 +466,7 @@ public void partition(double testPercentage) {
 	long testSize = (int)(totalSize*(testPercentage));
 	Set<Long> test = new TreeSet<Long>();
 	System.out.println("TrainSize=" + (totalSize - testSize));
-	System.out.println("TestSize=" + testSize);
+	System.out.println("TestSize=" + testSize + "(" + testPercentage + "%)");
 	while(test.size() < testSize) {
 		long number =(long)(Math.random()*totalSize); 
 		test.add(number);

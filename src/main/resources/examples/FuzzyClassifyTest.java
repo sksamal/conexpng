@@ -16,7 +16,6 @@ import fcatools.conexpng.io.IFCSVMultiClassReader;
 import fcatools.conexpng.io.locale.LocaleHandler;
 import fcatools.conexpng.model.FuzzyMultiClassedConcept;
 import fcatools.conexpng.model.IFuzzyMultiClassifierContext;
-import fcatools.conexpng.model.FuzzyMultiClassifierContext;
 
 import fcatools.conexpng.model.LatticeConcept;
 
@@ -41,8 +40,9 @@ public class FuzzyClassifyTest {
 			
 		if(args.length >=1) INPUTFILE = args[0];
 	//	if(args.length >=2) imageLocation = args[1];
+		double testPercentage = 0.20;
+		if(args.length>=2) testPercentage = Double.parseDouble(args[1]);
 		int initial = 10;
-		if(args.length>=2) initial = Integer.parseInt(args[1]);
 		
 		System.setProperty("user.language", LocaleHandler.readLocale());
 	    PrintStream pwStream = null;
@@ -101,7 +101,7 @@ public class FuzzyClassifyTest {
 
 		// Classify all objects using k-partition
 //		((FuzzyMultiClassifierContext)(newState.context)).kpartition(10);;
-		ifmc1.partition(0.20);
+		ifmc1.partition(testPercentage);
 		
 		// Classify all objects
 		System.out.println("Starting to classify now");
@@ -114,7 +114,7 @@ public class FuzzyClassifyTest {
 		
 		List<Set<String>> classesSet = ifmc1.getClasses();
 		for (Set<String> clazz : classesSet)
-		System.out.println(clazz.size() + ":" + clazz);
+		System.out.println("Number of classes:" + clazz.size() + " " + clazz + "");
 		printClassedConceptProbs(minConceptMap,classesSet,trainingSetMap,testSetMap);
 
 	}
