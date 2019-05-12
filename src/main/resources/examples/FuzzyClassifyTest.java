@@ -16,6 +16,8 @@ import fcatools.conexpng.io.IFCSVMultiClassReader;
 import fcatools.conexpng.io.locale.LocaleHandler;
 import fcatools.conexpng.model.FuzzyMultiClassedConcept;
 import fcatools.conexpng.model.IFuzzyMultiClassifierContext;
+import fcatools.conexpng.model.FuzzyMultiClassifierContext;
+
 import fcatools.conexpng.model.LatticeConcept;
 
 public class FuzzyClassifyTest {
@@ -24,7 +26,7 @@ public class FuzzyClassifyTest {
 	public static void main(String[] args) {
 		
 		// Version info 
-		System.out.println("FuzzyClassifyTest v13");
+		System.out.println("FuzzyClassifyTest v14");
 		try {
 			Scanner sc = new Scanner(new File (".build.txt"));
 			while(sc.hasNextLine()) {
@@ -98,19 +100,22 @@ public class FuzzyClassifyTest {
 //		} 
 
 		// Classify all objects using k-partition
-	//	((FuzzyMultiClassifierContext)(newState.context)).kpartition(10);;
-			
+//		((FuzzyMultiClassifierContext)(newState.context)).kpartition(10);;
+		ifmc1.partition(0.20);
+		
 		// Classify all objects
 		System.out.println("Starting to classify now");
-		long ms = System.currentTimeMillis();
+//		long ms = System.currentTimeMillis();
 //		classifyAndPrint(ifmc1);
 		HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap = ifmc1.getMinimalConceptMap();
 		System.out.println("Generated classification");
-		HashMap<String,Set<String>> classSetMap = ifmc1.getTrainingSet();
+		HashMap<String,Set<String>> trainingSetMap = ifmc1.getTrainingSet();
+		HashMap<String,Set<String>> testSetMap = ifmc1.getTestSet();
+		
 		List<Set<String>> classesSet = ifmc1.getClasses();
 		for (Set<String> clazz : classesSet)
 		System.out.println(clazz.size() + ":" + clazz);
-		printClassedConceptProbs(minConceptMap,classesSet,classSetMap);
+		printClassedConceptProbs(minConceptMap,classesSet,trainingSetMap,testSetMap);
 
 	}
 
@@ -254,8 +259,8 @@ public class FuzzyClassifyTest {
 			System.out.println(clazz.size() + ":" + clazz);
 			
 			tee.println("\n-----------------------------------------------------------------------------------------------------------------------");
-			tee.println(String.format("%8s %10s %45s %50s%10s","Object","Extent","Probabilities","Predicted","Actual"));
-			tee.println(String.format("%8s %10s %65s %30s %10s","         "," Size",classesSet,"Class","Class"));
+			tee.println(String.format("%6s %10s %45s %50s%10s","Object","Extent","Probabilities","Predicted","Actual"));
+			tee.println(String.format("%6s %10s %65s %30s %10s","      "," Size",classesSet,"Class","Class"));
 			tee.println("-----------------------------------------------------------------------------------------------------------------------");
 			
 			int count=0;
@@ -288,7 +293,7 @@ public class FuzzyClassifyTest {
 					psList.add(pspList);
 				}
 				
-				sb.append(String.format("%8s %9s} %65s %10s %10s",oid,"{"+fcc.getExtent().size(),psList,csList,classSetMap.get(oid)));
+				sb.append(String.format("%6s %9s} %65s %10s %10s",oid,"{"+fcc.getExtent().size(),psList,csList,classSetMap.get(oid)));
 				if(classSetMap.get(oid).contains(csList.get(0).toArray(new String[0])[0])) {
 					 count++;
 					 sb.append(" _/");
@@ -320,14 +325,14 @@ public class FuzzyClassifyTest {
 		
 	    }
 		public static void printClassedConceptProbs(HashMap<String,Concept<String,FullObject<String, String>>> minConceptMap,
-				List<Set<String>> classesSet, HashMap<String,Set<String>> classSetMap) 
+				List<Set<String>> classesSet, HashMap<String,Set<String>> trainingSetMap, HashMap<String,Set<String>> testSetMap) 
 		{
 			tee.println("\n-----------------------------------------------------------------------------------------------------------------------");
-			tee.println(String.format("%8s %10s %45s %50s%10s","Object","Extent","Probabilities","Predicted","Actual"));
-			tee.println(String.format("%8s %10s %65s %30s %10s","         "," Size",classesSet,"Class","Class"));
+			tee.println(String.format("%8s%8s %10s %45s %10s %10s","Train/","Object","Extent","Probabilities","Predicted","Actual"));
+			tee.println(String.format("%8s%8s %10s %45s %10s %10s","Test ","      "," Size",classesSet,"Class","Class"));
 			tee.println("-----------------------------------------------------------------------------------------------------------------------");
 			
-			int count=0;
+			int count=0, trcount=0, tecount=0;
 			for(String oid: minConceptMap.keySet()) {
 				Concept<String,FullObject<String, String>> concept = minConceptMap.get(oid);
 				FuzzyMultiClassedConcept fcc = (FuzzyMultiClassedConcept) concept;
@@ -354,9 +359,18 @@ public class FuzzyClassifyTest {
 					psList.add(pspList);
 				}
 				
-				sb.append(String.format("%8s %9s} %65s %10s %10s",oid,"{"+fcc.getExtent().size(),psList,csList,classSetMap.get(oid)));
-				if(classSetMap.get(oid).contains(csList.get(0).toArray(new String[0])[0])) {
+				Set<String> ocls = null;
+				String type = "";
+				if(trainingSetMap.containsKey(oid)){ ocls = trainingSetMap.get(oid); type ="train";}
+				else { ocls = testSetMap.get(oid); type="test"; }
+				sb.append(String.format("%8s%8s %9s} %45s %10s %10s",type,oid,"{"+fcc.getExtent().size(),psList,csList,ocls));
+				if(ocls.contains(csList.get(0).toArray(new String[0])[0])) {
+//					sb.append(String.format("%8s %9s} %65s %10s %10s",oid,"{"+fcc.getExtent().size(),psList,csList,classSetMap.get(oid)));
+//					if(classSetMap.get(oid).contains(csList.get(0).toArray(new String[0])[0])) {
+//				
 					 count++;
+					 if(type.equals("train")) trcount++;
+					 if(type.equals("test")) tecount++;
 					 sb.append(" _/");
 				}
 		//s		sb.append("\t mnistImage=o" + (int)(Double.parseDouble(oid.substring(3,oid.length()))) + ".png");
@@ -379,7 +393,14 @@ public class FuzzyClassifyTest {
 		}
 			 tee.println("\nObjects classified correctly: " + count);
 			 tee.println("Total objects: "+ minConceptMap.keySet().size());
-			 tee.println("Success: " + count*100.0/minConceptMap.keySet().size() + "%");
+			 tee.println("Accuracy: " + count*100.0/minConceptMap.keySet().size() + "%");
+			 
+			 tee.println("\nTraining Objects classified correctly: " + trcount + "/" + trainingSetMap.keySet().size());
+			 tee.println("Accuracy: " + trcount*100.0/trainingSetMap.keySet().size() + "%");
+			 
+			 tee.println("\nTest Objects classified correctly: " + tecount + "/" + testSetMap.keySet().size());
+			 tee.println("Accuracy: " + tecount*100.0/testSetMap.keySet().size() + "%");
+			 
 			
 		}
 	
