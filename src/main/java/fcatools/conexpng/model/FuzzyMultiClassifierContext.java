@@ -244,6 +244,17 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 	   		catch(FileNotFoundException f) {
 	   			f.printStackTrace();
 	   		}
+	   		
+	   		//fix for objs with no attributes
+//	   		Set<FullObject<String, String>> tmpobjs = new ListSet<FullObject<String, String>>();
+//	   	  	for(FullObject<String, String> o : this.getObjects()) 
+//	   	      tmpobjs.add(o);
+	   	  	//fix for concepts/objects with no attributes
+        	LatticeConcept nullc = new LatticeConcept();
+        	for(FullObject<String, String> o : this.getObjects()) 
+  	   	      nullc.getExtent().add(o);
+  	   	  
+	   	  	
 	    	for(Concept<String, FullObject<String, String>> c : super.getConcepts()) {
 	    		
 	    		
@@ -261,6 +272,8 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 	        				countMap.put(clazz,1);
 	        		}
 	        		}
+	          		//fix for concepts/objs with null attrs 
+	        		if(nullc.getExtent().contains(obj)) nullc.getExtent().remove(obj);
 	        	}
 	   
 	        	int i=0;
@@ -277,6 +290,21 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 	        	fuzzyLattice.add(fcc);	
 	        }
 	    	pw.close();
+	    	
+	    	//fix for null concept
+	   		HashMap<String,Integer> countMap = new HashMap<String,Integer> ();
+       	 	FuzzyMultiClassedConcept fcc1 = new FuzzyMultiClassedConcept(nullc);
+        	int i=0;
+        	for(Set<String> clazzSet : classesSet) {
+        		for(String clazz: clazzSet)
+        			if(countMap.containsKey(clazz))
+        				fcc1.addProb(i,countMap.get(clazz)*1.0/fcc1.getExtent().size());
+        			else
+        				fcc1.addProb(i,0.0);
+        		i++;
+        	}
+        	fuzzyLattice.add(fcc1);
+        	
 	    	return fuzzyLattice;
 	    }
    
@@ -426,8 +454,8 @@ public HashMap<String,Concept<String,FullObject<String, String>>> getMinimalConc
 					}
 			}
 }
-   System.out.println("Size:" + this.getObjects().size());
-   System.out.println("Size:" + minConceptMap.size());
+//   System.out.println("Size:" + this.getObjects().size());
+//   System.out.println("Size:" + minConceptMap.size());
    return minConceptMap;
 }
 
@@ -448,10 +476,13 @@ public void partition(double testPercentage) {
 	for(String obj : this.trainingSetMap.keySet()) {
 		if(test.contains(index)) {
 			testSetMap.put(obj, trainingSetMap.get(obj));
-			trainingSetMap.put(obj, null);
 		}
 		index++;
 	}
+	
+	for(String obj:this.testSetMap.keySet())
+		trainingSetMap.remove(obj);
+
 	
 }
 

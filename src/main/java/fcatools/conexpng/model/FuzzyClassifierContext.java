@@ -232,5 +232,30 @@ public String getClassAsString(List<Integer> indices) {
     	fuzzyLattice.add(fcc);	
     }
 	return fuzzyLattice;
-   }   
+   }  
+
+public Set<Concept<String, FullObject<String, String>>> getConceptsOfObject(String oString) {
+	 
+    ListSet<Concept<String, FullObject<String, String>>> subConcepts = new ListSet<Concept<String, FullObject<String, String>>>();
+
+	 for(Concept<String,FullObject<String, String>> cObj : this.getConcepts()) {
+		 for(FullObject<String, String> o: cObj.getExtent())
+			 if(o.getIdentifier().equals(oString))
+				 subConcepts.add(cObj);	 
+	 }
+	 return subConcepts;
+}
+
+public Set<Concept<String, FullObject<String, String>>> getConceptsOfObject(FullObject<String,String> o) {
+	 
+    ListSet<Concept<String, FullObject<String, String>>> subConcepts = new ListSet<Concept<String, FullObject<String, String>>>();
+
+	 for(Concept<String,FullObject<String, String>> cObj : this.getConcepts()) {
+		 if(cObj.getExtent().contains(o))
+			subConcepts.add(cObj);	 
+	 }
+	 return subConcepts;
+}
+
+
 }

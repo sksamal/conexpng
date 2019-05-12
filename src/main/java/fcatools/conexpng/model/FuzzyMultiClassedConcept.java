@@ -69,7 +69,7 @@ public class FuzzyMultiClassedConcept extends LatticeConcept {
 				List<Integer> ccList = new ArrayList<Integer>();
 				ccList.add(0);
 			for(int i=1;i<getProbs(j).size();i++) {
-				if(getProbs(j).get(maxIndex) < getProbs(j).get(i)) {
+				if(getProbs(j).get(i) > 0.0 && getProbs(j).get(maxIndex) <= getProbs(j).get(i)) {
 					maxIndex = i;
 					ccList.clear();
 					ccList.add(i);
