@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -466,9 +467,40 @@ public void partition(double testPercentage) {
 	long testSize = (int)(totalSize*(testPercentage));
 	Set<Long> test = new TreeSet<Long>();
 	System.out.println("TrainSize=" + (totalSize - testSize));
-	System.out.println("TestSize=" + testSize + "(" + testPercentage + "%)");
+	System.out.println("TestSize=" + testSize + "(" + testPercentage + "%)");	
+
 	while(test.size() < testSize) {
-		long number =(long)(Math.random()*totalSize); 
+		long number =(long)(Math.random()*totalSize);
+		test.add(number);
+	}
+	
+	long index=0;
+	for(String obj : this.trainingSetMap.keySet()) {
+		if(test.contains(index)) {
+			testSetMap.put(obj, trainingSetMap.get(obj));
+		}
+		index++;
+	}
+	
+	for(String obj:this.testSetMap.keySet())
+		trainingSetMap.remove(obj);
+
+	
+}
+
+public void partition(double testPercentage, int seed) {
+	long totalSize = this.objects.size();
+	
+	// generate test indices
+	long testSize = (int)(totalSize*(testPercentage));
+	Set<Long> test = new TreeSet<Long>();
+	System.out.println("TrainSize=" + (totalSize - testSize));
+	System.out.println("TestSize=" + testSize + "(" + testPercentage + "%)");
+	Random rgen = new Random(seed);
+
+	while(test.size() < testSize) {
+		//long number =(long)(Math.random()*totalSize); 
+		long number = (long)(rgen.nextDouble()*totalSize);
 		test.add(number);
 	}
 	
