@@ -1,4 +1,4 @@
-Reading data/exp108_coding_1.fccsv
+Reading training data from data/exp108_coding_1.fccsv
 No of Objects: 200
 No of attributes: 32
 No of concepts: 434
@@ -215,805 +215,212 @@ Accuracy: 87.0%
 Training Objects classified correctly: 174/200
 Accuracy: 87.0%
 
-Test Objects classified correctly: 0/0
-Accuracy: NaN%
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_200       {10}                                [[0.70, 0.30]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_201       {55}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_202       {29}                                [[0.79, 0.20]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_203       {22}                                [[0.77, 0.22]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_204       {58}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_205       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_206        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_207        {7}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_208       {15}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_209       {63}                                [[0.85, 0.14]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_210       {64}                                [[0.85, 0.14]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_211       {11}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_212        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_213       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_214       {68}                                [[0.86, 0.13]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_215       {38}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_216       {70}                                [[0.85, 0.14]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_217       {71}                                [[0.85, 0.14]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_218        {8}                                [[0.75, 0.25]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_219       {25}                                [[0.88, 0.12]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_220       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_221       {75}                                [[0.86, 0.13]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_222       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_223        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_224       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_225       {79}                                [[0.87, 0.12]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_226       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_227       {81}                                [[0.87, 0.12]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_228       {18}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_229       {83}                                [[0.86, 0.13]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_230       {22}                                [[0.86, 0.13]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_231       {26}                                [[0.76, 0.23]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_232       {86}                                [[0.86, 0.13]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_233        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_234       {53}                                [[0.77, 0.22]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_235        {7}                                [[0.42, 0.57]]      [[1]]        [1] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_236        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_237       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_238        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_239       {93}                                [[0.84, 0.15]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_240       {94}                                [[0.85, 0.14]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_241       {64}                                [[0.89, 0.10]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_242        {6}                                [[0.33, 0.66]]      [[1]]        [1] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_243       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_244       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_245       {99}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_246       {10}                                [[0.60, 0.40]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_247       {60}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_248        {7}                                [[0.57, 0.42]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_249        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_250       {11}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_251      {105}                                [[0.82, 0.17]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_252      {106}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_253       {18}                                [[0.83, 0.16]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_254      {108}                                [[0.82, 0.17]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_255       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_256       {19}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_257        {7}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_258        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_259       {72}                                [[0.90, 0.09]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_260        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_261      {115}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_262        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_263      {117}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_264       {11}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_265       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_266       {26}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_267      {121}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_268       {18}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_269        {7}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_270        {9}                                [[0.66, 0.33]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_271        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_272       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_273       {22}                                [[0.40, 0.59]]      [[1]]        [1] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_274        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_275       {32}                                [[0.68, 0.31]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_276       {13}                                [[0.69, 0.30]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_277      {131}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_278       {41}                                [[0.78, 0.21]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_279       {31}                                [[0.77, 0.22]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_280      {134}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_281       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_282        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_283        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_284       {20}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_285      {139}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_286      {140}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_287       {15}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_288        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_289       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_290      {144}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_291       {52}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_292      {146}                                [[0.84, 0.15]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_293      {147}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_294       {11}                                [[0.72, 0.27]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_295       {33}                                [[0.87, 0.12]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_296       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_297      {111}                                [[0.81, 0.18]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_298       {19}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_299       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_300       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_301      {155}                                [[0.85, 0.14]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_302       {21}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_303      {157}                                [[0.85, 0.14]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_304       {25}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_305      {159}                                [[0.84, 0.15]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_306       {29}                                [[0.86, 0.13]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_307       {36}                                [[0.77, 0.22]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_308      {162}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_309        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_310       {72}                                [[0.76, 0.23]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_311        {9}                                [[0.44, 0.55]]      [[1]]        [1] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_312        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_313       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_314        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_315      {169}                                [[0.84, 0.15]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_316      {170}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_317       {84}                                [[0.89, 0.10]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_318        {8}                                [[0.37, 0.62]]      [[1]]        [1] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_319       {15}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_320       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_321      {175}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_322       {13}                                [[0.61, 0.38]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_323       {79}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_324       {10}                                [[0.60, 0.40]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_325        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_326       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_327      {181}                                [[0.82, 0.17]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_328      {182}                                [[0.82, 0.17]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_329       {25}                                [[0.84, 0.16]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_330      {184}                                [[0.82, 0.17]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_331       {23}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_332       {24}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_333        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_334       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_335       {94}                                [[0.90, 0.09]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_336        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_337      {191}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_338       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_339      {193}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_340       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_341       {22}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_342       {33}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_343      {197}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_344       {23}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_345        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_346       {12}                                [[0.66, 0.33]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_347        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_348       {22}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_349       {29}                                [[0.41, 0.58]]      [[1]]        [1] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_350        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_351       {41}                                [[0.68, 0.31]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_352       {16}                                [[0.68, 0.31]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_353      {207}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_354       {53}                                [[0.77, 0.22]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_355       {40}                                [[0.77, 0.22]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_356      {210}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_357       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_358        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_359       {11}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_360       {25}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_361      {215}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_362      {216}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_363       {19}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_364        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_365       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_366      {220}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_367       {66}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_368      {222}                                [[0.83, 0.16]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_369      {223}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_370       {14}                                [[0.71, 0.28]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_371       {41}                                [[0.87, 0.12]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_372       {20}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_373      {140}                                [[0.80, 0.19]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_374       {24}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_375       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_376       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_377      {231}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_378       {26}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_379      {233}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_380       {32}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_381      {235}                                [[0.84, 0.15]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_382       {36}                                [[0.86, 0.13]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_383       {46}                                [[0.78, 0.21]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_384      {238}                                [[0.84, 0.15]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_385        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_386       {91}                                [[0.75, 0.24]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_387       {11}                                [[0.45, 0.54]]      [[1]]        [1] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_388        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_389       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_390       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_391      {245}                                [[0.83, 0.16]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_392      {246}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_393      {104}                                [[0.89, 0.10]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_394       {10}                                [[0.40, 0.60]]      [[1]]        [1] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_395       {18}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_396       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_397      {251}                                [[0.83, 0.16]]      [[0]]        [0] _/
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o1_398       {16}                                [[0.62, 0.37]]      [[0]]        [1]
-No of Objects: 201
-No of attributes: 32
-No of concepts: 434
-   train  o0_399       {98}                                [[1.00, 0.00]]      [[0]]        [0] _/
+-----------------------------------------------------------------------------------------------------------------------
+  Train/  Object     Extent                                 Probabilities  Predicted     Actual
+   Test                Size                                      [[0, 1]]      Class      Class
+-----------------------------------------------------------------------------------------------------------------------
+Reading data/exp108_coding_1.fccsv
+Starting to classify test data
+    test  o0_200       {10}                                [[0.70, 0.30]]      [[0]]        [0] _/
+    test  o0_201       {55}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_202       {29}                                [[0.79, 0.20]]      [[0]]        [0] _/
+    test  o0_203       {22}                                [[0.77, 0.22]]      [[0]]        [0] _/
+    test  o0_204       {58}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_205       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_206        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_207        {7}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_208       {15}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_209       {63}                                [[0.85, 0.14]]      [[0]]        [0] _/
+    test  o0_210       {64}                                [[0.85, 0.14]]      [[0]]        [0] _/
+    test  o0_211       {11}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_212        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_213       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_214       {68}                                [[0.86, 0.13]]      [[0]]        [0] _/
+    test  o0_215       {38}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_216       {70}                                [[0.85, 0.14]]      [[0]]        [1]
+    test  o0_217       {71}                                [[0.85, 0.14]]      [[0]]        [0] _/
+    test  o0_218        {8}                                [[0.75, 0.25]]      [[0]]        [0] _/
+    test  o0_219       {25}                                [[0.88, 0.12]]      [[0]]        [0] _/
+    test  o0_220       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_221       {75}                                [[0.86, 0.13]]      [[0]]        [0] _/
+    test  o0_222       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_223        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_224       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_225       {79}                                [[0.87, 0.12]]      [[0]]        [0] _/
+    test  o0_226       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_227       {81}                                [[0.87, 0.12]]      [[0]]        [0] _/
+    test  o0_228       {18}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_229       {83}                                [[0.86, 0.13]]      [[0]]        [1]
+    test  o0_230       {22}                                [[0.86, 0.13]]      [[0]]        [0] _/
+    test  o1_231       {26}                                [[0.76, 0.23]]      [[0]]        [1]
+    test  o0_232       {86}                                [[0.86, 0.13]]      [[0]]        [0] _/
+    test  o0_233        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_234       {53}                                [[0.77, 0.22]]      [[0]]        [0] _/
+    test  o1_235        {7}                                [[0.42, 0.57]]      [[1]]        [1] _/
+    test  o0_236        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_237       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_238        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_239       {93}                                [[0.84, 0.15]]      [[0]]        [1]
+    test  o0_240       {94}                                [[0.85, 0.14]]      [[0]]        [0] _/
+    test  o1_241       {64}                                [[0.89, 0.10]]      [[0]]        [1]
+    test  o1_242        {6}                                [[0.33, 0.66]]      [[1]]        [1] _/
+    test  o0_243       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_244       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_245       {99}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o1_246       {10}                                [[0.60, 0.40]]      [[0]]        [1]
+    test  o0_247       {60}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_248        {7}                                [[0.57, 0.42]]      [[0]]        [1]
+    test  o0_249        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_250       {11}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_251      {105}                                [[0.82, 0.17]]      [[0]]        [0] _/
+    test  o0_252      {106}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o1_253       {18}                                [[0.83, 0.16]]      [[0]]        [1]
+    test  o0_254      {108}                                [[0.82, 0.17]]      [[0]]        [0] _/
+    test  o0_255       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_256       {19}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_257        {7}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_258        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_259       {72}                                [[0.90, 0.09]]      [[0]]        [0] _/
+    test  o0_260        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_261      {115}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_262        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_263      {117}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_264       {11}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_265       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_266       {26}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_267      {121}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_268       {18}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_269        {7}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_270        {9}                                [[0.66, 0.33]]      [[0]]        [1]
+    test  o0_271        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_272       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_273       {22}                                [[0.40, 0.59]]      [[1]]        [1] _/
+    test  o0_274        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_275       {32}                                [[0.68, 0.31]]      [[0]]        [1]
+    test  o0_276       {13}                                [[0.69, 0.30]]      [[0]]        [0] _/
+    test  o0_277      {131}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_278       {41}                                [[0.78, 0.21]]      [[0]]        [0] _/
+    test  o0_279       {31}                                [[0.77, 0.22]]      [[0]]        [0] _/
+    test  o0_280      {134}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_281       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_282        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_283        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_284       {20}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_285      {139}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_286      {140}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_287       {15}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_288        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_289       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_290      {144}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_291       {52}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_292      {146}                                [[0.84, 0.15]]      [[0]]        [1]
+    test  o0_293      {147}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_294       {11}                                [[0.72, 0.27]]      [[0]]        [0] _/
+    test  o0_295       {33}                                [[0.87, 0.12]]      [[0]]        [0] _/
+    test  o0_296       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_297      {111}                                [[0.81, 0.18]]      [[0]]        [0] _/
+    test  o0_298       {19}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_299       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_300       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_301      {155}                                [[0.85, 0.14]]      [[0]]        [0] _/
+    test  o0_302       {21}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_303      {157}                                [[0.85, 0.14]]      [[0]]        [0] _/
+    test  o0_304       {25}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_305      {159}                                [[0.84, 0.15]]      [[0]]        [1]
+    test  o0_306       {29}                                [[0.86, 0.13]]      [[0]]        [0] _/
+    test  o1_307       {36}                                [[0.77, 0.22]]      [[0]]        [1]
+    test  o0_308      {162}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_309        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_310       {72}                                [[0.76, 0.23]]      [[0]]        [0] _/
+    test  o1_311        {9}                                [[0.44, 0.55]]      [[1]]        [1] _/
+    test  o0_312        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_313       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_314        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_315      {169}                                [[0.84, 0.15]]      [[0]]        [1]
+    test  o0_316      {170}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o1_317       {84}                                [[0.89, 0.10]]      [[0]]        [1]
+    test  o1_318        {8}                                [[0.37, 0.62]]      [[1]]        [1] _/
+    test  o0_319       {15}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_320       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_321      {175}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o1_322       {13}                                [[0.61, 0.38]]      [[0]]        [1]
+    test  o0_323       {79}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_324       {10}                                [[0.60, 0.40]]      [[0]]        [1]
+    test  o0_325        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_326       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_327      {181}                                [[0.82, 0.17]]      [[0]]        [0] _/
+    test  o0_328      {182}                                [[0.82, 0.17]]      [[0]]        [0] _/
+    test  o1_329       {25}                                [[0.84, 0.16]]      [[0]]        [1]
+    test  o0_330      {184}                                [[0.82, 0.17]]      [[0]]        [0] _/
+    test  o0_331       {23}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_332       {24}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_333        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_334       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_335       {94}                                [[0.90, 0.09]]      [[0]]        [0] _/
+    test  o0_336        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_337      {191}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_338       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_339      {193}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_340       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_341       {22}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_342       {33}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_343      {197}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_344       {23}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_345        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_346       {12}                                [[0.66, 0.33]]      [[0]]        [1]
+    test  o0_347        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_348       {22}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_349       {29}                                [[0.41, 0.58]]      [[1]]        [1] _/
+    test  o0_350        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_351       {41}                                [[0.68, 0.31]]      [[0]]        [1]
+    test  o0_352       {16}                                [[0.68, 0.31]]      [[0]]        [0] _/
+    test  o0_353      {207}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_354       {53}                                [[0.77, 0.22]]      [[0]]        [0] _/
+    test  o0_355       {40}                                [[0.77, 0.22]]      [[0]]        [0] _/
+    test  o0_356      {210}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_357       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_358        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_359       {11}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_360       {25}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_361      {215}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_362      {216}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_363       {19}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_364        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_365       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_366      {220}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_367       {66}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_368      {222}                                [[0.83, 0.16]]      [[0]]        [1]
+    test  o0_369      {223}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o0_370       {14}                                [[0.71, 0.28]]      [[0]]        [0] _/
+    test  o0_371       {41}                                [[0.87, 0.12]]      [[0]]        [0] _/
+    test  o0_372       {20}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_373      {140}                                [[0.80, 0.19]]      [[0]]        [0] _/
+    test  o0_374       {24}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_375       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_376       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_377      {231}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_378       {26}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_379      {233}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_380       {32}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_381      {235}                                [[0.84, 0.15]]      [[0]]        [1]
+    test  o0_382       {36}                                [[0.86, 0.13]]      [[0]]        [0] _/
+    test  o1_383       {46}                                [[0.78, 0.21]]      [[0]]        [1]
+    test  o0_384      {238}                                [[0.84, 0.15]]      [[0]]        [0] _/
+    test  o0_385        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_386       {91}                                [[0.75, 0.24]]      [[0]]        [0] _/
+    test  o1_387       {11}                                [[0.45, 0.54]]      [[1]]        [1] _/
+    test  o0_388        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_389       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_390       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o1_391      {245}                                [[0.83, 0.16]]      [[0]]        [1]
+    test  o0_392      {246}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o1_393      {104}                                [[0.89, 0.10]]      [[0]]        [1]
+    test  o1_394       {10}                                [[0.40, 0.60]]      [[1]]        [1] _/
+    test  o0_395       {18}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_396       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+    test  o0_397      {251}                                [[0.83, 0.16]]      [[0]]        [0] _/
+    test  o1_398       {16}                                [[0.62, 0.37]]      [[0]]        [1]
+    test  o0_399       {98}                                [[1.00, 0.00]]      [[0]]        [0] _/
+
+Test Objects classified correctly: 174/200
+Accuracy: 87.0%
