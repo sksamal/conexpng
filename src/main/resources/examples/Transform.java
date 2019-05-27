@@ -10,7 +10,7 @@ public class Transform {
 	public static void main(String args[]) throws NumberFormatException, IOException {
 	//String path = "/home/ssamal/dl/201803/codings.fccsv";
 //	String path = "/home/ssamal/workspace/conexpng/floating_codings100.csv";
-	String path = "data/exp108_coding.csv";
+	String path = "data/exp69_coding.csv";
 	int bins=1;
 	boolean noattr = true;
 	if(args.length==1)	path = args[0];
