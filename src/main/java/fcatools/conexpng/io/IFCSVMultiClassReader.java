@@ -22,6 +22,7 @@ public class IFCSVMultiClassReader {
 	private boolean unique;
 	private IFuzzyMultiClassifierContext context;
 
+
 	public IFCSVMultiClassReader(Conf state, String path) throws IllegalObjectException, IOException {
 		this(state,path,1);
 	}
@@ -45,6 +46,7 @@ public class IFCSVMultiClassReader {
         numObj=0;
         String line;
         context = new IFuzzyMultiClassifierContext();
+        
         this.numClasses = numClasses;
         this.unique = unique;
         line = br.readLine();
@@ -52,6 +54,7 @@ public class IFCSVMultiClassReader {
         
         for (int i = 1; i < attr.length-numClasses; i++) {
             context.addAttribute(attr[i]);
+            
         }
   
      //   System.out.println("Attributes:" + context.getAttributes()); 
@@ -65,6 +68,30 @@ public class IFCSVMultiClassReader {
         state.newContext(context);
     
 	}
+	
+	public IFCSVMultiClassReader(Conf state, IFuzzyMultiClassifierContext context, String path, int numClasses, boolean unique, int initialRecords) throws IllegalObjectException, IOException {
+	    
+		FileInputStream fis = new FileInputStream(path);
+        br = new BufferedReader(new InputStreamReader(fis));
+        numObj=context.getObjectCount();
+        String line;
+        this.context = new IFuzzyMultiClassifierContext(context);
+        this.numClasses = numClasses;
+        this.unique = unique;
+        line = br.readLine();
+        String[] attr = line.split(SEP);
+        
+     //   System.out.println("Attributes:" + context.getAttributes()); 
+     
+        while ( initialRecords>0 && (line = br.readLine()) != null) {
+        	process(line);
+        	initialRecords--;
+        }
+        
+        state.setNewFile(path);
+        state.newContext(this.context);
+    
+	}
         
     public boolean readNext() throws IllegalObjectException, IOException {   
     	String line = null;
@@ -75,7 +102,14 @@ public class IFCSVMultiClassReader {
         return true;
     }
     
-    public void process(String line) throws IllegalObjectException {
+    public String readReturnNext() throws IllegalObjectException, IOException {   
+    	String line = null;
+        if ((line = br.readLine()) != null) 
+        	  return process(line);
+        return null;
+    }
+    
+    public String process(String line) throws IllegalObjectException {
         	
             String[] obj = line.split(SEP);
             List<String> attrForObj = new ArrayList<String>();
@@ -100,20 +134,27 @@ public class IFCSVMultiClassReader {
 //            System.out.println("Classes:" + classes); 
 //            System.out.println(obj[0]);
   
+            String object = unique ?obj[0]:obj[0]+"_"+numObj;
+        
             if(obj.length < context.getAttributeCount() + numClasses) 
-            	if(unique)
-            		context.addObject(obj[0],"",attrForObj,values);
-            	else
-            		context.addObject(obj[0]+"_" + numObj,"",attrForObj,values);
+            		context.addObject(object,"",attrForObj,values);
            	else
-            	if(unique)
-                	context.addObject(obj[0],classes,attrForObj,values);
-            	else
-                	context.addObject(obj[0]+"_" + numObj,classes,attrForObj,values);
-
+                	context.addObject(object,classes,attrForObj,values);
+        
             numObj++;
     
+            return object;
+//            System.out.println(numObj +"" +  context.getObjectCount());
  //         System.out.println("Classes:" + context.getClasses()); 
+    }
+    
+    public void remove(String obj) {
+    	try {
+			this.context.removeObject(obj);
+		} catch (IllegalObjectException e) {
+			// TODO Auto-generated catch block
+		//	e.printStackTrace();
+		}
     }
     
     public void close() throws IOException {

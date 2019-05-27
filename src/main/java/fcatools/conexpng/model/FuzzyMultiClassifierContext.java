@@ -145,7 +145,7 @@ public class FuzzyMultiClassifierContext extends FuzzyFormalContext {
 
 	@Override
 	public boolean removeObject(String id) throws IllegalObjectException {
-		if(removeObject(getObject(id))) {
+		if(super.removeObject(getObject(id))) {
 			Set<String> clazzSet = trainingSetMap.get(id);
 			trainingSetMap.remove(id);
 			

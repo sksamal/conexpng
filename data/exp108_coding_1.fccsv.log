@@ -8,49 +8,49 @@ No of concepts: 434
    Test                Size                                      [[0, 1]]      Class      Class
 -----------------------------------------------------------------------------------------------------------------------
    train   o1_42        {5}                                [[0.40, 0.60]]      [[1]]        [1] _/
-    test   o0_74        {2}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_74        {2}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o1_41       {53}                                [[0.88, 0.11]]      [[0]]        [1]
-    test   o0_72       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_72       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_71        {2}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o1_46        {8}                                [[0.62, 0.37]]      [[0]]        [1]
-    test   o0_78       {28}                                [[0.78, 0.21]]      [[0]]        [0] _/
-    test   o0_77       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
+   train   o0_78       {28}                                [[0.78, 0.21]]      [[0]]        [0] _/
+   train   o0_77       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train   o0_76        {9}                                [[0.66, 0.33]]      [[0]]        [0] _/
-    test   o1_39       {54}                                [[0.00, 0.00]]      [[0]]        [1]
-    test  o1_149       {16}                                [[0.43, 0.56]]      [[1]]        [1] _/
+   train   o1_39       {54}                                [[0.00, 0.00]]      [[0]]        [1]
+   train  o1_149       {16}                                [[0.43, 0.56]]      [[1]]        [1] _/
    train   o0_69        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_68       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o1_146        {7}                                [[0.71, 0.28]]      [[0]]        [1]
+   train  o1_146        {7}                                [[0.71, 0.28]]      [[0]]        [1]
    train   o1_31       {23}                                [[0.78, 0.21]]      [[0]]        [1]
-    test   o0_63       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test   o0_62        {7}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_63       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
+   train   o0_62        {7}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_61       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train   o0_60        {2}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o1_35        {6}                                [[0.50, 0.50]]      [[1]]        [1] _/
    train   o0_67       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train   o0_66       {19}                                [[0.84, 0.15]]      [[0]]        [0] _/
    train   o0_65       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o0_64        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o0_59       {56}                                [[0.91, 0.08]]      [[0]]        [0] _/
+   train   o0_64        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_59       {56}                                [[0.91, 0.08]]      [[0]]        [0] _/
    train   o0_58        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o0_57        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o1_29       {54}                                [[0.00, 0.00]]      [[0]]        [1]
+   train   o0_57        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o1_29       {54}                                [[0.00, 0.00]]      [[0]]        [1]
    train  o1_151       {23}                                [[0.69, 0.30]]      [[0]]        [1]
    train  o0_119        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_116       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test   o0_91       {36}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_91       {36}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_90       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train  o0_110       {47}                                [[0.74, 0.25]]      [[0]]        [0] _/
    train   o0_96       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_95       {22}                                [[0.86, 0.13]]      [[0]]        [0] _/
-    test   o0_94        {7}                                [[0.71, 0.28]]      [[0]]        [0] _/
-    test   o0_93       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
+   train   o0_94        {7}                                [[0.71, 0.28]]      [[0]]        [0] _/
+   train   o0_93       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train  o0_114        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_99        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_112        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_98       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o0_113        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o0_97       {73}                                [[0.79, 0.20]]      [[0]]        [0] _/
+   train  o0_113        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_97       {73}                                [[0.79, 0.20]]      [[0]]        [0] _/
    train  o1_129       {15}                                [[0.86, 0.13]]      [[0]]        [1]
    train  o1_122        {8}                                [[0.62, 0.37]]      [[0]]        [1]
    train  o1_124        {6}                                [[0.66, 0.33]]      [[0]]        [1]
@@ -59,19 +59,19 @@ No of concepts: 434
    train   o0_81        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_80       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train  o0_109        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o1_53       {15}                                [[0.86, 0.13]]      [[0]]        [1]
+   train   o1_53       {15}                                [[0.86, 0.13]]      [[0]]        [1]
    train   o0_85       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train   o0_84       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_100        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o0_83        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o0_82        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o0_89        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_83        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_82        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_89        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_103       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test   o0_88        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o0_104       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_88        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train  o0_104       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_87       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o0_101       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test  o0_102       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train  o0_101       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
+   train  o0_102       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_86       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train   o1_48        {6}                                [[0.66, 0.33]]      [[0]]        [1]
    train   o0_79       {21}                                [[0.76, 0.23]]      [[0]]        [0] _/
@@ -80,7 +80,7 @@ No of concepts: 434
    train  o1_181       {54}                                [[0.00, 0.00]]      [[0]]        [1]
    train  o1_183       {23}                                [[0.78, 0.21]]      [[0]]        [1]
    train  o0_132       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o0_133        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train  o0_133        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_130       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train  o0_131       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_136        {2}                                [[1.00, 0.00]]      [[0]]        [0] _/
@@ -88,35 +88,35 @@ No of concepts: 434
    train  o0_134        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_135       {56}                                [[0.91, 0.08]]      [[0]]        [0] _/
    train  o1_187        {6}                                [[0.50, 0.50]]      [[1]]        [1] _/
-    test  o0_127       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
+   train  o0_127       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train  o0_128       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train  o1_191       {54}                                [[0.00, 0.00]]      [[0]]        [1]
-    test   o1_70        {7}                                [[0.71, 0.28]]      [[0]]        [1]
-    test  o1_193       {53}                                [[0.88, 0.11]]      [[0]]        [1]
+   train   o1_70        {7}                                [[0.71, 0.28]]      [[0]]        [1]
+   train  o1_193       {53}                                [[0.88, 0.11]]      [[0]]        [1]
    train  o1_194        {5}                                [[0.40, 0.60]]      [[1]]        [1] _/
    train   o1_75       {23}                                [[0.69, 0.30]]      [[0]]        [1]
    train  o0_121       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test   o1_73       {16}                                [[0.43, 0.56]]      [[1]]        [1] _/
+   train   o1_73       {16}                                [[0.43, 0.56]]      [[1]]        [1] _/
    train  o0_120        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o0_125        {2}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o0_126        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train  o0_125        {2}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train  o0_126        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_123       {49}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o1_198        {8}                                [[0.62, 0.37]]      [[0]]        [1]
-    test  o0_154       {28}                                [[0.78, 0.21]]      [[0]]        [0] _/
+   train  o0_154       {28}                                [[0.78, 0.21]]      [[0]]        [0] _/
    train  o0_155       {21}                                [[0.76, 0.23]]      [[0]]        [0] _/
    train  o0_152        {9}                                [[0.66, 0.33]]      [[0]]        [0] _/
    train  o0_153       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train  o0_158        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_159        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_156       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test  o0_157        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train  o0_157        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_150        {2}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o1_168       {54}                                [[0.00, 0.00]]      [[0]]        [1]
    train   o1_92       {54}                                [[0.00, 0.00]]      [[0]]        [1]
    train  o0_143       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train  o0_144       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o0_141       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o0_142       {19}                                [[0.84, 0.15]]      [[0]]        [0] _/
+   train  o0_141       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train  o0_142       {19}                                [[0.84, 0.15]]      [[0]]        [0] _/
    train  o0_147        {2}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_148       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_145        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
@@ -124,20 +124,20 @@ No of concepts: 434
    train  o0_176        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_177       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train  o0_174       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o0_175        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train  o0_175        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_178       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_179       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train  o0_172       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_173       {73}                                [[0.79, 0.20]]      [[0]]        [0] _/
-    test  o0_170        {7}                                [[0.71, 0.28]]      [[0]]        [0] _/
+   train  o0_170        {7}                                [[0.71, 0.28]]      [[0]]        [0] _/
    train  o0_171       {22}                                [[0.86, 0.13]]      [[0]]        [0] _/
    train    o0_1       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train    o0_0        {9}                                [[0.66, 0.33]]      [[0]]        [0] _/
    train    o0_5        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train    o0_4       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train    o0_3       {21}                                [[0.76, 0.23]]      [[0]]        [0] _/
-    test    o0_2       {28}                                [[0.78, 0.21]]      [[0]]        [0] _/
-    test  o0_165        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train    o0_2       {28}                                [[0.78, 0.21]]      [[0]]        [0] _/
+   train  o0_165        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train    o0_9       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train    o0_8       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_166       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
@@ -147,9 +147,9 @@ No of concepts: 434
    train    o0_6        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_169       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train  o0_167       {36}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o0_161       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test  o0_162       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test  o0_160       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train  o0_161       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
+   train  o0_162       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
+   train  o0_160       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_199       {49}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_196        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_197       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
@@ -159,48 +159,48 @@ No of concepts: 434
    train  o0_190        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_195        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_192       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test  o0_188        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train  o0_188        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_185        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_186       {47}                                [[0.74, 0.25]]      [[0]]        [0] _/
-    test  o0_189        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o0_180       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train  o0_189        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train  o0_180       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o0_184       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train  o0_182       {19}                                [[0.84, 0.15]]      [[0]]        [0] _/
    train   o0_30       {19}                                [[0.84, 0.15]]      [[0]]        [0] _/
-    test   o0_34       {47}                                [[0.74, 0.25]]      [[0]]        [0] _/
+   train   o0_34       {47}                                [[0.74, 0.25]]      [[0]]        [0] _/
    train   o0_33        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_32       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test   o0_27       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
+   train   o0_27       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train   o0_26       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o1_105       {54}                                [[0.00, 0.00]]      [[0]]        [1]
    train   o0_25       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test   o0_24        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_24        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o1_107       {23}                                [[0.78, 0.21]]      [[0]]        [1]
    train   o0_28       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_23        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_22       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o0_21       {73}                                [[0.79, 0.20]]      [[0]]        [0] _/
+   train   o0_21       {73}                                [[0.79, 0.20]]      [[0]]        [0] _/
    train   o0_20       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o1_115       {54}                                [[0.00, 0.00]]      [[0]]        [1]
    train   o0_15       {36}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test  o1_117       {53}                                [[0.88, 0.11]]      [[0]]        [1]
-    test   o0_14       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
+   train  o1_117       {53}                                [[0.88, 0.11]]      [[0]]        [1]
+   train   o0_14       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train   o0_13        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train  o1_118        {5}                                [[0.40, 0.60]]      [[1]]        [1] _/
    train   o0_19       {22}                                [[0.86, 0.13]]      [[0]]        [0] _/
-    test   o0_18        {7}                                [[0.71, 0.28]]      [[0]]        [0] _/
+   train   o0_18        {7}                                [[0.71, 0.28]]      [[0]]        [0] _/
    train   o0_17       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test  o1_111        {6}                                [[0.50, 0.50]]      [[1]]        [1] _/
-    test   o0_52       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
-    test   o0_51       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
+   train  o1_111        {6}                                [[0.50, 0.50]]      [[1]]        [1] _/
+   train   o0_52       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
+   train   o0_51       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train   o0_50        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o0_56       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o0_55       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_56       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
+   train   o0_55       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_54       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train   o0_49        {2}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o1_16       {54}                                [[0.00, 0.00]]      [[0]]        [1]
    train   o0_47       {49}                                [[1.00, 0.00]]      [[0]]        [0] _/
-    test   o0_40       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
+   train   o0_40       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train   o0_45       {54}                                [[0.00, 0.00]]      [[0]]        [0] _/
    train   o0_44        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
    train   o0_43        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
@@ -212,8 +212,808 @@ Objects classified correctly: 174
 Total objects: 200
 Accuracy: 87.0%
 
-Training Objects classified correctly: 121/140
-Accuracy: 86.42857142857143%
+Training Objects classified correctly: 174/200
+Accuracy: 87.0%
 
-Test Objects classified correctly: 53/60
-Accuracy: 88.33333333333333%
+Test Objects classified correctly: 0/0
+Accuracy: NaN%
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_200       {10}                                [[0.70, 0.30]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_201       {55}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_202       {29}                                [[0.79, 0.20]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_203       {22}                                [[0.77, 0.22]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_204       {58}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_205       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_206        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_207        {7}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_208       {15}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_209       {63}                                [[0.85, 0.14]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_210       {64}                                [[0.85, 0.14]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_211       {11}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_212        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_213       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_214       {68}                                [[0.86, 0.13]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_215       {38}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_216       {70}                                [[0.85, 0.14]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_217       {71}                                [[0.85, 0.14]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_218        {8}                                [[0.75, 0.25]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_219       {25}                                [[0.88, 0.12]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_220       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_221       {75}                                [[0.86, 0.13]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_222       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_223        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_224       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_225       {79}                                [[0.87, 0.12]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_226       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_227       {81}                                [[0.87, 0.12]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_228       {18}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_229       {83}                                [[0.86, 0.13]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_230       {22}                                [[0.86, 0.13]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_231       {26}                                [[0.76, 0.23]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_232       {86}                                [[0.86, 0.13]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_233        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_234       {53}                                [[0.77, 0.22]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_235        {7}                                [[0.42, 0.57]]      [[1]]        [1] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_236        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_237       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_238        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_239       {93}                                [[0.84, 0.15]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_240       {94}                                [[0.85, 0.14]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_241       {64}                                [[0.89, 0.10]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_242        {6}                                [[0.33, 0.66]]      [[1]]        [1] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_243       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_244       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_245       {99}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_246       {10}                                [[0.60, 0.40]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_247       {60}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_248        {7}                                [[0.57, 0.42]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_249        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_250       {11}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_251      {105}                                [[0.82, 0.17]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_252      {106}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_253       {18}                                [[0.83, 0.16]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_254      {108}                                [[0.82, 0.17]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_255       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_256       {19}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_257        {7}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_258        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_259       {72}                                [[0.90, 0.09]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_260        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_261      {115}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_262        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_263      {117}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_264       {11}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_265       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_266       {26}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_267      {121}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_268       {18}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_269        {7}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_270        {9}                                [[0.66, 0.33]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_271        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_272       {17}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_273       {22}                                [[0.40, 0.59]]      [[1]]        [1] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_274        {3}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_275       {32}                                [[0.68, 0.31]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_276       {13}                                [[0.69, 0.30]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_277      {131}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_278       {41}                                [[0.78, 0.21]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_279       {31}                                [[0.77, 0.22]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_280      {134}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_281       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_282        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_283        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_284       {20}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_285      {139}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_286      {140}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_287       {15}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_288        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_289       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_290      {144}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_291       {52}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_292      {146}                                [[0.84, 0.15]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_293      {147}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_294       {11}                                [[0.72, 0.27]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_295       {33}                                [[0.87, 0.12]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_296       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_297      {111}                                [[0.81, 0.18]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_298       {19}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_299       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_300       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_301      {155}                                [[0.85, 0.14]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_302       {21}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_303      {157}                                [[0.85, 0.14]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_304       {25}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_305      {159}                                [[0.84, 0.15]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_306       {29}                                [[0.86, 0.13]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_307       {36}                                [[0.77, 0.22]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_308      {162}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_309        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_310       {72}                                [[0.76, 0.23]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_311        {9}                                [[0.44, 0.55]]      [[1]]        [1] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_312        {5}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_313       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_314        {8}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_315      {169}                                [[0.84, 0.15]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_316      {170}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_317       {84}                                [[0.89, 0.10]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_318        {8}                                [[0.37, 0.62]]      [[1]]        [1] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_319       {15}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_320       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_321      {175}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_322       {13}                                [[0.61, 0.38]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_323       {79}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_324       {10}                                [[0.60, 0.40]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_325        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_326       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_327      {181}                                [[0.82, 0.17]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_328      {182}                                [[0.82, 0.17]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_329       {25}                                [[0.84, 0.16]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_330      {184}                                [[0.82, 0.17]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_331       {23}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_332       {24}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_333        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_334       {13}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_335       {94}                                [[0.90, 0.09]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_336        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_337      {191}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_338       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_339      {193}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_340       {14}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_341       {22}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_342       {33}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_343      {197}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_344       {23}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_345        {9}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_346       {12}                                [[0.66, 0.33]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_347        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_348       {22}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_349       {29}                                [[0.41, 0.58]]      [[1]]        [1] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_350        {4}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_351       {41}                                [[0.68, 0.31]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_352       {16}                                [[0.68, 0.31]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_353      {207}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_354       {53}                                [[0.77, 0.22]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_355       {40}                                [[0.77, 0.22]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_356      {210}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_357       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_358        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_359       {11}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_360       {25}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_361      {215}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_362      {216}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_363       {19}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_364        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_365       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_366      {220}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_367       {66}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_368      {222}                                [[0.83, 0.16]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_369      {223}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_370       {14}                                [[0.71, 0.28]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_371       {41}                                [[0.87, 0.12]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_372       {20}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_373      {140}                                [[0.80, 0.19]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_374       {24}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_375       {12}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_376       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_377      {231}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_378       {26}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_379      {233}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_380       {32}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_381      {235}                                [[0.84, 0.15]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_382       {36}                                [[0.86, 0.13]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_383       {46}                                [[0.78, 0.21]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_384      {238}                                [[0.84, 0.15]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_385        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_386       {91}                                [[0.75, 0.24]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_387       {11}                                [[0.45, 0.54]]      [[1]]        [1] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_388        {6}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_389       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_390       {10}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_391      {245}                                [[0.83, 0.16]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_392      {246}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_393      {104}                                [[0.89, 0.10]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_394       {10}                                [[0.40, 0.60]]      [[1]]        [1] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_395       {18}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_396       {16}                                [[1.00, 0.00]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_397      {251}                                [[0.83, 0.16]]      [[0]]        [0] _/
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o1_398       {16}                                [[0.62, 0.37]]      [[0]]        [1]
+No of Objects: 201
+No of attributes: 32
+No of concepts: 434
+   train  o0_399       {98}                                [[1.00, 0.00]]      [[0]]        [0] _/
