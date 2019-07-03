@@ -38,8 +38,8 @@ public class TrainAndTest {
 			e1.printStackTrace();
 		}
 
-		String TRAINFILE = "data/exp77_coding_1.fccsv";
-		String TESTFILE = "data/exp69_coding_1.fccsv";
+		String TRAINFILE = "data/exp225_train_encodings_1.fccsv";
+		String TESTFILE = "data/exp225_test_encodings_1.fccsv";
 
 		if (args.length >= 1)
 			TRAINFILE = args[0];
@@ -176,7 +176,7 @@ public class TrainAndTest {
 		classifyMap = ifmcTest.getTrainingSet();
 		Set<String> ocls = classifyMap.get(nextObj);
 		String type = "test";
-		sb.append(String.format("%8s%8s %9s} %45s %10s %10s", type, nextObj, "{" + fcc.getExtent().size(), psList,
+		sb.append(String.format("%8s %8s %9s} %45s %10s %10s", type, nextObj, "{" + fcc.getExtent().size(), psList,
 				csList, ocls));
 		if (ocls.contains(csList.get(0).toArray(new String[0])[0])) {
 //				sb.append(String.format("%8s %9s} %65s %10s %10s",nextObj,"{"+fcc.getExtent().size(),psList,csList,classSetMap.get(oid)));
