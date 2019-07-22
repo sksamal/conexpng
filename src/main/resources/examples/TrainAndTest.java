@@ -38,8 +38,8 @@ public class TrainAndTest {
 			e1.printStackTrace();
 		}
 
-		String TRAINFILE = "data/exp225_train_encodings_1.fccsv";
-		String TESTFILE = "data/exp225_test_encodings_1.fccsv";
+		String TRAINFILE = "thesis/data/cancer/exp225_train_encodings_8.fccsv";
+		String TESTFILE = "thesis/data/cancer/exp225_test_encodings_8.fccsv";
 
 		if (args.length >= 1)
 			TRAINFILE = args[0];
