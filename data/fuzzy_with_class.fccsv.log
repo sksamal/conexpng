@@ -1,0 +1,25 @@
+Reading data/fuzzy_with_class.fccsv
+No of Objects: 6
+No of attributes: 4
+No of concepts: 10
+
+-----------------------------------------------------------------------------------------------------------------------
+  Train/  Object     Extent                                 Probabilities  Predicted     Actual
+   Test                Size                                [[s1, s2, s3]]      Class      Class
+-----------------------------------------------------------------------------------------------------------------------
+   train    g3_2        {2}                          [[0.50, 0.00, 0.50]]     [[s3]]       [s3] _/
+   train    g2_1        {2}                          [[0.00, 0.00, 1.00]]     [[s3]]       [s3] _/
+   train    g1_0        {2}                          [[1.00, 0.00, 0.00]]     [[s1]]       [s1] _/
+   train    g6_5        {2}                          [[0.00, 0.00, 1.00]]     [[s3]]       [s3] _/
+   train    g5_4        {1}                          [[1.00, 0.00, 0.00]]     [[s1]]       [s1] _/
+   train    g4_3        {3}                          [[0.00, 0.33, 0.66]]     [[s3]]       [s2]
+
+Objects classified correctly: 5
+Total objects: 6
+Accuracy: 83.33333333333333%
+
+Training Objects classified correctly: 5/6
+Accuracy: 83.33333333333333%
+
+Test Objects classified correctly: 0/0
+Accuracy: NaN%

@@ -454,6 +454,8 @@ public HashMap<String,Concept<String,FullObject<String, String>>> getMinimalConc
 						minConceptMap.put(o.getIdentifier(),cObj);
 					}
 			}
+			
+//	 System.out.println(cObj);
 }
 //   System.out.println("Size:" + this.getObjects().size());
 //   System.out.println("Size:" + minConceptMap.size());

@@ -36,7 +36,7 @@ public class FuzzyClassifyTest {
 			e1.printStackTrace();
 		}
 			
-		String INPUTFILE = "thesis/data/cancer/coding1000_8.fccsv";
+		String INPUTFILE = "thesis/data/omniglot/coding5000_8.fccsv";
 			
 		if(args.length >=1) INPUTFILE = args[0];
 	//	if(args.length >=2) imageLocation = args[1];

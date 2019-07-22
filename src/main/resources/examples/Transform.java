@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 
 public class Transform {
 	public static void main(String args[]) throws NumberFormatException, IOException {
-	String path = "thesis/data/cancer/exp225_test_encodings.csv";
+	String path = "thesis/data/omniglot/coding5000.csv";
 	int bins=8;
 	boolean noattr = true;
 	if(args.length==1)	path = args[0];
